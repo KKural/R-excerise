@@ -1,3 +1,5 @@
+# evaluation/inspect_names.R
+
 context({
   testcase("names(crime_df) prints correct columns", {
     expected <- c(
@@ -12,14 +14,14 @@ context({
     testEqual(
       "Output of names(crime_df)",
       function(env) {
-        # The student’s last expression return value is here:
+        # student’s last expression result
         env$evaluationResult
       },
       expected,
       comparator = function(got, want, ...) {
         if (!is.character(got)) {
           get_reporter()$add_message(
-            "❌ Please call `names(crime_df)` (do not assign it).", 
+            "❌ Please call `names(crime_df)` without assigning it.",
             type = "error"
           )
           return(FALSE)
@@ -41,6 +43,8 @@ context({
         TRUE
       }
     )
-  }, preExec = {
+  })
+}, preExec = {
+  # source the starter code so crime_df exists
   source("../template.R")
 })

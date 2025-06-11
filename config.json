@@ -1,18 +1,18 @@
 {
-  "programming_language": "R",
-  "access": "private",
-  "description": {
-    "names": {
-      "en": "Inspect the dataset’s column names"
-    }
-  },
-  "evaluation": {
-    "handler": "R",
-    "test_suite": "evaluation"
-  },
-  "internals": {
-    "token": "BkGgfV_hWW88u3JPJ3s8jJmarsX7gMJf6jaZh8IRPBjbsspXytcnsp8c-_msmH53",
-    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
-  },
-  "labels": []
+    "programming_language": "R",
+    "access": "private",
+    "description": {
+        "names": {
+            "en": "Inspect the dataset’s column names"
+        }
+    },
+    "evaluation": {
+        "handler": "R",
+        "test_suite": "inspect_names"
+    },
+    "internals": {
+        "token": "BkGgfV_hWW88u3JPJ3s8jJmarsX7gMJf6jaZh8IRPBjbsspXytcnsp8c-_msmH53",
+        "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+    },
+    "labels": []
 }
