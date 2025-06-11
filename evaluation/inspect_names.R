@@ -1,9 +1,3 @@
-
----
-
-### 4. `evaluation/inspect_names_output.R`
-
-```r
 context({
   testcase("names(crime_df) prints correct columns", {
     expected <- c(

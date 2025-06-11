@@ -1,6 +1,9 @@
 The data frame `crime_df` has already been created for you.  
-**Without assigning**, type the following in your submission so that the names are printed:
+To view the name of the variables, write `name(name of the data frame)`and it prints the names of all the variables:
 
+Example
 ```r
-names(crime_df)
+# If the data frame names "burglary_df), then it should be 
+names(burglary_df)
 ```
+Write your code below 
