@@ -1,5 +1,5 @@
 The data frame `crime_df` has already been created for you.  
-To view the name of the variables, write `name(name of the data frame)`and it prints the names of all the variables:
+To view the name of the variables, write `names(name of the data frame)`and it prints the names of all the variables in the data frame:
 
 Example
 ```r
