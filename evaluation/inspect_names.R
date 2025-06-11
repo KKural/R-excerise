@@ -41,5 +41,6 @@ context({
         TRUE
       }
     )
-  })
+  }, preExec = {
+  source("../template.R")
 })
