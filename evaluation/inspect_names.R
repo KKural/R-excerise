@@ -46,5 +46,5 @@ context({
   })
 }, preExec = {
   # source the starter code so crime_df exists
-  source("../template.R")
+  source("template.R")
 })
