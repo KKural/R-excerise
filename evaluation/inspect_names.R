@@ -12,19 +12,22 @@ context({
     testEqual(
       "Output of names(crime_df)",
       function(env) {
-        # env$evaluationResult holds the return value of the student's last expression
-        result <- env$evaluationResult
-        if (!is.character(result)) {
-          stop("Please call `names(crime_df)` without assigning it to a variable.")
-        }
-        result
+        # The student’s last expression return value is here:
+        env$evaluationResult
       },
       expected,
       comparator = function(got, want, ...) {
+        if (!is.character(got)) {
+          get_reporter()$add_message(
+            "❌ Please call `names(crime_df)` (do not assign it).", 
+            type = "error"
+          )
+          return(FALSE)
+        }
         if (!identical(got, want)) {
           get_reporter()$add_message(
             paste0(
-              "❌ Expected: ", paste(want, collapse = ", "), 
+              "❌ Expected: ", paste(want, collapse = ", "),
               "\nYou returned: ", paste(got, collapse = ", ")
             ),
             type = "error"

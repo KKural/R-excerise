@@ -1,8 +1,11 @@
 # ───────────────────────────────────────────────────────────────
-# Starter code: build crime_df
+# starter code: build crime_df
 # ───────────────────────────────────────────────────────────────
+library(tibble)
+library(dplyr)
+
 set.seed(42)
-crime_df <- tibble::tibble(
+crime_df <- tibble(
   incident_id    = sprintf("INC%03d", 1:200),
   date           = sample(
                      seq.Date(as.Date("2023-01-01"),
@@ -17,4 +20,5 @@ crime_df <- tibble::tibble(
   value_loss     = round(rlnorm(200, meanlog = 3, sdlog = 1)),
   officers_sent  = sample(1:5, 200, replace = TRUE),
   response_time  = round(rnorm(200, mean = 12, sd = 4), 1)
-) %>% dplyr::mutate(response_time = pmax(response_time, 0))
+) %>%
+  mutate(response_time = pmax(response_time, 0))
