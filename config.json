@@ -1,0 +1,13 @@
+{
+    "programming_language": "R",
+    "access": "private",
+    "description": {
+        "names": {
+            "en": "Inspect the dataset’s column names"
+        }
+    },
+    "evaluation": {
+        "handler": "R",
+        "test_suite": "evaluation"
+    }
+}
