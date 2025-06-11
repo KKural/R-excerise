@@ -1,8 +1,11 @@
-### 3. `evaluation/inspect_names.R`
+
+---
+
+### 4. `evaluation/inspect_names_output.R`
 
 ```r
 context({
-  testcase("Correct column names in `var_names`", {
+  testcase("names(crime_df) prints correct columns", {
     expected <- c(
       "incident_id",
       "date",
@@ -13,25 +16,31 @@ context({
       "response_time"
     )
     testEqual(
-      "Check `var_names`",
-      function(env) env$var_names,
+      "Output of names(crime_df)",
+      function(env) {
+        # env$evaluationResult holds the return value of the student's last expression
+        result <- env$evaluationResult
+        if (!is.character(result)) {
+          stop("Please call `names(crime_df)` without assigning it to a variable.")
+        }
+        result
+      },
       expected,
       comparator = function(got, want, ...) {
-        if (!is.character(got)) {
-          get_reporter()$add_message("`var_names` must be a character vector.", type="error")
-          return(FALSE)
-        }
         if (!identical(got, want)) {
           get_reporter()$add_message(
             paste0(
-              " ❌ Expected: ", paste(want, collapse = ", "), 
-              "\n ✅  You returned: ", paste(got, collapse = ", ")
+              "❌ Expected: ", paste(want, collapse = ", "), 
+              "\nYou returned: ", paste(got, collapse = ", ")
             ),
-            type="error"
+            type = "error"
           )
           return(FALSE)
         }
-        get_reporter()$add_message("✅ Correct! `var_names` matches the column names.", type="success")
+        get_reporter()$add_message(
+          "✅ Correct! `names(crime_df)` printed the expected column names.",
+          type = "success"
+        )
         TRUE
       }
     )
