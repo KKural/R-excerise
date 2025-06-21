@@ -1,13 +1,17 @@
 {
-    "description": {
-        "names": {
-            "en": "Assign number of burglaries to a variable"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Assign number of burglaries to a variable"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "T-4r_9NiMAjnAfRzhjnd9Ha9_idvxJ_rNRvUFAGxkJx5x6jDvz58uIixVndYC2-5",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
