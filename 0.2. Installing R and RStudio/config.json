@@ -1,11 +1,15 @@
 {
-    "description": {
-        "names": {
-            "en": "Installing R and RStudio",
-            "nl": "R en RStudio installeren"
-        }
-    },
-    "type": "content",
-    "labels": [],
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Installing R and RStudio",
+      "nl": "R en RStudio installeren"
+    }
+  },
+  "type": "content",
+  "labels": [],
+  "access": "public",
+  "internals": {
+    "token": "yjIw3IM9fJBxIPAFCdkMcfwW2QyVz3a2d33khdIW-IkRGjbm9PqtN754iRCEbS2n",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }

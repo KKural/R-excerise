@@ -1,11 +1,15 @@
 {
-    "description": {
-        "names": {
-            "en": "Introduction",
-            "nl": "Introductie"
-        }
-    },
-    "type": "content",
-    "labels": [],
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Introduction",
+      "nl": "Introductie"
+    }
+  },
+  "type": "content",
+  "labels": [],
+  "access": "public",
+  "internals": {
+    "token": "aQ7SCXptfgIwF_MhTjzMfsXDV3-NSrYtTw2bcTMjFwWa8VAfMjuqrbMGG5Xk6ZWi",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
