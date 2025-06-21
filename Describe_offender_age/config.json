@@ -1,0 +1,13 @@
+{
+    "description": {
+        "names": {
+            "en": "Use summary() to describe offender age"
+        }
+    },
+    "programming_language": "R",
+    "evaluation": {
+        "handler": "R"
+    },
+    "test_suite": "evaluation",
+    "access": "public"
+}

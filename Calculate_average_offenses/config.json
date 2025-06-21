@@ -1,0 +1,13 @@
+{
+    "description": {
+        "names": {
+            "en": "Use mean() to calculate average offenses"
+        }
+    },
+    "programming_language": "R",
+    "evaluation": {
+        "handler": "R"
+    },
+    "test_suite": "evaluation",
+    "access": "public"
+}
