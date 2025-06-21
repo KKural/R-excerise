@@ -8,7 +8,7 @@ context({
         }
         return(as.vector(env$offense_table))
       },
-      c(5, 4, 4, 2, 5),
+      c(4, 4, 2, 7, 3),
       comparator = function(got, want, ...) {
         if (is.null(got)) {
           get_reporter()$add_message("❌ The variable 'offense_table' doesn't exist. Did you forget to create it?", type = "error")
@@ -31,7 +31,7 @@ context({
         }
         
         # Get frequencies in the right order
-        expected_frequencies <- c(4, 4, 2, 5, 3)
+        expected_frequencies <- c(4, 4, 2, 7, 3)
         actual_frequencies <- numeric(0)
         
         for (name in expected_names) {

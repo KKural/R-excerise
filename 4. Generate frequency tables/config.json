@@ -1,0 +1,13 @@
+{
+    "description": {
+        "names": {
+            "en": "Generate frequency tables with table()"
+        }
+    },
+    "programming_language": "R",
+    "evaluation": {
+        "handler": "R"
+    },
+    "test_suite": "evaluation",
+    "access": "public"
+}

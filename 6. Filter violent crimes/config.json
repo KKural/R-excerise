@@ -1,0 +1,13 @@
+{
+    "description": {
+        "names": {
+            "en": "Filter violent crimes using subset()"
+        }
+    },
+    "programming_language": "R",
+    "evaluation": {
+        "handler": "R"
+    },
+    "test_suite": "evaluation",
+    "access": "public"
+}

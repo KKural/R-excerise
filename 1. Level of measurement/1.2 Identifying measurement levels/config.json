@@ -1,0 +1,13 @@
+{
+    "description": {
+        "names": {
+            "en": "Identifying measurement levels"
+        }
+    },
+    "programming_language": "R",
+    "evaluation": {
+        "handler": "R"
+    },
+    "test_suite": "evaluation",
+    "access": "public"
+}

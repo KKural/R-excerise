@@ -1,0 +1,13 @@
+{
+    "description": {
+        "names": {
+            "en": "Load a crime dataset using read.csv()"
+        }
+    },
+    "programming_language": "R",
+    "evaluation": {
+        "handler": "R"
+    },
+    "test_suite": "evaluation",
+    "access": "public"
+}

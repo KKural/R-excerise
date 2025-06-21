@@ -1,0 +1,11 @@
+{
+    "description": {
+        "names": {
+            "en": "Basic R Operations",
+            "nl": "Basis R Operaties"
+        }
+    },
+    "type": "content",
+    "labels": [],
+    "access": "public"
+}
