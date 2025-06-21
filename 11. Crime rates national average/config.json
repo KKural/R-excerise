@@ -1,7 +1,7 @@
 {
     "description": {
         "names": {
-            "en": "Identifying measurement levels"
+            "en": "Compare crime rates to national average"
         }
     },
     "programming_language": "R",

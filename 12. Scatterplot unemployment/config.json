@@ -1,7 +1,7 @@
 {
     "description": {
         "names": {
-            "en": "Creating variables with appropriate types"
+            "en": "Create a scatterplot of unemployment and crime"
         }
     },
     "programming_language": "R",

@@ -1,7 +1,7 @@
 {
     "description": {
         "names": {
-            "en": "Assign number of burglaries to a variable"
+            "en": "Calculate crime rate per population"
         }
     },
     "programming_language": "R",

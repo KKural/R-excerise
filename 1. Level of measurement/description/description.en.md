@@ -1,119 +1,42 @@
-# Meetniveaus in Criminologisch Onderzoek
+# Creating variables with appropriate types
 
-In criminologisch onderzoek werken we met verschillende soorten variabelen. Het begrijpen van meetniveaus is essentieel voor het kiezen van de juiste statistische methoden en analyses.
+## Criminological Context
+In criminological research, variables come in different measurement levels. Coding these variables correctly in R is essential for proper analysis. In this exercise, you'll work with data about different types of crimes.
 
-## Wat zijn meetniveaus?
+## Task
+Create the following variables with appropriate data types in R:
 
-Meetniveaus (of schaalniveaus) geven aan hoe gedetailleerd een variabele gemeten wordt en welke wiskundige bewerkingen mogelijk zijn met de waargenomen waarden. Er zijn vier hoofdniveaus:
+1. Create a variable `crime_types` as a factor with these categories: "Theft", "Assault", "Burglary", "Fraud", "Vandalism"
 
-### 1. Nominaal niveau
+2. Create a variable `crime_severity` as an ordered factor with levels: "Minor", "Moderate", "Severe" (in that order)
 
-- **Definitie**: Categorieën zonder natuurlijke volgorde
-- **Voorbeeld in criminologie**: 
-  - Type misdrijf (diefstal, inbraak, geweld)
-  - Geslacht van daders
-  - Politiedistrict
-- **Toegestane bewerkingen**: Frequenties tellen, modus bepalen
-- **R-datatypes**: Factor, character
+3. Create a variable `offender_ages` as a numeric vector with these values: 19, 23, 45, 32, 28, 21
 
-### 2. Ordinaal niveau
+4. Create a variable `district_codes` as a character vector with these values: "A1", "B2", "C3", "D4", "E5"
 
-- **Definitie**: Categorieën met een natuurlijke volgorde
-- **Voorbeeld in criminologie**:
-  - Ernst van een misdrijf (licht, gemiddeld, zwaar)
-  - Opleidingsniveau van daders
-  - Mate van recidive (nooit, soms, vaak)
-- **Toegestane bewerkingen**: Alles van nominaal + rangorde bepalen, mediaan
-- **R-datatypes**: Ordered factor, integer (soms)
+```R
+# 1. Create the crime_types factor variable
+# Your code here
 
-### 3. Interval niveau
 
-- **Definitie**: Numerieke waarden met gelijke intervallen, maar zonder natuurlijk nulpunt
-- **Voorbeeld in criminologie**:
-  - Temperatuur tijdens misdrijven
-  - IQ-scores van verdachten
-  - Bepaalde attitude-schalen
-- **Toegestane bewerkingen**: Alles van ordinaal + optellen, aftrekken, gemiddelde
-- **R-datatypes**: Numeric
+# 2. Create the crime_severity ordered factor variable
+# Your code here
 
-### 4. Ratio niveau
 
-- **Definitie**: Numerieke waarden met gelijke intervallen én een natuurlijk nulpunt
-- **Voorbeeld in criminologie**:
-  - Aantal misdrijven per wijk
-  - Leeftijd van daders
-  - Gevangenisstraf in maanden
-  - Waarde van gestolen goederen
-- **Toegestane bewerkingen**: Alles van interval + vermenigvuldigen, delen, verhoudingen
-- **R-datatypes**: Numeric
+# 3. Create the offender_ages numeric vector
+# Your code here
 
-## Belang voor statistische analyse
 
-Het meetniveau bepaalt welke statistische technieken geschikt zijn:
+# 4. Create the district_codes character vector
+# Your code here
 
-- **Nominaal**: Chi-kwadraat, frequentietabellen
-- **Ordinaal**: Rangcorrelaties (Spearman), niet-parametrische tests
-- **Interval/Ratio**: t-tests, ANOVA, Pearson correlatie, regressie
 
-In de volgende oefeningen leer je hoe je in R met verschillende meetniveaus werkt.
+```
 
----
+**Bloom Level: Remember & Understand**
 
-# Levels of Measurement in Criminological Research
-
-In criminological research, we work with different types of variables. Understanding levels of measurement is essential for choosing the right statistical methods and analyses.
-
-## What are levels of measurement?
-
-Levels of measurement (or scale types) indicate how detailed a variable is measured and which mathematical operations are possible with the observed values. There are four main levels:
-
-### 1. Nominal level
-
-- **Definition**: Categories without natural order
-- **Examples in criminology**: 
-  - Type of crime (theft, burglary, assault)
-  - Gender of offenders
-  - Police district
-- **Allowed operations**: Counting frequencies, determining mode
-- **R data types**: Factor, character
-
-### 2. Ordinal level
-
-- **Definition**: Categories with a natural order
-- **Examples in criminology**:
-  - Severity of crime (minor, moderate, severe)
-  - Educational level of offenders
-  - Recidivism rate (never, sometimes, often)
-- **Allowed operations**: All nominal + determining rank order, median
-- **R data types**: Ordered factor, integer (sometimes)
-
-### 3. Interval level
-
-- **Definition**: Numerical values with equal intervals, but without natural zero point
-- **Examples in criminology**:
-  - Temperature during crimes
-  - IQ scores of suspects
-  - Certain attitude scales
-- **Allowed operations**: All ordinal + addition, subtraction, mean
-- **R data types**: Numeric
-
-### 4. Ratio level
-
-- **Definition**: Numerical values with equal intervals AND a natural zero point
-- **Examples in criminology**:
-  - Number of crimes per district
-  - Age of offenders
-  - Prison sentence in months
-  - Value of stolen goods
-- **Allowed operations**: All interval + multiplication, division, ratios
-- **R data types**: Numeric
-
-## Importance for statistical analysis
-
-The level of measurement determines which statistical techniques are appropriate:
-
-- **Nominal**: Chi-square, frequency tables
-- **Ordinal**: Rank correlations (Spearman), non-parametric tests
-- **Interval/Ratio**: t-tests, ANOVA, Pearson correlation, regression
-
-In the following exercises, you will learn how to work with different levels of measurement in R.
+**Tips:** 
+- Use `factor()` to create categorical variables (nominal level)
+- Use `factor()` with the `ordered=TRUE` parameter and `levels=` to specify the order for ordinal variables
+- Use `c()` to create vectors of any type
+- For character vectors, enclose each value in quotes
