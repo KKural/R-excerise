@@ -1,13 +1,18 @@
 {
-    "description":  {
-                        "names":  {
-                                      "en":  "Level of measurement"
-                                  }
-                    },
-    "programming_language":  "R",
-    "evaluation":  {
-                       "handler":  "R"
-                   },
-    "test_suite":  "evaluation",
-    "access":  "public"
+  "description": {
+    "names": {
+      "en": "Level of measurement"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "hzWTjcyrrhf2QFiUxiTSSZZnpDV7gi4KWazgX8bXHGYZVfJdJYJBYqnWetFhPA3s",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  },
+  "labels": []
 }
