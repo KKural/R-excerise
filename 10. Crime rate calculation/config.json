@@ -1,13 +1,17 @@
 {
-    "description": {
-        "names": {
-            "en": "Calculate crime rate per population"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Calculate crime rate per population"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "aqCzvHiPyYE7rKayQN6rCn9JHvue4mBghExgYtqDDyxvZMer34BYHyNiSkJfPr55",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }

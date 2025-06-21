@@ -1,13 +1,17 @@
 {
-    "description": {
-        "names": {
-            "en": "Create a scatterplot of unemployment and crime"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Create a scatterplot of unemployment and crime"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "abGtnr_fmxu53J9aueprzN8Sf8zMxsHi-KkwTsziiXUda_XGwHcdbT2SkDDHnqSG",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }

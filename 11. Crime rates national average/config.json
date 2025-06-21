@@ -1,13 +1,17 @@
 {
-    "description": {
-        "names": {
-            "en": "Compare crime rates to national average"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Compare crime rates to national average"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "E2XbXuzcWiZDWD7wMTX_ciMRRPy5pcDiK3VpRGQyhGZxzkyb29z7z7_aHXqUZVUM",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
