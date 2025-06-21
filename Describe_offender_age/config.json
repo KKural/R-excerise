@@ -1,0 +1,18 @@
+{
+  "description": {
+    "names": {
+      "en": "Use summary() to describe offender age"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "_MUXZZujA_reS9_HSZp2kzXz8Ht67sDqQaKpuK5sWPHxqkqZ3-2zixWTCSx4A2kd",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  },
+  "labels": []
+}

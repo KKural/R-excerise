@@ -1,11 +1,15 @@
 {
-    "description": {
-        "names": {
-            "en": "Prologue",
-            "nl": "Proloog"
-        }
-    },
-    "type": "content",
-    "labels": [],
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Prologue",
+      "nl": "Proloog"
+    }
+  },
+  "type": "content",
+  "labels": [],
+  "access": "public",
+  "internals": {
+    "token": "VCNREpAJpqKzvAtkvjutze-hxJ6Vc-4iTNvc9NwpWN_vr-KqGQb6MBeqNSwFhKrk",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
