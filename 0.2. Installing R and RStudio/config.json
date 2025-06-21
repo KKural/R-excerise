@@ -1,0 +1,11 @@
+{
+    "description": {
+        "names": {
+            "en": "Installing R and RStudio",
+            "nl": "R en RStudio installeren"
+        }
+    },
+    "type": "content",
+    "labels": [],
+    "access": "public"
+}

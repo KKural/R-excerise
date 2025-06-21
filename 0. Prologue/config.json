@@ -1,0 +1,11 @@
+{
+    "description": {
+        "names": {
+            "en": "Prologue",
+            "nl": "Proloog"
+        }
+    },
+    "type": "content",
+    "labels": [],
+    "access": "public"
+}

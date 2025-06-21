@@ -1,0 +1,14 @@
+{
+    "description": {
+        "names": {
+            "en": "Onboarding Quiz",
+            "nl": "Instapquiz"
+        }
+    },
+    "type": "exercise",
+    "programming_language": "markdown",
+    "access": "public",
+    "labels": [
+        "quiz"
+    ]
+}
