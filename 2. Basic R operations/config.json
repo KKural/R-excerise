@@ -1,11 +1,15 @@
 {
-    "description": {
-        "names": {
-            "en": "Basic R Operations",
-            "nl": "Basis R Operaties"
-        }
-    },
-    "type": "content",
-    "labels": [],
-    "access": "public"
+  "description": {
+    "names": {
+      "en": "Basic R Operations",
+      "nl": "Basis R Operaties"
+    }
+  },
+  "type": "content",
+  "labels": [],
+  "access": "public",
+  "internals": {
+    "token": "wY-9RDxNXytVnMPwMEhkmy7-XmBawnb-y2S2NGcCf-b82KHePSD3ykJsNaeZf-PA",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
