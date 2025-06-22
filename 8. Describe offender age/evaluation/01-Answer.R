@@ -33,35 +33,6 @@ context({
       }
     )
   })
-  
-  testcase("Check if summary() function was used", {
-    testEqual(
-      "Code used for generating summary",
-      function(env) { 
-        # Placeholder
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        # Get the submitted code
-        code <- toString(get_student_code())
-        
-        # Check if the code contains summary()
-        if (!grepl("summary\\(", code)) {
-          get_reporter()$add_message("❌ Make sure you're using the summary() function to generate the descriptive statistics.", type = "error")
-          return(FALSE)
-        }
-        
-        # Check if offender_ages is used
-        if (!grepl("summary\\(\\s*offender_ages", code)) {
-          get_reporter()$add_message("⚠️ It's recommended to use the provided 'offender_ages' variable in your summary() function.", type = "warning")
-          # Just a warning, not a failure
-        }
-        
-        return(TRUE)
-      }
-    )
-  })
 }, preExec = {
   # Set up the offender_ages vector
   offender_ages <- c(19, 23, 45, 32, 28, 21, 24, 19, 37, 42, 18, 25, 22, 31, 19, 

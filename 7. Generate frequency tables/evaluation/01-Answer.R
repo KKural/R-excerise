@@ -52,35 +52,6 @@ context({
       }
     )
   })
-  
-  testcase("Check if table() function was used", {
-    testEqual(
-      "Code used for generating table",
-      function(env) { 
-        # Placeholder
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        # Get the submitted code
-        code <- toString(get_student_code())
-        
-        # Check if the code contains table()
-        if (!grepl("table\\(", code)) {
-          get_reporter()$add_message("❌ Make sure you're using the table() function to generate the frequency table.", type = "error")
-          return(FALSE)
-        }
-        
-        # Check if offense_types is used
-        if (!grepl("table\\(\\s*offense_types", code)) {
-          get_reporter()$add_message("⚠️ It's recommended to use the provided 'offense_types' variable in your table() function.", type = "warning")
-          # Just a warning, not a failure
-        }
-        
-        return(TRUE)
-      }
-    )
-  })
 }, preExec = {
   # Set up the offense_types vector
   offense_types <- c("Theft", "Assault", "Burglary", "Vandalism", "Theft", "Theft", 

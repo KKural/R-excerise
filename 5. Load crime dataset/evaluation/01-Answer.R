@@ -58,35 +58,6 @@ context({
       }
     )
   })
-  
-  testcase("Check if read.csv() was used in the code", {
-    testEqual(
-      "Code used for loading data",
-      function(env) { 
-        # Placeholder
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        # Get the submitted code
-        code <- toString(get_student_code())
-        
-        # Check if the code contains read.csv()
-        if (!grepl("read\\.csv\\(", code)) {
-          get_reporter()$add_message("❌ Make sure you're using the read.csv() function to load the data.", type = "error")
-          return(FALSE)
-        }
-        
-        # Check if file_path is used
-        if (!grepl("read\\.csv\\(\\s*file_path", code) && !grepl("read\\.csv\\(['\"]crime_data.csv['\"]", code)) {
-          get_reporter()$add_message("⚠️ It's recommended to use the provided 'file_path' variable in your read.csv() function.", type = "warning")
-          # Just a warning, not a failure
-        }
-        
-        return(TRUE)
-      }
-    )
-  })
 }, preExec = {
   # Create a simulated crime data file
   library(tibble)

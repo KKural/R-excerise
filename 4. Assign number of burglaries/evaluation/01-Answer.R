@@ -1,7 +1,7 @@
 context({
-  testcase("Variable 'burglaries' is correctly defined", {
+  testcase("", {
     testEqual(
-      "Value of the 'burglaries' variable",
+      "",
       function(env) { env$burglaries },
       146,
       comparator = function(got, want, ...) {

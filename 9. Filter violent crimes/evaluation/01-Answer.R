@@ -65,29 +65,6 @@ context({
       }
     )
   })
-  
-  testcase("Check if subset() function was used", {
-    testEqual(
-      "Code used for filtering",
-      function(env) { 
-        # Placeholder
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        # Get the submitted code
-        code <- toString(get_student_code())
-        
-        # Check if the code contains subset()
-        if (!grepl("subset\\(", code)) {
-          get_reporter()$add_message("❌ Make sure you're using the subset() function to filter the data.", type = "error")
-          return(FALSE)
-        }
-        
-        return(TRUE)
-      }
-    )
-  })
 }, preExec = {
   # Set up the crime_data data frame
   crime_data <- data.frame(
