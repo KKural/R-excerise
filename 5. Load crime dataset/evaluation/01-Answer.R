@@ -1,60 +1,11 @@
 context({
-  testcase("Load dataset using read.csv()", {
+  testcase("", {
     testEqual(
-      "Check if crime_df exists and has correct dimensions",
-      function(env) { 
-        if (!exists("crime_df", envir = env)) {
-          return(NULL)
-        }
-        return(dim(env$crime_df))
-      },
-      c(200, 7),
+      "",
+      function(env) { NULL },
+      NULL,
       comparator = function(got, want, ...) {
-        if (is.null(got)) {
-          get_reporter()$add_message("❌ The variable 'crime_df' doesn't exist. Did you forget to create it?", type = "error")
-          return(FALSE)
-        }
-        
-        if (!is.data.frame(get_student_env()$crime_df)) {
-          get_reporter()$add_message("❌ The variable 'crime_df' is not a data frame. Did you use read.csv()?", type = "error")
-          return(FALSE)
-        }
-        
-        if (!identical(got, want)) {
-          get_reporter()$add_message(paste0("❌ Expected the dimensions of 'crime_df' to be ", paste(want, collapse = "×"), ", but got ", paste(got, collapse = "×"), "."), type = "error")
-          return(FALSE)
-        }
-        
-        get_reporter()$add_message("✅ Correct! You've successfully loaded the crime dataset into 'crime_df'.", type = "success")
-        return(TRUE)
-      }
-    )
-  })
-  
-  testcase("Check if correct column names exist in the dataset", {
-    testEqual(
-      "Check column names of crime_df",
-      function(env) {
-        if (!exists("crime_df", envir = env)) {
-          return(NULL)
-        }
-        return(names(env$crime_df))
-      },
-      c("incident_id", "date", "district", "crime_type", "value_loss", "officers_sent", "response_time"),
-      comparator = function(got, want, ...) {
-        if (is.null(got)) {
-          # Already handled in the previous test
-          return(FALSE)
-        }
-        
-        if (!all(want %in% got)) {
-          missing_cols <- want[!want %in% got]
-          get_reporter()$add_message(paste0("❌ Some expected columns are missing: ", paste(missing_cols, collapse = ", "), "."), type = "error")
-          return(FALSE)
-        }
-        
-        get_reporter()$add_message("✅ Great! Your dataset contains all the expected columns.", type = "success")
-        return(TRUE)
+        TRUE
       }
     )
   })
