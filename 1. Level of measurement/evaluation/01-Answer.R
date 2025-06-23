@@ -7,32 +7,17 @@
 # Gebruik de basisfuncties om de structuur en eigenschappen van het data frame te onderzoeken.
 # De feedback bij elke functie legt uit wat de functie doet en welke informatie je eruit haalt.
 
+# bloom_level: Remember & Understand
+# scaffolding_level: Full support
+# primm_phase: Predict, Run, Investigate, Modify, Make
+
 context({
   testcase("Feedback bij basisfuncties op data frame", {
     testEqual(
-      "df_crime_data is een data frame met kolommen 'type', 'ernst', 'leeftijd', 'district'",
-      function(env) is.data.frame(env$df_crime_data) && all(names(env$df_crime_data) == c("type", "ernst", "leeftijd", "district")),
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `df_crime_data` moet een data frame zijn met kolommen 'type', 'ernst', 'leeftijd', 'district'.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `df_crime_data` is juist aangemaakt als data frame met kolommen 'type', 'ernst', 'leeftijd', 'district'.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
-    )
-    testEqual(
-      "str(df_crime_data) geeft de structuur van het data frame weer",
+      "str(df_crime_data) toont de structuur van het data frame",
       function(env) {
         capture <- capture.output(str(env$df_crime_data))
-        any(grepl("'data.frame'", capture)) && any(grepl("type", capture)) && any(grepl("ernst", capture)) && any(grepl("leeftijd", capture)) && any(grepl("district", capture))
+        any(grepl("data.frame", capture)) && all(c("type", "ernst", "leeftijd", "district") %in% capture)
       },
       TRUE,
       comparator = function(got, want, ...) {
@@ -72,78 +57,22 @@ context({
     testEqual(
       "length(df_crime_data) geeft het aantal kolommen terug",
       function(env) length(env$df_crime_data) == 4,
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `length(df_crime_data)` moet het aantal kolommen (4) teruggeven.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `length(df_crime_data)` geeft correct het aantal kolommen terug.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
     testEqual(
       "nrow(df_crime_data) geeft het aantal rijen terug",
       function(env) nrow(env$df_crime_data) == 5,
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `nrow(df_crime_data)` moet het aantal rijen (5) teruggeven.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `nrow(df_crime_data)` geeft correct het aantal rijen terug.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
     testEqual(
       "ncol(df_crime_data) geeft het aantal kolommen terug",
       function(env) ncol(env$df_crime_data) == 4,
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `ncol(df_crime_data)` moet het aantal kolommen (4) teruggeven.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `ncol(df_crime_data)` geeft correct het aantal kolommen terug.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
     testEqual(
       "head(df_crime_data) toont de eerste rijen van het data frame",
       function(env) all(head(env$df_crime_data)$type == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `head(df_crime_data)` moet de eerste rijen tonen.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `head(df_crime_data)` toont correct de eerste rijen.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
     testEqual(
       "summary(df_crime_data) geeft een samenvatting van alle kolommen",
@@ -151,59 +80,17 @@ context({
         capture <- capture.output(summary(env$df_crime_data))
         any(grepl("Diefstal", capture)) && any(grepl("Licht", capture)) && any(grepl("leeftijd", capture))
       },
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `summary(df_crime_data)` moet een samenvatting van alle kolommen geven.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `summary(df_crime_data)` geeft correct een samenvatting van alle kolommen.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
     testEqual(
       "class(df_crime_data) geeft het type object terug",
       function(env) any(class(env$df_crime_data) == "data.frame"),
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `class(df_crime_data)` moet 'data.frame' teruggeven.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `class(df_crime_data)` geeft correct het type object terug.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
       function(env) all(dim(env$df_crime_data) == c(5, 4)),
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `dim(df_crime_data)` moet c(5, 4) teruggeven.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `dim(df_crime_data)` geeft correct het aantal rijen en kolommen terug.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
   })
 }, preExec = {
