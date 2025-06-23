@@ -4,7 +4,7 @@ context({
   testcase("Feedback bij basisfuncties op df_crime_data", {
     testEqual(
       "str(df_crime_data) toont de structuur van het data frame",
-      function() paste(capture.output(str(df_crime_data)), collapse = "\n"),
+      function(env) paste(capture.output(str(env$df_crime_data)), collapse = "\n"),
       "check_substrings",
       comparator = function(got, want, ...) {
         all(sapply(
@@ -16,7 +16,7 @@ context({
 
     testEqual(
       "names(df_crime_data) geeft de kolomnamen terug",
-      function() all(names(df_crime_data) == c("type", "ernst", "leeftijd", "district")),
+      function(env) all(names(env$df_crime_data) == c("type", "ernst", "leeftijd", "district")),
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -36,26 +36,26 @@ context({
 
     testEqual(
       "length(df_crime_data) geeft het aantal kolommen terug",
-      function() length(df_crime_data),
+      function(env) length(env$df_crime_data),
       4
     )
 
     testEqual(
       "nrow(df_crime_data) geeft het aantal rijen terug",
-      function() nrow(df_crime_data),
+      function(env) nrow(env$df_crime_data),
       5
     )
 
     testEqual(
       "ncol(df_crime_data) geeft het aantal kolommen terug",
-      function() ncol(df_crime_data),
+      function(env) ncol(env$df_crime_data),
       4
     )
 
     testEqual(
       "head(df_crime_data) toont de eerste rijen van het data frame",
-      function() all(
-        head(df_crime_data)$type ==
+      function(env) all(
+        head(env$df_crime_data)$type ==
         c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
       ),
       TRUE
@@ -63,7 +63,7 @@ context({
 
     testEqual(
       "summary(df_crime_data) geeft een samenvatting van alle kolommen",
-      function() paste(capture.output(summary(df_crime_data)), collapse = "\n"),
+      function(env) paste(capture.output(summary(env$df_crime_data)), collapse = "\n"),
       "check_substrings",
       comparator = function(got, want, ...) {
         all(sapply(c("Diefstal", "Licht", "leeftijd"), function(x) grepl(x, got)))
@@ -72,13 +72,13 @@ context({
 
     testEqual(
       "class(df_crime_data) geeft het type object terug",
-      function() class(df_crime_data)[1],
+      function(env) class(env$df_crime_data)[1],
       "data.frame"
     )
 
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
-      function() dim(df_crime_data),
+      function(env) dim(env$df_crime_data),
       c(5, 4)
     )
   })
