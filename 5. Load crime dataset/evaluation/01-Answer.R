@@ -32,17 +32,6 @@ context({
 # Tests
 # ----------------------------
 context({
-  testcase("Controleren of de werkdirectory correct is gezet", {
-    testEqual(
-      "De werkdirectory is correct gezet",
-      function(env) {
-        # De student moet setwd('D:/thesis/data') uitvoeren
-        identical(normalizePath(getwd(), winslash = "/", mustWork = FALSE), normalizePath("D:/thesis/data", winslash = "/", mustWork = FALSE))
-      },
-      TRUE
-    )
-  })
-
   # Dummy pad voor demonstratie setwd/getwd
   # Studenten hoeven geen echt pad te gebruiken, alleen de functies aanroepen
   dummy_path <- "C:/dummy/path"
