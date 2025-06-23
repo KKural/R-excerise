@@ -29,4 +29,4 @@ dim(df_crime_data)
 ```
 
 **Tip:**  
-Gebruik deze functies om snel inzicht te krijgen in de structuur en inhoud van een data frame in R.
+Gebruik deze functies om snel inzicht te krijgen in de structuur en inhoud van een data frame in R
