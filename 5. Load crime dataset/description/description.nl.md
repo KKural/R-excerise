@@ -1,20 +1,31 @@
-Je bent een onderzoeker die patronen van criminaliteit in verschillende districten onderzoekt. Je hebt een datasetbestand genaamd "misdaad_data.csv" ontvangen met gegevens over diverse strafbare feiten.
+### 5 . Het laden van de crime dataset
 
-Laad de dataset in R en sla deze op in een variabele genaamd `misdaad_df`. Het bestandspad is al beschikbaar in de variabele `bestandspad`.
+Je bent een onderzoeker die criminaliteit in verschillende districten bestudeert.  
+In de map die dit notebook uitvoert staat al een CSV-bestand **`misdaad_data.csv`**
+— het **volledige pad** ervan vind je in de kant-en-klare variabele
+`bestandspad`.
 
-1. Stel de werkdirectory in met `setwd()` zodat je in de juiste map werkt (gebruik eventueel `dirname(bestandspad)` als hulpmiddel).
-2. Controleer de huidige werkdirectory met `getwd()`.
-3. Laad de dataset in met `read.csv()` en sla deze op als `misdaad_df`.
+#### Opdracht  
+1. **Controleer** eerst met `getwd()` in welke map R nu werkt.  
+2. Verander daarna met `setwd()` naar de map waarin het CSV-bestand staat  
+   *(hint: dat is `dirname(bestandspad)`)*
+3. Lees het bestand in met `read.csv()` en sla het resultaat op in
+   **`misdaad_df`**.  
+4. Zet je werkmap tenslotte weer terug met `setwd()`.
+
+> **Samengevat – code-skeleton**
 
 ```r
-# Zet de werkdirectory naar de map van het bestand
-setwd(dirname(bestandspad))
-
-# Controleer de huidige werkdirectory
+# 1. huidige werkmap tonen
 getwd()
 
-# Gebruik read.csv() om de dataset te laden vanaf bestandspad
-misdaad_df <- read.csv(basename(bestandspad))
-```
+# 2. map bepalen + ernaartoe wisselen
+data_dir <- dirname(bestandspad)
+old_dir  <- getwd()
+setwd(data_dir)
 
-*Tip: De variabele 'bestandspad' bevat het volledige pad naar het CSV-bestand. Met `dirname()` krijg je de map, met `basename()` de bestandsnaam.*
+# 3. CSV laden
+misdaad_df <- read.csv(basename(bestandspad))
+
+# 4. optioneel: terug naar oorspronkelijke map
+setwd(old_dir)
