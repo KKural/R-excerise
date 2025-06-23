@@ -1,18 +1,18 @@
 {
-    "description": {
-        "names": {
-            "en": "Creating histograms with ggplot2"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public",
-    "internals": {
-        "token": "",
-        "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
-    },
-    "labels": []
+  "description": {
+    "names": {
+      "en": "Creating histograms with ggplot2"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "Kh6XxX6C-yGpssKeiZG4R29eKfquWFBNe5WtQc_aG3TCbiRq5qN9yemNdHgCp6dY",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  },
+  "labels": []
 }

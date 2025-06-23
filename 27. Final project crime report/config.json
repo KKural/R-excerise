@@ -1,18 +1,18 @@
 {
-    "description": {
-        "names": {
-            "en": "Final project crime report"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public",
-    "internals": {
-        "token": "",
-        "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
-    },
-    "labels": []
+  "description": {
+    "names": {
+      "en": "Final project crime report"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "SjnpfGziDWSXZ2sk6AAV73x355QsBzNZqQgJVaSXDgYctj8d_IgJbuq3Puvxg7Br",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  },
+  "labels": []
 }
