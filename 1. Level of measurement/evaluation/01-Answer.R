@@ -80,8 +80,14 @@ context({
     )
   })
 }, preExec = {
-  # Lees het data frame in uit een csv-bestand
-  df_crime_data <<- read.csv("crime_data.csv", stringsAsFactors = FALSE)
-  df_crime_data$type <<- factor(df_crime_data$type, levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
-  df_crime_data$ernst <<- ordered(df_crime_data$ernst, levels = c("Licht", "Matig", "Ernstig"))
+  # Maak het data frame direct aan in plaats van inlezen uit csv
+  df_crime_data <<- data.frame(
+    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+                  levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+    ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Matig"),
+                    levels = c("Licht", "Matig", "Ernstig")),
+    leeftijd = c(19, 23, 45, 32, 28),
+    district = c("A1", "B2", "C3", "D4", "E5"),
+    stringsAsFactors = FALSE
+  )
 })
