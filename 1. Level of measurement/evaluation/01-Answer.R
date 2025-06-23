@@ -15,6 +15,18 @@
 # scaffolding_level: Full support
 # primm_phase: Predict, Run, Investigate, Modify, Make
 
+# --- BEGIN HIDDEN SETUP: Maak het data frame voor de tests ---
+df_crime_data <- data.frame(
+  type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+                levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+  ernst = factor(c("Licht", "Matig", "Ernstig", "Matig", "Licht"),
+                 levels = c("Licht", "Matig", "Ernstig"), ordered = TRUE),
+  leeftijd = c(19, 23, 45, 32, 28),
+  district = c("A1", "B2", "C3", "D4", "E5"),
+  stringsAsFactors = FALSE
+)
+# --- EINDE HIDDEN SETUP ---
+
 context({
   testcase("Feedback bij basisfuncties op data frame", {
     testEqual(
