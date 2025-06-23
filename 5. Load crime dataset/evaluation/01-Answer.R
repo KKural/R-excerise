@@ -31,14 +31,14 @@ context({
   
   # Save the data to a temporary file that will act as our "crime_data.csv"
   temp_dir <- tempdir()
-  file_path <- file.path(temp_dir, "crime_data.csv")
-  write.csv(crime_df, file = file_path, row.names = FALSE)
-  # Do NOT overwrite file_path here; student should use this variable
+  bestandspad <- file.path(temp_dir, "crime_data.csv")
+  write.csv(crime_df, file = bestandspad, row.names = FALSE)
+  # Do NOT overwrite bestandspad here; student should use this variable
 })
 
 # Verwachte antwoorden:
-# misdaad_df <- read.csv(file_path)
-crime_df <- read.csv(file_path)
+# misdaad_df <- read.csv(bestandspad)
+crime_df <- read.csv(bestandspad)
 
 context({
   testcase("Feedback bij laden van dataset", {
@@ -49,10 +49,10 @@ context({
       },
       TRUE,
       comparator = function(got, want, ...) {
-        # The variable 'misdaad_df' should exist and be a data frame loaded from file_path.
+        # The variable 'misdaad_df' should exist and be a data frame loaded from bestandspad.
         if (!got) {
           get_reporter()$add_message(
-            "❌ De variabele 'misdaad_df' moet bestaan en een data frame zijn dat is ingeladen vanuit file_path.",
+            "❌ De variabele 'misdaad_df' moet bestaan en een data frame zijn dat is ingeladen vanuit bestandspad.",
             type = "error"
           )
         } else {
