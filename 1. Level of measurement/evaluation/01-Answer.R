@@ -15,12 +15,11 @@ context({
   testcase("Feedback bij basisfuncties op data frame", {
     testEqual(
       "str(df_crime_data) toont de structuur van het data frame",
-      function(env) {
-        capture <- capture.output(str(env$df_crime_data))
-        all(c("type", "ernst", "leeftijd", "district") %in% paste(capture, collapse = " ")) &&
-          any(grepl("data.frame", capture))
-      },
-      TRUE
+      function(env) paste(capture.output(str(env$df_crime_data)), collapse = "\n"),
+      # Expected output contains these substrings (for robust checking)
+      comparator = function(got, want, ...) {
+        all(sapply(c("data.frame", "type", "ernst", "leeftijd", "district"), function(x) grepl(x, got)))
+      }
     )
     testEqual(
       "names(df_crime_data) geeft de kolomnamen terug",
@@ -63,16 +62,15 @@ context({
     )
     testEqual(
       "summary(df_crime_data) geeft een samenvatting van alle kolommen",
-      function(env) {
-        capture <- capture.output(summary(env$df_crime_data))
-        any(grepl("Diefstal", capture)) && any(grepl("Licht", capture)) && any(grepl("leeftijd", capture))
-      },
-      TRUE
+      function(env) paste(capture.output(summary(env$df_crime_data)), collapse = "\n"),
+      comparator = function(got, want, ...) {
+        all(sapply(c("Diefstal", "Licht", "leeftijd"), function(x) grepl(x, got)))
+      }
     )
     testEqual(
       "class(df_crime_data) geeft het type object terug",
-      function(env) "data.frame" %in% class(env$df_crime_data),
-      TRUE
+      function(env) class(env$df_crime_data),
+      c("data.frame")
     )
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
