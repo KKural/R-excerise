@@ -7,3 +7,4 @@ In deze opdracht leer je hoe je zowel R als RStudio installeert op je computer.
 ```r
 # Typ in de console:
 2 + 2
+```
