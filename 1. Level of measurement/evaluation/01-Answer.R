@@ -39,36 +39,26 @@ context({
       }
     )
 
+
     # 2) `names()`
     testEqual(
       "names(df_crime_data) geeft de kolomnamen terug",
-      function(env) all(names(env$df_crime_data) == c("id","type","ernst","age","district")),
-      TRUE,
+      # capture.output turns the vector into printable lines
+      function(env) paste(capture.output(names(env$df_crime_data)), collapse = "\n"),
+      "check_substrings",
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> names(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0("```
-[1] \"", paste(names(env$df_crime_data), collapse="\" \""), "\"
-```"),
-          type = "markdown"
-        )
-        if (got) {
-          get_reporter()$add_message(
-            "✅ names(df_crime_data): kolomnamen zijn id, type, ernst, age, district.",
-            type = "markdown"
-          )
+        # Echo the command
+        get_reporter()$add_message("```r\n> names(df_crime_data)\n```", type = "markdown")
+        # Echo the raw output
+        get_reporter()$add_message(paste0("```\n", got, "\n```"), type = "markdown")
+        # Now the human‐readable feedback
+        if (all(names(env$df_crime_data) == c("id","type","ernst","age","district"))) {
+          get_reporter()$add_message("✅ names(df_crime_data): kolomnamen zijn id, type, ernst, age, district.", type = "markdown")
+          TRUE
         } else {
-          get_reporter()$add_message(
-            "❌ names(df_crime_data): onjuiste kolomnamen.",
-            type = "markdown"
-          )
+          get_reporter()$add_message("❌ names(df_crime_data): onjuiste kolomnamen.", type = "markdown")
+          FALSE
         }
-        got == want
       }
     )
 
@@ -177,24 +167,23 @@ context({
     # 6) `head()`
     testEqual(
       "head(df_crime_data) toont de eerste rijen van het data frame",
-      function(env) all(head(env$df_crime_data) == head(env$df_crime_data)),
-      TRUE,
+      # capture.output will format the printed table as lines of text
+      function(env) paste(capture.output(head(env$df_crime_data)), collapse = "\n"),
+      "check_substrings",
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> head(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste(capture.output(head(env$df_crime_data)), collapse = "\n"),
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          "✅ head(df_crime_data): toont de eerste 5 rijen zoals verwacht.",
-          type = "markdown"
-        )
-        TRUE
+        # Echo the command
+        get_reporter()$add_message("```r\n> head(df_crime_data)\n```", type = "markdown")
+        # Echo the raw output
+        get_reporter()$add_message(paste0("```\n", got, "\n```"), type = "markdown")
+        # Human feedback
+        # We know the first column is id 1:5, so we just check that substring
+        if (grepl("1  1", got) && grepl("5 Vandalisme", got)) {
+          get_reporter()$add_message("✅ head(df_crime_data): eerste 5 rijen komen overeen.", type = "markdown")
+          TRUE
+        } else {
+          get_reporter()$add_message("❌ head(df_crime_data): rijen kwamen niet uit zoals verwacht.", type = "markdown")
+          FALSE
+        }
       }
     )
 
