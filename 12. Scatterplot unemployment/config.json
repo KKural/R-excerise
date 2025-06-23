@@ -11,7 +11,7 @@
   "test_suite": "evaluation",
   "access": "public",
   "internals": {
-    "token": null,
+    "token": "abGtnr_fmxu53J9aueprzN8Sf8zMxsHi-KkwTsziiXUda_XGwHcdbT2SkDDHnqSG",
     "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
   },
   "labels": []
