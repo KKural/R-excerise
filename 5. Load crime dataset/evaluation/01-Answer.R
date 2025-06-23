@@ -38,7 +38,6 @@ context({
 
 # Verwachte antwoorden:
 # misdaad_df <- read.csv(bestandspad)
-crime_df <- read.csv(bestandspad)
 
 context({
   testcase("Feedback bij laden van dataset", {
