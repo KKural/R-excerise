@@ -127,24 +127,38 @@ context({
     # 6) head()
     testEqual(
       "head(df_crime_data) toont de eerste rijen van het data frame",
-      function(env) paste(capture.output(head(env$df_crime_data)), collapse = "\n"),
-      "check_substrings",
+      function(env) head(env$df_crime_data),
+      head(data.frame(
+        id       = 1:5,
+        type     = factor(
+                     c("Diefstal","Aanval","Inbraak","Fraude","Vandalisme"),
+                     levels = c("Diefstal","Aanval","Inbraak","Fraude","Vandalisme")
+                   ),
+        ernst    = factor(
+                     c("Licht","Matig","Ernstig","Licht","Matig"),
+                     levels = c("Licht","Matig","Ernstig"),
+                     ordered = TRUE
+                   ),
+        age      = c(21, 34, 28, 19, 45),
+        district = c("A1","B2","C3","D4","E5"),
+        stringsAsFactors = FALSE
+      )),
       comparator = function(got, want, ...) {
         get_reporter()$add_message("```r\n> head(df_crime_data)\n```", type="markdown")
-        get_reporter()$add_message(paste0("```\n", got, "\n```"), type="markdown")
-        correct <- grepl("^1  1", got) && grepl("5 Vandalisme", got)
-        if (correct) {
+        get_reporter()$add_message(paste(capture.output(print(got)), collapse = "\n"), type="markdown")
+        if (identical(got, want)) {
           get_reporter()$add_message(
             "✅ head(df_crime_data): eerste 5 rijen komen overeen.",
             type="markdown"
           )
+          TRUE
         } else {
           get_reporter()$add_message(
             "❌ head(df_crime_data): rijen kwamen niet uit zoals verwacht.",
             type="markdown"
           )
+          FALSE
         }
-        correct
       }
     )
 
