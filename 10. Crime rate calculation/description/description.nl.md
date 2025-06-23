@@ -1,6 +1,6 @@
-Je hebt gegevens over het aantal misdrijven en de bevolking voor vijf verschillende districten. Bereken het criminaliteitscijfer per 1.000 inwoners voor elk district en sla de resultaten op in een variabele genaamd `crime_rates`.
+Je hebt gegevens over het aantal misdrijven en de bevolking voor vijf verschillende districten. Bereken het criminaliteitscijfer per 1.000 inwoners voor elk district en sla de resultaten op in een variabele genaamd `criminaliteitscijfers`.
 
 ```R
-# Gebruik elementgewijze deling om crime_counts te delen door population, vermenigvuldig daarna met 1000
-# Ken het resultaat toe aan crime_rates
+# Gebruik elementgewijze deling om misdrijf_aantallen te delen door bevolking, vermenigvuldig daarna met 1000
+# Ken het resultaat toe aan criminaliteitscijfers
 ```

@@ -3,6 +3,6 @@ Je krijgt een kleine dataset met misdrijfgegevens. Gebruik het pakket `dplyr` om
 ```R
 library(dplyr)
 
-# Gebruik filter() uit dplyr om rijen te selecteren waar crime_type "Theft" is
-# Ken het resultaat toe aan filtered_data
+# Gebruik filter() uit dplyr om rijen te selecteren waar misdaad_type "Diefstal" is
+# Ken het resultaat toe aan gefilterde_data
 ```

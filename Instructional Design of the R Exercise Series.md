@@ -176,11 +176,16 @@ This gradual reduction in support helps students build confidence and autonomy i
 
 Each exercise includes metadata in comments (e.g., Bloom Level, Scaffolding Level, PRIMM Phase) for instructional tracking and alignment. These comments are for course design purposes only and do not affect grading or student experience.
 
+## 9. Student Questions and Continuous Improvement
+
+If students have questions while working on Dodona exercises, they are encouraged to ask questions specific to each exercise. The teaching team will respond to these questions and provide guidance. Frequently asked questions are tracked and used to improve the course and the way exercises are designed, ensuring that the learning experience becomes clearer and more effective for future students.
+
+**Summary:**  
+This progression ensures students move from foundational R skills to independent data analysis and reporting, using evidence-based instructional design tailored to criminology.
+
 ## References
 
 1. Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A taxonomy for learning, teaching, and assessing: A revision of Bloom's Taxonomy of Educational Objectives*. New York: Longman.
 2. van de Pol, J., Volman, M., & Beishuizen, J. (2010). Scaffolding in teacher–student interaction: A decade of research. *Educational Psychology Review*, 22(3), 271–296. https://doi.org/10.1007/s10648-010-9127-6
 3. Sentance, S., Waite, J., & Kallia, M. (2019). Teaching computer programming with PRIMM: a sociocultural perspective. *Computer Science Education*, 29(2-3), 136–176. https://doi.org/10.1080/08993408.2019.1608781
 
-**Summary:**  
-This progression ensures students move from foundational R skills to independent data analysis and reporting, using evidence-based instructional design tailored to criminology.
