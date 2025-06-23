@@ -61,14 +61,7 @@ Each new concept is introduced using:
 
 ### Synthetic Criminology Datasets
 
-To avoid confidentiality issues and maintain relevance, all exercises use synthetic data simulating:
-
-- District-level crime rates  
-- Offender demographics  
-- Police response times  
-- Property loss values
-
-These datasets reflect real-world structure while allowing students to practice openly and repeatedly. I am also familiar with generating meaningful synthetic datasets in R using packages such as `synthpop`, which allow for the simulation of data that preserves key characteristics (e.g., mean, standard deviation, and variable relationships) of real criminological datasets while ensuring privacy and reproducibility.
+To avoid confidentiality issues and maintain relevance, all exercises use synthetic data that simulates district-level crime rates, offender demographics, police response times, and property loss values. These datasets are designed to reflect real-world structure while allowing students to practice openly and repeatedly. I am also familiar with generating meaningful synthetic datasets in R using packages such as `synthpop`, which enable the simulation of data that preserves key characteristics (e.g., mean, standard deviation, and variable relationships) of real criminological datasets while ensuring privacy and reproducibility.
 
 ### APA-Style Statistical Reporting
 
@@ -85,7 +78,7 @@ Students often struggle with formatting and structuring their results. To addres
 ### Dodona + Ufora
 
 - Exercises are delivered via **Dodona** with auto-grading and feedback  
-- **Ufora** is used for quiz integration, resource hosting, and feedback  
+- **Ufora** can be linked for quiz integration, resource hosting, and feedback  
 - Students can submit code directly in Dodona or follow guided modules in Ufora
 
 ### GitHub Repository with Sample Code
@@ -129,7 +122,7 @@ Including onboarding questions like these can help students get comfortable with
 ## 6. Exercise Progression Table
 
 | #  | Folder Name                             | Bloom Level             | Scaffolding Level | PRIMM Phase                   |
-|----|------------------------------------------|--------------------------|--------------------|-------------------------------|
+|:--:|:---------------------------------------:|:----------------------:|:----------------:|:-----------------------------:|
 | 01 | Level of measurement                   | Remember & Understand    | Full support       | Predict, Run                  |
 | 02 | Creating variables with appropriate types | Remember & Understand  | Full support       | Run                           |
 | 03 | Identifying measurement levels          | Remember & Understand    | Full support       | Predict, Run, Investigate     |
