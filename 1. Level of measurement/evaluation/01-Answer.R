@@ -1,5 +1,5 @@
 # Verwachte antwoorden:
-# Je hebt een data frame df_crime_data met de volgende kolommen:
+# Je hebt een csv-bestand 'crime_data.csv' met de volgende kolommen:
 # - type: factor met de categorieën "Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"
 # - ernst: geordende factor met niveaus: "Licht" < "Matig" < "Ernstig"
 # - leeftijd: numerieke vector met de waarden: 19, 23, 45, 32, 28
@@ -80,11 +80,8 @@ context({
     )
   })
 }, preExec = {
-  # Maak een data frame df_crime_data aan
-  df_crime_data <<- data.frame(
-    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
-    ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Ernstig"), levels = c("Licht", "Matig", "Ernstig")),
-    leeftijd = c(19, 23, 45, 32, 28),
-    district = c("A1", "B2", "C3", "D4", "E5")
-  )
+  # Lees het data frame in uit een csv-bestand
+  df_crime_data <<- read.csv("crime_data.csv", stringsAsFactors = FALSE)
+  df_crime_data$type <<- factor(df_crime_data$type, levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+  df_crime_data$ernst <<- ordered(df_crime_data$ernst, levels = c("Licht", "Matig", "Ernstig"))
 })

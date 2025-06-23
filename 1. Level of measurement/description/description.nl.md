@@ -1,8 +1,16 @@
-Je hebt een data frame `df_crime_data` met de volgende kolommen:
+Je hebt een csv-bestand `crime_data.csv` met de volgende kolommen:
 - `type`: factor met de categorieën "Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"
 - `ernst`: geordende factor met niveaus: "Licht" < "Matig" < "Ernstig"
 - `leeftijd`: numerieke vector met de waarden: 19, 23, 45, 32, 28
 - `district`: karaktervector met de waarden: "A1", "B2", "C3", "D4", "E5"
+
+Laad de data in R met:
+```r
+# Laad het data frame uit het csv-bestand:
+df_crime_data <- read.csv("crime_data.csv", stringsAsFactors = FALSE)
+df_crime_data$type <- factor(df_crime_data$type, levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+df_crime_data$ernst <- ordered(df_crime_data$ernst, levels = c("Licht", "Matig", "Ernstig"))
+```
 
 Gebruik de volgende basisfuncties op het data frame en noteer het resultaat. Lees bij elke functie wat deze doet:
 - `str(df_crime_data)`: toont de structuur van het data frame, inclusief kolomnamen, type van elke kolom en de eerste waarden. Dit helpt je snel te zien welke variabelen er zijn en welk type ze hebben.
