@@ -21,6 +21,3 @@ crime_data <- data.frame(
 # Gebruik subset() om rijen te selecteren waar offense "Assault", "Robbery" of "Homicide" is
 # Ken het resultaat toe aan violent_crimes_df
 ```
-
-**Tip:**  
-Gebruik `subset()` met `%in%` om specifieke waarden te selecteren. Ken het resultaat toe aan `violent_crimes_df`.

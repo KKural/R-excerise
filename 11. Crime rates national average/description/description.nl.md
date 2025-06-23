@@ -4,6 +4,3 @@ Je hebt criminaliteitscijfers per 1.000 inwoners voor vijf districten en een nat
 # Gebruik een vergelijkingsoperator om elk district te vergelijken met het nationaal gemiddelde
 # Ken het resultaat toe aan above_average
 ```
-
-**Tip:**  
-Gebruik vergelijkingsoperatoren (zoals `>`) om elk district te vergelijken met het nationaal gemiddelde. Ken het resultaat toe aan `above_average`.

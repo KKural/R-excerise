@@ -16,6 +16,3 @@ crime_rates <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.
 
 # Jouw code hier
 ```
-
-**Tip:**  
-Gebruik `plot()` met unemployment als eerste argument en crime_rates als tweede. Gebruik `main` voor de titel, en `xlab`/`ylab` voor de aslabels.

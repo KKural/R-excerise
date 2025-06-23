@@ -10,7 +10,3 @@ Maak de volgende variabelen aan met de juiste gegevenstypen in R:
 # Gebruik factor() met ordered=TRUE en geef de niveaus in volgorde op voor ordinale variabelen
 # Gebruik c() om numerieke en karaktervectoren te maken
 ```
-
-**Tip:**  
-Gebruik `factor()` voor categorische variabelen (nominaal meetniveau).  
-Voor ordinale variabelen gebruik je `factor()` met `ordered=TRUE` en geef je de `levels` in de juiste volgorde op.

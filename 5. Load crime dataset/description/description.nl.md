@@ -6,6 +6,3 @@ Laad de dataset in R en sla deze op in een variabele genaamd `crime_df`. Het bes
 # Gebruik read.csv() om de dataset te laden vanaf file_path
 # Ken het resultaat toe aan crime_df
 ```
-
-**Tip:**  
-Gebruik `read.csv()` om CSV-bestanden te laden. Ken het resultaat toe aan `crime_df` met het opgegeven `file_path`.

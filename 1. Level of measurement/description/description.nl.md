@@ -22,15 +22,3 @@ Maak de volgende variabelen aan met de juiste datatypes in R:
 **Tip:**  
 Gebruik `factor()` voor categorische variabelen (nominaal niveau).  
 Voor ordinale variabelen gebruik je `factor()` met de parameter `ordered=TRUE` en geef je de `levels` in de juiste volgorde op.
-
-# Feedback (English version in comment)
-
-- Gebruik factor() voor categorische variabelen en geef de juiste niveaus op.
-- Controleer of de volgorde van de levels bij geordende factoren klopt.
-- Controleer of de numerieke en karaktervectoren correct zijn aangemaakt.
-
-<!--
-- Use factor() for categorical variables and specify the correct levels.
-- Check that the order of levels for ordered factors is correct.
-- Check that the numeric and character vectors are created correctly.
--->

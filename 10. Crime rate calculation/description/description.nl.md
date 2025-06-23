@@ -4,6 +4,3 @@ Je hebt gegevens over het aantal misdrijven en de bevolking voor vijf verschille
 # Gebruik elementgewijze deling om crime_counts te delen door population, vermenigvuldig daarna met 1000
 # Ken het resultaat toe aan crime_rates
 ```
-
-**Tip:**  
-Deel het aantal misdrijven door de bevolking en vermenigvuldig met 1000 voor cijfers per 1.000. Ken het resultaat toe aan `crime_rates`.

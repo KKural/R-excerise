@@ -4,6 +4,3 @@ Selecteer specifieke kolommen uit een criminaliteitsdataset met behulp van dplyr
 # Gebruik select() uit dplyr om kolommen op naam te kiezen
 # Ken het resultaat toe aan selected_data
 ```
-
-**Tip:**  
-Gebruik `select()` uit dplyr om kolommen op naam te kiezen. Ken het resultaat toe aan `selected_data`.

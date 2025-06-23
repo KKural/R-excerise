@@ -8,6 +8,3 @@ offender_ages <- c(19, 23, 45, 32, 28, 21, 24, 19, 37, 42, 18, 25, 22, 31, 19,
 # Genereer een samenvatting van de leeftijden en sla deze op in een variabele genaamd 'age_summary'
 age_summary <- summary(offender_ages)
 ```
-
-**Tip:**  
-Gebruik `summary()` om beschrijvende statistieken te krijgen van een numerieke vector. Ken het resultaat toe aan `age_summary`.

@@ -16,9 +16,3 @@ crime_data <- data.frame(
 # Voorbeeld: level_case_id <- "nominaal"
 # Vul de toewijzingen voor alle variabelen hieronder aan
 ```
-
-**Tip:**  
-Nominaal: categorieën zonder volgorde.  
-Ordinaal: categorieën met volgorde.  
-Interval: gelijke intervallen, geen absoluut nulpunt.  
-Ratio: gelijke intervallen, absoluut nulpunt.
