@@ -2,7 +2,7 @@
 
 context({
   # ----------------------------
-  # preExec: maak het CSV-bestand
+  # preExec: maak het CSV-bestand in D:/thesis/data
   # ----------------------------
 }, preExec = {
   library(tibble)
@@ -22,8 +22,9 @@ context({
     reactietijd         = round(pmax(rnorm(200, 12, 4), 0), 1)
   )
 
-  temp_dir    <- tempdir()
-  bestandspad <- file.path(temp_dir, "crime_data.csv")
+  # Maak de directory D:/thesis/data aan als die niet bestaat
+  dir.create("D:/thesis/data", recursive = TRUE, showWarnings = FALSE)
+  bestandspad <- file.path("D:/thesis/data", "misdaad_data.csv")
   write.csv(crime_df, bestandspad, row.names = FALSE)
 })
 
@@ -31,6 +32,17 @@ context({
 # Tests
 # ----------------------------
 context({
+  testcase("Controleren of de werkdirectory correct is gezet", {
+    testEqual(
+      "De werkdirectory is correct gezet",
+      function(env) {
+        # De student moet setwd('D:/thesis/data') uitvoeren
+        identical(normalizePath(getwd(), winslash = "/", mustWork = FALSE), normalizePath("D:/thesis/data", winslash = "/", mustWork = FALSE))
+      },
+      TRUE
+    )
+  })
+
   testcase("Feedback bij laden van dataset", {
     testEqual(
       "misdaad_df is correct ingeladen",
@@ -46,12 +58,21 @@ context({
           )
         } else {
           get_reporter()$add_message(
-            "❌ De variabele `misdaad_df` moet bestaan en een data frame zijn "
-            |> paste("dat is ingeladen met `read.csv(bestandspad)`."),
+            "❌ De variabele `misdaad_df` moet bestaan en een data frame zijn dat is ingeladen met `read.csv('misdaad_data.csv')` nadat de werkdirectory is gezet.",
             type = "error"
           )
         }
         got == want
+      }
+    )
+  })
+
+  testcase("Controleren of getwd() is gebruikt", {
+    testTrue(
+      "getwd() is aangeroepen in de code",
+      function(env) {
+        # Controleer of getwd() ergens in de code van de student voorkomt
+        any(grepl("getwd\\s*\\(", paste(readLines(env$.__code__), collapse = "\n")))
       }
     )
   })
