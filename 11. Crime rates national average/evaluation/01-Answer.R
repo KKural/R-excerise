@@ -15,8 +15,8 @@ context({
   national_average <- 6.2
 })
 
-# Model solution:
-above_average <- district_crime_rates > national_average
+# Verwachte antwoorden:
+boven_gemiddeld <- district_misdaadcijfers > nationaal_gemiddelde
 
 context({
   testcase("Feedback bij vergelijken met nationaal gemiddelde", {

@@ -31,4 +31,5 @@ context({
 })
 
 # Model solution:
+# misdaadcijfers <- (aantal_misdrijven / bevolking) * 1000
 crime_rates <- (crime_counts / population) * 1000

@@ -9,7 +9,7 @@ context({
       testEqual(
         "",
         function(env) as.numeric(env$evaluationResult),
-        1,  # the correct choice: crimes <- 25
+        1,  # de juiste keuze: crimes <- 25
         comparator = function(generated, expected, ...) {
           feedbacks <- list(
             # 1: crimes <- 25
@@ -30,3 +30,6 @@ context({
     }
   )
 })
+
+# Verwachte antwoorden:
+# crimes <- 25

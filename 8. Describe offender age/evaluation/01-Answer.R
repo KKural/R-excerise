@@ -47,5 +47,5 @@ context({
   })
 })
 
-# Model solution:
-age_summary <- summary(offender_ages)
+# Verwachte antwoorden:
+# samenvatting_leeftijden <- summary(leeftijden_daders)

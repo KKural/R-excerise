@@ -9,7 +9,7 @@ context({
       testEqual(
         "",
         function(env) as.numeric(env$evaluationResult),
-        2,  # the correct choice: mean() is the function for average
+        2,  # de juiste keuze: mean() is de functie voor het gemiddelde
         comparator = function(generated, expected, ...) {
           feedbacks <- list(
             # 1: average()

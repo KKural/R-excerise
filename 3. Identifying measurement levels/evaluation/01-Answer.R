@@ -65,13 +65,13 @@ level_age <- "ratio"
 # "The dataset included case IDs (nominal), gender (nominal), age (ratio), crime type (nominal), sentence length (ratio), education level (ordinal), and risk category (ordinal)."
 
 # Model solution:
-level_case_id <- "nominal"
-level_gender <- "nominal"
-level_age <- "ratio"
-level_crime_type <- "nominal"
-level_sentence_length <- "ratio"
-level_education_level <- "ordinal"
-level_risk_category <- "ordinal"
+niveau_case_id <- "nominaal"
+niveau_geslacht <- "nominaal"
+niveau_leeftijd <- "ratio"
+niveau_misdaadtoe <- "nominaal"
+niveau_straflengte <- "ratio"
+niveau_opleidingsniveau <- "ordinaal"
+niveau_risicocategorie <- "ordinaal"
 
 context({
   testcase("Feedback bij meetniveaus", {

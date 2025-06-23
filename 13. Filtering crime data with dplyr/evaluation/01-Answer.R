@@ -18,3 +18,6 @@ context({
     )
   })
 })
+
+# Verwachte antwoorden:
+# gefilterde_data <- filter(misdaad_data, type_misdrijf == "Diefstal")

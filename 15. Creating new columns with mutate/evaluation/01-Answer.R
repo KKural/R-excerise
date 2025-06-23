@@ -3,14 +3,14 @@ context({
     testEqual(
       "Nieuwe kolom is correct aangemaakt",
       function(env) {
-        # Controleer of mutated_data de nieuwe kolom bevat
+        # Controleer of gemuteerde_data de nieuwe kolom bevat
         TRUE
       },
       TRUE,
       comparator = function(got, want, ...) {
-        # The mutated_data should contain the new column.
+        # De gemuteerde_data zou de nieuwe kolom moeten bevatten.
         get_reporter()$add_message(
-          "✅ De nieuwe kolom is correct aangemaakt in mutated_data.",
+          "✅ De nieuwe kolom is correct aangemaakt in gemuteerde_data.",
           type = "success"
         )
         got == want
@@ -18,3 +18,6 @@ context({
     )
   })
 })
+
+# Verwachte antwoorden:
+# gemuteerde_data <- mutate(misdaad_data, nieuwe_kolom = ...)

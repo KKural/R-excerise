@@ -21,6 +21,9 @@ context({
                    "Theft", "Drug Offense", "Burglary")
 })
 
+# Verwachte antwoorden:
+# frequentietabel_misdrijven <- table(type_misdrijf)
+
 # Model solution:
 offense_table <- table(offense_types)
 

@@ -18,5 +18,7 @@ context({
     )
   })
 }, preExec = {
+  # Verwachte antwoorden:
+  # geselecteerde_data <- select(misdaad_data, kolom1, kolom2)
   # Example: selected_data <<- select(crime_data, column1, column2)
 })

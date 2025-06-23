@@ -54,7 +54,7 @@ context({
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `misdaad_types` moet een factor zijn met de niveaus: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.
+          # `misdaad_types` should be a factor with levels: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.
           get_reporter()$add_message(
             "❌ `misdaad_types` moet een factor zijn met de niveaus: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.",
             type = "markdown"
@@ -74,7 +74,7 @@ context({
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `ernst_misdaad` moet een geordende factor zijn met de volgorde: 'Licht' < 'Matig' < 'Ernstig'.
+          # `ernst_misdaad` should be an ordered factor with order: 'Licht' < 'Matig' < 'Ernstig'.
           get_reporter()$add_message(
             "❌ `ernst_misdaad` moet een geordende factor zijn met de volgorde: 'Licht' < 'Matig' < 'Ernstig'.",
             type = "markdown"
@@ -94,7 +94,7 @@ context({
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `leeftijden_daders` moet een numerieke vector zijn met de waarden: 19, 23, 45, 32, 28, 21.
+          # `leeftijden_daders` should be a numeric vector with values: 19, 23, 45, 32, 28, 21.
           get_reporter()$add_message(
             "❌ `leeftijden_daders` moet een numerieke vector zijn met de waarden: 19, 23, 45, 32, 28, 21.",
             type = "markdown"
@@ -114,7 +114,7 @@ context({
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `district_codes` moet een karaktervector zijn met de waarden: 'A1', 'B2', 'C3', 'D4', 'E5'.
+          # `district_codes` should be a character vector with values: 'A1', 'B2', 'C3', 'D4', 'E5'.
           get_reporter()$add_message(
             "❌ `district_codes` moet een karaktervector zijn met de waarden: 'A1', 'B2', 'C3', 'D4', 'E5'.",
             type = "markdown"

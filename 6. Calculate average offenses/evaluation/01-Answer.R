@@ -19,27 +19,27 @@ context({
 })
 
 # Model solution:
-avg_offenses <- mean(monthly_offenses)
+gem_offenses <- mean(maandelijkse_misdrijven)
 
 context({
   testcase("Feedback bij berekenen van gemiddelde", {
     testEqual(
-      "avg_offenses is correct berekend",
+      "gem_offenses is correct berekend",
       function(env) {
-        exists("avg_offenses", envir = env) && is.numeric(env$avg_offenses) && abs(env$avg_offenses - mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))) < 1e-6
+        exists("gem_offenses", envir = env) && is.numeric(env$gem_offenses) && abs(env$gem_offenses - mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))) < 1e-6
       },
       TRUE,
       comparator = function(got, want, ...) {
+        # The variable 'gem_offenses' should exist and be the mean of maandelijkse_misdrijven.
         if (!got) {
-          # The variable 'avg_offenses' should exist and be the mean of monthly_offenses.
           get_reporter()$add_message(
-            "❌ De variabele 'avg_offenses' moet bestaan en het gemiddelde zijn van monthly_offenses.",
+            "❌ De variabele 'gem_offenses' moet bestaan en het gemiddelde zijn van maandelijkse_misdrijven.",
             type = "error"
           )
         } else {
-          # Correct! The mean was calculated and stored in 'avg_offenses'.
+          # Correct! The mean was calculated and stored in 'gem_offenses'.
           get_reporter()$add_message(
-            "✅ Het gemiddelde is correct berekend en opgeslagen in 'avg_offenses'.",
+            "✅ Het gemiddelde is correct berekend en opgeslagen in 'gem_offenses'.",
             type = "success"
           )
         }
