@@ -5,18 +5,19 @@ Maak de volgende variabelen aan met de juiste datatypes in R:
 3. Maak een variabele `leeftijden_daders` als numeriek vector met deze waarden: 19, 23, 45, 32, 28, 21
 4. Maak een variabele `district_codes` als karaktervector met deze waarden: "A1", "B2", "C3", "D4", "E5"
 
-```R
-# 1. Maak de misdaad_types factorvariabele aan
-#    Gebruik factor() met expliciete levels
+```r
+1. Maak de misdaad_types factorvariabele aan
+  Gebruik factor() met expliciete levels via het argument levels
 
-# 2. Maak de ernst_misdaad geordende factorvariabele aan
-#    Gebruik factor(…, ordered = TRUE) en specificeer de levels
+2. Maak de ernst_misdaad geordende factorvariabele aan
+  Gebruik factor(..., levels = ..., ordered = TRUE) en specificeer de levels
 
-# 3. Maak de leeftijden_daders numerieke vector aan
-#    Gebruik c() om de getallen samen te voegen
+3. Maak de leeftijden_daders numerieke vector aan
+   Gebruik c() om de getallen samen te voegen
 
-# 4. Maak de district_codes karaktervector aan
-#    Gebruik c() om de codes als tekst samen te voegen
+4. Maak de district_codes karaktervector aan
+   Gebruik c() om de codes als tekst samen te voegen
+```
 
 **Tip:**  
 Gebruik `factor()` voor categorische variabelen (nominaal niveau).  
