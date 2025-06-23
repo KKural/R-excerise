@@ -3,29 +3,39 @@ context({
     testEqual(
       "Alleen rijen met delicttype 'Diefstal' zijn geselecteerd",
       function(env) {
-        exists("gefilterde_data", envir = env) &&
-        is.data.frame(env$gefilterde_data) &&
-        all(env$gefilterde_data$delicttype == "Diefstal")
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
+        if (!exists("gefilterde_data", envir = env)) {
           get_reporter()$add_message(
-            "❌ De variabele 'gefilterde_data' moet bestaan en alleen rijen met delicttype 'Diefstal' bevatten.",
+            "❌ De variabele 'gefilterde_data' bestaat niet.",
             type = "error"
           )
-        } else {
-          get_reporter()$add_message(
-            "✅ De data is correct gefilterd op delicttype 'Diefstal' en opgeslagen in 'gefilterde_data'.",
-            type = "success"
-          )
+          return(FALSE)
         }
-        got == want
-      }
+        if (!is.data.frame(env$gefilterde_data)) {
+          get_reporter()$add_message(
+            "❌ 'gefilterde_data' moet een data frame zijn.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        if (!all(env$gefilterde_data$delicttype == "Diefstal")) {
+          get_reporter()$add_message(
+            "❌ 'gefilterde_data' mag alleen rijen met delicttype 'Diefstal' bevatten.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        get_reporter()$add_message(
+          "Correct! De data is correct gefilterd op delicttype 'Diefstal' en opgeslagen in 'gefilterde_data'.",
+          type = "success"
+        )
+        TRUE
+      },
+      TRUE,
+      comparator = function(got, want, ...) { got == want }
     )
   })
 }, preExec = {
-  # Set up the misdaad_data data frame
+  # Zet de misdaad_data data frame op
   misdaad_data <- data.frame(
     id = 1:10,
     delicttype = c("Diefstal", "Aanval", "Diefstal", "Inbraak", "Diefstal", "Vandalisme", "Diefstal", "Fraude", "Diefstal", "Aanval"),
@@ -33,5 +43,5 @@ context({
   )
 })
 
-# Model solution:
+# Modeloplossing:
 gefilterde_data <- dplyr::filter(misdaad_data, delicttype == "Diefstal")

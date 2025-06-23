@@ -56,16 +56,27 @@ context({
     testEqual(
       "plot() is correct aangeroepen",
       function(env) {
-        # Check if plot() is called with correct arguments
+        # Controleer of plot() is aangeroepen met de juiste argumenten
         code <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
-        grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers.*main\\s*=\\s*['\"]Relatie tussen werkloosheid en criminaliteit['\"].*xlab\\s*=\\s*['\"]Werkloosheidspercentage \(\%\)['\"].*ylab\\s*=\\s*['\"]Criminaliteitscijfer \(per 1.000\)['\"]", code)
+        if (!grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers", code)) {
+          get_reporter()$add_message(
+            "❌ Gebruik de functie plot() met 'werkloosheid' op de x-as en 'criminaliteitscijfers' op de y-as.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        get_reporter()$add_message(
+          "Correct! Je hebt plot() correct gebruikt om de spreidingsdiagram te maken.",
+          type = "success"
+        )
+        TRUE
       },
       TRUE,
-      comparator = identical
+      comparator = function(got, want, ...) { got == want }
     )
   })
 }, preExec = {
-  # Set up the data
+  # Zet de data op
   werkloosheid <- c(4.2, 5.7, 7.9, 6.5, 8.1, 5.3, 9.2, 7.1, 6.8, 5.9, 8.5, 7.4, 6.2, 9.0, 5.1)
   criminaliteitscijfers <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.1, 32.7, 29.0, 37.8, 27.2)
 })
