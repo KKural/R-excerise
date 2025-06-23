@@ -67,11 +67,23 @@ context({
     )
   })
 
+  # Dummy pad voor demonstratie setwd/getwd
+  # Studenten hoeven geen echt pad te gebruiken, alleen de functies aanroepen
+  dummy_path <- "C:/dummy/path"
+
+  testcase("Controleren of setwd() is gebruikt", {
+    testTrue(
+      "setwd() is aangeroepen in de code",
+      function(env) {
+        any(grepl("setwd\\s*\\(", paste(readLines(env$.__code__), collapse = "\n")))
+      }
+    )
+  })
+
   testcase("Controleren of getwd() is gebruikt", {
     testTrue(
       "getwd() is aangeroepen in de code",
       function(env) {
-        # Controleer of getwd() ergens in de code van de student voorkomt
         any(grepl("getwd\\s*\\(", paste(readLines(env$.__code__), collapse = "\n")))
       }
     )
