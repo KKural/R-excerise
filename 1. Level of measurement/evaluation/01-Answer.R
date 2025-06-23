@@ -17,9 +17,9 @@ context({
   })
 }, preExec = {
   misdaad_types <- factor(
-    c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
-    levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
-  )
+  c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+  levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
+)
 
   ernst_misdaad <- factor(
     c("Licht", "Matig", "Ernstig"), 
