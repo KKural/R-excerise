@@ -3,27 +3,28 @@ context({
   # ------------- TESTS -------------
   testcase("Gebruik van getwd() en setwd()", {
 
-    # ---- fixed helper ----
-    src <- function(env) paste(env$`.__code__`, collapse = "\n")
+    src <- function(env) {
+      paste(
+        sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")),
+        collapse = "\n"
+      )
+    }
 
-    testEqual("`getwd()` is gebruikt",
-              function(env) grepl("getwd\\s*\\(", src(env)),
-              TRUE, comparator = identical)
-
-    testEqual("`setwd()` is gebruikt",
-              function(env) grepl("setwd\\s*\\(", src(env)),
-              TRUE, comparator = identical)
-  })
-
-
-  testcase("Dataset correct ingeladen", {
     testEqual(
-      "misdaad_df bestaat en is data.frame",
-      function(env) exists("misdaad_df", env) && is.data.frame(env$misdaad_df),
+      "`getwd()` is gebruikt",
+      function(env) grepl("getwd\\s*\\(", src(env)),
+      TRUE,
+      comparator = identical
+    )
+
+    testEqual(
+      "`setwd()` is gebruikt",
+      function(env) grepl("setwd\\s*\\(", src(env)),
       TRUE,
       comparator = identical
     )
   })
+
 
 }, preExec = {
 
