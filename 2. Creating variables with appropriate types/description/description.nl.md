@@ -1,0 +1,16 @@
+Maak de volgende variabelen aan met de juiste gegevenstypen in R:
+
+1. Maak een variabele `crime_types` als factor met deze categorieën: "Theft", "Assault", "Burglary", "Fraud", "Vandalism"
+2. Maak een variabele `crime_severity` als geordende factor met niveaus: "Minor", "Moderate", "Severe" (in deze volgorde)
+3. Maak een variabele `offender_ages` als numerieke vector met deze waarden: 19, 23, 45, 32, 28, 21
+4. Maak een variabele `district_codes` als karaktervector met deze waarden: "A1", "B2", "C3", "D4", "E5"
+
+```R
+# Gebruik factor() voor categorische variabelen
+# Gebruik factor() met ordered=TRUE en geef de niveaus in volgorde op voor ordinale variabelen
+# Gebruik c() om numerieke en karaktervectoren te maken
+```
+
+**Tip:**  
+Gebruik `factor()` voor categorische variabelen (nominaal meetniveau).  
+Voor ordinale variabelen gebruik je `factor()` met `ordered=TRUE` en geef je de `levels` in de juiste volgorde op.

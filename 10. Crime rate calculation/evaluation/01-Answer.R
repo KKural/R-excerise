@@ -1,11 +1,26 @@
 context({
-  testcase("", {
+  testcase("Feedback bij berekenen van criminaliteitscijfers", {
     testEqual(
-      "",
-      function(env) { NULL },
-      NULL,
+      "crime_rates is correct berekend",
+      function(env) {
+        exists("crime_rates", envir = env) && is.numeric(env$crime_rates)
+      },
+      TRUE,
       comparator = function(got, want, ...) {
-        TRUE
+        if (!got) {
+          # The variable 'crime_rates' should exist and be a numeric vector of rates per 1,000.
+          get_reporter()$add_message(
+            "❌ De variabele 'crime_rates' moet bestaan en een numerieke vector zijn met cijfers per 1.000.",
+            type = "error"
+          )
+        } else {
+          # Correct! The crime rates were calculated and stored in 'crime_rates'.
+          get_reporter()$add_message(
+            "✅ De criminaliteitscijfers zijn correct berekend en opgeslagen in 'crime_rates'.",
+            type = "success"
+          )
+        }
+        got == want
       }
     )
   })

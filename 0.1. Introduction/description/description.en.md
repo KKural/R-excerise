@@ -13,7 +13,7 @@ Read this introduction to understand how to navigate Dodona, submit code, and in
 
 ## Wat is Dodona?
 
-Dodona is een online leerplatform waarop je programmeeroefeningen kunt maken en direct feedback krijgt. Het platform controleert automatisch je code en geeft aan wat er goed of fout is, zodat je snel kunt leren van je fouten.
+Dodona is een online leerplatform waarop je programmeeroefeningen kunt maken en direct feedback krijgt. Het platform controleert automatisch je code en geeft aan wat er goed of fout is, zodat je snel kunt leren van je fouten. Voor studenten criminologie betekent dit dat je R kunt leren in een interactieve en ondersteunende omgeving, met oefeningen die aansluiten bij echte data-analyse uit de criminologie.
 
 ## Navigatie
 
@@ -37,30 +37,10 @@ Na het indienen van je code krijg je directe feedback:
 
 ## Tips voor succes
 
-- **Lees de opdracht volledig** voordat je begint met programmeren
-- **Gebruik de Tips** die bij elke opdracht worden gegeven
-- **Begin eenvoudig** en voeg complexiteit toe naarmate je vordert
-- **Test je code** met verschillende voorbeelden
-- **Leer van fouten** door de feedback goed te lezen
+- Lees elke opdracht en de instructies zorgvuldig door
+- Gebruik de tips die bij elke oefening worden gegeven
+- Begin eenvoudig en voeg complexiteit toe naarmate je vordert
+- Test je code met verschillende voorbeelden
+- Leer van de feedback en probeer verschillende oplossingen om je begrip te verdiepen
 
----
-
-## Supplement: Example Onboarding Questions for R
-
-To help students get familiar with R and the Dodona environment, you can include a short onboarding quiz at the start of the course. Here are two example questions:
-
-**Question 1:** What is the correct way to assign a value to a variable in R?
-
-(x) `crimes <- 25`
-( ) `crimes == 25`
-( ) `crimes -> 25`
-( ) `crimes => 25`
-
-**Question 2:** Which function do you use to calculate the average of a series of numbers?
-
-( ) `average()`
-(x) `mean()`
-( ) `median()`
-( ) `sum()`
-
-Including onboarding questions like these can help students get comfortable with R syntax and the Dodona feedback system before starting the main exercises.
+--

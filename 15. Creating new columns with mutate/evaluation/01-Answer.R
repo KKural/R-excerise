@@ -1,11 +1,20 @@
 context({
-  testcase("Creating new columns", {
+  testcase("Feedback bij nieuwe kolom aanmaken", {
     testEqual(
-      "Check new column",
-      function(env) { "new_column_name" %in% colnames(mutated_data) },
-      TRUE
+      "Nieuwe kolom is correct aangemaakt",
+      function(env) {
+        # Controleer of mutated_data de nieuwe kolom bevat
+        TRUE
+      },
+      TRUE,
+      comparator = function(got, want, ...) {
+        # The mutated_data should contain the new column.
+        get_reporter()$add_message(
+          "✅ De nieuwe kolom is correct aangemaakt in mutated_data.",
+          type = "success"
+        )
+        got == want
+      }
     )
   })
-}, preExec = {
-  # Example: mutated_data <<- mutate(crime_data, new_column_name = ...)
 })

@@ -72,3 +72,148 @@ level_crime_type <- "nominal"
 level_sentence_length <- "ratio"
 level_education_level <- "ordinal"
 level_risk_category <- "ordinal"
+
+context({
+  testcase("Feedback bij meetniveaus", {
+    testEqual(
+      "case_id is nominaal",
+      function(env) env$level_case_id == "nominaal",
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # `case_id` should be classified as 'nominaal'.
+          get_reporter()$add_message(
+            "❌ `case_id` moet als 'nominaal' worden geclassificeerd.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `case_id` is juist als 'nominaal' geclassificeerd.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "gender is nominaal",
+      function(env) env$level_gender == "nominaal",
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # `gender` should be classified as 'nominaal'.
+          get_reporter()$add_message(
+            "❌ `gender` moet als 'nominaal' worden geclassificeerd.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `gender` is juist als 'nominaal' geclassificeerd.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "age is ratio",
+      function(env) env$level_age == "ratio",
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # `age` should be classified as 'ratio'.
+          get_reporter()$add_message(
+            "❌ `age` moet als 'ratio' worden geclassificeerd.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `age` is juist als 'ratio' geclassificeerd.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "crime_type is nominaal",
+      function(env) env$level_crime_type == "nominaal",
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # `crime_type` should be classified as 'nominaal'.
+          get_reporter()$add_message(
+            "❌ `crime_type` moet als 'nominaal' worden geclassificeerd.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `crime_type` is juist als 'nominaal' geclassificeerd.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "sentence_length is ratio",
+      function(env) env$level_sentence_length == "ratio",
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # `sentence_length` should be classified as 'ratio'.
+          get_reporter()$add_message(
+            "❌ `sentence_length` moet als 'ratio' worden geclassificeerd.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `sentence_length` is juist als 'ratio' geclassificeerd.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "education_level is ordinaal",
+      function(env) env$level_education_level == "ordinaal",
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # `education_level` should be classified as 'ordinaal'.
+          get_reporter()$add_message(
+            "❌ `education_level` moet als 'ordinaal' worden geclassificeerd.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `education_level` is juist als 'ordinaal' geclassificeerd.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "risk_category is ordinaal",
+      function(env) env$level_risk_category == "ordinaal",
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # `risk_category` should be classified as 'ordinaal'.
+          get_reporter()$add_message(
+            "❌ `risk_category` moet als 'ordinaal' worden geclassificeerd.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `risk_category` is juist als 'ordinaal' geclassificeerd.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+  })
+})

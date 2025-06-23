@@ -40,3 +40,31 @@ context({
 
 # Model solution:
 crime_df <- read.csv(file_path)
+
+context({
+  testcase("Feedback bij laden van dataset", {
+    testEqual(
+      "crime_df is correct ingeladen",
+      function(env) {
+        exists("crime_df", envir = env) && is.data.frame(env$crime_df)
+      },
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # The variable 'crime_df' should exist and be a data frame loaded from file_path.
+          get_reporter()$add_message(
+            "❌ De variabele 'crime_df' moet bestaan en een data frame zijn dat is ingeladen vanuit file_path.",
+            type = "error"
+          )
+        } else {
+          # Correct! The dataset was loaded into 'crime_df'.
+          get_reporter()$add_message(
+            "✅ De dataset is correct ingeladen in 'crime_df'.",
+            type = "success"
+          )
+        }
+        got == want
+      }
+    )
+  })
+})
