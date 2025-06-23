@@ -1,7 +1,8 @@
 {
   "description": {
     "names": {
-      "en": "Creating new columns with mutate"
+      "en": "15. Creating new columns with mutate",
+      "nl": "15. Nieuwe kolommen maken met mutate"
     }
   },
   "programming_language": "R",

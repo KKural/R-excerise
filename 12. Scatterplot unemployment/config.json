@@ -1,7 +1,8 @@
 {
   "description": {
     "names": {
-      "en": "Create a scatterplot of unemployment and crime"
+      "en": "12. Create a scatterplot of unemployment and crime",
+      "nl": "12. Maak een spreidingsdiagram van werkloosheid en misdaad"
     }
   },
   "programming_language": "R",

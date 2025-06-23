@@ -1,7 +1,8 @@
 {
   "description": {
     "names": {
-      "en": "Generate frequency tables with table()"
+      "en": "7. Generate frequency tables with table()",
+      "nl": "7. Genereer frequentietabellen met table()"
     }
   },
   "programming_language": "R",

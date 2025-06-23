@@ -1,7 +1,8 @@
 {
   "description": {
     "names": {
-      "en": "Use mean() to calculate average offenses"
+      "en": "6. Use mean() to calculate average offenses",
+      "nl": "6. Gebruik mean() om het gemiddelde aantal misdrijven te berekenen"
     }
   },
   "programming_language": "R",

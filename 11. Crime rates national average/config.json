@@ -1,7 +1,8 @@
 {
   "description": {
     "names": {
-      "en": "Compare crime rates to national average"
+      "en": "11. Compare crime rates to national average",
+      "nl": "11. Vergelijk misdaadcijfers met het nationale gemiddelde"
     }
   },
   "programming_language": "R",

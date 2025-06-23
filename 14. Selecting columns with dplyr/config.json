@@ -1,7 +1,8 @@
 {
   "description": {
     "names": {
-      "en": "Selecting columns with dplyr"
+      "en": "14. Selecting columns with dplyr",
+      "nl": "14. Selecteer kolommen met dplyr"
     }
   },
   "programming_language": "R",

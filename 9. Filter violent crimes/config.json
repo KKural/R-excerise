@@ -1,7 +1,8 @@
 {
   "description": {
     "names": {
-      "en": "Filter violent crimes using subset()"
+      "en": "9. Filter violent crimes using subset()",
+      "nl": "9. Filter gewelddadige misdrijven met subset()"
     }
   },
   "programming_language": "R",
