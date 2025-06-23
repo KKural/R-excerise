@@ -56,18 +56,18 @@ context({
     )
     testEqual(
       "length(df_crime_data) geeft het aantal kolommen terug",
-      function(env) length(env$df_crime_data) == 4,
-      TRUE
+      function(env) length(env$df_crime_data),
+      4
     )
     testEqual(
       "nrow(df_crime_data) geeft het aantal rijen terug",
-      function(env) nrow(env$df_crime_data) == 5,
-      TRUE
+      function(env) nrow(env$df_crime_data),
+      5
     )
     testEqual(
       "ncol(df_crime_data) geeft het aantal kolommen terug",
-      function(env) ncol(env$df_crime_data) == 4,
-      TRUE
+      function(env) ncol(env$df_crime_data),
+      4
     )
     testEqual(
       "head(df_crime_data) toont de eerste rijen van het data frame",
@@ -84,13 +84,13 @@ context({
     )
     testEqual(
       "class(df_crime_data) geeft het type object terug",
-      function(env) any(class(env$df_crime_data) == "data.frame"),
-      TRUE
+      function(env) class(env$df_crime_data)[1],
+      "data.frame"
     )
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
-      function(env) all(dim(env$df_crime_data) == c(5, 4)),
-      TRUE
+      function(env) dim(env$df_crime_data),
+      c(5, 4)
     )
   })
 }, preExec = {
