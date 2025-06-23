@@ -1,10 +1,21 @@
 # Verwachte antwoorden:
+# Maak eerst het data frame df_crime_data aan zoals hieronder:
 # df_crime_data <- data.frame(
 #   type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
 #   ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Ernstig"), levels = c("Licht", "Matig", "Ernstig")),
 #   leeftijd = c(19, 23, 45, 32, 28),
 #   district = c("A1", "B2", "C3", "D4", "E5")
 # )
+# Voer daarna de volgende basisfuncties uit op df_crime_data:
+# str(df_crime_data)
+# names(df_crime_data)
+# length(df_crime_data)
+# nrow(df_crime_data)
+# ncol(df_crime_data)
+# head(df_crime_data)
+# summary(df_crime_data)
+# class(df_crime_data)
+# dim(df_crime_data)
 
 context({
   testcase("Feedback bij basisfuncties op data frame", {
