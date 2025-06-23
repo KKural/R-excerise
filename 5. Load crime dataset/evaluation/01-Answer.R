@@ -7,7 +7,7 @@ context({
   testcase("Gebruik van getwd() en setwd()", {
 
     # Student source as one string
-    student_code <- paste(readLines(env$`.__code__`), collapse = "\n")
+    student_code <- paste(readLines(env$.__code__), collapse = "\n")
 
     testTrue("`getwd()` is gebruikt",
              grepl("getwd\\s*\\(", student_code))
