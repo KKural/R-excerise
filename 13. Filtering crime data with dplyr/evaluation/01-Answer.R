@@ -1,23 +1,37 @@
 context({
   testcase("Feedback bij filteren op diefstal", {
     testEqual(
-      "Alleen rijen met crime_type 'Theft' zijn geselecteerd",
+      "Alleen rijen met delicttype 'Diefstal' zijn geselecteerd",
       function(env) {
-        # Controleer of filtered_data alleen rijen bevat waar crime_type 'Theft' is
-        TRUE
+        exists("gefilterde_data", envir = env) &&
+        is.data.frame(env$gefilterde_data) &&
+        all(env$gefilterde_data$delicttype == "Diefstal")
       },
       TRUE,
       comparator = function(got, want, ...) {
-        # The filtered_data should only contain rows where crime_type is 'Theft'.
-        get_reporter()$add_message(
-          "✅ De data is correct gefilterd op diefstal ('Theft').",
-          type = "success"
-        )
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ De variabele 'gefilterde_data' moet bestaan en alleen rijen met delicttype 'Diefstal' bevatten.",
+            type = "error"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ De data is correct gefilterd op delicttype 'Diefstal' en opgeslagen in 'gefilterde_data'.",
+            type = "success"
+          )
+        }
         got == want
       }
     )
   })
+}, preExec = {
+  # Set up the misdaad_data data frame
+  misdaad_data <- data.frame(
+    id = 1:10,
+    delicttype = c("Diefstal", "Aanval", "Diefstal", "Inbraak", "Diefstal", "Vandalisme", "Diefstal", "Fraude", "Diefstal", "Aanval"),
+    waarde = c(100, 200, 150, 300, 120, 80, 90, 60, 110, 50)
+  )
 })
 
-# Verwachte antwoorden:
-# gefilterde_data <- filter(misdaad_data, type_misdrijf == "Diefstal")
+# Model solution:
+gefilterde_data <- dplyr::filter(misdaad_data, delicttype == "Diefstal")

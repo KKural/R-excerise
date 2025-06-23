@@ -3,41 +3,24 @@
 # primm_phase: Run
 
 context({
-  testcase("", {
-    testEqual(
-      "",
-      function(env) { NULL },
-      NULL,
-      comparator = function(got, want, ...) {
-        TRUE
-      }
-    )
-  })
-}, preExec = {
-  # Set up the offender_ages vector
-  offender_ages <- c(19, 23, 45, 32, 28, 21, 24, 19, 37, 42, 18, 25, 22, 31, 19, 
-                   27, 36, 29, 24, 33, 41, 26, 20, 38, 22, 19, 25, 29, 31, 34)
-})
-
-context({
   testcase("Feedback bij samenvatting leeftijden", {
     testEqual(
-      "age_summary is correct aangemaakt",
+      "leeftijd_samenvatting is correct aangemaakt",
       function(env) {
-        exists("age_summary", envir = env) && is.numeric(env$age_summary)
+        exists("leeftijd_samenvatting", envir = env) && is.numeric(env$leeftijd_samenvatting)
       },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # The variable 'age_summary' should exist and be a numeric summary of offender_ages.
+          # De variabele 'leeftijd_samenvatting' moet bestaan en een numerieke samenvatting zijn van leeftijden_daders.
           get_reporter()$add_message(
-            "❌ De variabele 'age_summary' moet bestaan en een numerieke samenvatting zijn van offender_ages.",
+            "❌ De variabele 'leeftijd_samenvatting' moet bestaan en een numerieke samenvatting zijn van leeftijden_daders.",
             type = "error"
           )
         } else {
-          # Correct! The summary was created and stored in 'age_summary'.
+          # Correct! De samenvatting was gemaakt en opgeslagen in 'leeftijd_samenvatting'.
           get_reporter()$add_message(
-            "✅ De samenvatting is correct aangemaakt en opgeslagen in 'age_summary'.",
+            "✅ De samenvatting is correct aangemaakt en opgeslagen in 'leeftijd_samenvatting'.",
             type = "success"
           )
         }
@@ -45,7 +28,11 @@ context({
       }
     )
   })
+}, preExec = {
+  # Zet de leeftijden_daders vector op
+  leeftijden_daders <- c(19, 23, 45, 32, 28, 21, 24, 19, 37, 42, 18, 25, 22, 31, 19, 
+                   27, 36, 29, 24, 33, 41, 26, 20, 38, 22, 19, 25, 29, 31, 34)
 })
 
-# Verwachte antwoorden:
-# samenvatting_leeftijden <- summary(leeftijden_daders)
+# Modeloplossing:
+leeftijd_samenvatting <- summary(leeftijden_daders)

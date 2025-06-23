@@ -14,38 +14,36 @@ context({
     )
   })
 }, preExec = {
-  # Set up the offense_types vector
-  offense_types <- c("Theft", "Assault", "Burglary", "Vandalism", "Theft", "Theft", 
-                   "Assault", "Theft", "Burglary", "Vandalism", "Theft", "Assault", 
-                   "Drug Offense", "Theft", "Burglary", "Vandalism", "Assault", 
-                   "Theft", "Drug Offense", "Burglary")
+  # Set up the delictsoorten vector
+  delictsoorten <- c("Diefstal", "Aanval", "Inbraak", "Vandalisme", "Diefstal", "Diefstal", 
+                   "Aanval", "Diefstal", "Inbraak", "Vandalisme", "Diefstal", "Aanval", 
+                   "Drugsdelict", "Diefstal", "Inbraak", "Vandalisme", "Aanval", 
+                   "Diefstal", "Drugsdelict", "Inbraak")
 })
 
 # Verwachte antwoorden:
-# frequentietabel_misdrijven <- table(type_misdrijf)
+# delict_tabel <- table(delictsoorten)
 
 # Model solution:
-offense_table <- table(offense_types)
+delict_tabel <- table(delictsoorten)
 
 context({
   testcase("Feedback bij frequentietabel", {
     testEqual(
-      "offense_table is correct aangemaakt",
+      "delict_tabel is correct aangemaakt",
       function(env) {
-        exists("offense_table", envir = env) && is.table(env$offense_table)
+        exists("delict_tabel", envir = env) && is.table(env$delict_tabel)
       },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # The variable 'offense_table' should exist and be a table created from offense_types.
           get_reporter()$add_message(
-            "❌ De variabele 'offense_table' moet bestaan en een frequentietabel zijn gemaakt van offense_types.",
+            "❌ De variabele 'delict_tabel' moet bestaan en een frequentietabel zijn gemaakt van delictsoorten.",
             type = "error"
           )
         } else {
-          # Correct! The frequency table was created and stored in 'offense_table'.
           get_reporter()$add_message(
-            "✅ De frequentietabel is correct aangemaakt en opgeslagen in 'offense_table'.",
+            "✅ De frequentietabel is correct aangemaakt en opgeslagen in 'delict_tabel'.",
             type = "success"
           )
         }

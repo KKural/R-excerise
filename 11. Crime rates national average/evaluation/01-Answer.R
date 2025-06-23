@@ -11,8 +11,8 @@ context({
   })
 }, preExec = {
   # Set up the data
-  district_crime_rates <- c(5.58, 6.42, 7.05, 7.18, 6.39)
-  national_average <- 6.2
+  district_misdaadcijfers <- c(5.58, 6.42, 7.05, 7.18, 6.39)
+  nationaal_gemiddelde <- 6.2
 })
 
 # Verwachte antwoorden:
@@ -21,22 +21,20 @@ boven_gemiddeld <- district_misdaadcijfers > nationaal_gemiddelde
 context({
   testcase("Feedback bij vergelijken met nationaal gemiddelde", {
     testEqual(
-      "above_average is correct aangemaakt",
+      "boven_gemiddelde is correct aangemaakt",
       function(env) {
-        exists("above_average", envir = env) && is.logical(env$above_average)
+        exists("boven_gemiddelde", envir = env) && is.logical(env$boven_gemiddelde)
       },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # The variable 'above_average' should exist and be a logical vector comparing to the national average.
           get_reporter()$add_message(
-            "❌ De variabele 'above_average' moet bestaan en een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
+            "❌ De variabele 'boven_gemiddelde' moet bestaan en een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
             type = "error"
           )
         } else {
-          # Correct! The logical vector was created and stored in 'above_average'.
           get_reporter()$add_message(
-            "✅ De logische vector is correct aangemaakt en opgeslagen in 'above_average'.",
+            "✅ De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddelde'.",
             type = "success"
           )
         }

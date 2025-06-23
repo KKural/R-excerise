@@ -12,7 +12,7 @@ context({
 }, preExec = {
   # Set up the data
   werkloosheid <- c(4.2, 5.7, 7.9, 6.5, 8.1, 5.3, 9.2, 7.1, 6.8, 5.9, 8.5, 7.4, 6.2, 9.0, 5.1)
-  misdaadcijfers <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.1, 32.7, 29.0, 37.8, 27.2)
+  criminaliteitscijfers <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.1, 32.7, 29.0, 37.8, 27.2)
   
   # Helper function to extract function calls from code
   get_function_calls <- function(code, function_name) {
@@ -52,27 +52,23 @@ context({
 })
 
 context({
-  testcase("Feedback bij spreidingsdiagram", {
+  testcase("Feedback bij spreidingsdiagram werkloosheid en criminaliteit", {
     testEqual(
-      "Spreidingsdiagram is correct aangemaakt",
+      "plot() is correct aangeroepen",
       function(env) {
-        # Controleer of plot() is aangeroepen met de juiste argumenten
-        # (In een echte testomgeving zou je de plot output controleren)
-        TRUE
+        # Check if plot() is called with correct arguments
+        code <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
+        grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers.*main\\s*=\\s*['\"]Relatie tussen werkloosheid en criminaliteit['\"].*xlab\\s*=\\s*['\"]Werkloosheidspercentage \(\%\)['\"].*ylab\\s*=\\s*['\"]Criminaliteitscijfer \(per 1.000\)['\"]", code)
       },
       TRUE,
-      comparator = function(got, want, ...) {
-        # The plot should be created with unemployment on x and crime_rates on y, with correct labels.
-        get_reporter()$add_message(
-          "✅ Het spreidingsdiagram is correct aangemaakt met de juiste labels en titel.",
-          type = "success"
-        )
-        got == want
-      }
+      comparator = identical
     )
   })
+}, preExec = {
+  # Set up the data
+  werkloosheid <- c(4.2, 5.7, 7.9, 6.5, 8.1, 5.3, 9.2, 7.1, 6.8, 5.9, 8.5, 7.4, 6.2, 9.0, 5.1)
+  criminaliteitscijfers <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.1, 32.7, 29.0, 37.8, 27.2)
 })
 
-# Verwachte antwoorden:
-# plot(werkloosheid, misdaadcijfers)
-# ...existing code...
+# Model solution:
+plot(werkloosheid, criminaliteitscijfers, main = "Relatie tussen werkloosheid en criminaliteit", xlab = "Werkloosheidspercentage (%)", ylab = "Criminaliteitscijfer (per 1.000)")
