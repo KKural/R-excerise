@@ -1,158 +1,203 @@
 # Verwachte antwoorden:
-# misdaad_types <- factor(
-#   c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
-#   levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
+# df_crime_data <- data.frame(
+#   type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+#   ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Ernstig"), levels = c("Licht", "Matig", "Ernstig")),
+#   leeftijd = c(19, 23, 45, 32, 28),
+#   district = c("A1", "B2", "C3", "D4", "E5")
 # )
-# ernst_misdaad    <- factor(c("Licht", "Matig", "Ernstig"),
-#                             levels = c("Licht", "Matig", "Ernstig"),
-#                             ordered = TRUE)
-# leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
-# district_codes    <- c("A1", "B2", "C3", "D4", "E5")
 
 context({
-  testcase("", {
+  testcase("Feedback bij basisfuncties op data frame", {
     testEqual(
-      "",
-      function(env) { NULL },
-      NULL,
+      "df_crime_data is een data frame met kolommen 'type', 'ernst', 'leeftijd', 'district'",
+      function(env) is.data.frame(env$df_crime_data) && all(names(env$df_crime_data) == c("type", "ernst", "leeftijd", "district")),
+      TRUE,
       comparator = function(got, want, ...) {
-        TRUE
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ `df_crime_data` moet een data frame zijn met kolommen 'type', 'ernst', 'leeftijd', 'district'.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `df_crime_data` is juist aangemaakt als data frame met kolommen 'type', 'ernst', 'leeftijd', 'district'.",
+            type = "markdown"
+          )
+        }
+        got == want
       }
     )
-  })
-}, preExec = {
-  # 1. Maak de factorvariabele misdaad_types aan mét expliciete levels
-  misdaad_types <- factor(
-    c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
-    levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
-  )
-
-  # 2. Maak de geordende factor ernst_misdaad aan
-  ernst_misdaad <- factor(
-    c("Licht", "Matig", "Ernstig"),
-    levels  = c("Licht", "Matig", "Ernstig"),
-    ordered = TRUE
-  )
-
-  # 3. Maak de numerieke vector leeftijden_daders aan
-  leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
-
-  # 4. Maak de karaktervector district_codes aan
-  district_codes <- c("A1", "B2", "C3", "D4", "E5")
-})
-
-# Modeloplossing (dit staat los van de tests):
-misdaad_types <- factor(
-  c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
-  levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
-)
-
-ernst_misdaad <- factor(
-  c("Licht", "Matig", "Ernstig"),
-  levels  = c("Licht", "Matig", "Ernstig"),
-  ordered = TRUE
-)
-
-leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
-
-district_codes <- c("A1", "B2", "C3", "D4", "E5")
-
-context({
-  testcase("Meetniveau feedback", {
     testEqual(
-      "misdaad_types is een factor met de juiste niveaus",  # misdaad_types is a factor with the correct levels
+      "str(df_crime_data) geeft de structuur van het data frame weer",
       function(env) {
-        get_reporter()$add_message(
-          paste0(
-            "DEBUG: class = ", paste(class(env$misdaad_types), collapse = ", "),
-            "; levels = ", if (is.factor(env$misdaad_types)) paste(levels(env$misdaad_types), collapse = ", ") else "N/A"
-          ),
-          type = "markdown"
-        )
-        is.factor(env$misdaad_types) &&
-          all(levels(env$misdaad_types) == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+        capture <- capture.output(str(env$df_crime_data))
+        any(grepl("'data.frame'", capture)) && any(grepl("type", capture)) && any(grepl("ernst", capture)) && any(grepl("leeftijd", capture)) && any(grepl("district", capture))
       },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
           get_reporter()$add_message(
-            "❌ `misdaad_types` moet een factor zijn met de niveaus: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.",  
-            # ❌ misdaad_types must be a factor with levels: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.
+            "❌ `str(df_crime_data)` moet de structuur van het data frame tonen, inclusief kolomnamen.",
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `misdaad_types` is juist aangemaakt als factor met de juiste niveaus.",  
-            # ✅ misdaad_types was correctly created as a factor with the correct levels.
+            "✅ `str(df_crime_data)` toont correct de structuur van het data frame.",
             type = "markdown"
           )
         }
         got == want
       }
     )
-
     testEqual(
-      "ernst_misdaad is een geordende factor met de juiste volgorde",  # ernst_misdaad is an ordered factor with the correct order
-      function(env) is.ordered(env$ernst_misdaad) &&
-        all(levels(env$ernst_misdaad) == c("Licht", "Matig", "Ernstig")),
+      "names(df_crime_data) geeft de kolomnamen terug",
+      function(env) all(names(env$df_crime_data) == c("type", "ernst", "leeftijd", "district")),
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
           get_reporter()$add_message(
-            "❌ `ernst_misdaad` moet een geordende factor zijn met de volgorde: 'Licht' < 'Matig' < 'Ernstig'.",  
-            # ❌ ernst_misdaad must be an ordered factor with order: 'Licht' < 'Matig' < 'Ernstig'.
+            "❌ `names(df_crime_data)` moet de kolomnamen 'type', 'ernst', 'leeftijd', 'district' teruggeven.",
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `ernst_misdaad` is juist aangemaakt als geordende factor met de juiste volgorde.",  
-            # ✅ ernst_misdaad was correctly created as an ordered factor with the correct order.
+            "✅ `names(df_crime_data)` geeft correct de kolomnamen terug.",
             type = "markdown"
           )
         }
         got == want
       }
     )
-
     testEqual(
-      "leeftijden_daders is een numerieke vector",  # leeftijden_daders is a numeric vector
-      function(env) is.numeric(env$leeftijden_daders) &&
-        all(env$leeftijden_daders == c(19, 23, 45, 32, 28, 21)),
+      "length(df_crime_data) geeft het aantal kolommen terug",
+      function(env) length(env$df_crime_data) == 4,
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
           get_reporter()$add_message(
-            "❌ `leeftijden_daders` moet een numerieke vector zijn met de waarden: 19, 23, 45, 32, 28, 21.",  
-            # ❌ leeftijden_daders must be a numeric vector with the values: 19, 23, 45, 32, 28, 21.
+            "❌ `length(df_crime_data)` moet het aantal kolommen (4) teruggeven.",
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `leeftijden_daders` is juist aangemaakt als numerieke vector.",  
-            # ✅ leeftijden_daders was correctly created as a numeric vector.
+            "✅ `length(df_crime_data)` geeft correct het aantal kolommen terug.",
             type = "markdown"
           )
         }
         got == want
       }
     )
-
     testEqual(
-      "district_codes is een karaktervector",  # district_codes is a character vector
-      function(env) is.character(env$district_codes) &&
-        all(env$district_codes == c("A1", "B2", "C3", "D4", "E5")),
+      "nrow(df_crime_data) geeft het aantal rijen terug",
+      function(env) nrow(env$df_crime_data) == 5,
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
           get_reporter()$add_message(
-            "❌ `district_codes` moet een karaktervector zijn met de waarden: 'A1', 'B2', 'C3', 'D4', 'E5'.",  
-            # ❌ district_codes must be a character vector with values: 'A1', 'B2', 'C3', 'D4', 'E5'.
+            "❌ `nrow(df_crime_data)` moet het aantal rijen (5) teruggeven.",
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `district_codes` is juist aangemaakt als karaktervector.",  
-            # ✅ district_codes was correctly created as a character vector.
+            "✅ `nrow(df_crime_data)` geeft correct het aantal rijen terug.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "ncol(df_crime_data) geeft het aantal kolommen terug",
+      function(env) ncol(env$df_crime_data) == 4,
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ `ncol(df_crime_data)` moet het aantal kolommen (4) teruggeven.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `ncol(df_crime_data)` geeft correct het aantal kolommen terug.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "head(df_crime_data) toont de eerste rijen van het data frame",
+      function(env) all(head(env$df_crime_data)$type == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ `head(df_crime_data)` moet de eerste rijen tonen.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `head(df_crime_data)` toont correct de eerste rijen.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "summary(df_crime_data) geeft een samenvatting van alle kolommen",
+      function(env) {
+        capture <- capture.output(summary(env$df_crime_data))
+        any(grepl("Diefstal", capture)) && any(grepl("Licht", capture)) && any(grepl("leeftijd", capture))
+      },
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ `summary(df_crime_data)` moet een samenvatting van alle kolommen geven.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `summary(df_crime_data)` geeft correct een samenvatting van alle kolommen.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "class(df_crime_data) geeft het type object terug",
+      function(env) any(class(env$df_crime_data) == "data.frame"),
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ `class(df_crime_data)` moet 'data.frame' teruggeven.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `class(df_crime_data)` geeft correct het type object terug.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+    testEqual(
+      "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
+      function(env) all(dim(env$df_crime_data) == c(5, 4)),
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ `dim(df_crime_data)` moet c(5, 4) teruggeven.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `dim(df_crime_data)` geeft correct het aantal rijen en kolommen terug.",
             type = "markdown"
           )
         }
@@ -160,4 +205,12 @@ context({
       }
     )
   })
+}, preExec = {
+  # Maak een data frame df_crime_data aan
+  df_crime_data <<- data.frame(
+    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+    ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Ernstig"), levels = c("Licht", "Matig", "Ernstig")),
+    leeftijd = c(19, 23, 45, 32, 28),
+    district = c("A1", "B2", "C3", "D4", "E5")
+  )
 })

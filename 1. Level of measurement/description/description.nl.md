@@ -1,24 +1,43 @@
-Maak de volgende variabelen aan met de juiste datatypes in R:
+Maak een data frame df_crime_data aan met de juiste kolommen en datatypes in R:
 
-1. Maak een variabele `misdaad_types` als factor met deze categorieën: "Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"
-2. Maak een variabele `ernst_misdaad` als geordende factor met niveaus: "Licht", "Matig", "Ernstig" (in deze volgorde)
-3. Maak een variabele `leeftijden_daders` als numeriek vector met deze waarden: 19, 23, 45, 32, 28, 21
-4. Maak een variabele `district_codes` als karaktervector met deze waarden: "A1", "B2", "C3", "D4", "E5"
+1. Maak een data frame `df_crime_data` met de volgende kolommen:
+   - `type`: factor met de categorieën "Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"
+   - `ernst`: geordende factor met niveaus: "Licht" < "Matig" < "Ernstig"
+   - `leeftijd`: numerieke vector met de waarden: 19, 23, 45, 32, 28
+   - `district`: karaktervector met de waarden: "A1", "B2", "C3", "D4", "E5"
+
+2. Gebruik de volgende basisfuncties op het data frame en noteer het resultaat:
+   - `str(df_crime_data)`  # toont de structuur van het data frame
+   - `names(df_crime_data)`  # geeft de kolomnamen terug
+   - `length(df_crime_data)`  # geeft het aantal kolommen terug
+   - `nrow(df_crime_data)`  # geeft het aantal rijen terug
+   - `ncol(df_crime_data)`  # geeft het aantal kolommen terug
+   - `head(df_crime_data)`  # toont de eerste rijen van het data frame
+   - `summary(df_crime_data)`  # geeft een samenvatting van alle kolommen
+   - `class(df_crime_data)`  # geeft het type object terug
+   - `dim(df_crime_data)`  # geeft het aantal rijen en kolommen als vector terug
 
 ```r
-1. Maak de misdaad_types factorvariabele aan
-  Gebruik factor() met expliciete levels via het argument levels
+# Voorbeeld:
+df_crime_data <- data.frame(
+  type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+  ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Ernstig"), levels = c("Licht", "Matig", "Ernstig")),
+  leeftijd = c(19, 23, 45, 32, 28),
+  district = c("A1", "B2", "C3", "D4", "E5")
+)
 
-2. Maak de ernst_misdaad geordende factorvariabele aan
-  Gebruik factor(..., levels = ..., ordered = TRUE) en specificeer de levels
-
-3. Maak de leeftijden_daders numerieke vector aan
-   Gebruik c() om de getallen samen te voegen
-
-4. Maak de district_codes karaktervector aan
-   Gebruik c() om de codes als tekst samen te voegen
+str(df_crime_data)
+names(df_crime_data)
+length(df_crime_data)
+nrow(df_crime_data)
+ncol(df_crime_data)
+head(df_crime_data)
+summary(df_crime_data)
+class(df_crime_data)
+dim(df_crime_data)
 ```
 
 **Tip:**  
 Gebruik `factor()` voor categorische variabelen (nominaal niveau).  
-Voor ordinale variabelen gebruik je `factor()` met de parameter `ordered=TRUE` en geef je de `levels` in de juiste volgorde op.
+Voor ordinale variabelen gebruik je `factor()` met de parameter `ordered=TRUE` en geef je de `levels` in de juiste volgorde op.  
+Gebruik `data.frame()` om de variabelen samen te voegen tot een data frame.

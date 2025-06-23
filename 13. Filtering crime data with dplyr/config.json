@@ -4,11 +4,15 @@
       "nl": "13. Filteren van misdaaddata met dplyr"
     }
   },
-  "type": "content",
-  "labels": [],
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
   "access": "public",
   "internals": {
-    "token": "Vy9vj5AMsc4jEDzneaWdrmmKggyzhg94N5BHbY4tvNHRubsjkxXp74DDxw2a_yhN",
+    "token": "KZdTCMugJmqzAM6yBdzmswxGecaTjvfFaA8jDIAHYCTYefKuWrnK9rjwRyvyrqBD",
     "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
-  }
+  },
+  "labels": []
 }

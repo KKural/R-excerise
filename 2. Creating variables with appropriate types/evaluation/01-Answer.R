@@ -85,18 +85,29 @@ context({
       }
     )
   })
+      function(env) nrow(env$df_crime_data) == 3,
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          get_reporter()$add_message(
+            "❌ `nrow(df_crime_data)` moet het aantal rijen (3) teruggeven.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ `nrow(df_crime_data)` geeft correct het aantal rijen terug.",
+            type = "markdown"
+          )
+        }
+        got == want
+      }
+    )
+  })
 }, preExec = {
-  # 1. Maak de factorvariabele misdaad_types aan
-  misdaad_types <<- factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
-
-  # 2. Maak de geordende factor ernst_misdaad aan
-  ernst_misdaad <<- factor(c("Licht", "Matig", "Ernstig"), 
-                           levels = c("Licht", "Matig", "Ernstig"), 
-                           ordered = TRUE)
-
-  # 3. Maak de numerieke vector leeftijden_daders aan
-  leeftijden_daders <<- c(19, 23, 45, 32, 28, 21)
-
-  # 4. Maak de karaktervector district_codes aan
-  district_codes <<- c("A1", "B2", "C3", "D4", "E5")
+  # Maak een eenvoudig data frame df_crime_data aan
+  df_crime_data <<- data.frame(
+    type = c("Diefstal", "Inbraak", "Fraude"),
+    aantal = c(10, 5, 3),
+    district = c("A1", "B2", "C3")
+  )
 })
