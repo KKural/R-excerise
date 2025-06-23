@@ -14,32 +14,32 @@ context({
     )
   })
 }, preExec = {
-  # Set up the maandelijkse_misdrijven vector
-  maandelijkse_misdrijven <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
+  # Set up the maandelijkse_feiten vector
+  maandelijkse_feiten <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
 })
 
 # Model solution:
-gem_offenses <- mean(maandelijkse_misdrijven)
+gem_feiten <- mean(maandelijkse_feiten)
 
 context({
   testcase("Feedback bij berekenen van gemiddelde", {
     testEqual(
-      "gem_offenses is correct berekend",
+      "gem_feiten is correct berekend",
       function(env) {
-        exists("gem_offenses", envir = env) && is.numeric(env$gem_offenses) && abs(env$gem_offenses - mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))) < 1e-6
+        exists("gem_feiten", envir = env) && is.numeric(env$gem_feiten) && abs(env$gem_feiten - mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))) < 1e-6
       },
       TRUE,
       comparator = function(got, want, ...) {
-        # The variable 'gem_offenses' should exist and be the mean of maandelijkse_misdrijven.
+        # De variabele 'gem_feiten' moet bestaan en het gemiddelde zijn van maandelijkse_feiten.
         if (!got) {
           get_reporter()$add_message(
-            "❌ De variabele 'gem_offenses' moet bestaan en het gemiddelde zijn van maandelijkse_misdrijven.",
+            "❌ De variabele 'gem_feiten' moet bestaan en het gemiddelde zijn van maandelijkse_feiten.",
             type = "error"
           )
         } else {
-          # Correct! The mean was calculated and stored in 'gem_offenses'.
+          # Correct! Het gemiddelde is berekend en opgeslagen in 'gem_feiten'.
           get_reporter()$add_message(
-            "✅ Het gemiddelde is correct berekend en opgeslagen in 'gem_offenses'.",
+            "✅ Het gemiddelde is correct berekend en opgeslagen in 'gem_feiten'.",
             type = "success"
           )
         }
