@@ -1,0 +1,22 @@
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\9. Filter violent crimes\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\8. Describe offender age\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\7. Generate frequency tables\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\6. Calculate average offenses\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\5. Load crime dataset\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\4. Assign number of burglaries\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\3. Identifying measurement levels\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\2. Creating variables with appropriate types\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\11. Crime rates national average\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\14. Selecting columns with dplyr\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\12. Scatterplot unemployment\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\13. Filtering crime data with dplyr\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\10. Crime rate calculation\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\0.4 R onboarding quiz_1\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\0.5 R onboarding quiz_2\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\1. Level of measurement\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\0.3 R libraries and installation\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\15. Creating new columns with mutate\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\0.2. Installing R and RStudio\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\0.1. Introduction\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\0. Prologue\description\description.en.md
+c:\Users\kukumar\OneDrive - UGent\Job\R-excerise\0.2. Installing R and RStudio\readme.en.md

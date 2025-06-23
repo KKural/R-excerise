@@ -1,5 +1,3 @@
-# Meetniveau
-
 Maak de volgende variabelen aan met de juiste datatypes in R:
 
 1. Maak een variabele `crime_types` als factor met deze categorieën: "Theft", "Assault", "Burglary", "Fraud", "Vandalism"

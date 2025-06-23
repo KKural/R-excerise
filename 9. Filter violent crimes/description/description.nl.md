@@ -1,5 +1,3 @@
-# Filter gewelddadige misdrijven
-
 Je hebt een dataset met gerapporteerde misdrijven. Gebruik de functie `subset()` om een nieuwe dataset te maken die alleen gewelddadige misdrijven bevat (deze zijn geclassificeerd als 'Assault', 'Robbery' of 'Homicide') en sla deze op in een variabele genaamd `violent_crimes_df`.
 
 ```R

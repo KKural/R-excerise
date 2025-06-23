@@ -1,5 +1,3 @@
-# Berekening van criminaliteitscijfers
-
 Je hebt gegevens over het aantal misdrijven en de bevolking voor vijf verschillende districten. Bereken het criminaliteitscijfer per 1.000 inwoners voor elk district en sla de resultaten op in een variabele genaamd `crime_rates`.
 
 ```R
