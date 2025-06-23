@@ -43,30 +43,6 @@ context({
     )
   })
 
-  testcase("Feedback bij laden van dataset", {
-    testEqual(
-      "misdaad_df is correct ingeladen",
-      function(env) {
-        exists("misdaad_df", env) && is.data.frame(env$misdaad_df)
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (got) {
-          get_reporter()$add_message(
-            "✅ De dataset is correct ingeladen in `misdaad_df`.",
-            type = "success"
-          )
-        } else {
-          get_reporter()$add_message(
-            "❌ De variabele `misdaad_df` moet bestaan en een data frame zijn dat is ingeladen met `read.csv('misdaad_data.csv')` nadat de werkdirectory is gezet.",
-            type = "error"
-          )
-        }
-        got == want
-      }
-    )
-  })
-
   # Dummy pad voor demonstratie setwd/getwd
   # Studenten hoeven geen echt pad te gebruiken, alleen de functies aanroepen
   dummy_path <- "C:/dummy/path"
@@ -85,6 +61,15 @@ context({
       "getwd() is aangeroepen in de code",
       function(env) {
         any(grepl("getwd\\s*\\(", paste(readLines(env$.__code__), collapse = "\n")))
+      }
+    )
+  })
+
+  testcase("Feedback bij laden van dataset", {
+    testTrue(
+      "misdaad_df is correct ingeladen",
+      function(env) {
+        exists("misdaad_df", env) && is.data.frame(env$misdaad_df)
       }
     )
   })
