@@ -81,7 +81,7 @@ context({
   })
 }, preExec = {
   # Maak het data frame direct aan in plaats van inlezen uit csv
-  env$df_crime_data <- data.frame(
+  df_crime_data <<- data.frame(
     type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
                   levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
     ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Matig"),
