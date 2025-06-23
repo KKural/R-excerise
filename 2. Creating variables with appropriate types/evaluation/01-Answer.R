@@ -2,6 +2,19 @@
 # scaffolding_level: Full support
 # primm_phase: Run
 
+# Antwoorden voor de variabelen:
+misdaad_types <- factor(
+  c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+  levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
+)
+ernst_misdaad <- factor(
+  c("Licht", "Matig", "Ernstig", "Matig", "Licht", "Ernstig"),
+  levels = c("Licht", "Matig", "Ernstig"),
+  ordered = TRUE
+)
+leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
+district_codes <- c("A1", "B2", "C3", "D4", "E5")
+
 context({
   testcase("Feedback bij variabelen aanmaken", {
     testEqual(
@@ -84,7 +97,8 @@ context({
         got == want
       }
     )
-  })
+    testEqual(
+      "nrow(df_crime_data) geeft het aantal rijen terug",
       function(env) nrow(env$df_crime_data) == 3,
       TRUE,
       comparator = function(got, want, ...) {
