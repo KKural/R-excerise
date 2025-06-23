@@ -3,23 +3,18 @@ context({
   # ------------- TESTS -------------
   testcase("Gebruik van getwd() en setwd()", {
 
-    # Studenten-broncode als tekst
-    src <- function(env) paste(readLines(env$`.__code__`), collapse = "\n")
+    # ---- fixed helper ----
+    src <- function(env) paste(env$`.__code__`, collapse = "\n")
 
-    testEqual(
-      "`getwd()` is gebruikt",
-      function(env) grepl("getwd\\s*\\(", src(env)),
-      TRUE,
-      comparator = identical
-    )
+    testEqual("`getwd()` is gebruikt",
+              function(env) grepl("getwd\\s*\\(", src(env)),
+              TRUE, comparator = identical)
 
-    testEqual(
-      "`setwd()` is gebruikt",
-      function(env) grepl("setwd\\s*\\(", src(env)),
-      TRUE,
-      comparator = identical
-    )
+    testEqual("`setwd()` is gebruikt",
+              function(env) grepl("setwd\\s*\\(", src(env)),
+              TRUE, comparator = identical)
   })
+
 
   testcase("Dataset correct ingeladen", {
     testEqual(
