@@ -1,8 +1,10 @@
-# Expected answers:
+# Verwachte antwoorden:
 # misdaad_types <- factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
-# ernst_misdaad <- factor(c("Licht", "Matig", "Ernstig"), levels = c("Licht", "Matig", "Ernstig"), ordered = TRUE)
+# ernst_misdaad    <- factor(c("Licht", "Matig", "Ernstig"),
+#                             levels = c("Licht", "Matig", "Ernstig"),
+#                             ordered = TRUE)
 # leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
-# district_codes <- c("A1", "B2", "C3", "D4", "E5")
+# district_codes    <- c("A1", "B2", "C3", "D4", "E5")
 
 context({
   testcase("", {
@@ -16,31 +18,35 @@ context({
     )
   })
 }, preExec = {
+  # 1. Maak de factorvariabele misdaad_types aan mét expliciete levels
   misdaad_types <- factor(
-  c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
-  levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
-)
+    c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+    levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
+  )
 
+  # 2. Maak de geordende factor ernst_misdaad aan
   ernst_misdaad <- factor(
-    c("Licht", "Matig", "Ernstig"), 
-    levels = c("Licht", "Matig", "Ernstig"), 
+    c("Licht", "Matig", "Ernstig"),
+    levels  = c("Licht", "Matig", "Ernstig"),
     ordered = TRUE
   )
 
+  # 3. Maak de numerieke vector leeftijden_daders aan
   leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
 
+  # 4. Maak de karaktervector district_codes aan
   district_codes <- c("A1", "B2", "C3", "D4", "E5")
 })
 
-# Model solution
+# Modeloplossing (dit staat los van de tests):
 misdaad_types <- factor(
   c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
   levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
 )
 
 ernst_misdaad <- factor(
-  c("Licht", "Matig", "Ernstig"), 
-  levels = c("Licht", "Matig", "Ernstig"), 
+  c("Licht", "Matig", "Ernstig"),
+  levels  = c("Licht", "Matig", "Ernstig"),
   ordered = TRUE
 )
 
