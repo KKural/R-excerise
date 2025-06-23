@@ -1,5 +1,8 @@
 # Verwachte antwoorden:
-# misdaad_types <- factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+# misdaad_types <- factor(
+#   c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+#   levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
+# )
 # ernst_misdaad    <- factor(c("Licht", "Matig", "Ernstig"),
 #                             levels = c("Licht", "Matig", "Ernstig"),
 #                             ordered = TRUE)

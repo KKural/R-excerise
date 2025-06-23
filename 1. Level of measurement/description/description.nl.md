@@ -7,17 +7,16 @@ Maak de volgende variabelen aan met de juiste datatypes in R:
 
 ```R
 # 1. Maak de misdaad_types factorvariabele aan
-# Gebruik factor() voor categorische variabelen
+#    Gebruik factor() met expliciete levels
 
 # 2. Maak de ernst_misdaad geordende factorvariabele aan
-# Gebruik factor() met ordered=TRUE en specificeer de levels
+#    Gebruik factor(…, ordered = TRUE) en specificeer de levels
 
 # 3. Maak de leeftijden_daders numerieke vector aan
-# Gebruik c() om de getallen te combineren
+#    Gebruik c() om de getallen samen te voegen
 
 # 4. Maak de district_codes karaktervector aan
-# Gebruik c() om de codes als tekst samen te voegen
-```
+#    Gebruik c() om de codes als tekst samen te voegen
 
 **Tip:**  
 Gebruik `factor()` voor categorische variabelen (nominaal niveau).  
