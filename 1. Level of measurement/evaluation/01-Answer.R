@@ -1,4 +1,4 @@
-# Verwachte antwoorden:
+# Expected answers:
 # misdaad_types <- factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
 # ernst_misdaad <- factor(c("Licht", "Matig", "Ernstig"), levels = c("Licht", "Matig", "Ernstig"), ordered = TRUE)
 # leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
@@ -16,42 +16,43 @@ context({
     )
   })
 }, preExec = {
-  # 1. Maak de factorvariabele misdaad_types aan
-  misdaad_types <- factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+  misdaad_types <- factor(
+    c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+    levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
+  )
 
-  # 2. Maak de geordende factor ernst_misdaad aan
-  ernst_misdaad <- factor(c("Licht", "Matig", "Ernstig"), 
-                           levels = c("Licht", "Matig", "Ernstig"), 
-                           ordered = TRUE)
+  ernst_misdaad <- factor(
+    c("Licht", "Matig", "Ernstig"), 
+    levels = c("Licht", "Matig", "Ernstig"), 
+    ordered = TRUE
+  )
 
-  # 3. Maak de numerieke vector leeftijden_daders aan
   leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
 
-  # 4. Maak de karaktervector district_codes aan
   district_codes <- c("A1", "B2", "C3", "D4", "E5")
 })
 
-# Modeloplossing:
-# 1. Maak de factorvariabele misdaad_types aan
-misdaad_types <- factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+# Model solution
+misdaad_types <- factor(
+  c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
+  levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")
+)
 
-# 2. Maak de geordende factor ernst_misdaad aan
-ernst_misdaad <- factor(c("Licht", "Matig", "Ernstig"), 
-                         levels = c("Licht", "Matig", "Ernstig"), 
-                         ordered = TRUE)
+ernst_misdaad <- factor(
+  c("Licht", "Matig", "Ernstig"), 
+  levels = c("Licht", "Matig", "Ernstig"), 
+  ordered = TRUE
+)
 
-# 3. Maak de numerieke vector leeftijden_daders aan
 leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
 
-# 4. Maak de karaktervector district_codes aan
 district_codes <- c("A1", "B2", "C3", "D4", "E5")
 
 context({
   testcase("Meetniveau feedback", {
     testEqual(
-      "misdaad_types is een factor met de juiste niveaus",
+      "misdaad_types is een factor met de juiste niveaus",  # misdaad_types is a factor with the correct levels
       function(env) {
-        # Debug output
         get_reporter()$add_message(
           paste0(
             "DEBUG: class = ", paste(class(env$misdaad_types), collapse = ", "),
@@ -59,79 +60,90 @@ context({
           ),
           type = "markdown"
         )
-        is.factor(env$misdaad_types) && all(levels(env$misdaad_types) == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+        is.factor(env$misdaad_types) &&
+          all(levels(env$misdaad_types) == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
       },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `misdaad_types` should be a factor with levels: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.
           get_reporter()$add_message(
-            "❌ `misdaad_types` moet een factor zijn met de niveaus: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.",
+            "❌ `misdaad_types` moet een factor zijn met de niveaus: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.",  
+            # ❌ misdaad_types must be a factor with levels: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `misdaad_types` is juist aangemaakt als factor met de juiste niveaus.",
+            "✅ `misdaad_types` is juist aangemaakt als factor met de juiste niveaus.",  
+            # ✅ misdaad_types was correctly created as a factor with the correct levels.
             type = "markdown"
           )
         }
         got == want
       }
     )
+
     testEqual(
-      "ernst_misdaad is een geordende factor met de juiste volgorde",
-      function(env) is.ordered(env$ernst_misdaad) && all(levels(env$ernst_misdaad) == c("Licht", "Matig", "Ernstig")),
+      "ernst_misdaad is een geordende factor met de juiste volgorde",  # ernst_misdaad is an ordered factor with the correct order
+      function(env) is.ordered(env$ernst_misdaad) &&
+        all(levels(env$ernst_misdaad) == c("Licht", "Matig", "Ernstig")),
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `ernst_misdaad` should be an ordered factor with order: 'Licht' < 'Matig' < 'Ernstig'.
           get_reporter()$add_message(
-            "❌ `ernst_misdaad` moet een geordende factor zijn met de volgorde: 'Licht' < 'Matig' < 'Ernstig'.",
+            "❌ `ernst_misdaad` moet een geordende factor zijn met de volgorde: 'Licht' < 'Matig' < 'Ernstig'.",  
+            # ❌ ernst_misdaad must be an ordered factor with order: 'Licht' < 'Matig' < 'Ernstig'.
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `ernst_misdaad` is juist aangemaakt als geordende factor met de juiste volgorde.",
+            "✅ `ernst_misdaad` is juist aangemaakt als geordende factor met de juiste volgorde.",  
+            # ✅ ernst_misdaad was correctly created as an ordered factor with the correct order.
             type = "markdown"
           )
         }
         got == want
       }
     )
+
     testEqual(
-      "leeftijden_daders is een numerieke vector",
-      function(env) is.numeric(env$leeftijden_daders) && all(env$leeftijden_daders == c(19, 23, 45, 32, 28, 21)),
+      "leeftijden_daders is een numerieke vector",  # leeftijden_daders is a numeric vector
+      function(env) is.numeric(env$leeftijden_daders) &&
+        all(env$leeftijden_daders == c(19, 23, 45, 32, 28, 21)),
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `leeftijden_daders` should be a numeric vector with values: 19, 23, 45, 32, 28, 21.
           get_reporter()$add_message(
-            "❌ `leeftijden_daders` moet een numerieke vector zijn met de waarden: 19, 23, 45, 32, 28, 21.",
+            "❌ `leeftijden_daders` moet een numerieke vector zijn met de waarden: 19, 23, 45, 32, 28, 21.",  
+            # ❌ leeftijden_daders must be a numeric vector with the values: 19, 23, 45, 32, 28, 21.
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `leeftijden_daders` is juist aangemaakt als numerieke vector.",
+            "✅ `leeftijden_daders` is juist aangemaakt als numerieke vector.",  
+            # ✅ leeftijden_daders was correctly created as a numeric vector.
             type = "markdown"
           )
         }
         got == want
       }
     )
+
     testEqual(
-      "district_codes is een karaktervector",
-      function(env) is.character(env$district_codes) && all(env$district_codes == c("A1", "B2", "C3", "D4", "E5")),
+      "district_codes is een karaktervector",  # district_codes is a character vector
+      function(env) is.character(env$district_codes) &&
+        all(env$district_codes == c("A1", "B2", "C3", "D4", "E5")),
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
-          # `district_codes` should be a character vector with values: 'A1', 'B2', 'C3', 'D4', 'E5'.
           get_reporter()$add_message(
-            "❌ `district_codes` moet een karaktervector zijn met de waarden: 'A1', 'B2', 'C3', 'D4', 'E5'.",
+            "❌ `district_codes` moet een karaktervector zijn met de waarden: 'A1', 'B2', 'C3', 'D4', 'E5'.",  
+            # ❌ district_codes must be a character vector with values: 'A1', 'B2', 'C3', 'D4', 'E5'.
             type = "markdown"
           )
         } else {
           get_reporter()$add_message(
-            "✅ `district_codes` is juist aangemaakt als karaktervector.",
+            "✅ `district_codes` is juist aangemaakt als karaktervector.",  
+            # ✅ district_codes was correctly created as a character vector.
             type = "markdown"
           )
         }
