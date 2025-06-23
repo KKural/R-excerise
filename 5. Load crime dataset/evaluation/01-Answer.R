@@ -3,17 +3,21 @@
 
 context({
 
-  # ------------------  TESTS  ------------------
+  # ----------------  TESTS  ----------------
   testcase("Gebruik van getwd() en setwd()", {
 
-    # Student source as one string
-    student_code <- paste(readLines(env$.__code__), collapse = "\n")
+    # helper: entire student source as text
+    src <- function(env) paste(readLines(env$`.__code__`), collapse = "\n")
 
-    testTrue("`getwd()` is gebruikt",
-             grepl("getwd\\s*\\(", student_code))
+    testTrue(
+      "`getwd()` is gebruikt",
+      function(env) grepl("getwd\\s*\\(", src(env))
+    )
 
-    testTrue("`setwd()` is gebruikt",
-             grepl("setwd\\s*\\(", student_code))
+    testTrue(
+      "`setwd()` is gebruikt",
+      function(env) grepl("setwd\\s*\\(", src(env))
+    )
   })
 
   testcase("Dataset correct ingeladen", {
@@ -25,18 +29,15 @@ context({
   })
 
 }, preExec = {
-
-  # -------- maak tijdelijk CSV-bestand ----------
+  # -------- schrijf tijdelijk CSV-bestand -----------
   library(tibble); library(dplyr)
 
   set.seed(42)
 
   crime_df <- tibble(
     zaak_id    = sprintf("ZAAK%03d", 1:200),
-    datum      = sample(
-                   seq.Date(as.Date("2023-01-01"),
-                            as.Date("2023-12-31"), "day"),
-                   200, TRUE),
+    datum      = sample(seq.Date(as.Date("2023-01-01"),
+                                 as.Date("2023-12-31"), "day"), 200, TRUE),
     district   = sample(c("A","B","C","D"), 200, TRUE, prob = c(.4,.3,.2,.1)),
     misdaad_type = sample(c("Inbraak","Aanval","Diefstal","Vandalisme"), 200, TRUE),
     waardeverlies       = round(rlnorm(200, 3, 1)),
