@@ -1,8 +1,7 @@
 {
   "description": {
     "names": {
-      "en": "9. Filter violent crimes using subset()",
-      "nl": "9. Filter gewelddadige misdrijven met subset()"
+      "en": "9. Filteren van gewelddadige misdrijven"
     }
   },
   "programming_language": "R",
@@ -12,7 +11,7 @@
   "test_suite": "evaluation",
   "access": "public",
   "internals": {
-    "token": "MIPPJhbTgubhMgzkUn6WrKAFHgDD3QfIDgCBHaYcirGHieqZmEMAHZQVkbiU3vMS",
+    "token": null,
     "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
   },
   "labels": []

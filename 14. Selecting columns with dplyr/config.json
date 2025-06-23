@@ -1,8 +1,7 @@
 {
   "description": {
     "names": {
-      "en": "14. Selecting columns with dplyr",
-      "nl": "14. Selecteer kolommen met dplyr"
+      "en": "14. Kolommen selecteren met dplyr"
     }
   },
   "programming_language": "R",
@@ -12,7 +11,7 @@
   "test_suite": "evaluation",
   "access": "public",
   "internals": {
-    "token": "sARb2HUkjnFaMeRUHAnxExVKugmhJGnPMKN8hnfpYvTef6qeZnsdNHzCuhN-IYbZ",
+    "token": null,
     "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
   },
   "labels": []

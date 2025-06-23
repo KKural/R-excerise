@@ -1,8 +1,7 @@
 {
   "description": {
     "names": {
-      "en": "10. Calculate crime rate per population",
-      "nl": "10. Bereken misdaadcijfer per bevolking"
+      "en": "10. De berekening van het misdaadcijfer"
     }
   },
   "programming_language": "R",

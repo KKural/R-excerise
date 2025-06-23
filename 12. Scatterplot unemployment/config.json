@@ -1,8 +1,7 @@
 {
   "description": {
     "names": {
-      "en": "12. Create a scatterplot of unemployment and crime",
-      "nl": "12. Maak een spreidingsdiagram van werkloosheid en misdaad"
+      "en": "12. Spreidingsdiagram werkloosheid"
     }
   },
   "programming_language": "R",
@@ -12,7 +11,7 @@
   "test_suite": "evaluation",
   "access": "public",
   "internals": {
-    "token": "abGtnr_fmxu53J9aueprzN8Sf8zMxsHi-KkwTsziiXUda_XGwHcdbT2SkDDHnqSG",
+    "token": null,
     "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
   },
   "labels": []

@@ -1,8 +1,7 @@
 {
   "description": {
     "names": {
-      "en": "8. Use summary() to describe offender age",
-      "nl": "8. Gebruik summary() om de leeftijd van daders te beschrijven"
+      "en": "8. De leeftijd van de dader beschrijven"
     }
   },
   "programming_language": "R",
