@@ -1,6 +1,0 @@
-question "Which function do you use to calculate the average of a series of numbers?" {
-  answer "average()"
-  answer "mean()" correct
-  answer "median()"
-  answer "sum()"
-}
