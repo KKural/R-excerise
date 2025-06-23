@@ -2,6 +2,7 @@
 
 context({
   testcase("Feedback bij basisfuncties op df_crime_data", {
+
     # 1) `str()`
     testEqual(
       "str(df_crime_data) toont de structuur van het data frame",
@@ -9,21 +10,12 @@ context({
       "check_substrings",
       comparator = function(got, want, ...) {
         # Echo the command
-        get_reporter()$add_message(
-          "```r
-> str(df_crime_data)
-```",
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> str(df_crime_data)\n```", type = "markdown")
         # Echo the output
-        get_reporter()$add_message(
-          paste0("```
-", got, "
-```"),
-          type = "markdown"
-        )
+        get_reporter()$add_message(paste0("```\n", got, "\n```"), type = "markdown")
         # Commentary
-        if (all(sapply(c("data.frame", "id", "type", "ernst", "age", "district"), function(x) grepl(x, got)))) {
+        if (all(sapply(c("data.frame", "id", "type", "ernst", "age", "district"),
+                       function(x) grepl(x, got)))) {
           get_reporter()$add_message(
             "✅ str(df_crime_data): toont kolomnamen, types en voorbeeldwaarden.",
             type = "markdown"
@@ -39,24 +31,25 @@ context({
       }
     )
 
-
     # 2) `names()`
     testEqual(
       "names(df_crime_data) geeft de kolomnamen terug",
-      # capture.output turns the vector into printable lines
       function(env) paste(capture.output(names(env$df_crime_data)), collapse = "\n"),
       "check_substrings",
       comparator = function(got, want, ...) {
-        # Echo the command
         get_reporter()$add_message("```r\n> names(df_crime_data)\n```", type = "markdown")
-        # Echo the raw output
         get_reporter()$add_message(paste0("```\n", got, "\n```"), type = "markdown")
-        # Now the human‐readable feedback
         if (all(names(env$df_crime_data) == c("id","type","ernst","age","district"))) {
-          get_reporter()$add_message("✅ names(df_crime_data): kolomnamen zijn id, type, ernst, age, district.", type = "markdown")
+          get_reporter()$add_message(
+            "✅ names(df_crime_data): kolomnamen zijn id, type, ernst, age, district.",
+            type = "markdown"
+          )
           TRUE
         } else {
-          get_reporter()$add_message("❌ names(df_crime_data): onjuiste kolomnamen.", type = "markdown")
+          get_reporter()$add_message(
+            "❌ names(df_crime_data): onjuiste kolomnamen.",
+            type = "markdown"
+          )
           FALSE
         }
       }
@@ -68,18 +61,8 @@ context({
       function(env) length(env$df_crime_data),
       5,
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> length(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0("```
-[1] ", got, "
-```"),
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> length(df_crime_data)\n```", type = "markdown")
+        get_reporter()$add_message(paste0("```\n[1] ", got, "\n```"), type = "markdown")
         if (got == want) {
           get_reporter()$add_message(
             "✅ length(df_crime_data): aantal kolommen = 5.",
@@ -88,7 +71,7 @@ context({
           TRUE
         } else {
           get_reporter()$add_message(
-            paste0("❌ length(df_crime_data): geeft ",got," in plaats van 5."),
+            paste0("❌ length(df_crime_data): geeft ", got, " in plaats van 5."),
             type = "markdown"
           )
           FALSE
@@ -102,18 +85,8 @@ context({
       function(env) nrow(env$df_crime_data),
       5,
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> nrow(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0("```
-[1] ", got, "
-```"),
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> nrow(df_crime_data)\n```", type = "markdown")
+        get_reporter()$add_message(paste0("```\n[1] ", got, "\n```"), type = "markdown")
         if (got == want) {
           get_reporter()$add_message(
             "✅ nrow(df_crime_data): aantal rijen = 5.",
@@ -122,7 +95,7 @@ context({
           TRUE
         } else {
           get_reporter()$add_message(
-            paste0("❌ nrow(df_crime_data): geeft ",got," in plaats van 5."),
+            paste0("❌ nrow(df_crime_data): geeft ", got, " in plaats van 5."),
             type = "markdown"
           )
           FALSE
@@ -136,18 +109,8 @@ context({
       function(env) ncol(env$df_crime_data),
       5,
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> ncol(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0("```
-[1] ", got, "
-```"),
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> ncol(df_crime_data)\n```", type = "markdown")
+        get_reporter()$add_message(paste0("```\n[1] ", got, "\n```"), type = "markdown")
         if (got == want) {
           get_reporter()$add_message(
             "✅ ncol(df_crime_data): aantal kolommen = 5.",
@@ -156,7 +119,7 @@ context({
           TRUE
         } else {
           get_reporter()$add_message(
-            paste0("❌ ncol(df_crime_data): geeft ",got," in plaats van 5."),
+            paste0("❌ ncol(df_crime_data): geeft ", got, " in plaats van 5."),
             type = "markdown"
           )
           FALSE
@@ -167,21 +130,22 @@ context({
     # 6) `head()`
     testEqual(
       "head(df_crime_data) toont de eerste rijen van het data frame",
-      # capture.output will format the printed table as lines of text
       function(env) paste(capture.output(head(env$df_crime_data)), collapse = "\n"),
       "check_substrings",
       comparator = function(got, want, ...) {
-        # Echo the command
         get_reporter()$add_message("```r\n> head(df_crime_data)\n```", type = "markdown")
-        # Echo the raw output
         get_reporter()$add_message(paste0("```\n", got, "\n```"), type = "markdown")
-        # Human feedback
-        # We know the first column is id 1:5, so we just check that substring
         if (grepl("1  1", got) && grepl("5 Vandalisme", got)) {
-          get_reporter()$add_message("✅ head(df_crime_data): eerste 5 rijen komen overeen.", type = "markdown")
+          get_reporter()$add_message(
+            "✅ head(df_crime_data): eerste 5 rijen komen overeen.",
+            type = "markdown"
+          )
           TRUE
         } else {
-          get_reporter()$add_message("❌ head(df_crime_data): rijen kwamen niet uit zoals verwacht.", type = "markdown")
+          get_reporter()$add_message(
+            "❌ head(df_crime_data): rijen kwamen niet uit zoals verwacht.",
+            type = "markdown"
+          )
           FALSE
         }
       }
@@ -193,18 +157,8 @@ context({
       function(env) paste(capture.output(summary(env$df_crime_data)), collapse = "\n"),
       "check_substrings",
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> summary(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0("```
-", got, "
-```"),
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> summary(df_crime_data)\n```", type = "markdown")
+        get_reporter()$add_message(paste0("```\n", got, "\n```"), type = "markdown")
         get_reporter()$add_message(
           "✅ summary(df_crime_data): toont frequenties en statistieken.",
           type = "markdown"
@@ -219,18 +173,8 @@ context({
       function(env) class(env$df_crime_data)[1],
       "data.frame",
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> class(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0("```
-[1] \"", got, "\"
-```"),
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> class(df_crime_data)\n```", type = "markdown")
+        get_reporter()$add_message(paste0("```\n[1] \"", got, "\"\n```"), type = "markdown")
         get_reporter()$add_message(
           "✅ class(df_crime_data): objecttype = data.frame.",
           type = "markdown"
@@ -245,18 +189,8 @@ context({
       function(env) dim(env$df_crime_data),
       c(5, 5),
       comparator = function(got, want, ...) {
-        get_reporter()$add_message(
-          "```r
-> dim(df_crime_data)
-```",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0("```
-[1] ", paste(got, collapse=" "), "
-```"),
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> dim(df_crime_data)\n```", type = "markdown")
+        get_reporter()$add_message(paste0("```\n[1] ", paste(got, collapse=" "), "\n```"), type = "markdown")
         get_reporter()$add_message(
           "✅ dim(df_crime_data): dimensies = (5, 5).",
           type = "markdown"
@@ -276,7 +210,8 @@ context({
                ),
     ernst    = factor(
                  c("Licht","Matig","Ernstig","Licht","Matig"),
-                 levels = c("Licht","Matig","Ernstig"), ordered = TRUE
+                 levels = c("Licht","Matig","Ernstig"),
+                 ordered = TRUE
                ),
     age      = c(21, 34, 28, 19, 45),
     district = c("A1","B2","C3","D4","E5"),
