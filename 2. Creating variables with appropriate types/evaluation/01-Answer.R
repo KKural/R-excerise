@@ -97,31 +97,5 @@ context({
         got == want
       }
     )
-    testEqual(
-      "nrow(df_crime_data) geeft het aantal rijen terug",
-      function(env) nrow(env$df_crime_data) == 3,
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `nrow(df_crime_data)` moet het aantal rijen (3) teruggeven.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `nrow(df_crime_data)` geeft correct het aantal rijen terug.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
-    )
   })
-}, preExec = {
-  # Maak een eenvoudig data frame df_crime_data aan
-  df_crime_data <<- data.frame(
-    type = c("Diefstal", "Inbraak", "Fraude"),
-    aantal = c(10, 5, 3),
-    district = c("A1", "B2", "C3")
-  )
 })
