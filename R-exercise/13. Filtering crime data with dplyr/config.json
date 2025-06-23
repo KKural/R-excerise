@@ -1,0 +1,14 @@
+{
+    "name": "Filtering crime data with dplyr",
+    "type": "exercise",
+    "language": "r",
+    "difficulty": 1,
+    "tags": [
+        "dplyr",
+        "filter",
+        "data manipulation",
+        "criminology"
+    ],
+    "scaffolding": "worked example",
+    "bloom_level": "Apply"
+}
