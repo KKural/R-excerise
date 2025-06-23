@@ -32,23 +32,28 @@ context({
     testEqual(
       "delict_tabel is correct aangemaakt",
       function(env) {
-        exists("delict_tabel", envir = env) && is.table(env$delict_tabel)
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
+        if (!exists("delict_tabel", envir = env)) {
           get_reporter()$add_message(
-            "❌ De variabele 'delict_tabel' moet bestaan en een frequentietabel zijn gemaakt van delictsoorten.",
+            "❌ De variabele 'delict_tabel' bestaat niet.",
             type = "error"
           )
-        } else {
-          get_reporter()$add_message(
-            "✅ De frequentietabel is correct aangemaakt en opgeslagen in 'delict_tabel'.",
-            type = "success"
-          )
+          return(FALSE)
         }
-        got == want
-      }
+        if (!is.table(env$delict_tabel)) {
+          get_reporter()$add_message(
+            "❌ 'delict_tabel' moet een frequentietabel zijn.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        get_reporter()$add_message(
+          "Correct! De frequentietabel is correct aangemaakt en opgeslagen in 'delict_tabel'.",
+          type = "success"
+        )
+        TRUE
+      },
+      TRUE,
+      comparator = function(got, want, ...) { got == want }
     )
   })
 })

@@ -7,25 +7,28 @@ context({
     testEqual(
       "leeftijd_samenvatting is correct aangemaakt",
       function(env) {
-        exists("leeftijd_samenvatting", envir = env) && is.numeric(env$leeftijd_samenvatting)
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          # De variabele 'leeftijd_samenvatting' moet bestaan en een numerieke samenvatting zijn van leeftijden_daders.
+        if (!exists("leeftijd_samenvatting", envir = env)) {
           get_reporter()$add_message(
-            "❌ De variabele 'leeftijd_samenvatting' moet bestaan en een numerieke samenvatting zijn van leeftijden_daders.",
+            "❌ De variabele 'leeftijd_samenvatting' bestaat niet.",
             type = "error"
           )
-        } else {
-          # Correct! De samenvatting was gemaakt en opgeslagen in 'leeftijd_samenvatting'.
-          get_reporter()$add_message(
-            "✅ De samenvatting is correct aangemaakt en opgeslagen in 'leeftijd_samenvatting'.",
-            type = "success"
-          )
+          return(FALSE)
         }
-        got == want
-      }
+        if (!is.numeric(env$leeftijd_samenvatting)) {
+          get_reporter()$add_message(
+            "❌ 'leeftijd_samenvatting' moet een numerieke samenvatting zijn van 'leeftijden_daders'.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        get_reporter()$add_message(
+          "Correct! De samenvatting is correct aangemaakt en opgeslagen in 'leeftijd_samenvatting'.",
+          type = "success"
+        )
+        TRUE
+      },
+      TRUE,
+      comparator = function(got, want, ...) { got == want }
     )
   })
 }, preExec = {

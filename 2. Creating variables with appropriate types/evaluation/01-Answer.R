@@ -18,82 +18,94 @@ district_codes <- c("A1", "B2", "C3", "D4", "E5")
 context({
   testcase("Feedback bij variabelen aanmaken", {
     testEqual(
-      "misdaad_types is een factor met de juiste niveaus",
-      function(env) is.factor(env$misdaad_types) && all(levels(env$misdaad_types) == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+      "Controle op misdaad_types",
+      function(env) {
+        if (!exists("misdaad_types", envir = env)) {
+          get_reporter()$add_message("❌ De variabele 'misdaad_types' bestaat niet.", type = "error")
+          return(FALSE)
+        }
+        if (!is.factor(env$misdaad_types)) {
+          get_reporter()$add_message("❌ 'misdaad_types' moet een factor zijn.", type = "error")
+          return(FALSE)
+        }
+        if (!identical(levels(env$misdaad_types), c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))) {
+          get_reporter()$add_message("❌ 'misdaad_types' moet de juiste niveaus hebben: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.", type = "error")
+          return(FALSE)
+        }
+        TRUE
+      },
       TRUE,
       comparator = function(got, want, ...) {
-        if (!got) {
-          # `misdaad_types` should be a factor with levels: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.
-          get_reporter()$add_message(
-            "❌ `misdaad_types` moet een factor zijn met de niveaus: 'Diefstal', 'Aanval', 'Inbraak', 'Fraude', 'Vandalisme'.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `misdaad_types` is juist aangemaakt als factor met de juiste niveaus.",
-            type = "markdown"
-          )
-        }
+        if (got) get_reporter()$add_message("Correct!", type = "success")
         got == want
       }
     )
     testEqual(
-      "ernst_misdaad is een geordende factor met de juiste volgorde",
-      function(env) is.ordered(env$ernst_misdaad) && all(levels(env$ernst_misdaad) == c("Licht", "Matig", "Ernstig")),
+      "Controle op ernst_misdaad",
+      function(env) {
+        if (!exists("ernst_misdaad", envir = env)) {
+          get_reporter()$add_message("❌ De variabele 'ernst_misdaad' bestaat niet.", type = "error")
+          return(FALSE)
+        }
+        if (!is.ordered(env$ernst_misdaad)) {
+          get_reporter()$add_message("❌ 'ernst_misdaad' moet een geordende factor zijn.", type = "error")
+          return(FALSE)
+        }
+        if (!identical(levels(env$ernst_misdaad), c("Licht", "Matig", "Ernstig"))) {
+          get_reporter()$add_message("❌ 'ernst_misdaad' moet de juiste volgorde hebben: 'Licht', 'Matig', 'Ernstig'.", type = "error")
+          return(FALSE)
+        }
+        TRUE
+      },
       TRUE,
       comparator = function(got, want, ...) {
-        if (!got) {
-          # `ernst_misdaad` should be an ordered factor with order: 'Licht' < 'Matig' < 'Ernstig'.
-          get_reporter()$add_message(
-            "❌ `ernst_misdaad` moet een geordende factor zijn met de volgorde: 'Licht' < 'Matig' < 'Ernstig'.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `ernst_misdaad` is juist aangemaakt als geordende factor met de juiste volgorde.",
-            type = "markdown"
-          )
-        }
+        if (got) get_reporter()$add_message("Correct!", type = "success")
         got == want
       }
     )
     testEqual(
-      "leeftijden_daders is een numerieke vector",
-      function(env) is.numeric(env$leeftijden_daders) && all(env$leeftijden_daders == c(19, 23, 45, 32, 28, 21)),
+      "Controle op leeftijden_daders",
+      function(env) {
+        if (!exists("leeftijden_daders", envir = env)) {
+          get_reporter()$add_message("❌ De variabele 'leeftijden_daders' bestaat niet.", type = "error")
+          return(FALSE)
+        }
+        if (!is.numeric(env$leeftijden_daders)) {
+          get_reporter()$add_message("❌ 'leeftijden_daders' moet een numerieke vector zijn.", type = "error")
+          return(FALSE)
+        }
+        if (!identical(env$leeftijden_daders, c(19, 23, 45, 32, 28, 21))) {
+          get_reporter()$add_message("❌ 'leeftijden_daders' moet exact deze waarden bevatten: 19, 23, 45, 32, 28, 21.", type = "error")
+          return(FALSE)
+        }
+        TRUE
+      },
       TRUE,
       comparator = function(got, want, ...) {
-        if (!got) {
-          # `leeftijden_daders` should be a numeric vector with values: 19, 23, 45, 32, 28, 21.
-          get_reporter()$add_message(
-            "❌ `leeftijden_daders` moet een numerieke vector zijn met de waarden: 19, 23, 45, 32, 28, 21.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `leeftijden_daders` is juist aangemaakt als numerieke vector.",
-            type = "markdown"
-          )
-        }
+        if (got) get_reporter()$add_message("Correct!", type = "success")
         got == want
       }
     )
     testEqual(
-      "district_codes is een karaktervector",
-      function(env) is.character(env$district_codes) && all(env$district_codes == c("A1", "B2", "C3", "D4", "E5")),
+      "Controle op district_codes",
+      function(env) {
+        if (!exists("district_codes", envir = env)) {
+          get_reporter()$add_message("❌ De variabele 'district_codes' bestaat niet.", type = "error")
+          return(FALSE)
+        }
+        if (!is.character(env$district_codes)) {
+          get_reporter()$add_message("❌ 'district_codes' moet een karaktervector zijn.", type = "error")
+          return(FALSE)
+        }
+        if (!identical(env$district_codes, c("A1", "B2", "C3", "D4", "E5"))) {
+          get_reporter()$add_message("❌ 'district_codes' moet exact deze waarden bevatten: 'A1', 'B2', 'C3', 'D4', 'E5'.", type = "error")
+          return(FALSE)
+        }
+        TRUE
+      },
       TRUE,
       comparator = function(got, want, ...) {
-        if (!got) {
-          # `district_codes` should be a character vector with values: 'A1', 'B2', 'C3', 'D4', 'E5'.
-          get_reporter()$add_message(
-            "❌ `district_codes` moet een karaktervector zijn met de waarden: 'A1', 'B2', 'C3', 'D4', 'E5'.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `district_codes` is juist aangemaakt als karaktervector.",
-            type = "markdown"
-          )
-        }
+        if (got) get_reporter()$add_message("Correct!", type = "success")
         got == want
       }
     )

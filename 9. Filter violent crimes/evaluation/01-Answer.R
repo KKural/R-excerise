@@ -37,23 +37,28 @@ context({
     testEqual(
       "geweldsdelicten_df is correct gefilterd",
       function(env) {
-        exists("geweldsdelicten_df", envir = env) && is.data.frame(env$geweldsdelicten_df)
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
+        if (!exists("geweldsdelicten_df", envir = env)) {
           get_reporter()$add_message(
-            "❌ De variabele 'geweldsdelicten_df' moet bestaan en een data frame zijn met alleen gewelddadige misdrijven.",
+            "❌ De variabele 'geweldsdelicten_df' bestaat niet.",
             type = "error"
           )
-        } else {
-          get_reporter()$add_message(
-            "✅ De data frame is correct gefilterd en opgeslagen in 'geweldsdelicten_df'.",
-            type = "success"
-          )
+          return(FALSE)
         }
-        got == want
-      }
+        if (!is.data.frame(env$geweldsdelicten_df)) {
+          get_reporter()$add_message(
+            "❌ 'geweldsdelicten_df' moet een data frame zijn met alleen gewelddadige misdrijven.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        get_reporter()$add_message(
+          "Correct! De data frame is correct gefilterd en opgeslagen in 'geweldsdelicten_df'.",
+          type = "success"
+        )
+        TRUE
+      },
+      TRUE,
+      comparator = function(got, want, ...) { got == want }
     )
   })
 })

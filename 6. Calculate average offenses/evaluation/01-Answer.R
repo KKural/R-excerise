@@ -26,25 +26,36 @@ context({
     testEqual(
       "gem_feiten is correct berekend",
       function(env) {
-        exists("gem_feiten", envir = env) && is.numeric(env$gem_feiten) && abs(env$gem_feiten - mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))) < 1e-6
-      },
-      TRUE,
-      comparator = function(got, want, ...) {
-        # De variabele 'gem_feiten' moet bestaan en het gemiddelde zijn van maandelijkse_feiten.
-        if (!got) {
+        if (!exists("gem_feiten", envir = env)) {
           get_reporter()$add_message(
-            "❌ De variabele 'gem_feiten' moet bestaan en het gemiddelde zijn van maandelijkse_feiten.",
+            "❌ De variabele 'gem_feiten' bestaat niet.",
             type = "error"
           )
-        } else {
-          # Correct! Het gemiddelde is berekend en opgeslagen in 'gem_feiten'.
-          get_reporter()$add_message(
-            "✅ Het gemiddelde is correct berekend en opgeslagen in 'gem_feiten'.",
-            type = "success"
-          )
+          return(FALSE)
         }
-        got == want
-      }
+        if (!is.numeric(env$gem_feiten)) {
+          get_reporter()$add_message(
+            "❌ 'gem_feiten' moet een numerieke waarde zijn.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        verwacht <- mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))
+        if (abs(env$gem_feiten - verwacht) > 1e-6) {
+          get_reporter()$add_message(
+            "❌ 'gem_feiten' bevat niet het juiste gemiddelde van 'maandelijkse_feiten'.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        get_reporter()$add_message(
+          "Correct! Het gemiddelde is correct berekend en opgeslagen in 'gem_feiten'.",
+          type = "success"
+        )
+        TRUE
+      },
+      TRUE,
+      comparator = function(got, want, ...) { got == want }
     )
   })
 })
