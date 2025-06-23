@@ -46,14 +46,10 @@ context({
       TRUE,
       comparator = function(got, want, ...) {
         # Echo the command
-        get_reporter()$add_message("```r
-> names(df_crime_data)
-```", type = "markdown")
-        # Echo the raw output
+        get_reporter()$add_message("```r\n> names(df_crime_data)\n```", type = "markdown")
+        # Echo the raw output as a comma-separated string
         get_reporter()$add_message(
-          paste0("```
-", paste(capture.output(names(env$df_crime_data)), collapse = " "), "
-```"),
+          paste0("```", toString(names(env$df_crime_data)), "````),
           type = "markdown"
         )
         if (got) {
