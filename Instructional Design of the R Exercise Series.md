@@ -121,6 +121,8 @@ Including onboarding questions like these can help students get comfortable with
 
 ## 6. Exercise Progression Table
 
+<div align="center">
+
 | #  | Folder Name                             | Bloom Level             | Scaffolding Level | PRIMM Phase                   |
 |:--:|:---------------------------------------:|:----------------------:|:-----------------:|:-----------------------------:|
 | 01 | Level of measurement                   | Remember & Understand    | Full support       | Predict, Run                  |
@@ -138,6 +140,8 @@ Including onboarding questions like these can help students get comfortable with
 | 13 | Creating histograms with ggplot2        | Apply                    | Partial support    | Run, Modify                   |
 | 14 | Saving results with write.csv           | Apply                    | Partial support    | Run, Modify                   |
 | 15 | Writing simple custom functions         | Create                   | Minimal support    | Make                          |
+
+</div>
 
 ## 7. Rationale for Progression
 
