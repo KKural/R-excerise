@@ -29,7 +29,7 @@ context({
 })
 
 # ----------------------------
-# Tests
+# Test
 # ----------------------------
 context({
   # Dummy pad voor demonstratie setwd/getwd
