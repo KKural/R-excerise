@@ -16,7 +16,7 @@ context({
     testEqual(
       "str(df_crime_data) toont de structuur van het data frame",
       function(env) paste(capture.output(str(env$df_crime_data)), collapse = "\n"),
-      # Expected output contains these substrings (for robust checking)
+      "check_substrings",
       comparator = function(got, want, ...) {
         all(sapply(c("data.frame", "type", "ernst", "leeftijd", "district"), function(x) grepl(x, got)))
       }
@@ -63,14 +63,15 @@ context({
     testEqual(
       "summary(df_crime_data) geeft een samenvatting van alle kolommen",
       function(env) paste(capture.output(summary(env$df_crime_data)), collapse = "\n"),
+      "check_substrings",
       comparator = function(got, want, ...) {
         all(sapply(c("Diefstal", "Licht", "leeftijd"), function(x) grepl(x, got)))
       }
     )
     testEqual(
       "class(df_crime_data) geeft het type object terug",
-      function(env) class(env$df_crime_data),
-      c("data.frame")
+      function(env) class(env$df_crime_data)[1],
+      "data.frame"
     )
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
