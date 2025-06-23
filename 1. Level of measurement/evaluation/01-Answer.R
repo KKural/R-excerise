@@ -15,7 +15,7 @@ context({
   testcase("Feedback bij basisfuncties op data frame", {
     testEqual(
       "str(df_crime_data) toont de structuur van het data frame",
-      function(env) paste(capture.output(str(env$df_crime_data)), collapse = "\n"),
+      function() paste(capture.output(str(df_crime_data)), collapse = "\n"),
       "check_substrings",
       comparator = function(got, want, ...) {
         all(sapply(c("data.frame", "type", "ernst", "leeftijd", "district"), function(x) grepl(x, got)))
@@ -23,7 +23,7 @@ context({
     )
     testEqual(
       "names(df_crime_data) geeft de kolomnamen terug",
-      function(env) all(names(env$df_crime_data) == c("type", "ernst", "leeftijd", "district")),
+      function() all(names(df_crime_data) == c("type", "ernst", "leeftijd", "district")),
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -42,27 +42,27 @@ context({
     )
     testEqual(
       "length(df_crime_data) geeft het aantal kolommen terug",
-      function(env) length(env$df_crime_data),
+      function() length(df_crime_data),
       4
     )
     testEqual(
       "nrow(df_crime_data) geeft het aantal rijen terug",
-      function(env) nrow(env$df_crime_data),
+      function() nrow(df_crime_data),
       5
     )
     testEqual(
       "ncol(df_crime_data) geeft het aantal kolommen terug",
-      function(env) ncol(env$df_crime_data),
+      function() ncol(df_crime_data),
       4
     )
     testEqual(
       "head(df_crime_data) toont de eerste rijen van het data frame",
-      function(env) all(head(env$df_crime_data)$type == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+      function() all(head(df_crime_data)$type == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
       TRUE
     )
     testEqual(
       "summary(df_crime_data) geeft een samenvatting van alle kolommen",
-      function(env) paste(capture.output(summary(env$df_crime_data)), collapse = "\n"),
+      function() paste(capture.output(summary(df_crime_data)), collapse = "\n"),
       "check_substrings",
       comparator = function(got, want, ...) {
         all(sapply(c("Diefstal", "Licht", "leeftijd"), function(x) grepl(x, got)))
@@ -70,24 +70,13 @@ context({
     )
     testEqual(
       "class(df_crime_data) geeft het type object terug",
-      function(env) class(env$df_crime_data)[1],
+      function() class(df_crime_data)[1],
       "data.frame"
     )
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
-      function(env) dim(env$df_crime_data),
+      function() dim(df_crime_data),
       c(5, 4)
     )
   })
-}, preExec = {
-  # Maak het data frame direct aan in plaats van inlezen uit csv
-  df_crime_data <<- data.frame(
-    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"),
-                  levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
-    ernst = ordered(c("Licht", "Matig", "Ernstig", "Licht", "Matig"),
-                    levels = c("Licht", "Matig", "Ernstig")),
-    leeftijd = c(19, 23, 45, 32, 28),
-    district = c("A1", "B2", "C3", "D4", "E5"),
-    stringsAsFactors = FALSE
-  )
 })
