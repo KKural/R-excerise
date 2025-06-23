@@ -1,9 +1,5 @@
-# Filter violent crimes using subset()
+# Filter violent crimes
 
-## Criminological Context
-Crime analysts often need to filter datasets to focus on specific types of offenses. Separating violent crimes from non-violent ones is a common task in criminological research, as these categories often have different patterns, causes, and interventions.
-
-## Task
 You have a dataset of reported crimes. Use the `subset()` function to create a new dataset containing only violent crimes (those classified as 'Assault', 'Robbery', or 'Homicide') and store it in a variable called `violent_crimes_df`.
 
 ```R
@@ -28,9 +24,7 @@ crime_data <- data.frame(
 
 ```
 
-**Bloom Level: Apply**
-
-**Tips:** 
+**Tip:**
 - The `subset()` function in R allows you to select specific rows from a data frame based on a condition
 - Use the `%in%` operator to check if values are in a set (e.g., `offense %in% c("Assault", "Robbery", "Homicide")`)
 - Remember to assign the result to the variable `violent_crimes_df`

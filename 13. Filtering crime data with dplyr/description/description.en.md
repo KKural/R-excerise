@@ -1,24 +1,8 @@
 # Filtering crime data with dplyr
 
-**Bloom’s Level:** Apply  
-**PRIMM Step:** Predict → Run → Modify
+You are given a small dataset of crime records. Use the `dplyr` package to filter the data and select only the rows where the crime type is "Theft". Store the result in a variable called `filtered_data`.
 
----
-
-## Scenario
-You are given a small dataset of crime records. Your task is to use the `dplyr` package to filter the data and select only the rows where the crime type is "Theft".
-
----
-
-## Instructions
-1. **Predict:** What will the code below do? (Think before you run it!)
-2. **Run:** Execute the code to see the result.
-3. **Modify:** Change the code so it selects only the rows where `crime_type` is "Theft".
-
----
-
-### Starter code
-```r
+```R
 library(dplyr)
 
 crime_data <- data.frame(
@@ -31,16 +15,10 @@ crime_data <- data.frame(
 # Filter for thefts only
 filtered_data <- filter(crime_data, crime_type == "Theft")
 
-print(filtered_data)
+# Your code here (optional: print or inspect filtered_data)
+
 ```
 
----
-
 **Tip:**
-- Use `filter()` from the `dplyr` package.
-- Check the output to make sure only "Theft" crimes are shown.
-
----
-
-**Why this matters:**
-Filtering is a key skill for analyzing real crime data and focusing on specific types of offenses.
+- Use `filter()` from the `dplyr` package to select rows based on a condition
+- Make sure to assign the result to the variable `filtered_data`

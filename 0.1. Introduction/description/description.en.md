@@ -1,4 +1,19 @@
-# Hoe werkt Dodona?
+# bloom_level: Remember & Understand
+# scaffolding_level: Full support
+# primm_phase: Introduction
+
+# Introduction: How Dodona Works
+
+## Criminological Context
+Dodona is an online learning platform that allows you to practice programming exercises and receive instant feedback. For criminology students, this means you can learn R in a supportive, interactive environment, with exercises tailored to real-world crime data analysis.
+
+## Task
+Read this introduction to understand how to navigate Dodona, submit code, and interpret feedback. This will help you get the most out of the R exercise series.
+
+**Tip:**
+- Read each exercise carefully and use the provided tips.
+- Learn from feedback and try different solutions to deepen your understanding.
+---
 
 ## Wat is Dodona?
 
@@ -31,47 +46,3 @@ Na het indienen van je code krijg je directe feedback:
 - **Begin eenvoudig** en voeg complexiteit toe naarmate je vordert
 - **Test je code** met verschillende voorbeelden
 - **Leer van fouten** door de feedback goed te lezen
-
-## R in Dodona
-
-In deze cursus gebruiken we R, een programmeertaal die veel wordt gebruikt voor statistische analyses. Dodona voert je R-code uit en controleert of deze aan de verwachtingen voldoet.
-
----
-
-# How does Dodona work?
-
-## What is Dodona?
-
-Dodona is an online learning platform where you can complete programming exercises and receive immediate feedback. The platform automatically checks your code and indicates what is right or wrong, allowing you to quickly learn from your mistakes.
-
-## Navigation
-
-- **Series**: The course is divided into different series (chapters)
-- **Exercises**: Each series contains multiple exercises
-- **Progress**: Your progress is automatically tracked
-
-## Writing and submitting code
-
-1. Read the assignment carefully
-2. Write your code in the code window
-3. Click "Submit" to check your solution
-4. Review the feedback and adjust your code if necessary
-
-## Understanding feedback
-
-After submitting your code, you receive immediate feedback:
-- **Green**: Your solution is correct
-- **Orange**: Your solution is partially correct or contains warnings
-- **Red**: Your solution contains errors that need to be fixed
-
-## Tips for success
-
-- **Read the assignment completely** before you start programming
-- **Use the Tips** provided with each assignment
-- **Start simple** and add complexity as you progress
-- **Test your code** with different examples
-- **Learn from mistakes** by reading the feedback carefully
-
-## R in Dodona
-
-In this course, we use R, a programming language widely used for statistical analyses. Dodona executes your R code and checks if it meets the expectations.

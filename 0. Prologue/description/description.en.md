@@ -1,3 +1,29 @@
+# bloom_level: Remember & Understand
+# scaffolding_level: Full support
+# primm_phase: Introduction
+
+# Prologue: Welcome to the R Course for Criminology
+
+## Criminological Context
+This course is designed to introduce criminology students to R programming using real-world, relevant examples from criminological research. Understanding R is essential for analyzing crime data, conducting research, and making evidence-based decisions in the field of criminology.
+
+## Task
+Read this prologue to understand the structure, learning goals, and approach of the course. Familiarize yourself with the scaffolding, Bloom's taxonomy, and the progression from basic to advanced R skills.
+
+```R
+# No code required for this prologue. Proceed to the next section to start coding in R.
+```
+
+**Tip:**
+- Follow the course in order for the best learning experience.
+- Use the tips and feedback provided in each exercise to improve your skills.
+
+**Bloom Level: Remember & Understand**  
+**Scaffolding Level: Full support**  
+**PRIMM Phase: Introduction**
+
+---
+
 # Welkom bij de R-Cursus voor Criminologie
 
 Welkom bij deze interactieve R-cursus speciaal ontwikkeld voor studenten criminologie. In deze cursus leer je de basis van R programmeren met voorbeelden die relevant zijn voor criminologisch onderzoek.

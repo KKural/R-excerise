@@ -1,9 +1,5 @@
-# Compare crime rates to national average
+# Crime rates national average
 
-## Criminological Context
-Comparing local crime rates to the national average helps identify areas with unusually high or low crime levels. This kind of benchmarking is essential for resource allocation, policy decisions, and community safety planning.
-
-## Task
 You have crime rates per 1,000 population for five different districts, and a national average crime rate. Create a logical vector called `above_average` that indicates whether each district's crime rate is above the national average (TRUE) or not (FALSE).
 
 ```R
@@ -20,9 +16,7 @@ national_average <- 6.2
 
 ```
 
-**Bloom Level: Apply**
-
-**Tips:** 
+**Tip:**
 - Use comparison operators (> or >=) to compare each district's crime rate with the national average
 - The result will automatically be a logical vector with TRUE/FALSE values
 - Remember to assign the result to the variable `above_average`

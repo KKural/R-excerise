@@ -1,9 +1,3 @@
-# Identifying measurement levels
-
-## Criminological Context
-Understanding the measurement level of variables in criminological datasets is crucial for selecting appropriate statistical analyses. Different measurements require different approaches to analysis and interpretation.
-
-## Task
 You have been given a dataset with information about criminal cases. Identify the measurement level (nominal, ordinal, interval, or ratio) of each variable by assigning the correct level to each variable name.
 
 ```R
@@ -30,9 +24,7 @@ level_education_level <- "" # What level is education_level?
 level_risk_category <- ""   # What level is risk_category?
 ```
 
-**Bloom Level: Understand & Apply**
-
-**Tips:** 
+**Tip:**
 - Nominal variables are categorical with no inherent order (like gender, crime type)
 - Ordinal variables have categories with a natural order (like education level, risk categories)
 - Interval variables have equal intervals but no natural zero (like temperature scales)

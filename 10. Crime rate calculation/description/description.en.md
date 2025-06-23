@@ -1,9 +1,5 @@
-# Calculate crime rate per population
+# Crime rate calculation
 
-## Criminological Context
-Crime rates normalize crime counts by population size, allowing for meaningful comparisons between areas with different population densities. This is a fundamental calculation in criminology and criminal justice research.
-
-## Task
 You have data on crime counts and population for five different districts. Calculate the crime rate per 1,000 population for each district and store the results in a variable called `crime_rates`.
 
 ```R
@@ -20,9 +16,7 @@ population <- c(25640, 41250, 13760, 58200, 31890)
 
 ```
 
-**Bloom Level: Apply**
-
-**Tips:** 
+**Tip:**
 - Use element-wise division to divide the crime counts by their corresponding population values
 - Multiply the results by 1000 to get rates per 1,000 population
 - Remember to assign the result to the variable `crime_rates`

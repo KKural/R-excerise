@@ -1,9 +1,5 @@
-# Create a scatterplot of unemployment and crime
+# Scatterplot unemployment
 
-## Criminological Context
-Examining the relationship between socioeconomic factors and crime rates is a fundamental aspect of criminological research. Unemployment rates are often studied as a potential correlate of criminal activity in communities.
-
-## Task
 You have data on unemployment rates and property crime rates for 15 different cities. Create a scatterplot to visualize the potential relationship between these variables. Use the `plot()` function with appropriate labels and title.
 
 ```R
@@ -24,9 +20,7 @@ crime_rates <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.
 
 ```
 
-**Bloom Level: Apply**
-
-**Tips:** 
+**Tip:**
 - Use the `plot()` function with unemployment as the first argument and crime_rates as the second
 - Use the `main` parameter for the title
 - Use the `xlab` and `ylab` parameters for axis labels
