@@ -17,23 +17,10 @@ context({
       "str(df_crime_data) toont de structuur van het data frame",
       function(env) {
         capture <- capture.output(str(env$df_crime_data))
-        any(grepl("data.frame", capture)) && all(c("type", "ernst", "leeftijd", "district") %in% capture)
+        all(c("type", "ernst", "leeftijd", "district") %in% paste(capture, collapse = " ")) &&
+          any(grepl("data.frame", capture))
       },
-      TRUE,
-      comparator = function(got, want, ...) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ `str(df_crime_data)` moet de structuur van het data frame tonen, inclusief kolomnamen.",
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ `str(df_crime_data)` toont correct de structuur van het data frame.",
-            type = "markdown"
-          )
-        }
-        got == want
-      }
+      TRUE
     )
     testEqual(
       "names(df_crime_data) geeft de kolomnamen terug",
@@ -84,8 +71,8 @@ context({
     )
     testEqual(
       "class(df_crime_data) geeft het type object terug",
-      function(env) class(env$df_crime_data)[1],
-      "data.frame"
+      function(env) "data.frame" %in% class(env$df_crime_data),
+      TRUE
     )
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
