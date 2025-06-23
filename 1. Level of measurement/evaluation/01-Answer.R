@@ -50,7 +50,17 @@ context({
   testcase("Meetniveau feedback", {
     testEqual(
       "misdaad_types is een factor met de juiste niveaus",
-      function(env) is.factor(env$misdaad_types) && all(levels(env$misdaad_types) == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+      function(env) {
+        # Debug output
+        get_reporter()$add_message(
+          paste0(
+            "DEBUG: class = ", paste(class(env$misdaad_types), collapse = ", "),
+            "; levels = ", if (is.factor(env$misdaad_types)) paste(levels(env$misdaad_types), collapse = ", ") else "N/A"
+          ),
+          type = "markdown"
+        )
+        is.factor(env$misdaad_types) && all(levels(env$misdaad_types) == c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -130,4 +140,3 @@ context({
     )
   })
 })
-# ok
