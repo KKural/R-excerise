@@ -15,7 +15,7 @@ The exercises are structured to promote confidence, comprehension, and reproduci
 Each exercise is aligned with a cognitive level from Bloom’s Taxonomy [1]:
 
 | Bloom Level         | Example Task                                                            |
-|---------------------|-------------------------------------------------------------------------|
+|:------------------:|:-----------------------------------------------------------------------:|
 | Remember/Understand | Identify syntax (`str()`, `names()`)                                    |
 | Apply               | Perform summaries or plots on crime datasets                            |
 | Analyze/Evaluate    | Interpret model output or critique misleading visuals                   |
@@ -122,7 +122,7 @@ Including onboarding questions like these can help students get comfortable with
 ## 6. Exercise Progression Table
 
 | #  | Folder Name                             | Bloom Level             | Scaffolding Level | PRIMM Phase                   |
-|:--:|:---------------------------------------:|:----------------------:|:----------------:|:-----------------------------:|
+|:--:|:---------------------------------------:|:----------------------:|:-----------------:|:-----------------------------:|
 | 01 | Level of measurement                   | Remember & Understand    | Full support       | Predict, Run                  |
 | 02 | Creating variables with appropriate types | Remember & Understand  | Full support       | Run                           |
 | 03 | Identifying measurement levels          | Remember & Understand    | Full support       | Predict, Run, Investigate     |
