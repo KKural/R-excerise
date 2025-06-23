@@ -8,4 +8,4 @@ Beantwoord de volgende meerkeuzevraag over het berekenen van het gemiddelde in R
 
 Voer het nummer van het juiste antwoord in.
 
-1. Kies het juiste antwoord en voer het nummer in (1 t/m 4)
+Kies het juiste antwoord en voer het nummer in (1 t/m 4)
