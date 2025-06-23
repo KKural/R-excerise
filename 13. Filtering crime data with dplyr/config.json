@@ -1,14 +1,18 @@
 {
-    "name": "Filtering crime data with dplyr",
-    "type": "exercise",
-    "language": "r",
-    "difficulty": 1,
-    "tags": [
-        "dplyr",
-        "filter",
-        "data manipulation",
-        "criminology"
-    ],
-    "scaffolding": "worked example",
-    "bloom_level": "Apply"
+  "name": "Filtering crime data with dplyr",
+  "type": "exercise",
+  "language": "r",
+  "difficulty": 1,
+  "tags": [
+    "dplyr",
+    "filter",
+    "data manipulation",
+    "criminology"
+  ],
+  "scaffolding": "worked example",
+  "bloom_level": "Apply",
+  "internals": {
+    "token": "Vy9vj5AMsc4jEDzneaWdrmmKggyzhg94N5BHbY4tvNHRubsjkxXp74DDxw2a_yhN",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
