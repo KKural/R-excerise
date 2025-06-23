@@ -42,3 +42,25 @@ Na het indienen van je code krijg je directe feedback:
 - **Begin eenvoudig** en voeg complexiteit toe naarmate je vordert
 - **Test je code** met verschillende voorbeelden
 - **Leer van fouten** door de feedback goed te lezen
+
+---
+
+## Supplement: Example Onboarding Questions for R
+
+To help students get familiar with R and the Dodona environment, you can include a short onboarding quiz at the start of the course. Here are two example questions:
+
+**Question 1:** What is the correct way to assign a value to a variable in R?
+
+(x) `crimes <- 25`
+( ) `crimes == 25`
+( ) `crimes -> 25`
+( ) `crimes => 25`
+
+**Question 2:** Which function do you use to calculate the average of a series of numbers?
+
+( ) `average()`
+(x) `mean()`
+( ) `median()`
+( ) `sum()`
+
+Including onboarding questions like these can help students get comfortable with R syntax and the Dodona feedback system before starting the main exercises.

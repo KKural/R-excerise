@@ -1,0 +1,18 @@
+{
+    "description": {
+        "names": {
+            "en": "2.1. R libraries and installation"
+        }
+    },
+    "evaluation": {
+        "handler": "R",
+        "test_suite": "evaluation"
+    },
+    "programming_language": "R",
+    "access": "public",
+    "labels": [],
+    "internals": {
+        "token": "your_token_here",
+        "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+    }
+}

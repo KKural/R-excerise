@@ -1,0 +1,9 @@
+{
+    "type": "multiple-choice",
+    "language": "en",
+    "title": "R Onboarding MCQ 1",
+    "options": {
+        "shuffle_questions": false,
+        "shuffle_answers": true
+    }
+}

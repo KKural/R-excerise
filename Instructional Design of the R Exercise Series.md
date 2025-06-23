@@ -126,6 +126,28 @@ By the end of the series, students will:
 
 ---
 
+## Supplement: Onboarding Questions for R and Dodona
+
+To help students get familiar with R syntax and the Dodona environment, you can include a short onboarding quiz at the start of the course. These questions are not auto-graded by Dodona, but serve as a self-check or discussion starter:
+
+**Example Question 1:** What is the correct way to assign a value to a variable in R?
+
+(x) `crimes <- 25`
+( ) `crimes == 25`
+( ) `crimes -> 25`
+( ) `crimes => 25`
+
+**Example Question 2:** Which function do you use to calculate the average of a series of numbers?
+
+( ) `average()`
+(x) `mean()`
+( ) `median()`
+( ) `sum()`
+
+Including onboarding questions like these can help students get comfortable with R basics and the Dodona feedback system before starting the main exercises.
+
+---
+
 ## Conclusion
 
 This instructional design is rooted in evidence-based pedagogy and tailored to the unique needs of criminology students. Through structured progression, applied examples, and platform integration, the course helps students transition from passive learners to confident, critical users of statistical tools in R.
