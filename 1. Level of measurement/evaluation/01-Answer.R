@@ -1,9 +1,13 @@
-# Verwachte antwoorden:
-# Je hebt een csv-bestand 'crime_data.csv' met de volgende kolommen:
+# LET OP: Studenten hoeven het data frame niet zelf te maken of in te lezen. Voor deze oefening mag je ervan uitgaan dat het data frame `df_crime_data` al bestaat met de juiste structuur en waarden zoals hieronder beschreven.
+# Je hoeft dus GEEN code te schrijven om het data frame te maken of een csv-bestand in te lezen.
+# Focus alleen op het toepassen van de basisfuncties op het bestaande data frame.
+#
+# Verwachte structuur van df_crime_data:
 # - type: factor met de categorieën "Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"
 # - ernst: geordende factor met niveaus: "Licht" < "Matig" < "Ernstig"
 # - leeftijd: numerieke vector met de waarden: 19, 23, 45, 32, 28
 # - district: karaktervector met de waarden: "A1", "B2", "C3", "D4", "E5"
+#
 # Gebruik de basisfuncties om de structuur en eigenschappen van het data frame te onderzoeken.
 # De feedback bij elke functie legt uit wat de functie doet en welke informatie je eruit haalt.
 
