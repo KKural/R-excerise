@@ -1,18 +1,18 @@
 {
-  "description": {
-    "names": {
-      "en": "2.1. R libraries and installation"
+    "description": {
+        "names": {
+            "en": "0.3 R libraries and installation"
+        }
+    },
+    "evaluation": {
+        "handler": "R",
+        "test_suite": "evaluation"
+    },
+    "programming_language": "R",
+    "access": "public",
+    "labels": [],
+    "internals": {
+        "token": "8MBemibe8srCBR29A6xJB79uzEtbQxccwASKC7-TipE8nEZtUSgK9wmzw674X2sN",
+        "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
     }
-  },
-  "evaluation": {
-    "handler": "R",
-    "test_suite": "evaluation"
-  },
-  "programming_language": "R",
-  "access": "public",
-  "labels": [],
-  "internals": {
-    "token": "8MBemibe8srCBR29A6xJB79uzEtbQxccwASKC7-TipE8nEZtUSgK9wmzw674X2sN",
-    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
-  }
 }
