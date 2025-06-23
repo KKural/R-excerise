@@ -20,11 +20,10 @@ crime_data <- data.frame(
 # Create a new dataset with only violent crimes (Assault, Robbery, or Homicide)
 # Store the result in a variable called 'violent_crimes_df'
 
-# Your code here
+# Use subset() to select rows where offense is "Assault", "Robbery", or "Homicide"
+# Assign the result to violent_crimes_df
 
 ```
 
-**Tip:**
-- The `subset()` function in R allows you to select specific rows from a data frame based on a condition
-- Use the `%in%` operator to check if values are in a set (e.g., `offense %in% c("Assault", "Robbery", "Homicide")`)
-- Remember to assign the result to the variable `violent_crimes_df`
+**Tip:**  
+Use `subset()` with `%in%` to select specific values. Assign the result to `violent_crimes_df`.

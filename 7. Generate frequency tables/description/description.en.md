@@ -13,6 +13,5 @@ offense_types <- c("Theft", "Assault", "Burglary", "Vandalism", "Theft", "Theft"
 
 ```
 
-**Tip:**
-- The `table()` function in R creates a frequency table of the values in a vector
-- Remember to assign the result to the variable `offense_table`
+**Tip:**  
+Use `table()` to create a frequency table from a vector. Assign the result to `offense_table`.

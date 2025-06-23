@@ -3,10 +3,8 @@ You are analyzing burglary statistics for a local police department. The data sh
 Create a variable called `burglaries` and assign the number 146 to it.
 
 ```R
-# Assign the number of burglaries to a variable named 'burglaries'
-
-# Your code here
-
+# Use the assignment operator <- to assign 146 to the variable burglaries
 ```
 
-**Tip:** In R, you can assign a value to a variable using the assignment operator `<-`. For example: `x <- 10` assigns the value 10 to the variable x.
+**Tip:**  
+Use `<-` to assign a value to a variable in R.

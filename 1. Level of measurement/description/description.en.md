@@ -9,19 +9,18 @@ Create the following variables with appropriate data types in R:
 
 ```R
 # 1. Create the crime_types factor variable
-# Your code here
+# Use factor() for categorical variables
 
 # 2. Create the crime_severity ordered factor variable
-# Your code here
+# Use factor() with ordered=TRUE and specify the levels
 
 # 3. Create the offender_ages numeric vector
-# Your code here
+# Use c() to combine the numbers
 
 # 4. Create the district_codes character vector
-# Your code here
-
+# Use c() to combine the codes as character strings
 ```
 
-**Tip:**
-- Use `factor()` to create categorical variables (nominal level)
-- Use `factor()` with the `ordered=TRUE` parameter and `levels=` to specify the order for ordinal variables
+**Tip:**  
+Use `factor()` for categorical variables (nominal level).  
+For ordinal variables, use `factor()` with the `ordered=TRUE` parameter and specify the `levels` in the correct order.

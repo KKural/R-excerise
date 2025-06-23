@@ -5,11 +5,9 @@ You have monthly offense counts for a city district over the past year. Calculat
 monthly_offenses <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
 
 # Calculate the average (mean) number of offenses and store it in a variable called 'avg_offenses'
-
-# Your code here
+avg_offenses <- mean(monthly_offenses)
 
 ```
 
-**Tip:**
-- The `mean()` function in R calculates the average of a vector of values
-- Remember to assign the result to the variable `avg_offenses`
+**Tip:**  
+Use `mean()` to calculate the average of a numeric vector. Assign the result to `avg_offenses`.

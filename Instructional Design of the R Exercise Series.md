@@ -152,3 +152,69 @@ Including onboarding questions like these can help students get comfortable with
 
 This instructional design is rooted in evidence-based pedagogy and tailored to the unique needs of criminology students. Through structured progression, applied examples, and platform integration, the course helps students transition from passive learners to confident, critical users of statistical tools in R.
 
+---
+
+# Instructional Design of the R Exercise Series
+
+This document outlines the instructional design for the 15 core R exercises for criminology students. Each exercise is mapped to Bloom’s Taxonomy, the PRIMM framework, and a scaffolding level, with metadata included in comments for instructional tracking only.
+
+---
+
+## 1. Exercise Progression Table
+
+| #  | Folder Name                             | Bloom Level             | Scaffolding Level | PRIMM Phase                   |
+|----|------------------------------------------|--------------------------|--------------------|-------------------------------|
+| 01 | Level of measurement                   | Remember & Understand    | Full support       | Predict, Run                  |
+| 02 | Creating variables with appropriate types | Remember & Understand  | Full support       | Run                           |
+| 03 | Identifying measurement levels          | Remember & Understand    | Full support       | Predict, Run, Investigate     |
+| 04 | Assign number of burglaries             | Remember & Understand    | Full support       | Run                           |
+| 05 | Load crime dataset                      | Apply                    | Full support       | Run                           |
+| 06 | Calculate average offenses              | Apply                    | Full support       | Run                           |
+| 07 | Generate frequency tables               | Apply                    | Full support       | Run                           |
+| 08 | Filter violent crimes                   | Apply                    | Full support       | Run                           |
+| 09 | Crime rate calculation                  | Apply                    | Partial support    | Run, Modify                   |
+| 10 | Filtering crime data with dplyr         | Apply                    | Partial support    | Run, Modify                   |
+| 11 | Creating new columns with mutate        | Apply                    | Partial support    | Run, Modify                   |
+| 12 | Creating and using factors              | Apply                    | Partial support    | Run, Modify                   |
+| 13 | Creating histograms with ggplot2        | Apply                    | Partial support    | Run, Modify                   |
+| 14 | Saving results with write.csv           | Apply                    | Partial support    | Run, Modify                   |
+| 15 | Writing simple custom functions         | Create                   | Minimal support    | Make                          |
+
+---
+
+## 2. Rationale for Progression
+
+### Bloom’s Taxonomy
+
+The series begins with exercises at the **Remember & Understand** level, focusing on basic R syntax, data types, and measurement concepts. As students progress, exercises move to the **Apply** level, requiring them to use R functions for data manipulation and analysis. The final exercise reaches the **Create** level, where students write their own functions.
+
+### PRIMM Framework
+
+Each exercise is mapped to one or more PRIMM phases:
+- **Predict**: Students anticipate code behavior or output.
+- **Run**: Students execute code and observe results.
+- **Investigate**: Students explore why code works as it does.
+- **Modify**: Students adapt code to new contexts or data.
+- **Make**: Students create new code or solutions independently.
+
+Early exercises focus on **Predict** and **Run**, while later ones emphasize **Modify** and **Make** for deeper learning and independence.
+
+### Gradual Scaffolding Reduction
+
+- **Full support**: Early exercises provide step-by-step instructions, code templates, and detailed hints.
+- **Partial support**: Mid-series exercises offer less guidance, requiring students to recall and apply concepts.
+- **Minimal support**: Final exercises expect students to synthesize and create solutions with little or no scaffolding.
+
+This gradual reduction in support helps students build confidence and autonomy in R programming.
+
+---
+
+## 3. Metadata for Instructional Tracking
+
+Each exercise includes metadata in comments (e.g., Bloom Level, Scaffolding Level, PRIMM Phase) for instructional tracking and alignment. These comments are for course design purposes only and do not affect grading or student experience.
+
+---
+
+**Summary:**  
+This progression ensures students move from foundational R skills to independent data analysis and reporting, using evidence-based instructional design tailored to criminology.
+

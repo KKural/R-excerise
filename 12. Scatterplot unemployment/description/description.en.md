@@ -20,7 +20,5 @@ crime_rates <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.
 
 ```
 
-**Tip:**
-- Use the `plot()` function with unemployment as the first argument and crime_rates as the second
-- Use the `main` parameter for the title
-- Use the `xlab` and `ylab` parameters for axis labels
+**Tip:**  
+Use `plot()` with unemployment as the first argument and crime_rates as the second. Use `main` for the title, and `xlab`/`ylab` for axis labels.

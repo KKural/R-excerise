@@ -6,20 +6,11 @@ Create the following variables with appropriate data types in R:
 4. Create a variable `district_codes` as a character vector with these values: "A1", "B2", "C3", "D4", "E5"
 
 ```R
-# 1. Create the crime_types factor variable
-# Your code here
-
-# 2. Create the crime_severity ordered factor variable
-# Your code here
-
-# 3. Create the offender_ages numeric vector
-# Your code here
-
-# 4. Create the district_codes character vector
-# Your code here
-
+# Use factor() for categorical variables
+# Use factor() with ordered=TRUE and specify levels for ordinal variables
+# Use c() to create numeric and character vectors
 ```
 
-**Tip:**
-- Use `factor()` to create categorical variables (nominal level)
-- Use `factor()` with the `ordered=TRUE` parameter and `levels=` to specify the order for ordinal variables
+**Tip:**  
+Use `factor()` for categorical variables (nominal level).  
+For ordinal variables, use `factor()` with `ordered=TRUE` and specify `levels` in order.
