@@ -4,13 +4,7 @@ Je hebt een csv-bestand `crime_data.csv` met de volgende kolommen:
 - `leeftijd`: numerieke vector met de waarden: 19, 23, 45, 32, 28
 - `district`: karaktervector met de waarden: "A1", "B2", "C3", "D4", "E5"
 
-Laad de data in R met:
-```r
-# Laad het data frame uit het csv-bestand:
-df_crime_data <- read.csv("crime_data.csv", stringsAsFactors = FALSE)
-df_crime_data$type <- factor(df_crime_data$type, levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"))
-df_crime_data$ernst <- ordered(df_crime_data$ernst, levels = c("Licht", "Matig", "Ernstig"))
-```
+Het data frame `df_crime_data` is al voor je ingelezen en de kolommen zijn omgezet naar de juiste types.
 
 Gebruik de volgende basisfuncties op het data frame en noteer het resultaat. Lees bij elke functie wat deze doet:
 - `str(df_crime_data)`: toont de structuur van het data frame, inclusief kolomnamen, type van elke kolom en de eerste waarden. Dit helpt je snel te zien welke variabelen er zijn en welk type ze hebben.
@@ -24,7 +18,7 @@ Gebruik de volgende basisfuncties op het data frame en noteer het resultaat. Lee
 - `dim(df_crime_data)`: geeft een vector met het aantal rijen en kolommen, bijvoorbeeld c(5, 4).
 
 ```r
-# Voorbeeld:
+# Typ alleen de volgende functies uit en voer ze uit:
 str(df_crime_data)
 names(df_crime_data)
 length(df_crime_data)
