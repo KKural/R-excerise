@@ -1,9 +1,13 @@
 {
-    "type": "multiple-choice",
-    "language": "en",
-    "title": "R Onboarding MCQ 2",
-    "options": {
-        "shuffle_questions": false,
-        "shuffle_answers": true
-    }
+  "type": "multiple-choice",
+  "language": "en",
+  "title": "R Onboarding MCQ 2",
+  "options": {
+    "shuffle_questions": false,
+    "shuffle_answers": true
+  },
+  "internals": {
+    "token": "vk5v7yfWsVQscqJQ5ACjJQaaD7ViECfHJmHJa55GzC_aPS7jCcaHdN26e2-RRXTR",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
