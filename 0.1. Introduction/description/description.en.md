@@ -1,7 +1,3 @@
-# bloom_level: Remember & Understand
-# scaffolding_level: Full support
-# primm_phase: Introduction
-
 # Introduction: How Dodona Works
 
 ## Criminological Context
