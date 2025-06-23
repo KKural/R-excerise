@@ -2,21 +2,17 @@
 ## Instructional Design of the R Exercise Series  
 *Teaching Assistant Application – Dr. Kuralarasan Kumar*
 
----
-
 ## 1. Purpose of the Exercise Series
 
 This R-based learning path introduces criminology students—with no prior programming experience—to data analysis and statistical reasoning using R. All exercises are grounded in criminologically relevant examples and designed to develop not only technical skills, but also statistical thinking and reporting ability.
 
 The exercises are structured to promote confidence, comprehension, and reproducibility through progressive challenges that connect directly to real-world crime data.
 
----
-
 ## 2. Guiding Pedagogical Frameworks
 
-### 🔹 Bloom’s Taxonomy
+### Bloom’s Taxonomy
 
-Each exercise is aligned with a cognitive level from Bloom’s Taxonomy:
+Each exercise is aligned with a cognitive level from Bloom’s Taxonomy [1]:
 
 | Bloom Level         | Example Task                                                            |
 |---------------------|-------------------------------------------------------------------------|
@@ -27,22 +23,18 @@ Each exercise is aligned with a cognitive level from Bloom’s Taxonomy:
 
 > *Example*: An early exercise asks students to run `summary()` and interpret output; a later one requires writing an APA-ready regression table.
 
----
+### Scaffolding Principle
 
-### 🔹 Scaffolding Principle
-
-Exercises begin with substantial guidance—starter code, Dutch-language comments, and inline tips—and gradually remove these supports. This reduces cognitive overload and encourages student independence.
+Exercises begin with substantial guidance—starter code, Dutch-language comments, and inline tips—and gradually remove these supports. This reduces cognitive overload and encourages student independence [2].
 
 > *Progression Example*:
 > - **Exercise 1**: Full syntax for `mean()` is provided.  
 > - **Exercise 4**: Students fill in the variable to summarize.  
 > - **Exercise 10**: Students construct summaries from raw data independently.
 
----
+### PRIMM Framework
 
-### 🔹 PRIMM Framework
-
-Each exercise reflects the PRIMM learning model:
+Each exercise reflects the PRIMM learning model [3]:
 
 1. **Predict** – What do you expect this code to output?  
 2. **Run** – Execute the code and compare with prediction  
@@ -52,9 +44,7 @@ Each exercise reflects the PRIMM learning model:
 
 > *Example*: Students first predict the output of `filter(crime_df, crime_type == "Theft")`, then modify it to select "Assault", and finally write their own condition for "Burglary".
 
----
-
-### 🔹 Worked → Faded → Independent Problem Design
+### Worked → Faded → Independent Problem Design
 
 Each new concept is introduced using:
 
@@ -67,11 +57,9 @@ Each new concept is introduced using:
 > - Students are then asked to modify the variable used  
 > - Finally, they write a new plot from scratch using different columns
 
----
-
 ## 3. Realism, Reproducibility, and Reporting
 
-### 🔸 Synthetic Criminology Datasets
+### Synthetic Criminology Datasets
 
 To avoid confidentiality issues and maintain relevance, all exercises use synthetic data simulating:
 
@@ -80,11 +68,9 @@ To avoid confidentiality issues and maintain relevance, all exercises use synthe
 - Police response times  
 - Property loss values
 
-These datasets reflect real-world structure while allowing students to practice openly and repeatedly.
+These datasets reflect real-world structure while allowing students to practice openly and repeatedly. I am also familiar with generating meaningful synthetic datasets in R using packages such as `synthpop`, which allow for the simulation of data that preserves key characteristics (e.g., mean, standard deviation, and variable relationships) of real criminological datasets while ensuring privacy and reproducibility.
 
----
-
-### 🔸 APA-Style Statistical Reporting
+### APA-Style Statistical Reporting
 
 Students often struggle with formatting and structuring their results. To address this:
 
@@ -94,25 +80,21 @@ Students often struggle with formatting and structuring their results. To addres
 
 > *Outcome*: Students focus on **interpreting** results, not formatting tables manually.
 
----
-
 ## 4. Platform Integration
 
-### ✅ Dodona + Ufora
+### Dodona + Ufora
 
 - Exercises are delivered via **Dodona** with auto-grading and feedback  
 - **Ufora** is used for quiz integration, resource hosting, and feedback  
 - Students can submit code directly in Dodona or follow guided modules in Ufora
 
-### ✅ GitHub Repository with Sample Code
+### GitHub Repository with Sample Code
 
 - A linked **GitHub repository** hosts:
   - Multiple synthetic datasets  
   - Sample R scripts and templates  
   - Optional extension exercises
 - Students can explore, reuse, and adapt this content as they grow in confidence
-
----
 
 ## 5. Outcome: From Syntax to Statistical Thinking
 
@@ -123,8 +105,6 @@ By the end of the series, students will:
 - Analyze criminological data and interpret results
 - Report findings in APA style using automated tools
 - Build foundational skills for thesis work and empirical research
-
----
 
 ## Supplement: Onboarding Questions for R and Dodona
 
@@ -146,21 +126,7 @@ To help students get familiar with R syntax and the Dodona environment, you can 
 
 Including onboarding questions like these can help students get comfortable with R basics and the Dodona feedback system before starting the main exercises.
 
----
-
-## Conclusion
-
-This instructional design is rooted in evidence-based pedagogy and tailored to the unique needs of criminology students. Through structured progression, applied examples, and platform integration, the course helps students transition from passive learners to confident, critical users of statistical tools in R.
-
----
-
-# Instructional Design of the R Exercise Series
-
-This document outlines the instructional design for the 15 core R exercises for criminology students. Each exercise is mapped to Bloom’s Taxonomy, the PRIMM framework, and a scaffolding level, with metadata included in comments for instructional tracking only.
-
----
-
-## 1. Exercise Progression Table
+## 6. Exercise Progression Table
 
 | #  | Folder Name                             | Bloom Level             | Scaffolding Level | PRIMM Phase                   |
 |----|------------------------------------------|--------------------------|--------------------|-------------------------------|
@@ -180,9 +146,7 @@ This document outlines the instructional design for the 15 core R exercises for 
 | 14 | Saving results with write.csv           | Apply                    | Partial support    | Run, Modify                   |
 | 15 | Writing simple custom functions         | Create                   | Minimal support    | Make                          |
 
----
-
-## 2. Rationale for Progression
+## 7. Rationale for Progression
 
 ### Bloom’s Taxonomy
 
@@ -207,14 +171,15 @@ Early exercises focus on **Predict** and **Run**, while later ones emphasize **M
 
 This gradual reduction in support helps students build confidence and autonomy in R programming.
 
----
-
-## 3. Metadata for Instructional Tracking
+## 8. Metadata for Instructional Tracking
 
 Each exercise includes metadata in comments (e.g., Bloom Level, Scaffolding Level, PRIMM Phase) for instructional tracking and alignment. These comments are for course design purposes only and do not affect grading or student experience.
 
----
+## References
+
+1. Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A taxonomy for learning, teaching, and assessing: A revision of Bloom's Taxonomy of Educational Objectives*. New York: Longman.
+2. van de Pol, J., Volman, M., & Beishuizen, J. (2010). Scaffolding in teacher–student interaction: A decade of research. *Educational Psychology Review*, 22(3), 271–296. https://doi.org/10.1007/s10648-010-9127-6
+3. Sentance, S., Waite, J., & Kallia, M. (2019). Teaching computer programming with PRIMM: a sociocultural perspective. *Computer Science Education*, 29(2-3), 136–176. https://doi.org/10.1080/08993408.2019.1608781
 
 **Summary:**  
 This progression ensures students move from foundational R skills to independent data analysis and reporting, using evidence-based instructional design tailored to criminology.
-
