@@ -1,14 +1,14 @@
 {
   "description": {
     "names": {
-      "en": "0.3 R libraries and installeren"
+      "en": "0.3. Installing R library"
     }
   },
   "type": "content",
   "labels": [],
   "access": "public",
   "internals": {
-    "token": "A_CkH9sbdNhZDzB35p5yT7ZtDk_Exy6S23p-6wiRyHZe5D_tMX8Y2xbdHY3pqWkk",
+    "token": "yjIw3IM9fJBxIPAFCdkMcfwW2QyVz3a2d33khdIW-IkRGjbm9PqtN754iRCEbS2n",
     "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
   }
 }
