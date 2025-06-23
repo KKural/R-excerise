@@ -1,18 +1,18 @@
 {
-    "description": {
-        "names": {
-            "en": "Reproducible RMarkdown chunks"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public",
-    "internals": {
-        "token": "",
-        "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
-    },
-    "labels": []
+  "description": {
+    "names": {
+      "en": "Reproducible RMarkdown chunks"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "62UA-9JbSYJzKtJ8HIBFAdPXuepJUXRTudrViZ6xxGycYYUzwGPZUq52prwf4aYE",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  },
+  "labels": []
 }
