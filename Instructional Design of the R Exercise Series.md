@@ -14,12 +14,16 @@ The exercises are structured to promote confidence, comprehension, and reproduci
 
 Each exercise is aligned with a cognitive level from Bloom’s Taxonomy [1]:
 
+<div align="center">
+
 | Bloom Level         | Example Task                                                            |
 |:------------------:|:-----------------------------------------------------------------------:|
 | Remember/Understand | Identify syntax (`str()`, `names()`)                                    |
 | Apply               | Perform summaries or plots on crime datasets                            |
 | Analyze/Evaluate    | Interpret model output or critique misleading visuals                   |
 | Create              | Build custom functions or reports using synthetic data                  |
+
+</div>
 
 > *Example*: An early exercise asks students to run `summary()` and interpret output; a later one requires writing an APA-ready regression table.
 
