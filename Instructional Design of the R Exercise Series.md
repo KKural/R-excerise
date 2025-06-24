@@ -12,6 +12,8 @@ This exercise was created by mapping key criminological concepts to R programmin
 - **PRIMM** (Sentance et al., 2019) is a phased approach to programming instruction: Predict, Run, Investigate, Modify, and Make. It guides students from understanding existing code to creating their own solutions.
 - **Scaffolding** (van de Pol et al., 2010) refers to the instructional supports provided to students as they learn new concepts. These supports are gradually removed as students gain confidence and competence, fostering independence.
 
+Because reporting is just as important as analysis, I plan to use R to help students structure their findings clearly and correctly. Tools such as apaTables and flextable allow us to format results in APA style directly from code, making the reporting process more transparent and reproducible. I intend to use these tools to teach students how to interpret test statistics and report their results according to academic standards—preparing them for thesis writing and publication. (See <attachments> above for file contents. You may not need to search or read the file again.)
+
 Automated feedback and metadata are included for instructional tracking and continuous improvement. This template can be adapted for new topics, datasets, or skill levels by modifying the context, adjusting scaffolding, or integrating advanced R techniques.
 
 ## 3. Exercise Progression
