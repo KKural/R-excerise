@@ -1,32 +1,37 @@
-Dear Professors Hardyns, Vandeviver, and Pauwels,
+**Dear Professors Hardyns, Vandeviver, and Pauwels,**
 
-I am writing to express my interest in the position of **Teaching Assistant (ref. 202506/RE23/PA/003)** within our department. With a background as a postdoctoral researcher in quantitative criminology and an advanced R user, I am eager to contribute to R-based statistics education, guide students through practical exercises, and support the evaluation of theses and oral defences.
+I am writing to apply for the **Teaching Assistant (ref. 202506/RE23/PA/003)** position in our department. As a postdoctoral researcher in **quantitative criminology** and an advanced **R** user, I am eager to strengthen our students’ data-analysis skills, guide them through practical coding tasks, and assist with the evaluation of their theses and oral defences.  
 
-Over the past three years at the Faculty of Law and Criminology, I have specialized in spatial statistics, data visualization, and crime data modelling. I work daily with R to conduct analyses and produce reproducible code. This technical foundation supports my pedagogical focus: helping students gain confidence and competence in statistical reasoning.
+During the past three years in the Faculty of Law and Criminology I have specialised in **spatial statistics**, **data visualisation**, and **crime-data modelling**. Daily use of **R** for reproducible analysis and instructional design—combined with teaching both UGent master’s students and international undergraduates—has shown me how to **scaffold** statistical concepts effectively and build student confidence.
 
-Many criminology students struggle with concepts such as p-values, measurement levels, or the distinction between descriptive and inferential statistics. To address this, I have structured a sample lesson using **Bloom’s Taxonomy** and the **PRIMM model** (Predict, Run, Investigate, Modify, Make), which can be readily implemented in actual course settings. This structure introduces each concept through worked examples and gradually builds toward independent tasks. Exercises target common misunderstandings through scaffolded hints, Dutch-language tips, and answer options that reflect typical student errors. *(See the supplementary document for details.)*
+Many criminology students arrive with a limited quantitative background and often experience **statistical anxiety**. To address this, I design exercises that combine **scaffolding techniques**, **Bloom’s Taxonomy**, and the **PRIMM** cycle (Predict → Run → Investigate → Modify → Make). A sample lesson—ready for classroom use—moves from worked examples to independent coding with criminology-specific tasks (e.g. `table()`, `group_by()`, `summarise()`). *(See the supplementary document for details.)*  
 
-In support of these exercises, I developed **crimsyndata**, a privacy-safe synthetic data package that mirrors Belgian crime patterns. It enables students to engage with realistic data scenarios—such as analyzing burglary patterns or simulating court outcomes—without confidentiality concerns. Using packages like **synthpop**, I generate data that retain the core characteristics of real datasets while ensuring reproducibility.
+I also create interactive, self-paced lessons in **swirl** that include embedded hints and criminological context. A short walkthrough video of one prototype is attached to illustrate the learner experience.
 
-I aim to ensure that students not only perform statistical analyses but also learn to report results according to academic standards, using R pacakages such as apaTables and **flextable** to produce clear, publication-ready output. I have also explored integrating Dodona with Ufora, enabling interactive exercises with trackable feedback. All materials are organized through GitHub repositories with reusable scripts aligned with course modules.
+To give students realistic yet privacy-safe datasets, I developed **`crimsyndata`** with `synthpop`. It mirrors Belgian crime patterns while remaining fully synthetic, enabling analyses such as burglary counts by district or simulated sentencing outcomes.  
 
-I have also applied for the **Scientific Staff position** focused on Dodona-based learning paths. I see both positions as complementary: the Teaching Assistant role provides direct student engagement—offering hands-on guidance, formative feedback, and involvement in thesis evaluations—while the Scientific Staff role supports the development of structured, auto-graded exercises. Together, they enable a consistent and supportive learning experience across digital and classroom environments.
+Reporting is as important as analysis, so I teach students to produce APA-style tables with **`apaTables`** and polished reports with **`flextable`**. All materials live in organised **GitHub** repositories and integrate smoothly with **Dodona** and **Ufora** for auto-graded, trackable exercises.
 
-My understanding of our department’s workflows comes from contributing to lectures, supervising internships and theses, and supporting course delivery. I’ve built strong working relationships within the department, and I’m prepared to collaborate closely with course coordinators and integrate into the teaching team from day one.
+I have also applied for the **Scientific Staff** post focused on developing Dodona learning paths. The two roles are complementary: as Scientific Staff I would build interactive content; as Teaching Assistant I would apply it in class, provide formative feedback, and refine materials based on student performance.
 
-In summary, I bring:
-- Advanced R programming and reproducible coding  
-- A pedagogical approach based on scaffolding and Bloom’s Taxonomy  
-- Experience with Dodona, Ufora, and GitHub  
-- Strategies to address student misconceptions  
-- A collaborative, student-centered teaching style
+My familiarity with departmental workflows—gained through lecturing, supervising internships and theses, and collaborating with course coordinators—means I can contribute from day one. My **Dutch NT2 A2** certificate (A3 in progress) supports the creation of accessible, bilingual resources.
 
-I have included a supplementary file with:
-- A sample Dodona exercise on frequency tables  
-- An annotated R script demonstrating APA reporting  
-- A link to my GitHub repository with additional resources
+**In summary, I offer**
 
-Thank you for considering my application. I look forward to the opportunity to contribute to our teaching mission and support student learning in quantitative criminology.
+- Advanced **R** programming and reproducible-coding expertise  
+- Instruction rooted in **scaffolding**, **Bloom’s Taxonomy**, and **PRIMM**  
+- Proven integration of **Dodona**, **swirl**, **Ufora**, and **GitHub**  
+- Targeted strategies for common student misconceptions  
+- A collaborative, student-centred teaching style  
+
+**Attachments**
+
+1. Sample Dodona exercise (frequency tables)  
+2. Annotated tidyverse + APA reporting script  
+3. Walkthrough video of a **swirl** lesson prototype  
+4. GitHub link with additional resources  
+
+Thank you for considering my application. I look forward to helping our students master quantitative criminology through hands-on, well-scaffolded learning.
 
 Sincerely,  
 **Dr. Kuralarasan Kumar**
