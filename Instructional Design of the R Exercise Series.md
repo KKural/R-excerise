@@ -183,6 +183,10 @@ If students have questions while working on Dodona exercises, they are encourage
 **Summary:**  
 This progression ensures students move from foundational R skills to independent data analysis and reporting, using evidence-based instructional design tailored to criminology.
 
+## crimsyndata: Realistic, Privacy-Safe Synthetic Data
+
+To support these exercises, I developed the `crimsyndata` package—a fully synthetic yet statistically realistic data resource. Each dataset is generated in R with controlled random seeds, mirroring real Belgian crime patterns (e.g., higher poverty leads to more violent crime, lower clearance rates) but containing no identifying information. This allows students and instructors to analyze, visualize, and even publish results with zero privacy risk, while still engaging with meaningful criminological relationships. The package includes five datasets (e.g., crime statistics, neighborhood indices, police effort, survey responses, and qualitative notes), all reproducible via the included R code. The accompanying swirl lesson (“Crime Mapping”) wraps these data in an interactive, auto-graded tutorial, guiding students through tidyverse skills, measurement scales, and APA-style reporting—all within the R console and with instant feedback. Together, the package and lesson provide a turnkey, ethically sound environment for developing statistical reasoning and reproducible analysis, fully aligned with course outcomes.
+
 ## References
 
 1. Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A taxonomy for learning, teaching, and assessing: A revision of Bloom's Taxonomy of Educational Objectives*. New York: Longman.
