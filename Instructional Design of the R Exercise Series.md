@@ -88,25 +88,27 @@ All exercises use these datasets, allowing students to safely share and publish 
 
 ## 7. Platform Integration
 
-- **Dodona**: Auto-graded exercises with feedback.
-- **Ufora**: Quiz integration and resource hosting.
-- **GitHub**: Repository with datasets, sample scripts, and templates for exploration and extension.
+A multi-platform approach ensures students have access to resources, feedback, and collaborative tools throughout the course:
+
+- **Dodona**: Delivers auto-graded exercises, instant feedback, and a structured learning path. Students can submit code, receive hints, and track their progress, fostering self-paced learning and accountability.
+- **Ufora**: Integrates quizzes, hosts supplementary resources, and provides a space for announcements and discussions. Ufora supports blended learning by connecting in-class and online activities.
+- **GitHub**: Serves as a repository for datasets, sample scripts, and templates. Students can explore real code, contribute to open resources, and access extension exercises for further practice and exploration.
 
 ## 8. Onboarding: R & Dodona
 
-A short onboarding quiz helps students get comfortable with R syntax and the Dodona environment before starting the main exercises.
+To ensure all students start with a solid foundation, the course begins with a short onboarding quiz. This quiz introduces basic R syntax, variable assignment, and the Dodona environment. It is designed as a low-stakes, formative assessment to help students identify gaps in their understanding and become comfortable with submitting code and interpreting feedback before tackling the main exercises.
 
 ## 9. Swirl Lessons: Interactive R Learning
 
-Swirl lessons provide interactive R tutorials using the same synthetic datasets. Students receive immediate feedback, reinforce classroom concepts, and build confidence before independent analysis.
+Swirl lessons are interactive R tutorials that run directly in the R console. These lessons use the same synthetic datasets as the main exercises and guide students step-by-step through data loading, exploration, and analysis. Swirl provides immediate, contextual feedback on code and answers, allowing students to learn by doing and correct mistakes in real time. This hands-on, self-paced approach reinforces classroom concepts, builds confidence, and prepares students for independent analysis tasks.
 
 ## 10. Metadata for Instructional Tracking
 
-Each exercise includes metadata in comments (e.g., Bloom Level, Scaffolding Level, PRIMM Phase) for instructional tracking and alignment. These are for course design only and do not affect grading.
+Each exercise includes metadata in the form of comments (e.g., Bloom Level, Scaffolding Level, PRIMM Phase). This metadata enables instructors to track the alignment of exercises with pedagogical goals, monitor the progression of cognitive demand, and ensure a balanced mix of support and independence. While invisible to students during grading, this information is valuable for continuous course improvement and instructional research.
 
 ## 11. Student Support & Continuous Improvement
 
-Students are encouraged to ask exercise-specific questions. The teaching team responds and tracks FAQs to improve the course and exercises, ensuring clarity and effectiveness.
+Student questions and feedback are actively encouraged throughout the course. The teaching team monitors queries submitted via Dodona and Ufora, providing timely responses and clarifications. Frequently asked questions and common challenges are tracked and used to refine exercise instructions, update datasets, and improve the overall learning experience. This iterative process ensures the course remains clear, effective, and responsive to student needs.
 
 ## References
 
