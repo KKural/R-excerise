@@ -26,9 +26,9 @@ context({
           paste0('```r\n', paste(capture.output(print(result$expected)), collapse='\n'), '\n```'),
           type='markdown'
         )
-        result
+        result$type  # Only return the type for the comparator
       },
-      list(type="correct", val=NULL, expected=NULL),
+      "correct",
       comparator = function(generated, expected, ...) {
         feedbacks <- list(
           "no_var"      = "❌ Het object `leeftijd_samenvatting` bestaat niet of bevat een fout. Controleer je code en probeer opnieuw.",
@@ -36,8 +36,8 @@ context({
           "wrong_val"   = "❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders).",
           "correct"     = "✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in `leeftijd_samenvatting`."
         )
-        get_reporter()$add_message(feedbacks[[generated$type]], type = ifelse(generated$type == "correct", "success", "error"))
-        generated$type == expected$type
+        get_reporter()$add_message(feedbacks[[generated]], type = ifelse(generated == "correct", "success", "error"))
+        generated == expected
       }
     )
   })
