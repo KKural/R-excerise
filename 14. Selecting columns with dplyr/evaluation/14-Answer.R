@@ -40,6 +40,4 @@ context({
     delicttype = c("Diefstal", "Aanval", "Diefstal", "Inbraak", "Diefstal", "Vandalisme", "Diefstal", "Fraude", "Diefstal", "Aanval"),
     waarde = c(100, 200, 150, 300, 120, 80, 90, 60, 110, 50)
   )
-  library(dplyr)
-  geselecteerde_data <- dplyr::select(misdaad_data, id, delicttype)
 })
