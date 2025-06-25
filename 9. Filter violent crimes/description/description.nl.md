@@ -2,17 +2,17 @@ Je hebt een dataset met gerapporteerde misdrijven. Gebruik de functie `subset()`
 
 ```R
 # Een data frame met gerapporteerde misdrijven
-crime_data <- data.frame(
+misdaad_data <- data.frame(
   id = 1:20,
   delict = c("Diefstal", "Aanval", "Drugsdelict", "Overval", "Vandalisme", 
               "Aanval", "Inbraak", "Moord", "Diefstal", "Aanval",
               "Fraude", "Overval", "Diefstal", "Drugsdelict", "Moord",
               "Aanval", "Vandalisme", "Fraude", "Inbraak", "Diefstal"),
-  district = c("North", "South", "East", "Central", "West",
-               "South", "North", "Central", "East", "West",
-               "North", "South", "West", "East", "South",
-               "Central", "North", "East", "West", "South"),
-  date = as.Date("2023-01-01") + 0:19
+  district = c("Noord", "Zuid", "Oost", "Centrum", "West",
+               "Zuid", "Noord", "Centrum", "Oost", "West",
+               "Noord", "Zuid", "West", "Oost", "Zuid",
+               "Centrum", "Noord", "Oost", "West", "Zuid"),
+  datum = as.Date("2023-01-01") + 0:19
 )
 
 # Maak een nieuwe dataset met alleen gewelddadige misdrijven (Aanval, Overval of Moord)
