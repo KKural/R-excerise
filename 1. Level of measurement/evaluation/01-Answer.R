@@ -213,7 +213,7 @@ context({
     testEqual(
       "dim(df_crime_data) geeft het aantal rijen en kolommen als vector terug",
       function(env) dim(env$df_crime_data),
-      c(5, 4),
+      c(5L, 4L),
       comparator = function(got, want, ...) {
         get_reporter()$add_message("```r\n> dim(df_crime_data)\n```", type="markdown")
         get_reporter()$add_message(paste0("```
