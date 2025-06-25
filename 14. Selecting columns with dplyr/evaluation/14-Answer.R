@@ -1,65 +1,37 @@
 context({
-  # 1. Check if 'geselecteerde_data' exists
-  testcase("", {
-    testEqual(
-      "",
-      function(env) exists("geselecteerde_data", envir = env),
-      TRUE,
-      comparator = function(got, want) {
-        if (!got) {
-          get_reporter()$add_message(
-            "❌ De variabele 'geselecteerde_data' bestaat niet. Maak deze variabele aan met select().",
-            type = "error"
-          )
-        }
-        got == want
-      }
-    )
-  })
-
-  # 2. Check if 'geselecteerde_data' is a data frame
   testcase("", {
     testEqual(
       "",
       function(env) {
-        if (!exists("geselecteerde_data", envir = env)) return(NULL)
-        is.data.frame(env$geselecteerde_data)
-      },
-      TRUE,
-      comparator = function(got, want) {
-        if (is.null(got) || !got) {
+        # Safe wrapper to catch any student-side syntax error
+        tryCatch({
+          env$geselecteerde_data
+        }, error = function(e) {
+          # Manual feedback when syntax fails
           get_reporter()$add_message(
-            "❌ 'geselecteerde_data' moet een data frame zijn.",
+            "❌ Fout in je code: controleer of je `select()` correct gebruikt hebt en of je `library(dplyr)` hebt toegevoegd.",
             type = "error"
           )
-        }
-        got == want
-      }
-    )
-  })
-
-  # 3. Check if columns are correct
-  testcase("", {
-    testEqual(
-      "",
-      function(env) {
-        if (!exists("geselecteerde_data", envir = env)) return(NULL)
-        if (!is.data.frame(env$geselecteerde_data)) return(NULL)
-        colnames(env$geselecteerde_data)
+          return(NULL)
+        })
       },
-      c("id", "delicttype"),
+      NULL,
       comparator = function(got, want) {
-        if (is.null(got) || !identical(got, want)) {
-          get_reporter()$add_message(
-            "❌ Verkeerde kolommen: verwacht 'id' en 'delicttype'.",
-            type = "error"
-          )
+        if (is.null(got)) {
           return(FALSE)
         }
-        get_reporter()$add_message(
-          "✅ Goed gedaan! Je hebt de juiste kolommen geselecteerd met `select()`.",
-          type = "success"
-        )
+
+        if (!is.data.frame(got)) {
+          get_reporter()$add_message("❌ 'geselecteerde_data' moet een data frame zijn.", type = "error")
+          return(FALSE)
+        }
+
+        if (!identical(colnames(got), c("id", "delicttype"))) {
+          get_reporter()$add_message("❌ Verkeerde kolommen: verwacht 'id' en 'delicttype'.", type = "error")
+          return(FALSE)
+        }
+
+        get_reporter()$add_message("✅ Goed gedaan! Je hebt de juiste kolommen geselecteerd met `select()`.", type = "success")
         return(TRUE)
       }
     )
