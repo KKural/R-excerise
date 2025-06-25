@@ -11,7 +11,7 @@ crime_data <- data.frame(
   opleidingsniveau = c("Secundair", "Primair", "Hoger", "Secundair", "Hoger"),
   risicocategorie = c("Midden", "Hoog", "Laag", "Midden", "Laag")
 )
-
+```
 # Wijs voor elke variabele het meetniveau toe als string: "nominaal", "ordinaal", "interval" of "ratio"
 # Voorbeeld: niveau_zaak_id <- "nominaal"
 # Vul de toewijzingen voor alle variabelen hieronder aan
