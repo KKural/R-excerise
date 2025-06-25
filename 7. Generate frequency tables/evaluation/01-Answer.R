@@ -17,7 +17,7 @@ context({
       # 3. Existence check
       if (!exists('delict_tabel', envir=env())) {
         get_reporter()$add_message(
-          '❌ De variabele `delict_tabel` bestaat niet. Maak deze aan met: `delict_tabel <- table(delictsoorten)`',
+          '',
           type='error'
         )
         return(FALSE)
