@@ -1,15 +1,6 @@
 # Evaluation script for Basisfuncties op `df_crime_data`
 
 context({
-  # Setup: maak df_crime_data met 5 rijen x 4 kolommen
-  df_crime_data <- data.frame(
-    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"), levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
-    ernst = factor(c("Licht", "Matig", "Ernstig", "Matig", "Licht"), ordered = TRUE, levels = c("Licht", "Matig", "Ernstig")),
-    leeftijd  = c(19, 23, 45, 32, 28),
-    district = c("A1", "B2", "C3", "D4", "E5"),
-    stringsAsFactors = FALSE
-  )
-
   testcase("Feedback bij basisfuncties op df_crime_data", {
     testEqual("str(df_crime_data) toont de structuur van het data frame",
       function(env) paste(capture.output(str(env$df_crime_data)), collapse = "\n"),
@@ -48,4 +39,12 @@ context({
       dim(df_crime_data)
     )
   })
+}, preExec = {
+  df_crime_data <- data.frame(
+    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"), levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+    ernst = factor(c("Licht", "Matig", "Ernstig", "Matig", "Licht"), ordered = TRUE, levels = c("Licht", "Matig", "Ernstig")),
+    leeftijd  = c(19, 23, 45, 32, 28),
+    district = c("A1", "B2", "C3", "D4", "E5"),
+    stringsAsFactors = FALSE
+  )
 })
