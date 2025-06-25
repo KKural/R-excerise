@@ -1,7 +1,7 @@
 context({
-  testcase("Vergelijken met nationaal gemiddelde", {
+  testcase("", {
     testEqual(
-      "boven_gemiddelde is correct aangemaakt",
+      "",
       function(env) {
         # Get the student's answer
         tryCatch({
