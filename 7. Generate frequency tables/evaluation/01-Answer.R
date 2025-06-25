@@ -31,22 +31,19 @@ context({
           return(FALSE)
         }
         # 3) toon prompt + resultaat
-        get_reporter()$add_message(
-          "Feedback bij frequentietabel",
-          type = "markdown"
-        )
+        get_reporter()$add_message("```r\n> table(delictsoorten)\n```", type = "markdown")
         get_reporter()$add_message(
           paste0(
-            "```r\n> delict_tabel\n",
+            "```",
+            "\n",
             paste(capture.output(print(env$delict_tabel)), collapse = "\n"),
-            "\n```"
-          ),
+            "\n```") ,
           type = "markdown"
         )
         # 4) successbericht
         get_reporter()$add_message(
-          "✅ Correct! De frequentietabel is correct aangemaakt en opgeslagen in `delict_tabel`.",
-          type = "success"
+          "✅ De frequentietabel van delictsoorten is correct aangemaakt.",
+          type = "markdown"
         )
         TRUE
       },
