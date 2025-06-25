@@ -26,8 +26,8 @@ context({
         code_lines <- sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " "))
         user_code <- paste(code_lines, collapse = "\n")
         
-        # Direct check for the simplest correct answer
-        if (grepl("plot\\(werkloosheid, *criminaliteitscijfers\\)", user_code)) {
+        # Direct check for the simplest correct answer - more flexible with whitespace
+        if (grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers\\s*\\)", user_code)) {
           get_reporter()$add_message(
             "✅ Correct! Je hebt een spreidingsdiagram gemaakt met werkloosheid en criminaliteitscijfers.",
             type = "success"
