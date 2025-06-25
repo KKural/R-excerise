@@ -33,14 +33,14 @@ context({
         verwacht <- mean(maandelijkse_feiten)
         # Check if the student's code is exactly mean(maandelijkse_feiten)
         # and if the output is correct
-        if (!is.numeric(env$result)) {
+        if (!is.numeric(env$last_value)) {
           get_reporter()$add_message(
             "❌ Je antwoord is geen numerieke waarde. Gebruik mean(maandelijkse_feiten)",
             type = "error"
           )
           return(FALSE)
         }
-        if (abs(env$result - verwacht) > 1e-6) {
+        if (abs(env$last_value - verwacht) > 1e-6) {
           get_reporter()$add_message(
             paste0("❌ Je antwoord is niet het juiste gemiddelde. Gebruik mean(maandelijkse_feiten). Het juiste gemiddelde is: ", round(verwacht, 2)),
             type = "error"
