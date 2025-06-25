@@ -23,11 +23,7 @@ context({
         }
         tbl_out <- paste(capture.output(print(env$delict_tabel)), collapse = "\n")
         get_reporter()$add_message(
-          paste0(
-            "✅ Correct! De frequentietabel is correct aangemaakt en opgeslagen in 'delict_tabel'.\n\n",
-            "> delict_tabel\n",
-            tbl_out
-          ),
+          paste0("> delict_tabel\n", tbl_out),
           type = "success"
         )
         TRUE
