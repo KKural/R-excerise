@@ -18,7 +18,7 @@ misdaad_data <- data.frame(
 
 #–– Evaluation ––
 context({
-  testcase("Feedback bij filteren van gewelddadige misdrijven", {
+  testcase("", {
     testEqual(
       "",
       function(env) {

@@ -1,7 +1,7 @@
 context({
-  testcase("Feedback bij inladen van misdaadgegevens", {
+  testcase("", {
     testEqual(
-      "misdaad_data is correct ingeladen",
+      "",
       function(env) {
         if (!exists("misdaad_data", envir = env)) {
           get_reporter()$add_message(
@@ -26,7 +26,7 @@ context({
           return(FALSE)
         }
         get_reporter()$add_message(
-          "Correct! Je hebt het CSV-bestand correct ingeladen in 'misdaad_data'.",
+          "✅ Correct! Je hebt het CSV-bestand correct ingeladen in 'misdaad_data'.",
           type = "success"
         )
         TRUE

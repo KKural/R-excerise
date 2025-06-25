@@ -1,8 +1,8 @@
 context({
-  testcase("Feedback bij berekenen van het gemiddelde", {
+  testcase("", {
     testEqual(
       "",
-      function(env) env$mean,  # nu controleren we de variabele 'mean'
+      function(env) env$mean,
       mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)),
       comparator = function(got, want, ...) {
         if (is.null(got)) {

@@ -3,9 +3,9 @@
 # primm_phase: Run
 
 context({
-  testcase("Feedback bij variabele aanmaken", {
+  testcase("", {
     testEqual(
-      "inbraken is correct gedefinieerd",
+      "",
       function(env) env$inbraken,
       146,
       comparator = function(got, want, ...) {

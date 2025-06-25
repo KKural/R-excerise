@@ -16,9 +16,9 @@ leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
 district_codes <- c("A1", "B2", "C3", "D4", "E5")
 
 context({
-  testcase("Feedback bij variabelen aanmaken", {
+  testcase("", {
     testEqual(
-      "Controle op misdaad_types",
+      "",
       function(env) {
         if (!exists("misdaad_types", envir = env)) {
           get_reporter()$add_message("❌ De variabele 'misdaad_types' bestaat niet.", type = "error")
@@ -41,7 +41,7 @@ context({
       }
     )
     testEqual(
-      "Controle op ernst_misdaad",
+      "",
       function(env) {
         if (!exists("ernst_misdaad", envir = env)) {
           get_reporter()$add_message("❌ De variabele 'ernst_misdaad' bestaat niet.", type = "error")
@@ -64,7 +64,7 @@ context({
       }
     )
     testEqual(
-      "Controle op leeftijden_daders",
+      "",
       function(env) {
         if (!exists("leeftijden_daders", envir = env)) {
           get_reporter()$add_message("❌ De variabele 'leeftijden_daders' bestaat niet.", type = "error")
@@ -87,7 +87,7 @@ context({
       }
     )
     testEqual(
-      "Controle op district_codes",
+      "",
       function(env) {
         if (!exists("district_codes", envir = env)) {
           get_reporter()$add_message("❌ De variabele 'district_codes' bestaat niet.", type = "error")

@@ -12,9 +12,9 @@ niveau_opleidingsniveau <- "ordinaal"
 niveau_risicocategorie <- "ordinaal"
 
 context({
-  testcase("Feedback bij meetniveaus", {
+  testcase("", {
     testEqual(
-      "niveau_zaak_id is 'nominaal'",
+      "",
       function(env) env$niveau_zaak_id == "nominaal",
       TRUE,
       comparator = function(got, want, ...) {
@@ -33,7 +33,7 @@ context({
       }
     )
     testEqual(
-      "niveau_geslacht is 'nominaal'",
+      "",
       function(env) env$niveau_geslacht == "nominaal",
       TRUE,
       comparator = function(got, want, ...) {
@@ -52,7 +52,7 @@ context({
       }
     )
     testEqual(
-      "niveau_leeftijd is 'ratio'",
+      "",
       function(env) env$niveau_leeftijd == "ratio",
       TRUE,
       comparator = function(got, want, ...) {
@@ -71,7 +71,7 @@ context({
       }
     )
     testEqual(
-      "niveau_misdaad_type is 'nominaal'",
+      "",
       function(env) env$niveau_misdaad_type == "nominaal",
       TRUE,
       comparator = function(got, want, ...) {
@@ -90,7 +90,7 @@ context({
       }
     )
     testEqual(
-      "niveau_strafduur is 'ratio'",
+      "",
       function(env) env$niveau_strafduur == "ratio",
       TRUE,
       comparator = function(got, want, ...) {
@@ -109,7 +109,7 @@ context({
       }
     )
     testEqual(
-      "niveau_opleidingsniveau is 'ordinaal'",
+      "",
       function(env) env$niveau_opleidingsniveau == "ordinaal",
       TRUE,
       comparator = function(got, want, ...) {
@@ -128,7 +128,7 @@ context({
       }
     )
     testEqual(
-      "niveau_risicocategorie is 'ordinaal'",
+      "",
       function(env) env$niveau_risicocategorie == "ordinaal",
       TRUE,
       comparator = function(got, want, ...) {

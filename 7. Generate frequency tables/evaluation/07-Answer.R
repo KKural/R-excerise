@@ -8,8 +8,9 @@ delictsoorten <- c(
 
 #–– Evaluation ––
 context({
-  testcase("Feedback bij frequentietabel", {
-    testEqual({
+  testcase("", {
+    testEqual(
+      "",
       # 1. Always emit the command
       get_reporter()$add_message('```r\n> table(delictsoorten)\n```', type='markdown')
       # 2. Compute expected output
