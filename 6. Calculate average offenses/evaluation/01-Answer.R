@@ -1,3 +1,4 @@
+maandelijkse_feiten <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
 # Students: Submit only the following expression as your answer:
 # mean(maandelijkse_feiten)
 
