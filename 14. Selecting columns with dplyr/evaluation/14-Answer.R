@@ -1,7 +1,7 @@
 context({
   testcase("Feedback bij kolommen selecteren", {
     testEqual(
-      "Geselecteerde kolommen zijn correct",
+      "",
       function(env) {
         if (!exists("geselecteerde_data", envir = env)) {
           get_reporter()$add_message(
@@ -24,10 +24,13 @@ context({
           )
           return(FALSE)
         }
+        get_reporter()$add_message(
+          "✅ Correct! De juiste kolommen zijn geselecteerd in 'geselecteerde_data'.",
+          type = "success"
+        )
         TRUE
       },
-      TRUE,
-      feedback = "✅ Correct! De juiste kolommen zijn geselecteerd in 'geselecteerde_data'."
+      TRUE
     )
   })
 }, preExec = {
