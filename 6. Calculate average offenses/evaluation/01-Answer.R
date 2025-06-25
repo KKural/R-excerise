@@ -1,5 +1,6 @@
 maandelijkse_feiten <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
 gem_feiten <- mean(maandelijkse_feiten)
+result <- gem_feiten
 
 # bloom_level: Apply
 # scaffolding_level: Full support
