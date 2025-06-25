@@ -35,13 +35,10 @@ context({
         get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
         return(FALSE)
       }
-      # 4. Success: always show the correct output as justification
+      # 4. Success: only show the correct output and green tick
       get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
       get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
       get_reporter()$add_message('✅ Juist! `leeftijd_samenvatting` is correct aangemaakt.', type='success')
-      get_reporter()$add_message('Dit is het juiste resultaat:', type='info')
-      get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-      get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
       return(TRUE)
     }, expected = TRUE)
   })
