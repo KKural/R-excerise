@@ -31,9 +31,16 @@ context({
           return(FALSE)
         }
         # 3) toon prompt + resultaat
-        get_reporter()$add_message("```r\n> delict_tabel\n```", type = "markdown")
         get_reporter()$add_message(
-          paste(capture.output(print(env$delict_tabel)), collapse = "\n"),
+          "Feedback bij frequentietabel",
+          type = "markdown"
+        )
+        get_reporter()$add_message(
+          paste0(
+            "```r\n> delict_tabel\n",
+            paste(capture.output(print(env$delict_tabel)), collapse = "\n"),
+            "\n```"
+          ),
           type = "markdown"
         )
         # 4) successbericht
