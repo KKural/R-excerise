@@ -226,7 +226,12 @@ context({
           TRUE
         } else {
           get_reporter()$add_message(
-            paste0("❌ dim(df_crime_data): geeft ", paste(got, collapse=" "), " in plaats van 5 4."),
+            paste0("❌ dim(df_crime_data): geeft ", paste(got, collapse=" "), " in plaats van ", paste(want, collapse=" "), "."),
+            type="markdown"
+          )
+          # Add structure output for debugging
+          get_reporter()$add_message(
+            paste0("Structuur van output:\n- gekregen: ", paste(capture.output(str(got)), collapse=" "), "\n- verwacht: ", paste(capture.output(str(want)), collapse=" ")), 
             type="markdown"
           )
           FALSE
