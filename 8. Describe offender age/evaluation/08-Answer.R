@@ -20,32 +20,37 @@ context({
         }, error = function(e) {
           list(type = "no_var", val = NULL, expected = summary(env$leeftijden_daders))
         })
-        # Always emit the command and expected output as in answer 7
-        get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-        get_reporter()$add_message(
-          paste0('```r\n', paste(capture.output(print(result$expected)), collapse='\n'), '\n```'),
-          type='markdown'
-        )
         if (result$type == "correct") {
-          get_reporter()$add_message(
-            "Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren",
-            type = "success"
+          # Compose feedback string with command, output, and confirmation
+          feedback <- paste0(
+            '```r\n> summary(leeftijden_daders)\n```\n',
+            '```r\n', paste(capture.output(print(result$expected)), collapse='\n'), '\n```\n',
+            'Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren'
           )
+          return(feedback)
         }
-        result$type  # Only return the type for the comparator
-      },
-      "correct",
-      comparator = function(generated, expected, ...) {
-        feedbacks <- list(
+        # For incorrect cases, still show command and output, then error message
+        error_msgs <- list(
           "no_var"      = "❌ Het object `leeftijd_samenvatting` bestaat niet of bevat een fout. Controleer je code en probeer opnieuw.",
           "not_summary" = "❌ `leeftijd_samenvatting` moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).",
-          "wrong_val"   = "❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders).",
-          "correct"     = NULL
+          "wrong_val"   = "❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders)."
         )
-        if (!is.null(feedbacks[[generated]]) && generated != "correct") {
-          get_reporter()$add_message(feedbacks[[generated]], type = "error")
-        }
-        generated == expected
+        feedback <- paste0(
+          '```r\n> summary(leeftijden_daders)\n```\n',
+          '```r\n', paste(capture.output(print(result$expected)), collapse='\n'), '\n```\n',
+          error_msgs[[result$type]]
+        )
+        return(feedback)
+      },
+      paste0(
+        '```r\n> summary(leeftijden_daders)\n```\n',
+        '```r\n', paste(capture.output(print(summary(leeftijden_daders))), collapse='\n'), '\n```\n',
+        'Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren'
+      ),
+      comparator = function(generated, expected, ...) {
+        # Accept if the feedback matches expected (for correct), or starts with the command for errors
+        if (identical(generated, expected)) return(TRUE)
+        startsWith(generated, '```r\n> summary(leeftijden_daders)')
       }
     )
   })
