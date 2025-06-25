@@ -1,29 +1,5 @@
 maandelijkse_feiten <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
-gem_feiten <- mean(maandelijkse_feiten)
-result <- gem_feiten
-
-# bloom_level: Apply
-# scaffolding_level: Full support
-# primm_phase: Run
-
-context({
-  testcase("", {
-    testEqual(
-      "",
-      function(env) { NULL },
-      NULL,
-      comparator = function(got, want, ...) {
-        TRUE
-      }
-    )
-  })
-}, preExec = {
-  # Set up the maandelijkse_feiten vector
-  maandelijkse_feiten <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
-})
-
-# Model solution:
-gem_feiten <- mean(maandelijkse_feiten)
+mean(maandelijkse_feiten)
 
 context({
   testcase("Feedback bij berekenen van gemiddelde", {
@@ -31,7 +7,6 @@ context({
       "De uitkomst van mean(maandelijkse_feiten) is correct berekend",
       function(env) {
         verwacht <- mean(maandelijkse_feiten)
-        # Prefer env$last_value, but fall back to env$result if needed
         student_value <- if (!is.null(env$last_value)) env$last_value else env$result
         if (is.null(student_value) || !is.numeric(student_value)) {
           get_reporter()$add_message(
