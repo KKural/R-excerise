@@ -1,30 +1,33 @@
 context({
-  # Step 1 — Existence check (no label shown)
-  testcaseAssert("", function(env) {
-    if (!exists("geselecteerde_data", envir = env)) {
-      get_reporter()$add_message(
-        "❌ De variabele `geselecteerde_data` bestaat niet. Controleer of je `select()` juist gebruikt hebt, en vergeet `library(dplyr)` niet.",
-        type = "error"
-      )
-      return(FALSE)
-    }
-    TRUE
-  })
-
-  # Step 2 — Structure check (no label shown)
-  testcase("", {
+  testcase("Check kolomselectie", {
     testEqual(
       "",
-      function(env) env$geselecteerde_data,
+      function(env) {
+        # Safe wrapper to catch any student-side syntax error
+        tryCatch({
+          env$geselecteerde_data
+        }, error = function(e) {
+          # Manual feedback when syntax fails
+          get_reporter()$add_message(
+            "❌ Fout in je code: controleer of je `select()` correct gebruikt hebt en of je `library(dplyr)` hebt toegevoegd.",
+            type = "error"
+          )
+          return(NULL)
+        })
+      },
       NULL,
       comparator = function(got, want) {
+        if (is.null(got)) {
+          return(FALSE)
+        }
+
         if (!is.data.frame(got)) {
           get_reporter()$add_message("❌ 'geselecteerde_data' moet een data frame zijn.", type = "error")
           return(FALSE)
         }
 
         if (!identical(colnames(got), c("id", "delicttype"))) {
-          get_reporter()$add_message("❌ De kolommen moeten exact 'id' en 'delicttype' zijn, in deze volgorde.", type = "error")
+          get_reporter()$add_message("❌ Verkeerde kolommen: verwacht 'id' en 'delicttype'.", type = "error")
           return(FALSE)
         }
 
