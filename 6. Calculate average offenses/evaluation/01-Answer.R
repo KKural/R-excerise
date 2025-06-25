@@ -31,30 +31,26 @@ context({
       "De uitkomst van mean(maandelijkse_feiten) is correct berekend",
       function(env) {
         verwacht <- mean(maandelijkse_feiten)
-        # Check if the student's code is exactly mean(maandelijkse_feiten)
-        # and if the output is correct
         if (!is.numeric(env$last_value)) {
           get_reporter()$add_message(
             "❌ Je antwoord is geen numerieke waarde. Gebruik mean(maandelijkse_feiten)",
             type = "error"
           )
-          return(FALSE)
-        }
-        if (abs(env$last_value - verwacht) > 1e-6) {
+        } else if (abs(env$last_value - verwacht) > 1e-6) {
           get_reporter()$add_message(
             paste0("❌ Je antwoord is niet het juiste gemiddelde. Gebruik mean(maandelijkse_feiten). Het juiste gemiddelde is: ", round(verwacht, 2)),
             type = "error"
           )
-          return(FALSE)
+        } else {
+          get_reporter()$add_message(
+            paste0("✅ Correct! Het gemiddelde is: ", round(verwacht, 2)),
+            type = "success"
+          )
         }
-        get_reporter()$add_message(
-          paste0("✅ Correct! Het gemiddelde is: ", round(verwacht, 2)),
-          type = "success"
-        )
-        TRUE
+        env$last_value
       },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+      mean(maandelijkse_feiten),
+      comparator = function(got, want, ...) { abs(got - want) < 1e-6 }
     )
   })
 }, preExec = {
