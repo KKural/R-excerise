@@ -6,34 +6,46 @@ context({
   testcase("Feedback bij frequentietabel", {
     testEqual(
       "delict_tabel is correct aangemaakt",
-      function(env) {
-        if (!exists("delict_tabel", envir = env)) {
+      function(env) env$delict_tabel,
+      table(delictsoorten),
+      comparator = function(got, want, ...) {
+        if (is.null(got)) {
           get_reporter()$add_message(
-            "❌ De variabele 'delict_tabel' bestaat niet. Zorg dat je deze aanmaakt met: delict_tabel <- table(delictsoorten)",
+            "❌ De variabele 'delict_tabel' is niet gedefinieerd. Gebruik: delict_tabel <- table(delictsoorten)",
             type = "error"
           )
           return(FALSE)
         }
-        if (!is.table(env$delict_tabel)) {
+        if (!is.table(got)) {
           get_reporter()$add_message(
-            "❌ 'delict_tabel' moet een frequentietabel zijn. Gebruik: delict_tabel <- table(delictsoorten)",
+            "❌ Je antwoord is geen frequentietabel. Gebruik: delict_tabel <- table(delictsoorten)",
             type = "error"
           )
           return(FALSE)
         }
-        tbl_out <- paste(capture.output(print(env$delict_tabel)), collapse = "\n")
+        if (!identical(got, want)) {
+          got_out <- paste(capture.output(print(got)), collapse = "\n")
+          want_out <- paste(capture.output(print(want)), collapse = "\n")
+          get_reporter()$add_message(
+            paste0(
+              "❌ Je frequentietabel is niet correct.\n",
+              "Jouw tabel:\n", got_out, "\n",
+              "Verwacht:\n", want_out
+            ),
+            type = "error"
+          )
+          return(FALSE)
+        }
+        want_out <- paste(capture.output(print(want)), collapse = "\n")
         get_reporter()$add_message(
-          paste0("> delict_tabel\n", tbl_out),
+          paste0("✅ Correct!\n\n> delict_tabel\n", want_out),
           type = "success"
         )
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+        return(TRUE)
+      }
     )
   })
 }, preExec = {
-  # Set up the delictsoorten vector
   delictsoorten <- c("Diefstal", "Aanval", "Inbraak", "Vandalisme", "Diefstal", "Diefstal", 
                    "Aanval", "Diefstal", "Inbraak", "Vandalisme", "Diefstal", "Aanval", 
                    "Drugsdelict", "Diefstal", "Inbraak", "Vandalisme", "Aanval", 
