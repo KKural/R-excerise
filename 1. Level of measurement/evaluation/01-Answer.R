@@ -15,13 +15,15 @@ context({
             "✅ str(df_crime_data): toont kolomnamen, types en voorbeeldwaarden.",
             type = "success"
           )
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             "❌ str(df_crime_data): structuur niet zoals verwacht.",
             type = "error"
           )
+          return(FALSE)
         }
-        TRUE
+        FALSE
       }
     )
 
@@ -173,13 +175,13 @@ context({
             "✅ summary(df_crime_data): toont frequenties en statistieken.",
             type="markdown"
           )
-          TRUE
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             "❌ summary(df_crime_data): samenvatting niet zoals verwacht.",
             type="markdown"
           )
-          FALSE
+          return(FALSE)
         }
       }
     )
