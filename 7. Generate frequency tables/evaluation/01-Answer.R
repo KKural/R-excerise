@@ -10,7 +10,7 @@ delictsoorten <- c(
 context({
   testcase("Feedback bij frequentietabel", {
     testEqual(
-      "De frequentietabel van delictsoorten is correct aangemaakt",
+      "",
       
       # student‐result: we detect and print delict_tabel
       function(env) {
