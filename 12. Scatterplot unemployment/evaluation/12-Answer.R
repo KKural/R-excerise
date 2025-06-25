@@ -7,13 +7,33 @@ context({
     testEqual(
       "",
       function(env) {
-        # Simply return TRUE for any submission
-        # This is just to test if the basic evaluation works
-        get_reporter()$add_message(
-          "✅ Je code werd ontvangen! Dit is een test van de evaluatiefunctie.",
-          type = "success"
-        )
-        return(TRUE)
+        # Convert student's code to string for analysis
+        code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
+        
+        # Check for key elements
+        has_plot = grepl("plot", code)
+        has_werkloosheid = grepl("werkloosheid", code)
+        has_criminaliteit = grepl("criminaliteitscijfers", code)
+        
+        if (has_plot && has_werkloosheid && has_criminaliteit) {
+          get_reporter()$add_message(
+            "✅ Correct! Je hebt een spreidingsdiagram gemaakt met werkloosheid en criminaliteitscijfers.",
+            type = "success"
+          )
+          return(TRUE)
+        } else if (!has_plot) {
+          get_reporter()$add_message(
+            "❌ Gebruik de plot() functie om een spreidingsdiagram te maken.",
+            type = "error"
+          )
+          return(FALSE)
+        } else {
+          get_reporter()$add_message(
+            "❌ Gebruik beide variabelen 'werkloosheid' en 'criminaliteitscijfers' in je plot.",
+            type = "error"
+          )
+          return(FALSE)
+        }
       },
       TRUE
     )
