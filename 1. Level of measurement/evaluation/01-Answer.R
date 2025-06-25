@@ -39,13 +39,15 @@ context({
             "✅ names(df_crime_data): kolomnamen zijn type, ernst, leeftijd, district.",
             type = "success"
           )
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             "❌ names(df_crime_data): onjuiste kolomnamen.",
             type = "error"
           )
+          return(FALSE)
         }
-        identical(got, want)
+        return(FALSE)
       }
     )
 
@@ -62,14 +64,15 @@ context({
             "✅ length(df_crime_data): aantal kolommen = 4.",
             type="markdown"
           )
-          TRUE
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ length(df_crime_data): geeft ", got, " in plaats van 4."),
             type="markdown"
           )
-          FALSE
+          return(FALSE)
         }
+        return(FALSE)
       }
     )
 
@@ -86,14 +89,15 @@ context({
             "✅ nrow(df_crime_data): aantal rijen = 5.",
             type="markdown"
           )
-          TRUE
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ nrow(df_crime_data): geeft ", got, " in plaats van 5."),
             type="markdown"
           )
-          FALSE
+          return(FALSE)
         }
+        return(FALSE)
       }
     )
 
@@ -110,14 +114,15 @@ context({
             "✅ ncol(df_crime_data): aantal kolommen = 4.",
             type="markdown"
           )
-          TRUE
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ ncol(df_crime_data): geeft ", got, " in plaats van 4."),
             type="markdown"
           )
-          FALSE
+          return(FALSE)
         }
+        return(FALSE)
       }
     )
 
@@ -147,14 +152,15 @@ context({
             "✅ head(df_crime_data): eerste 5 rijen komen overeen.",
             type="markdown"
           )
-          TRUE
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             "❌ head(df_crime_data): rijen kwamen niet uit zoals verwacht.",
             type="markdown"
           )
-          FALSE
+          return(FALSE)
         }
+        return(FALSE)
       }
     )
 
@@ -200,14 +206,15 @@ context({
             "✅ class(df_crime_data): objecttype = data.frame.",
             type="markdown"
           )
-          TRUE
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ class(df_crime_data): geeft ", got, " in plaats van 'data.frame'."),
             type="markdown"
           )
-          FALSE
+          return(FALSE)
         }
+        return(FALSE)
       }
     )
 
@@ -225,7 +232,7 @@ context({
             "✅ dim(df_crime_data): dimensies = (5, 4).",
             type="markdown"
           )
-          TRUE
+          return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ dim(df_crime_data): geeft ", paste(got, collapse=" "), " in plaats van ", paste(want, collapse=" "), "."),
@@ -236,8 +243,9 @@ context({
             paste0("Structuur van output:\n- gekregen: ", paste(capture.output(str(got)), collapse=" "), "\n- verwacht: ", paste(capture.output(str(want)), collapse=" ")), 
             type="markdown"
           )
-          FALSE
+          return(FALSE)
         }
+        return(FALSE)
       }
     )
 
