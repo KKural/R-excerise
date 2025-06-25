@@ -9,9 +9,9 @@ context({
   testcase("Feedback bij samenvatting leeftijden", {
     testEqual({
       # Compute expected output
-      expected <- summary(get("leeftijden_daders", envir = env()))
+      expected <- summary(get("leeftijden_daders", envir = env))
       # 1. Existence check
-      if (!exists('leeftijd_samenvatting', envir=env())) {
+      if (!exists('leeftijd_samenvatting', envir=env)) {
         get_reporter()$add_message('❌ Het object `leeftijd_samenvatting` bestaat niet of bevat een fout. Controleer je code en probeer opnieuw.', type='error')
         get_reporter()$add_message('Tip: Maak het object aan met `leeftijd_samenvatting <- summary(leeftijden_daders)` en probeer opnieuw.', type='info')
         get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
@@ -19,7 +19,7 @@ context({
         return(FALSE)
       }
       # 2. Type check
-      val <- get('leeftijd_samenvatting', envir=env())
+      val <- get('leeftijd_samenvatting', envir=env)
       if (!is.numeric(val) || is.null(names(val))) {
         get_reporter()$add_message('❌ `leeftijd_samenvatting` moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).', type='error')
         get_reporter()$add_message('Tip: Gebruik de summary-functie direct op leeftijden_daders.', type='info')
