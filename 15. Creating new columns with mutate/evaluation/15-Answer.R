@@ -1,7 +1,7 @@
 context({
-  testcase("Feedback bij nieuwe kolom aanmaken", {
+  testcase("", {
     testEqual(
-      "Nieuwe kolom is correct aangemaakt",
+      "",
       function(env) {
         # Safe wrapper to catch any student-side syntax error
         tryCatch({

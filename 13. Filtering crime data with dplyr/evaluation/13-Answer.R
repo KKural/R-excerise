@@ -1,7 +1,7 @@
 context({
-  testcase("Feedback bij filteren op diefstal", {
+  testcase("", {
     testEqual(
-      "Alleen rijen met delicttype 'Diefstal' zijn geselecteerd",
+      "",
       function(env) {
         # Safe wrapper to catch any student-side syntax error
         tryCatch({

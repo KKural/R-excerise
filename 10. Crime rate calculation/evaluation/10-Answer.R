@@ -1,7 +1,7 @@
 context({
-  testcase("Feedback bij berekenen van criminaliteitscijfers", {
+  testcase("", {
     testEqual(
-      "criminaliteitscijfers is correct berekend",
+      "",
       function(env) {
         # Safe wrapper to catch any student-side syntax error
         tryCatch({
@@ -50,3 +50,4 @@ context({
 
 # Modeloplossing:
 # criminaliteitscijfers <- (misdrijf_aantallen / bevolking) * 1000
+criminaliteitscijfers <- (misdrijf_aantallen / bevolking) * 1000
