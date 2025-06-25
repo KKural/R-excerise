@@ -3,34 +3,9 @@
 # primm_phase: Run
 
 context({
-  testcase("", {
-    testEqual(
-      "",
-      function(env) { NULL },
-      NULL,
-      comparator = function(got, want, ...) {
-        TRUE
-      }
-    )
-  })
-}, preExec = {
-  # Set up the delictsoorten vector
-  delictsoorten <- c("Diefstal", "Aanval", "Inbraak", "Vandalisme", "Diefstal", "Diefstal", 
-                   "Aanval", "Diefstal", "Inbraak", "Vandalisme", "Diefstal", "Aanval", 
-                   "Drugsdelict", "Diefstal", "Inbraak", "Vandalisme", "Aanval", 
-                   "Diefstal", "Drugsdelict", "Inbraak")
-})
-
-# Verwachte antwoorden:
-# delict_tabel <- table(delictsoorten)
-
-# Model solution:
-delict_tabel <- table(delictsoorten)
-
-context({
   testcase("Feedback bij frequentietabel", {
     testEqual(
-      "delict_tabel is correct aangemaakt",
+      "",
       function(env) {
         if (!exists("delict_tabel", envir = env)) {
           get_reporter()$add_message(
