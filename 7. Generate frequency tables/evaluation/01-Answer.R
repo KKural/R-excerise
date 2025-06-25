@@ -17,7 +17,7 @@ context({
       # 3. Existence check
       if (!exists('delict_tabel', envir=env())) {
         get_reporter()$add_message(
-          '✅ Juist! `delict_tabel` zal het volgende resultaat opleveren',
+          '✅ Juist! `delict_tabel` zal het bovenstaande resultaat opleveren',
           type='error'
         )
         return(FALSE)
