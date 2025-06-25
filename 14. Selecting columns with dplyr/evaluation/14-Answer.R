@@ -30,8 +30,7 @@ context({
         )
         TRUE
       },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+      TRUE
     )
   })
 }, preExec = {
