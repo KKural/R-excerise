@@ -31,12 +31,14 @@ context({
       "De uitkomst van mean(maandelijkse_feiten) is correct berekend",
       function(env) {
         verwacht <- mean(maandelijkse_feiten)
-        if (!is.numeric(env$last_value)) {
+        # Prefer env$last_value, but fall back to env$result if needed
+        student_value <- if (!is.null(env$last_value)) env$last_value else env$result
+        if (is.null(student_value) || !is.numeric(student_value)) {
           get_reporter()$add_message(
             "❌ Je antwoord is geen numerieke waarde. Gebruik mean(maandelijkse_feiten)",
             type = "error"
           )
-        } else if (abs(env$last_value - verwacht) > 1e-6) {
+        } else if (abs(student_value - verwacht) > 1e-6) {
           get_reporter()$add_message(
             paste0("❌ Je antwoord is niet het juiste gemiddelde. Gebruik mean(maandelijkse_feiten). Het juiste gemiddelde is: ", round(verwacht, 2)),
             type = "error"
@@ -47,7 +49,7 @@ context({
             type = "success"
           )
         }
-        env$last_value
+        student_value
       },
       mean(maandelijkse_feiten),
       comparator = function(got, want, ...) { abs(got - want) < 1e-6 }
