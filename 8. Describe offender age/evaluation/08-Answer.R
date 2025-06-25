@@ -8,45 +8,59 @@ leeftijden_daders <- c(
 context({
   testcase("Feedback bij samenvatting leeftijden", {
     testEqual({
-      # Compute expected output
-      expected <- summary(get("leeftijden_daders", envir = env()))
-      # 1. Existence check
-      if (!exists('leeftijd_samenvatting', envir=env())) {
-        get_reporter()$add_message('❌ Het object `leeftijd_samenvatting` bestaat niet of bevat een fout. Controleer je code en probeer opnieuw.', type='error')
-        get_reporter()$add_message('Tip: Maak het object aan met `leeftijd_samenvatting <- summary(leeftijden_daders)` en probeer opnieuw.', type='info')
-        get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-        get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
+      # Compute expected summary from the student’s env
+      expected <- summary(get("leeftijden_daders", envir = env, inherits = FALSE))
+
+      # 1️⃣ Existence check
+      if (!exists("leeftijd_samenvatting", envir = env, inherits = FALSE)) {
+        get_reporter()$add_message(
+          "❌ Het object `leeftijd_samenvatting` bestaat niet.",
+          type = "error"
+        )
+        get_reporter()$add_message(
+          "Tip: Maak het object aan met:\n```r\nleeftijd_samenvatting <- summary(leeftijden_daders)\n```",
+          type = "info"
+        )
         return(FALSE)
       }
-      # 2. Type check
-      val <- get('leeftijd_samenvatting', envir=env())
-      if (!is.numeric(val) || is.null(names(val))) {
-        get_reporter()$add_message('❌ `leeftijd_samenvatting` moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).', type='error')
-        get_reporter()$add_message('Tip: Gebruik de summary-functie direct op leeftijden_daders.', type='info')
-        get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-        get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
-        return(FALSE)
-      }
-      # 3. Value check
+
+      # 2️⃣ Type & value check
+      val <- get("leeftijd_samenvatting", envir = env, inherits = FALSE)
       if (!identical(val, expected)) {
-        get_reporter()$add_message('❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders).', type='error')
-        get_reporter()$add_message('Tip: Controleer of je geen extra bewerkingen uitvoert en probeer opnieuw.', type='info')
-        get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-        get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
+        get_reporter()$add_message(
+          "❌ De inhoud van `leeftijd_samenvatting` klopt niet.",
+          type = "error"
+        )
+        get_reporter()$add_message(
+          "Tip: Gebruik exact `leeftijd_samenvatting <- summary(leeftijden_daders)` zonder extra bewerkingen.",
+          type = "info"
+        )
         return(FALSE)
       }
-      # 4. Success: always show the correct output as justification
-      get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-      get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
-      get_reporter()$add_message('✅ Juist! `leeftijd_samenvatting` is correct aangemaakt.', type='success')
-      get_reporter()$add_message('Dit is het juiste resultaat:', type='info')
-      get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-      get_reporter()$add_message(paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'), type='markdown')
+
+      # 3️⃣ Success: show code → output → ✅ in three messages
+      get_reporter()$add_message(
+        "```r\n> leeftijd_samenvatting <- summary(leeftijden_daders)\n> leeftijd_samenvatting\n```",
+        type = "markdown"
+      )
+      get_reporter()$add_message(
+        paste0(
+          "```r\n",
+          paste(capture.output(print(expected)), collapse = "\n"),
+          "\n```"
+        ),
+        type = "markdown"
+      )
+      get_reporter()$add_message(
+        "✅ Juist! `leeftijd_samenvatting` is correct aangemaakt.",
+        type = "success"
+      )
+
       return(TRUE)
     }, expected = TRUE)
   })
 }, preExec = {
-  # Pre‐execution: make the vector available to both student code & tests
+  # Pre‐execution: make the vector available to the student’s env
   leeftijden_daders <- c(
     19, 23, 45, 32, 28, 21, 24, 19, 37, 42, 18, 25, 22, 31, 19, 
     27, 36, 29, 24, 33, 41, 26, 20, 38, 22, 19, 25, 29, 31, 34
