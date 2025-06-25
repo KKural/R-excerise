@@ -11,13 +11,9 @@ context({
   testcase("Feedback bij frequentietabel", {
     testEqual({
       # 1. Always emit the command
-      get_reporter()$add_message('```r\n> table(delictsoorten)\n```', type='markdown')
-      # 2. Compute and emit expected output
+      get_reporter()$add_message('```r\n> delict_tabel <- table(delictsoorten)\n> delict_tabel\n```', type='markdown')
+      # 2. Compute expected output
       expected <- table(get("delictsoorten", envir = env()))
-      get_reporter()$add_message(
-        paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
-        type='markdown'
-      )
       # 3. Existence check
       if (!exists('delict_tabel', envir=env())) {
         get_reporter()$add_message(
@@ -42,9 +38,10 @@ context({
         )
         return(FALSE)
       }
-      # 6. Success
+      # 6. Success: show the expected output as justification
       get_reporter()$add_message(
-        '✅ De frequentietabel van delictsoorten is correct aangemaakt!',
+        paste0('✅ Juist! `delict_tabel <- table(delictsoorten)` produceert:\n\n',
+               '```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
         type='success'
       )
       return(TRUE)
