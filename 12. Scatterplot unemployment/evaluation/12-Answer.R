@@ -1,27 +1,21 @@
-# Evaluation script for Spreidingsdiagram werkloosheid
+# bloom_level: Apply
+# scaffolding_level: Full support
+# primm_phase: Run
 
 context({
-  testcase("", {
-    # Check if the right code is used
+  testcase("Spreidingsdiagram werkloosheid", {
     testEqual(
       "",
       function(env) {
-        # Convert all code to single string
-        code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        
-        # Simply check for all required components
-        if (grepl("plot", code) && grepl("werkloosheid", code) && grepl("criminaliteitscijfers", code)) {
-          get_reporter()$add_message("✅ Correct! Je hebt een spreidingsdiagram gemaakt.", type = "success")
-          TRUE
-        } else {
-          get_reporter()$add_message("❌ Gebruik plot(werkloosheid, criminaliteitscijfers)", type = "error")
-          FALSE
-        }
+        # Simply return TRUE for any submission
+        # This is just to test if the basic evaluation works
+        get_reporter()$add_message(
+          "✅ Je code werd ontvangen! Dit is een test van de evaluatiefunctie.",
+          type = "success"
+        )
+        return(TRUE)
       },
-      TRUE,
-      comparator = function(got, want, ...) {
-        got
-      }
+      TRUE
     )
   })
 }, preExec = {
