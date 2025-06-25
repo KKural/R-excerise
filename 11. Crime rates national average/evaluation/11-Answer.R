@@ -1,7 +1,7 @@
 context({
-  testcase("", {
+  testcase("Feedback bij vergelijken met nationaal gemiddelde", {
     testEqual(
-      "",
+      "boven_gemiddelde is correct aangemaakt",
       function(env) {
         # Eerst controleren of er überhaupt code is ingeleverd
         if (length(env$`.__code__`) == 0) {
