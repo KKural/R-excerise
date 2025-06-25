@@ -1,11 +1,11 @@
 context({
   testcase("Feedback bij vergelijken met nationaal gemiddelde", {
     testEqual(
-      "boven_gemiddelde is correct aangemaakt",
+      "boven_gemiddeld is correct aangemaakt",
       function(env) {
         # Safe wrapper to catch any student-side syntax error
         tryCatch({
-          env$boven_gemiddelde
+          env$boven_gemiddeld
         }, error = function(e) {
           get_reporter()$add_message(
             "❌ Fout in je code: controleer of je vergelijking correct is en of je variabelen goed zijn aangemaakt.",
@@ -21,7 +21,7 @@ context({
         }
         if (!is.logical(got)) {
           get_reporter()$add_message(
-            "❌ 'boven_gemiddelde' moet een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
+            "❌ 'boven_gemiddeld' moet een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
             type = "error"
           )
           return(FALSE)
@@ -29,13 +29,13 @@ context({
         verwacht <- c(5.58, 6.42, 7.05, 7.18, 6.39) > 6.2
         if (!identical(got, verwacht)) {
           get_reporter()$add_message(
-            "❌ 'boven_gemiddelde' bevat niet de juiste logische waarden.",
+            "❌ 'boven_gemiddeld' bevat niet de juiste logische waarden.",
             type = "error"
           )
           return(FALSE)
         }
         get_reporter()$add_message(
-          "✅ Correct! De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddelde'.",
+          "✅ Correct! De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddeld'.",
           type = "success"
         )
         return(TRUE)
@@ -49,4 +49,4 @@ context({
 })
 
 # Verwachte antwoorden (studenten moeten dit schrijven):
-# boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde
+# boven_gemiddeld <- district_misdaadcijfers > nationaal_gemiddelde
