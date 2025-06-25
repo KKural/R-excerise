@@ -10,26 +10,34 @@ context({
         # Convert student's code to string for analysis
         code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
         
-        # Check for key elements
-        has_plot = grepl("plot", code)
-        has_werkloosheid = grepl("werkloosheid", code)
-        has_criminaliteit = grepl("criminaliteitscijfers", code)
+        # Check for the exact plot command pattern
+        correct_pattern = grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers\\s*\\)", code)
         
-        if (has_plot && has_werkloosheid && has_criminaliteit) {
+        # Alternative pattern with named parameters
+        named_params_pattern = grepl("plot\\s*\\(\\s*x\\s*=\\s*werkloosheid\\s*,\\s*y\\s*=\\s*criminaliteitscijfers\\s*\\)", code)
+        
+        # Check if either pattern matches
+        if (correct_pattern || named_params_pattern) {
           get_reporter()$add_message(
             "✅ Correct! Je hebt een spreidingsdiagram gemaakt met werkloosheid en criminaliteitscijfers.",
             type = "success"
           )
           return(TRUE)
-        } else if (!has_plot) {
+        } else if (!grepl("plot", code)) {
           get_reporter()$add_message(
             "❌ Gebruik de plot() functie om een spreidingsdiagram te maken.",
             type = "error"
           )
           return(FALSE)
-        } else {
+        } else if (!grepl("werkloosheid", code) || !grepl("criminaliteitscijfers", code)) {
           get_reporter()$add_message(
             "❌ Gebruik beide variabelen 'werkloosheid' en 'criminaliteitscijfers' in je plot.",
+            type = "error"
+          )
+          return(FALSE)
+        } else {
+          get_reporter()$add_message(
+            "❌ Gebruik plot(werkloosheid, criminaliteitscijfers) om een correct spreidingsdiagram te maken.",
             type = "error"
           )
           return(FALSE)
