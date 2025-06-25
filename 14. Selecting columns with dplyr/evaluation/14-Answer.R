@@ -1,37 +1,86 @@
 context({
+  # 1. Check if 'geselecteerde_data' exists
+  testcase("", {
+    testEqual(
+      "",
+      function(env) exists("geselecteerde_data", envir = env),
+      TRUE,
+      comparator = function(got, want) {
+        if (!got) {
+          get_reporter()$add_message(
+            "We expected you to create a variable named 'geselecteerde_data' in your code.",
+            type = "error"
+          )
+        }
+        got == want
+      }
+    )
+  })
+
+  # 2. Check if 'select()' is used in the code (static code check)
   testcase("", {
     testEqual(
       "",
       function(env) {
-        # Safe wrapper to catch any student-side syntax error
-        tryCatch({
-          env$geselecteerde_data
-        }, error = function(e) {
-          # Manual feedback when syntax fails
+        code_text <- tryCatch(paste(readLines("submission.R"), collapse = "\n"), error = function(e) "")
+        grepl("select(", code_text, fixed = TRUE)
+      },
+      TRUE,
+      comparator = function(got, want) {
+        if (!got) {
           get_reporter()$add_message(
-            "❌ Fout in je code: controleer of je `select()` correct gebruikt hebt en of je `library(dplyr)` hebt toegevoegd.",
+            "We expected you to use the 'select' function in your code.",
             type = "error"
           )
-          return(NULL)
-        })
+        }
+        got == want
+      }
+    )
+  })
+
+  # 3. Check if 'geselecteerde_data' is a data frame
+  testcase("", {
+    testEqual(
+      "",
+      function(env) {
+        if (!exists("geselecteerde_data", envir = env)) return(NULL)
+        is.data.frame(env$geselecteerde_data)
       },
-      NULL,
+      TRUE,
       comparator = function(got, want) {
-        if (is.null(got)) {
+        if (is.null(got) || !got) {
+          get_reporter()$add_message(
+            "'geselecteerde_data' should be a data frame.",
+            type = "error"
+          )
+        }
+        got == want
+      }
+    )
+  })
+
+  # 4. Check if columns are correct
+  testcase("", {
+    testEqual(
+      "",
+      function(env) {
+        if (!exists("geselecteerde_data", envir = env)) return(NULL)
+        if (!is.data.frame(env$geselecteerde_data)) return(NULL)
+        colnames(env$geselecteerde_data)
+      },
+      c("id", "delicttype"),
+      comparator = function(got, want) {
+        if (is.null(got) || !identical(got, want)) {
+          get_reporter()$add_message(
+            "The data frame does not have the expected columns: 'id' and 'delicttype'.",
+            type = "error"
+          )
           return(FALSE)
         }
-
-        if (!is.data.frame(got)) {
-          get_reporter()$add_message("❌ 'geselecteerde_data' moet een data frame zijn.", type = "error")
-          return(FALSE)
-        }
-
-        if (!identical(colnames(got), c("id", "delicttype"))) {
-          get_reporter()$add_message("❌ Verkeerde kolommen: verwacht 'id' en 'delicttype'.", type = "error")
-          return(FALSE)
-        }
-
-        get_reporter()$add_message("✅ Goed gedaan! Je hebt de juiste kolommen geselecteerd met `select()`.", type = "success")
+        get_reporter()$add_message(
+          "Great job! You selected the correct columns with select().",
+          type = "success"
+        )
         return(TRUE)
       }
     )
