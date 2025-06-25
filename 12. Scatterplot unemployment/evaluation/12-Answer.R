@@ -1,66 +1,27 @@
 # Evaluation script for Spreidingsdiagram werkloosheid
 
 context({
-  testcase("Feedback bij spreidingsdiagram werkloosheid en criminaliteit", {
-    # First check if code is submitted
+  testcase("", {
+    # Check if the right code is used
     testEqual(
-      "Controleer of code is ingediend",
+      "",
       function(env) {
-        if (length(env$`.__code__`) == 0) {
-          get_reporter()$add_message(
-            "❌ Je hebt geen code ingediend. Maak een spreidingsdiagram met werkloosheid en criminaliteitscijfers.",
-            type = "error"
-          )
-          return(FALSE)
+        # Convert all code to single string
+        code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
+        
+        # Simply check for all required components
+        if (grepl("plot", code) && grepl("werkloosheid", code) && grepl("criminaliteitscijfers", code)) {
+          get_reporter()$add_message("✅ Correct! Je hebt een spreidingsdiagram gemaakt.", type = "success")
+          TRUE
+        } else {
+          get_reporter()$add_message("❌ Gebruik plot(werkloosheid, criminaliteitscijfers)", type = "error")
+          FALSE
         }
-        TRUE
       },
-      TRUE
-    )
-    
-    # Then check if the plot command is used correctly
-    testEqual(
-      "Controleer of plot() correct wordt gebruikt",
-      function(env) {
-        # Get all student code as text
-        code_lines <- sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " "))
-        user_code <- paste(code_lines, collapse = "\n")
-        
-        # Direct check for the simplest correct answer - more flexible with whitespace
-        if (grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers\\s*\\)", user_code)) {
-          get_reporter()$add_message(
-            "✅ Correct! Je hebt een spreidingsdiagram gemaakt met werkloosheid en criminaliteitscijfers.",
-            type = "success"
-          )
-          return(TRUE)
-        }
-        
-        # Check for presence of plot function
-        if (!grepl("plot\\s*\\(", user_code)) {
-          get_reporter()$add_message(
-            "❌ Gebruik de plot() functie om een spreidingsdiagram te maken.",
-            type = "error"
-          )
-          return(FALSE)
-        }
-        
-        # Check for both variables
-        if (!grepl("werkloosheid", user_code) || !grepl("criminaliteitscijfers", user_code)) {
-          get_reporter()$add_message(
-            "❌ Gebruik beide variabelen 'werkloosheid' en 'criminaliteitscijfers' in je plot.",
-            type = "error"
-          )
-          return(FALSE)
-        }
-        
-        # If we have plot and both variables in some form, mark it as correct
-        get_reporter()$add_message(
-          "✅ Je hebt een spreidingsdiagram gemaakt met de juiste variabelen.",
-          type = "success"
-        )
-        return(TRUE)
-      },
-      TRUE
+      TRUE,
+      comparator = function(got, want, ...) {
+        got
+      }
     )
   })
 }, preExec = {
