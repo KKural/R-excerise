@@ -7,19 +7,14 @@ delictsoorten <- c(
 )
 
 #–– Evaluation ––
+#–– Evaluation ––
 context({
   testcase("Feedback bij frequentietabel", {
     testEqual({
-      # 1. Show exactly what students should have run:
-      get_reporter()$add_message(
-        "```r\n> delict_tabel <- table(delictsoorten)\n> delict_tabel\n```",
-        type = "markdown"
-      )
+      # 1️⃣ Compute once up front
+      expected <- table(delictsoorten)
 
-      # 2. Compute the correct table once
-      expected <- table(get("delictsoorten", envir = env()))
-
-      # 3. Existence check
+      # 2️⃣ Existence check
       if (!exists("delict_tabel", envir = env())) {
         get_reporter()$add_message(
           "❌ De variabele `delict_tabel` bestaat niet. Maak deze aan met:\n```r\ndelict_tabel <- table(delictsoorten)\n```",
@@ -28,34 +23,36 @@ context({
         return(FALSE)
       }
 
-      # 4. Type check
+      # 3️⃣ Type check
       student_tbl <- get("delict_tabel", envir = env())
       if (!is.table(student_tbl)) {
         get_reporter()$add_message(
-          "❌ `delict_tabel` is niet van het type `table`. Gebruik:\n```r\ndelict_tabel <- table(delictsoorten)\n```",
+          "❌ `delict_tabel` is geen table. Gebruik:\n```r\ndelict_tabel <- table(delictsoorten)\n```",
           type = "error"
         )
         return(FALSE)
       }
 
-      # 5. Value check
+      # 4️⃣ Value check
       if (!identical(student_tbl, expected)) {
         get_reporter()$add_message(
-          "❌ De inhoud van `delict_tabel` is niet correct. Controleer je code.",
+          "❌ De frequentietabel is niet correct. Controleer je code.",
           type = "error"
         )
         return(FALSE)
       }
 
-      # 6. Success: repeat the assignment+print block, then show ✅
+      # ✅ Success path: show both the assignment + print, then the green check
       get_reporter()$add_message(
-        paste0(
-          "```r\n> delict_tabel <- table(delictsoorten)\n> delict_tabel\n```",
-          "\n✅ De frequentietabel van delictsoorten is correct aangemaakt."
-        ),
+        "```r\n> delict_tabel <- table(delictsoorten)\n> delict_tabel\n```",
+        type = "markdown"
+      )
+      get_reporter()$add_message(
+        "✅ De frequentietabel van delictsoorten is correct aangemaakt.",
         type = "success"
       )
-      TRUE
+
+      return(TRUE)
     }, expected = TRUE)
   })
 }, preExec = {
