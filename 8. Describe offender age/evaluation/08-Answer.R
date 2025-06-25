@@ -13,12 +13,19 @@ context({
         result <- tryCatch({
           val <- get("leeftijd_samenvatting", envir = env)
           expected <- summary(env$leeftijden_daders)
-          if (!is.numeric(val) || is.null(names(val))) return(list(type="not_summary", val=val, expected=expected))
-          if (!identical(val, expected)) return(list(type="wrong_val", val=val, expected=expected))
-          return(list(type="correct", val=val, expected=expected))
+          list(type = if (!is.numeric(val) || is.null(names(val))) "not_summary"
+                      else if (!identical(val, expected)) "wrong_val"
+                      else "correct",
+               val = val, expected = expected)
         }, error = function(e) {
-          return(list(type="no_var", val=NULL, expected=NULL))
+          list(type = "no_var", val = NULL, expected = summary(env$leeftijden_daders))
         })
+        # Always emit the command and expected output as in answer 7
+        get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
+        get_reporter()$add_message(
+          paste0('```r\n', paste(capture.output(print(result$expected)), collapse='\n'), '\n```'),
+          type='markdown'
+        )
         result
       },
       list(type="correct", val=NULL, expected=NULL),
@@ -29,20 +36,7 @@ context({
           "wrong_val"   = "❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders).",
           "correct"     = "✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in `leeftijd_samenvatting`."
         )
-        msg <- feedbacks[[generated$type]]
-        # Add code chunk output for student's value and expected value if not correct
-        if (generated$type == "wrong_val" || generated$type == "not_summary") {
-          msg <- paste0(
-            msg,
-            "\n\nJouw output:\n```r\n", paste(capture.output(print(generated$val)), collapse='\n'), "\n```\n",
-            "Verwachte output:\n```r\n", paste(capture.output(print(generated$expected)), collapse='\n'), "\n```")
-        }
-        if (generated$type == "correct") {
-          msg <- paste0(
-            msg,
-            "\n\nJuiste output:\n```r\n", paste(capture.output(print(generated$val)), collapse='\n'), "\n```")
-        }
-        get_reporter()$add_message(msg, type = ifelse(generated$type == "correct", "success", "error"))
+        get_reporter()$add_message(feedbacks[[generated$type]], type = ifelse(generated$type == "correct", "success", "error"))
         generated$type == expected$type
       }
     )
