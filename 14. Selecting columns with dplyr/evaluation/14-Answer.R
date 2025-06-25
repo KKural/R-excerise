@@ -1,36 +1,41 @@
 context({
   testcase("Feedback bij kolommen selecteren", {
     testEqual(
-      "",
-      function(env) {
-        if (!exists("geselecteerde_data", envir = env)) {
+      "Geselecteerde kolommen zijn correct",
+      function(env) env$geselecteerde_data,
+      NULL,
+      comparator = function(got, want, ...) {
+        # Check if variable exists
+        if (is.null(got)) {
           get_reporter()$add_message(
             "❌ De variabele 'geselecteerde_data' bestaat niet.",
             type = "error"
           )
           return(FALSE)
         }
-        if (!is.data.frame(env$geselecteerde_data)) {
+        # Check if it's a data frame
+        if (!is.data.frame(got)) {
           get_reporter()$add_message(
             "❌ 'geselecteerde_data' moet een data frame zijn.",
             type = "error"
           )
           return(FALSE)
         }
-        if (!identical(colnames(env$geselecteerde_data), c("id", "delicttype"))) {
+        # Check column names
+        if (!identical(colnames(got), c("id", "delicttype"))) {
           get_reporter()$add_message(
             "❌ 'geselecteerde_data' moet alleen de kolommen 'id' en 'delicttype' bevatten (in deze volgorde).",
             type = "error"
           )
           return(FALSE)
         }
+        # Success message
         get_reporter()$add_message(
           "✅ Correct! De juiste kolommen zijn geselecteerd in 'geselecteerde_data'.",
           type = "success"
         )
-        TRUE
-      },
-      TRUE
+        return(TRUE)
+      }
     )
   })
 }, preExec = {
