@@ -1,11 +1,11 @@
 context({
   testcase("Feedback bij vergelijken met nationaal gemiddelde", {
     testEqual(
-      "boven_gemiddeld is correct aangemaakt",
+      "boven_gemiddelde is correct aangemaakt",
       function(env) {
         # Safe wrapper to catch any student-side syntax error
         tryCatch({
-          env$boven_gemiddeld
+          env$boven_gemiddelde
         }, error = function(e) {
           get_reporter()$add_message(
             "❌ Fout in je code: controleer of je vergelijking correct is en of je variabelen goed zijn aangemaakt.",
@@ -25,14 +25,14 @@ context({
         
         # Controleer of de variabele correct bestaat
         if (is.null(got)) {
-          get_reporter()$add_message("❌ De variabele 'boven_gemiddeld' bestaat niet.", type = "error")
+          get_reporter()$add_message("❌ De variabele 'boven_gemiddelde' bestaat niet.", type = "error")
           return(FALSE)
         }
         
         # Controleer of het een logische vector is
         if (!is.logical(got)) {
           get_reporter()$add_message(
-            "❌ 'boven_gemiddeld' moet een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
+            "❌ 'boven_gemiddelde' moet een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
             type = "error"
           )
           
@@ -59,7 +59,7 @@ context({
         # Final check and full feedback
         if (identical(got, verwacht)) {
           get_reporter()$add_message(
-            "✅ Correct! De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddeld'.",
+            "✅ Correct! De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddelde'.",
             type = "success"
           )
           
@@ -86,7 +86,7 @@ context({
           if (check_results$juiste_volgorde) {
             get_reporter()$add_message("✅ Je vergelijkt de correcte variabelen in de juiste volgorde.", type = "success")
           } else {
-            get_reporter()$add_message("❌ Je moet 'district_misdaadcijfers > nationaal_gemiddelde' gebruiken.", type = "error")
+            get_reporter()$add_message("❌ Je moet 'district_misdaadcijfers > nationaal_gemiddelde' gebruiken en dit opslaan in 'boven_gemiddelde'.", type = "error")
           }
           
           return(FALSE)
@@ -101,4 +101,4 @@ context({
 })
 
 # Verwachte antwoorden (studenten moeten dit schrijven):
-# boven_gemiddeld <- district_misdaadcijfers > nationaal_gemiddelde
+# boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde
