@@ -13,7 +13,7 @@ context({
       # 1. Always emit the command
       get_reporter()$add_message('```r\n> table(delictsoorten)\n```', type='markdown')
       # 2. Compute and emit expected output
-      expected <- table(env[["delictsoorten"]])
+      expected <- table(get("delictsoorten", envir = env))
       get_reporter()$add_message(
         paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
         type='markdown'
