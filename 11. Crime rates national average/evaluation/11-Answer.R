@@ -13,7 +13,7 @@ context({
             type = "error"
           )
           get_reporter()$add_message(
-            "💡 Hint: Schrijf de code als volgt: boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde",
+            "💡 We verwachten dat je de '>' operator gebruikt in je code.",
             type = "info"
           )
           return(NULL)
@@ -31,7 +31,7 @@ context({
             type = "error"
           )
           get_reporter()$add_message(
-            "We verwachten dat je 'boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde' gebruikt.",
+            "We verwachten dat je een variabele aanmaakt met de juiste naam.",
             type = "info"
           )
           return(FALSE)
@@ -44,11 +44,11 @@ context({
             type = "error"
           )
           get_reporter()$add_message(
-            "We verwachten dat je 'district_misdaadcijfers > nationaal_gemiddelde' gebruikt, wat een logische vector oplevert.",
+            "We verwachten dat je de '>' operator gebruikt in je code.",
             type = "info"
           )
           get_reporter()$add_message(
-            "💡 Hint: Gebruik de '>' operator om te vergelijken of de misdaadcijfers hoger zijn dan het gemiddelde.",
+            "💡 Gebruik een vergelijkingsoperator om een logische vector te maken.",
             type = "info"
           )
           return(FALSE)
@@ -65,7 +65,7 @@ context({
             type = "info"
           )
           get_reporter()$add_message(
-            "💡 Hint: Gebruik '>' in plaats van '<' om te controleren welke districten BOVEN het gemiddelde liggen.",
+            "💡 Let op met de richting van je vergelijking - we willen weten welke districten boven het gemiddelde liggen.",
             type = "info"
           )
           return(FALSE)
@@ -82,7 +82,7 @@ context({
             type = "info"
           )
           get_reporter()$add_message(
-            "💡 Hint: Gebruik alleen '>' om te controleren welke districten strikt boven het gemiddelde liggen.",
+            "💡 Let op het verschil tussen vergelijkingsoperatoren - we zoeken districten die strikt boven het gemiddelde liggen.",
             type = "info"
           )
           return(FALSE)
@@ -99,7 +99,7 @@ context({
             type = "info"
           )
           get_reporter()$add_message(
-            "💡 Hint: Schrijf 'district_misdaadcijfers > nationaal_gemiddelde' in plaats van 'nationaal_gemiddelde < district_misdaadcijfers'",
+            "💡 Let op de volgorde van de variabelen in je vergelijking.",
             type = "info"
           )
           return(FALSE)
@@ -119,11 +119,11 @@ context({
             type = "error"
           )
           get_reporter()$add_message(
-            "We verwachten dat je 'boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde' gebruikt.",
+            "We verwachten dat je de juiste variabelen gebruikt met de juiste vergelijkingsoperator.",
             type = "info"
           )
           get_reporter()$add_message(
-            "💡 Hint: Controleer of je de juiste variabelen hebt gebruikt en de vergelijking correct hebt geschreven.",
+            "💡 Controleer je code zorgvuldig op fouten.",
             type = "info"
           )
           return(FALSE)
