@@ -24,13 +24,10 @@ context({
           )
           return(FALSE)
         }
-        get_reporter()$add_message(
-          "Correct! De juiste kolommen zijn geselecteerd in 'geselecteerde_data'.",
-          type = "success"
-        )
         TRUE
       },
-      TRUE
+      TRUE,
+      feedback = "✅ Correct! De juiste kolommen zijn geselecteerd in 'geselecteerde_data'."
     )
   })
 }, preExec = {
