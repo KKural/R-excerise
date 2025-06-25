@@ -31,20 +31,14 @@ context({
           return(FALSE)
         }
         # 3) toon prompt + resultaat
-        get_reporter()$add_message("```r\n> table(delictsoorten)\n```", type = "markdown")
-        get_reporter()$add_message(
-          paste0(
-            "```",
-            "\n",
-            paste(capture.output(print(env$delict_tabel)), collapse = "\n"),
-            "\n```") ,
-          type = "markdown"
+        feedback_msg <- paste0(
+          "```r\n> table(delictsoorten)\n```",
+          "\n```",
+          paste(capture.output(print(env$delict_tabel)), collapse = "\n"),
+          "\n```\n",
+          "✅ De frequentietabel van delictsoorten is correct aangemaakt."
         )
-        # 4) successbericht
-        get_reporter()$add_message(
-          "✅ De frequentietabel van delictsoorten is correct aangemaakt.",
-          type = "markdown"
-        )
+        get_reporter()$add_message(feedback_msg, type = "markdown")
         TRUE
       },
       
