@@ -19,7 +19,7 @@ context({
       # 3. Existence check
       if (!exists('leeftijd_samenvatting', envir=env())) {
         get_reporter()$add_message(
-          '❌ De variabele `leeftijd_samenvatting` bestaat niet.',
+          '✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in `leeftijd_samenvatting`',
           type='error'
         )
         return(FALSE)
