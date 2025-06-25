@@ -8,7 +8,7 @@ delictsoorten <- c("Diefstal", "Aanval", "Inbraak", "Vandalisme", "Diefstal", "D
                    "Diefstal", "Drugsdelict", "Inbraak")
 
 # Genereer een frequentietabel van delictsoorten en sla deze op in een variabele genaamd 'delict_tabel'
-
+```
 
 **Hint:**  
 Gebruik `table()` om een frequentietabel te maken van een vector. Ken het resultaat toe aan `delict_tabel`.
