@@ -27,32 +27,27 @@ gem_feiten <- mean(maandelijkse_feiten)
 context({
   testcase("Feedback bij berekenen van gemiddelde", {
     testEqual(
-      "gem_feiten is correct berekend",
+      "De uitkomst van mean(maandelijkse_feiten) is correct berekend",
       function(env) {
-        if (!exists("gem_feiten", envir = env)) {
-          get_reporter()$add_message(
-            "❌ De variabele 'gem_feiten' bestaat niet.",
-            type = "error"
-          )
-          return(FALSE)
-        }
-        if (!is.numeric(env$gem_feiten)) {
-          get_reporter()$add_message(
-            "❌ 'gem_feiten' moet een numerieke waarde zijn.",
-            type = "error"
-          )
-          return(FALSE)
-        }
+        # Verwachte waarde
         verwacht <- mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))
-        if (abs(env$gem_feiten - verwacht) > 1e-6) {
+        # Controleer of het antwoord exact gelijk is aan de verwachte waarde
+        if (!is.numeric(env$result)) {
           get_reporter()$add_message(
-            "❌ 'gem_feiten' bevat niet het juiste gemiddelde van 'maandelijkse_feiten'.",
+            "❌ Je antwoord is geen numerieke waarde.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        if (abs(env$result - verwacht) > 1e-6) {
+          get_reporter()$add_message(
+            paste0("❌ Je antwoord is niet het juiste gemiddelde. Het juiste gemiddelde is: ", round(verwacht, 2)),
             type = "error"
           )
           return(FALSE)
         }
         get_reporter()$add_message(
-          "Correct! Het gemiddelde is correct berekend en opgeslagen in 'gem_feiten'.",
+          paste0("Correct! Het gemiddelde is: ", round(verwacht, 2)),
           type = "success"
         )
         TRUE
@@ -61,4 +56,7 @@ context({
       comparator = function(got, want, ...) { got == want }
     )
   })
+}, preExec = {
+  # Zet de maandelijkse_feiten vector klaar
+  maandelijkse_feiten <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
 })
