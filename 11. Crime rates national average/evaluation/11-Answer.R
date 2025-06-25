@@ -23,14 +23,23 @@ context({
     testEqual(
       "boven_gemiddelde is correct aangemaakt",
       function(env) {
-        if (!exists("boven_gemiddelde", envir = env)) {
+        # Safe wrapper to catch any student-side syntax error
+        tryCatch({
+          env$boven_gemiddelde
+        }, error = function(e) {
           get_reporter()$add_message(
-            "❌ De variabele 'boven_gemiddelde' bestaat niet.",
+            "❌ Fout in je code: controleer of je vergelijking correct is en of je variabelen goed zijn aangemaakt.",
             type = "error"
           )
+          return(NULL)
+        })
+      },
+      NULL,
+      comparator = function(got, want) {
+        if (is.null(got)) {
           return(FALSE)
         }
-        if (!is.logical(env$boven_gemiddelde)) {
+        if (!is.logical(got)) {
           get_reporter()$add_message(
             "❌ 'boven_gemiddelde' moet een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
             type = "error"
@@ -38,7 +47,7 @@ context({
           return(FALSE)
         }
         verwacht <- c(5.58, 6.42, 7.05, 7.18, 6.39) > 6.2
-        if (!identical(env$boven_gemiddelde, verwacht)) {
+        if (!identical(got, verwacht)) {
           get_reporter()$add_message(
             "❌ 'boven_gemiddelde' bevat niet de juiste logische waarden.",
             type = "error"
@@ -46,13 +55,11 @@ context({
           return(FALSE)
         }
         get_reporter()$add_message(
-          "Correct! De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddelde'.",
+          "✅ Correct! De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddelde'.",
           type = "success"
         )
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+        return(TRUE)
+      }
     )
   })
 }, preExec = {
@@ -60,3 +67,6 @@ context({
   district_misdaadcijfers <- c(5.58, 6.42, 7.05, 7.18, 6.39)
   nationaal_gemiddelde <- 6.2
 })
+
+# Verwachte antwoorden:
+# boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde

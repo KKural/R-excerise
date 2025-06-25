@@ -56,9 +56,24 @@ context({
     testEqual(
       "plot() is correct aangeroepen",
       function(env) {
-        # Controleer of plot() is aangeroepen met de juiste argumenten
-        code <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
-        if (!grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers", code)) {
+        # Safe wrapper to catch any student-side syntax error
+        tryCatch({
+          code <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
+          code
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Fout in je code: controleer of je plot() correct gebruikt hebt en of je variabelen goed zijn aangemaakt.",
+            type = "error"
+          )
+          return(NULL)
+        })
+      },
+      NULL,
+      comparator = function(got, want) {
+        if (is.null(got)) {
+          return(FALSE)
+        }
+        if (!grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers", got)) {
           get_reporter()$add_message(
             "❌ Gebruik de functie plot() met 'werkloosheid' op de x-as en 'criminaliteitscijfers' op de y-as.",
             type = "error"
@@ -66,13 +81,11 @@ context({
           return(FALSE)
         }
         get_reporter()$add_message(
-          "Correct! Je hebt plot() correct gebruikt om de spreidingsdiagram te maken.",
+          "✅ Correct! Je hebt plot() correct gebruikt om de spreidingsdiagram te maken.",
           type = "success"
         )
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+        return(TRUE)
+      }
     )
   })
 }, preExec = {

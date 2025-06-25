@@ -3,28 +3,37 @@ context({
     testEqual(
       "Nieuwe kolom is correct aangemaakt",
       function(env) {
-        if (!exists("gewijzigde_data", envir = env)) {
+        # Safe wrapper to catch any student-side syntax error
+        tryCatch({
+          env$gewijzigde_data
+        }, error = function(e) {
           get_reporter()$add_message(
-            "❌ De variabele 'gewijzigde_data' bestaat niet.",
+            "❌ Fout in je code: controleer of je mutate() correct gebruikt hebt en of je variabelen goed zijn aangemaakt.",
             type = "error"
           )
+          return(NULL)
+        })
+      },
+      NULL,
+      comparator = function(got, want) {
+        if (is.null(got)) {
           return(FALSE)
         }
-        if (!is.data.frame(env$gewijzigde_data)) {
+        if (!is.data.frame(got)) {
           get_reporter()$add_message(
             "❌ 'gewijzigde_data' moet een data frame zijn.",
             type = "error"
           )
           return(FALSE)
         }
-        if (!("dubbele_waarde" %in% colnames(env$gewijzigde_data))) {
+        if (!("dubbele_waarde" %in% colnames(got))) {
           get_reporter()$add_message(
             "❌ 'gewijzigde_data' moet een kolom 'dubbele_waarde' bevatten.",
             type = "error"
           )
           return(FALSE)
         }
-        if (!all(env$gewijzigde_data$dubbele_waarde == env$gewijzigde_data$waarde * 2)) {
+        if (!all(got$dubbele_waarde == got$waarde * 2)) {
           get_reporter()$add_message(
             "❌ De kolom 'dubbele_waarde' moet gelijk zijn aan 'waarde * 2' voor elke rij.",
             type = "error"
@@ -32,13 +41,11 @@ context({
           return(FALSE)
         }
         get_reporter()$add_message(
-          "Correct! De nieuwe kolom is correct aangemaakt in 'gewijzigde_data'.",
+          "✅ Correct! De nieuwe kolom is correct aangemaakt in 'gewijzigde_data'.",
           type = "success"
         )
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+        return(TRUE)
+      }
     )
   })
 }, preExec = {

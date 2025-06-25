@@ -3,21 +3,30 @@ context({
     testEqual(
       "Alleen rijen met delicttype 'Diefstal' zijn geselecteerd",
       function(env) {
-        if (!exists("gefilterde_data", envir = env)) {
+        # Safe wrapper to catch any student-side syntax error
+        tryCatch({
+          env$gefilterde_data
+        }, error = function(e) {
           get_reporter()$add_message(
-            "❌ De variabele 'gefilterde_data' bestaat niet.",
+            "❌ Fout in je code: controleer of je filter() correct gebruikt hebt en of je variabelen goed zijn aangemaakt.",
             type = "error"
           )
+          return(NULL)
+        })
+      },
+      NULL,
+      comparator = function(got, want) {
+        if (is.null(got)) {
           return(FALSE)
         }
-        if (!is.data.frame(env$gefilterde_data)) {
+        if (!is.data.frame(got)) {
           get_reporter()$add_message(
             "❌ 'gefilterde_data' moet een data frame zijn.",
             type = "error"
           )
           return(FALSE)
         }
-        if (!all(env$gefilterde_data$delicttype == "Diefstal")) {
+        if (!all(got$delicttype == "Diefstal")) {
           get_reporter()$add_message(
             "❌ 'gefilterde_data' mag alleen rijen met delicttype 'Diefstal' bevatten.",
             type = "error"
@@ -25,13 +34,11 @@ context({
           return(FALSE)
         }
         get_reporter()$add_message(
-          "Correct! De data is correct gefilterd op delicttype 'Diefstal' en opgeslagen in 'gefilterde_data'.",
+          "✅ Correct! De data is correct gefilterd op delicttype 'Diefstal' en opgeslagen in 'gefilterde_data'.",
           type = "success"
         )
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+        return(TRUE)
+      }
     )
   })
 }, preExec = {
@@ -44,4 +51,4 @@ context({
 })
 
 # Modeloplossing:
-gefilterde_data <- dplyr::filter(misdaad_data, delicttype == "Diefstal")
+# gefilterde_data <- dplyr::filter(misdaad_data, delicttype == "Diefstal")
