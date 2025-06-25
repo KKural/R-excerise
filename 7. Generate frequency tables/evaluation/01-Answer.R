@@ -48,7 +48,7 @@ context({
         type='success'
       )
       return(TRUE)
-    }, TRUE)
+    }, expected = TRUE)
   })
 }, preExec = {
   # Pre‐execution: make the vector available to both student code & tests
