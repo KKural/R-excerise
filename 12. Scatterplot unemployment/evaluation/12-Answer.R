@@ -1,3 +1,5 @@
+library(testthat)
+
 context({
   testcase("Feedback bij spreidingsdiagram werkloosheid en criminaliteit", {
     testEqual(
@@ -82,8 +84,27 @@ context({
         
         # Try to actually run the code
         plot_success <- tryCatch({
-          # Execute the student's code
-          eval(parse(text = user_code), envir = env)
+          # Make sure required variables exist
+          if (!exists("werkloosheid", envir = env)) {
+            get_reporter()$add_message(
+              "❌ De variabele 'werkloosheid' bestaat niet. Controleer of je de juiste variabelenaam gebruikt.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          if (!exists("criminaliteitscijfers", envir = env)) {
+            get_reporter()$add_message(
+              "❌ De variabele 'criminaliteitscijfers' bestaat niet. Controleer of je de juiste variabelenaam gebruikt.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          
+          # Execute the student's code in a clean environment with just the required variables
+          clean_env <- new.env()
+          clean_env$werkloosheid <- env$werkloosheid
+          clean_env$criminaliteitscijfers <- env$criminaliteitscijfers
+          eval(parse(text = user_code), envir = clean_env)
           TRUE
         }, error = function(e) {
           get_reporter()$add_message(
@@ -120,6 +141,10 @@ context({
     )
   })
 }, preExec = {
+  # Clear any existing variables to ensure clean environment
+  rm(list = ls())
+  
+  # Define the test data
   werkloosheid <- c(4.2, 5.7, 7.9, 6.5, 8.1, 5.3, 9.2, 7.1, 6.8, 5.9, 8.5, 7.4, 6.2, 9.0, 5.1)
   criminaliteitscijfers <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9, 29.3, 36.1, 32.7, 29.0, 37.8, 27.2)
 })
