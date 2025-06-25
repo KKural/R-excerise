@@ -55,5 +55,10 @@ context({
   })
 }, preExec = {
   # Pre‐execution: make the vector available to both student code & tests
-  delictsoorten <- delictsoorten
+  delictsoorten <- c(
+    "Diefstal", "Aanval", "Inbraak", "Vandalisme", "Diefstal", "Diefstal",
+    "Aanval",   "Diefstal", "Inbraak", "Vandalisme", "Diefstal", "Aanval",
+    "Drugsdelict", "Diefstal", "Inbraak", "Vandalisme", "Aanval",
+    "Diefstal", "Drugsdelict", "Inbraak"
+  )
 })
