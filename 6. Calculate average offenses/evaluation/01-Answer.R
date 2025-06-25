@@ -1,20 +1,20 @@
 context({
   testcase("Feedback bij berekenen van het gemiddelde", {
     testEqual(
-      "Gemiddelde van maandelijkse_feiten is correct berekend",
-      function(env) env$student_value,  # of de variabele die de student moet invullen
+      "",
+      function(env) env$mean,  # nu controleren we de variabele 'mean'
       mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)),
       comparator = function(got, want, ...) {
         if (is.null(got)) {
           get_reporter()$add_message(
-            "❌ De variabele voor het gemiddelde is niet gedefinieerd. Gebruik mean(maandelijkse_feiten).",
+            "❌ De variabele voor het gemiddelde is niet gedefinieerd. Gebruik mean <- mean(maandelijkse_feiten).",
             type = "error"
           )
           return(FALSE)
         }
         if (!is.numeric(got)) {
           get_reporter()$add_message(
-            "❌ Je antwoord is geen numerieke waarde. Gebruik mean(maandelijkse_feiten).",
+            "❌ Je antwoord is geen numerieke waarde. Gebruik mean <- mean(maandelijkse_feiten).",
             type = "error"
           )
           return(FALSE)
@@ -23,7 +23,7 @@ context({
           get_reporter()$add_message(
             paste0(
               "❌ Je antwoord is niet het juiste gemiddelde. ",
-              "Gebruik mean(maandelijkse_feiten). ",
+              "Gebruik mean <- mean(maandelijkse_feiten). ",
               "Het juiste gemiddelde is: ", round(want, 2)
             ),
             type = "error"
