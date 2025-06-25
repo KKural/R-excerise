@@ -1,18 +1,18 @@
 {
-    "description": {
-        "names": {
-            "nl": "1. 1 test"
-        }
-    },
-    "programming_language": "R",
-    "evaluation": {
-        "handler": "R"
-    },
-    "test_suite": "evaluation",
-    "access": "public",
-    "internals": {
-        "token": "",
-        "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
-    },
-    "labels": []
+  "description": {
+    "names": {
+      "nl": "1. 1 test"
+    }
+  },
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
+  "access": "public",
+  "internals": {
+    "token": "PpHbpGyWXeHtYR_G8-PacT48TQzVigjmF5__hqMqdT3VkCth8qHef4sTKjWbbz9U",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  },
+  "labels": []
 }
