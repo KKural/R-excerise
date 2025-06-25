@@ -1,24 +1,4 @@
 context({
-  testcase("", {
-    testEqual(
-      "",
-      function(env) { NULL },
-      NULL,
-      comparator = function(got, want, ...) {
-        TRUE
-      }
-    )
-  })
-}, preExec = {
-  # Set up the data
-  district_misdaadcijfers <- c(5.58, 6.42, 7.05, 7.18, 6.39)
-  nationaal_gemiddelde <- 6.2
-})
-
-# Verwachte antwoorden:
-boven_gemiddeld <- district_misdaadcijfers > nationaal_gemiddelde
-
-context({
   testcase("Feedback bij vergelijken met nationaal gemiddelde", {
     testEqual(
       "boven_gemiddelde is correct aangemaakt",
@@ -68,5 +48,5 @@ context({
   nationaal_gemiddelde <- 6.2
 })
 
-# Verwachte antwoorden:
+# Verwachte antwoorden (studenten moeten dit schrijven):
 # boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde
