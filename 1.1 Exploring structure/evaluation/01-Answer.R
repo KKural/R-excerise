@@ -1,5 +1,14 @@
 # Evaluation script for Basisfuncties op `crime_stats_ghent`
 
+# Ensure crimsyndata is installed from GitHub if missing
+if (!requireNamespace("crimsyndata", quietly = TRUE)) {
+  if (!requireNamespace("remotes", quietly = TRUE)) {
+    install.packages("remotes")
+  }
+  remotes::install_github("KKural/crimsyndata")
+}
+library(crimsyndata)
+
 context({
   testcase("Feedback bij basisfuncties op crime_stats_ghent", {
     
