@@ -7,46 +7,32 @@ leeftijden_daders <- c(
 #–– Evaluation ––
 context({
   testcase("Feedback bij samenvatting leeftijden", {
-    testEqual({
-      # 1. Always emit the command
-      get_reporter()$add_message('```r\n> summary(leeftijden_daders)\n```', type='markdown')
-      # 2. Compute expected output
-      expected <- summary(get("leeftijden_daders", envir = env()))
-      get_reporter()$add_message(
-        paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
-        type='markdown'
-      )
-      # 3. Existence check
-      if (!exists('leeftijd_samenvatting', envir=env())) {
-        get_reporter()$add_message(
-          '✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in `leeftijd_samenvatting`',
-          type='error'
+    testEqual(
+      "",
+      function(env) {
+        result <- tryCatch({
+          val <- get("leeftijd_samenvatting", envir = env)
+          expected <- summary(env$leeftijden_daders)
+          if (!is.numeric(val) || is.null(names(val))) return("not_summary")
+          if (!identical(val, expected)) return("wrong_val")
+          return("correct")
+        }, error = function(e) {
+          return("no_var")
+        })
+        result
+      },
+      "correct",
+      comparator = function(generated, expected, ...) {
+        feedbacks <- list(
+          "no_var"      = "❌ Het object `leeftijd_samenvatting` bestaat niet of bevat een fout. Controleer je code en probeer opnieuw.",
+          "not_summary" = "❌ `leeftijd_samenvatting` moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).",
+          "wrong_val"   = "❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders).",
+          "correct"     = "✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in `leeftijd_samenvatting`."
         )
-        return(FALSE)
+        get_reporter()$add_message(feedbacks[[generated]], type = ifelse(generated == "correct", "success", "error"))
+        generated == expected
       }
-      # 4. Type check
-      if (!is.numeric(get('leeftijd_samenvatting', envir=env())) || is.null(names(get('leeftijd_samenvatting', envir=env())))) {
-        get_reporter()$add_message(
-          '❌ `leeftijd_samenvatting` moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).',
-          type='error'
-        )
-        return(FALSE)
-      }
-      # 5. Value check
-      if (!identical(get('leeftijd_samenvatting', envir=env()), expected)) {
-        get_reporter()$add_message(
-          '❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders).',
-          type='error'
-        )
-        return(FALSE)
-      }
-      # 6. Success: show the expected output as justification
-      get_reporter()$add_message(
-        '✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in `leeftijd_samenvatting`.',
-        type='success'
-      )
-      return(TRUE)
-    }, expected = TRUE)
+    )
   })
 }, preExec = {
   # Pre‐execution: make the vector available to both student code & tests
