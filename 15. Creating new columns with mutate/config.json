@@ -4,8 +4,11 @@
       "nl": "15. Nieuwe kolommen maken met mutate"
     }
   },
-  "type": "content",
-  "labels": [],
+  "programming_language": "R",
+  "evaluation": {
+    "handler": "R"
+  },
+  "test_suite": "evaluation",
   "access": "public",
   "internals": {
     "token": "Ai849a3u-xFQHn9rvYuuBf-4HECQbFtf6CSv38nDc_G756SnQjYMqbJKmI3QYFum",
