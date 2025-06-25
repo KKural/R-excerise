@@ -29,7 +29,7 @@ context({
         if (result$type == "correct") {
           feedback <- paste0(
             code_block,
-            '\n\n**Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren**'
+            '\n\n✅ Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren'
           )
           return(feedback)
         }
@@ -48,7 +48,7 @@ context({
         '```r\n',
         '> summary(leeftijden_daders)\n',
         paste(capture.output(print(summary(leeftijden_daders))), collapse='\n'),
-        '\n```\n\n**Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren**'
+        '\n```\n\n✅ Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren'
       ),
       comparator = function(generated, expected, ...) {
         if (identical(generated, expected)) return(TRUE)
