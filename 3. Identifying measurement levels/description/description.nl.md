@@ -12,9 +12,9 @@ crime_data <- data.frame(
   risicocategorie = c("Midden", "Hoog", "Laag", "Midden", "Laag")
 )
 ```
-# Wijs voor elke variabele het meetniveau toe als string: "nominaal", "ordinaal", "interval" of "ratio"
-# Voorbeeld: niveau_zaak_id <- "nominaal"
-# Vul de toewijzingen voor alle variabelen hieronder aan
+Wijs voor elke variabele het meetniveau toe als string: "nominaal", "ordinaal", "interval" of "ratio"
+Voorbeeld: niveau_zaak_id <- "nominaal"
+Vul de toewijzingen voor alle variabelen hieronder aan
 
 **Hint:**  
 Nominaal: categorieën zonder volgorde (bv. geslacht). Ordinaal: categorieën met volgorde (bv. opleidingsniveau). Interval/ratio: numerieke waarden, ratio heeft een absoluut nulpunt (bv. leeftijd).
