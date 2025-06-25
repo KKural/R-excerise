@@ -31,7 +31,7 @@ context({
       # 3. Existence check
       if (!exists('geweldsdelicten_df', envir=env())) {
         get_reporter()$add_message(
-          '❌ ✅ Correct! De data frame is correct gefilterd en opgeslagen in `geweldsdelicten_df`.',
+          '❌ De data frame `geweldsdelicten_df` bestaat niet. Maak deze aan met de juiste filter.',
           type='error'
         )
         return(FALSE)
