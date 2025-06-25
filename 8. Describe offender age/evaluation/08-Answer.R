@@ -26,6 +26,12 @@ context({
           paste0('```r\n', paste(capture.output(print(result$expected)), collapse='\n'), '\n```'),
           type='markdown'
         )
+        if (result$type == "correct") {
+          get_reporter()$add_message(
+            "Juist! `leeftijd_samenvatting` zal het bovenstaande resultaat opleveren",
+            type = "success"
+          )
+        }
         result$type  # Only return the type for the comparator
       },
       "correct",
@@ -34,9 +40,11 @@ context({
           "no_var"      = "❌ Het object `leeftijd_samenvatting` bestaat niet of bevat een fout. Controleer je code en probeer opnieuw.",
           "not_summary" = "❌ `leeftijd_samenvatting` moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).",
           "wrong_val"   = "❌ De inhoud van `leeftijd_samenvatting` is niet correct. Gebruik summary(leeftijden_daders).",
-          "correct"     = "✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in `leeftijd_samenvatting`."
+          "correct"     = NULL
         )
-        get_reporter()$add_message(feedbacks[[generated]], type = ifelse(generated == "correct", "success", "error"))
+        if (!is.null(feedbacks[[generated]]) && generated != "correct") {
+          get_reporter()$add_message(feedbacks[[generated]], type = "error")
+        }
         generated == expected
       }
     )
