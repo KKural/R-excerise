@@ -30,25 +30,25 @@ context({
     testEqual(
       "De uitkomst van mean(maandelijkse_feiten) is correct berekend",
       function(env) {
-        # Verwachte waarde
-        verwacht <- mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45))
-        # Controleer of het antwoord exact gelijk is aan de verwachte waarde
+        verwacht <- mean(maandelijkse_feiten)
+        # Check if the student's code is exactly mean(maandelijkse_feiten)
+        # and if the output is correct
         if (!is.numeric(env$result)) {
           get_reporter()$add_message(
-            "❌ Je antwoord is geen numerieke waarde.",
+            "❌ Je antwoord is geen numerieke waarde. Gebruik mean(maandelijkse_feiten)",
             type = "error"
           )
           return(FALSE)
         }
         if (abs(env$result - verwacht) > 1e-6) {
           get_reporter()$add_message(
-            paste0("❌ Je antwoord is niet het juiste gemiddelde. Het juiste gemiddelde is: ", round(verwacht, 2)),
+            paste0("❌ Je antwoord is niet het juiste gemiddelde. Gebruik mean(maandelijkse_feiten). Het juiste gemiddelde is: ", round(verwacht, 2)),
             type = "error"
           )
           return(FALSE)
         }
         get_reporter()$add_message(
-          paste0("Correct! Het gemiddelde is: ", round(verwacht, 2)),
+          paste0("✅ Correct! Het gemiddelde is: ", round(verwacht, 2)),
           type = "success"
         )
         TRUE
@@ -58,6 +58,5 @@ context({
     )
   })
 }, preExec = {
-  # Zet de maandelijkse_feiten vector klaar
   maandelijkse_feiten <- c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)
 })
