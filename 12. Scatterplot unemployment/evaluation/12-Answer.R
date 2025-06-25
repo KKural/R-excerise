@@ -1,40 +1,66 @@
-#!/usr/bin/env Rscript
-# -*- coding: utf-8 -*-
-
-# bloom_level: Apply
-# scaffolding_level: Full support
-# primm_phase: Run
-#
-# Evaluation script for Exercise 12: Spreidingsdiagram werkloosheid en criminaliteitscijfers
-# This script checks if the correct plot function is used with the right variables
+# Evaluation script for Spreidingsdiagram werkloosheid
 
 context({
   testcase("Feedback bij spreidingsdiagram werkloosheid en criminaliteit", {
+    # First check if code is submitted
     testEqual(
-      "plot() is correct aangeroepen",
+      "Controleer of code is ingediend",
       function(env) {
-        # Check for empty submission
         if (length(env$`.__code__`) == 0) {
-          get_reporter()$add_message("❌ Je hebt geen code ingediend.", type = "error")
+          get_reporter()$add_message(
+            "❌ Je hebt geen code ingediend. Maak een spreidingsdiagram met werkloosheid en criminaliteitscijfers.",
+            type = "error"
+          )
           return(FALSE)
         }
-        
-        # Extract user's code as string
-        user_code <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
-        
-        # Check if plot is called with the right variables
-        if (grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers\\s*\\)", user_code) || 
-            grepl("plot\\s*\\(.*x\\s*=\\s*werkloosheid.*,.*y\\s*=\\s*criminaliteitscijfers.*\\)", user_code)) {
-          get_reporter()$add_message("✅ Correct! Je hebt een spreidingsdiagram gemaakt.", type = "success")
-          return(TRUE)
-        } else {
-          get_reporter()$add_message("❌ Je code voldoet niet aan de vereisten.", type = "error")
-          get_reporter()$add_message("💡 Gebruik plot(werkloosheid, criminaliteitscijfers)", type = "info")
-          return(FALSE)
-        }
+        TRUE
       },
-      TRUE,
-      comparator = function(got, want, ...) { return(got == want) }
+      TRUE
+    )
+    
+    # Then check if the plot command is used correctly
+    testEqual(
+      "Controleer of plot() correct wordt gebruikt",
+      function(env) {
+        # Get all student code as text
+        code_lines <- sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " "))
+        user_code <- paste(code_lines, collapse = "\n")
+        
+        # Direct check for the simplest correct answer
+        if (grepl("plot\\(werkloosheid, *criminaliteitscijfers\\)", user_code)) {
+          get_reporter()$add_message(
+            "✅ Correct! Je hebt een spreidingsdiagram gemaakt met werkloosheid en criminaliteitscijfers.",
+            type = "success"
+          )
+          return(TRUE)
+        }
+        
+        # Check for presence of plot function
+        if (!grepl("plot\\s*\\(", user_code)) {
+          get_reporter()$add_message(
+            "❌ Gebruik de plot() functie om een spreidingsdiagram te maken.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        
+        # Check for both variables
+        if (!grepl("werkloosheid", user_code) || !grepl("criminaliteitscijfers", user_code)) {
+          get_reporter()$add_message(
+            "❌ Gebruik beide variabelen 'werkloosheid' en 'criminaliteitscijfers' in je plot.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        
+        # If we have plot and both variables in some form, mark it as correct
+        get_reporter()$add_message(
+          "✅ Je hebt een spreidingsdiagram gemaakt met de juiste variabelen.",
+          type = "success"
+        )
+        return(TRUE)
+      },
+      TRUE
     )
   })
 }, preExec = {
