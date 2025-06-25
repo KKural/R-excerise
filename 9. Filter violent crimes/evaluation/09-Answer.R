@@ -22,16 +22,21 @@ context({
     testEqual(
       "",
       function(env) {
-        if (!exists("geweldsdelicten_df", envir = env)) return("no_var")
-        if (!is.data.frame(env$geweldsdelicten_df)) return("not_df")
-        expected <- subset(env$misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
-        if (!identical(env$geweldsdelicten_df, expected)) return("wrong_val")
-        return("correct")
+        result <- tryCatch({
+          df <- get("geweldsdelicten_df", envir = env)
+          if (!is.data.frame(df)) return("not_df")
+          expected <- subset(env$misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
+          if (!identical(df, expected)) return("wrong_val")
+          return("correct")
+        }, error = function(e) {
+          return("no_var")
+        })
+        result
       },
       "correct",
       comparator = function(generated, expected, ...) {
         feedbacks <- list(
-          "no_var"   = "❌ De data frame `geweldsdelicten_df` bestaat niet. Maak deze aan met de juiste filter.",
+          "no_var"   = "❌ De data frame `geweldsdelicten_df` bestaat niet of bevat een fout. Controleer je code en probeer opnieuw.",
           "not_df"   = "❌ `geweldsdelicten_df` moet een data frame zijn met alleen gewelddadige misdrijven.",
           "wrong_val"= "❌ De inhoud van `geweldsdelicten_df` is niet correct. Gebruik subset(misdaad_data, delict %in% c(\"Aanval\", \"Overval\", \"Moord\")).",
           "correct"  = "✅ Correct! De data frame is correct gefilterd en opgeslagen in `geweldsdelicten_df`."
