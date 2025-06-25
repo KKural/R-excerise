@@ -5,7 +5,7 @@
 context({
   testcase("Feedback bij frequentietabel", {
     testEqual(
-      "",
+      "delict_tabel is correct aangemaakt",
       function(env) {
         if (!exists("delict_tabel", envir = env)) {
           get_reporter()$add_message(
@@ -21,8 +21,13 @@ context({
           )
           return(FALSE)
         }
+        tbl_out <- paste(capture.output(print(env$delict_tabel)), collapse = "\n")
         get_reporter()$add_message(
-          "✅ Correct! De frequentietabel is correct aangemaakt en opgeslagen in 'delict_tabel'.",
+          paste0(
+            "✅ Correct! De frequentietabel is correct aangemaakt en opgeslagen in 'delict_tabel'.\n\n",
+            "> delict_tabel\n",
+            tbl_out
+          ),
           type = "success"
         )
         TRUE
