@@ -10,10 +10,7 @@ delictsoorten <- c(
 context({
   testcase("Feedback bij frequentietabel", {
     testEqual({
-      # 1. Always emit the command
-      get_reporter()$add_message('```r\n> delict_tabel <- table(delictsoorten)\n> delict_tabel\n```', type='markdown')
-      # 2. Compute expected output
-      expected <- table(get("delictsoorten", envir = env()))
+      # 1. Only emit the command and expected output if the answer is correct
       # 3. Existence check
       if (!exists('delict_tabel', envir=env())) {
         get_reporter()$add_message(
@@ -31,6 +28,7 @@ context({
         return(FALSE)
       }
       # 5. Value check
+      expected <- table(get("delictsoorten", envir = env()))
       if (!identical(get('delict_tabel', envir=env()), expected)) {
         get_reporter()$add_message(
           '❌ De inhoud van `delict_tabel` is niet correct. Controleer je code en zorg dat je `delict_tabel <- table(delictsoorten)` gebruikt.',
@@ -38,7 +36,8 @@ context({
         )
         return(FALSE)
       }
-      # 6. Success: show the expected output as justification
+      # 6. Success: show the command and expected output as justification
+      get_reporter()$add_message('```r\n> delict_tabel <- table(delictsoorten)\n> delict_tabel\n```', type='markdown')
       get_reporter()$add_message(
         paste0('✅ Juist! `delict_tabel <- table(delictsoorten)` produceert:\n\n',
                '```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
