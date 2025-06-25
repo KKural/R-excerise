@@ -3,39 +3,28 @@ criminaliteitscijfers <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9,
 
 context({
   testcase("Feedback bij spreidingsdiagram werkloosheid en criminaliteit", {
-    testEqual(
+    testFunction(
       "plot() is correct aangeroepen",
-      function(env) {
-        # Safe wrapper to catch any student-side syntax error
-        tryCatch({
-          code <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
-          code
-        }, error = function(e) {
-          get_reporter()$add_message(
-            "❌ Fout in je code: controleer of je plot() correct gebruikt hebt en of je variabelen goed zijn aangemaakt.",
-            type = "error"
-          )
-          return(NULL)
-        })
+      fun = "plot",
+      args = list(),
+      is_correct = function(args, env) {
+        # Toestaan: plot(werkloosheid, criminaliteitscijfers) of plot(x = werkloosheid, y = criminaliteitscijfers)
+        if (length(args) < 2) return(FALSE)
+        # Onbenoemde argumenten
+        unnamed <- names(args) == "" | is.null(names(args))
+        if (all(unnamed[1:2])) {
+          return(identical(args[[1]], env$werkloosheid) && identical(args[[2]], env$criminaliteitscijfers))
+        }
+        # Benoemde argumenten
+        if (!is.null(names(args))) {
+          x_ok <- (!is.null(args[["x"]]) && identical(args[["x"]], env$werkloosheid))
+          y_ok <- (!is.null(args[["y"]]) && identical(args[["y"]], env$criminaliteitscijfers))
+          return(x_ok && y_ok)
+        }
+        FALSE
       },
-      NULL,
-      comparator = function(got, want) {
-        if (is.null(got)) {
-          return(FALSE)
-        }
-        if (!grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers", got)) {
-          get_reporter()$add_message(
-            "❌ Gebruik de functie plot() met 'werkloosheid' op de x-as en 'criminaliteitscijfers' op de y-as.",
-            type = "error"
-          )
-          return(FALSE)
-        }
-        get_reporter()$add_message(
-          "✅ Correct! Je hebt plot() correct gebruikt om de spreidingsdiagram te maken.",
-          type = "success"
-        )
-        return(TRUE)
-      }
+      success_message = "✅ Correct! Je hebt plot() correct gebruikt om de spreidingsdiagram te maken.",
+      fail_message = "❌ Gebruik de functie plot() met 'werkloosheid' op de x-as en 'criminaliteitscijfers' op de y-as."
     )
   })
 }, preExec = {
