@@ -19,46 +19,27 @@ misdaad_data <- data.frame(
 #–– Evaluation ––
 context({
   testcase("Feedback bij filteren van gewelddadige misdrijven", {
-    testEqual({
-      # 1. Always emit the command
-      get_reporter()$add_message('```r\n> subset(misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))\n```', type='markdown')
-      # 2. Compute expected output
-      expected <- subset(get("misdaad_data", envir = env()), delict %in% c("Aanval", "Overval", "Moord"))
-      get_reporter()$add_message(
-        paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
-        type='markdown'
-      )
-      # 3. Existence check
-      if (!exists('geweldsdelicten_df', envir=env())) {
-        get_reporter()$add_message(
-          '❌ De data frame `geweldsdelicten_df` bestaat niet. Maak deze aan met de juiste filter.',
-          type='error'
+    testEqual(
+      "",
+      function(env) {
+        if (!exists("geweldsdelicten_df", envir = env)) return("no_var")
+        if (!is.data.frame(env$geweldsdelicten_df)) return("not_df")
+        expected <- subset(env$misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
+        if (!identical(env$geweldsdelicten_df, expected)) return("wrong_val")
+        return("correct")
+      },
+      "correct",
+      comparator = function(generated, expected, ...) {
+        feedbacks <- list(
+          "no_var"   = "❌ De data frame `geweldsdelicten_df` bestaat niet. Maak deze aan met de juiste filter.",
+          "not_df"   = "❌ `geweldsdelicten_df` moet een data frame zijn met alleen gewelddadige misdrijven.",
+          "wrong_val"= "❌ De inhoud van `geweldsdelicten_df` is niet correct. Gebruik subset(misdaad_data, delict %in% c(\"Aanval\", \"Overval\", \"Moord\")).",
+          "correct"  = "✅ Correct! De data frame is correct gefilterd en opgeslagen in `geweldsdelicten_df`."
         )
-        return(FALSE)
+        get_reporter()$add_message(feedbacks[[generated]], type = ifelse(generated == "correct", "success", "error"))
+        generated == expected
       }
-      # 4. Type check
-      if (!is.data.frame(get('geweldsdelicten_df', envir=env()))) {
-        get_reporter()$add_message(
-          '❌ `geweldsdelicten_df` moet een data frame zijn met alleen gewelddadige misdrijven.',
-          type='error'
-        )
-        return(FALSE)
-      }
-      # 5. Value check
-      if (!identical(get('geweldsdelicten_df', envir=env()), expected)) {
-        get_reporter()$add_message(
-          '❌ De inhoud van `geweldsdelicten_df` is niet correct. Gebruik subset(misdaad_data, delict %in% c("Aanval", "Overval", "Moord")).',
-          type='error'
-        )
-        return(FALSE)
-      }
-      # 6. Success: show the expected output as justification
-      get_reporter()$add_message(
-        '✅ Correct! De data frame is correct gefilterd en opgeslagen in `geweldsdelicten_df`.',
-        type='success'
-      )
-      return(TRUE)
-    }, expected = TRUE)
+    )
   })
 }, preExec = {
   # Pre‐execution: make the data frame available to both student code & tests
