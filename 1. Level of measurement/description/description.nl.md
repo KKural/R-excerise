@@ -30,5 +30,5 @@ class(df_crime_data)
 dim(df_crime_data)
 ```
 
-**Tip:**  
+**Hint:**  
 Gebruik deze functies om snel inzicht te krijgen in de structuur en inhoud van een data frame in R

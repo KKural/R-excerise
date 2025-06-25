@@ -15,5 +15,5 @@ install.packages("dplyr")
 library(dplyr)
 ```
 
-**Tip:**  
+**Hint:**  
 Gebruik `install.packages()` slechts één keer per pakket. Gebruik `library()` elke keer als je een nieuw R-sessie start en het pakket wilt gebruiken.

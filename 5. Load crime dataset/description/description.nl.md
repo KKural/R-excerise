@@ -16,5 +16,5 @@ misdaad_df <- read.csv(basename(bestandspad))
 setwd(old_dir)
 ```
 
-**Tip:**  
+**Hint:**  
 Gebruik de functies `dirname()` en `basename()` om respectievelijk de map en de bestandsnaam uit het volledige pad te halen. Controleer altijd of je werkmap correct staat voordat je een bestand inleest.

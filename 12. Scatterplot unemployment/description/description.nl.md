@@ -16,3 +16,6 @@ criminaliteitscijfers <- c(25.3, 28.6, 33.1, 29.7, 35.4, 26.8, 38.2, 31.5, 30.9,
 
 # Jouw code hier
 ```
+
+**Hint:**  
+Gebruik de functie `plot(x, y)` voor een spreidingsdiagram. Gebruik `xlab`, `ylab` en `main` voor labels en titel.

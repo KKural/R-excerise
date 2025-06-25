@@ -15,6 +15,6 @@ Maak kennis met R en deze oefenreeks:
 #    Typ 1 + 1 in de R-console en druk op Enter
 ```
 
-**Tip:**  
+**Hint:**  
 Gebruik de R-console om direct te experimenteren met code.  
 Lees de uitleg en probeer de voorbeelden zelf uit te voeren.

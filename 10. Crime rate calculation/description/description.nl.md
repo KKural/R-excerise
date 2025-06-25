@@ -4,3 +4,6 @@ Je hebt gegevens over het aantal misdrijven en de bevolking voor vijf verschille
 # Gebruik elementgewijze deling om misdrijf_aantallen te delen door bevolking, vermenigvuldig daarna met 1000
 # Ken het resultaat toe aan criminaliteitscijfers
 ```
+
+**Hint:**  
+Gebruik `x / y * 1000` om een ratio per 1.000 te berekenen. Gebruik elementgewijze deling voor vectors.

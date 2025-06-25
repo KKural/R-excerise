@@ -6,3 +6,6 @@ library(dplyr)
 # Gebruik filter() uit dplyr om rijen te selecteren waar misdaad_type "Diefstal" is
 # Ken het resultaat toe aan gefilterde_data
 ```
+
+**Hint:**  
+Gebruik `filter(data, kolom == "waarde")` om rijen te selecteren. Vergeet niet `library(dplyr)` te laden.

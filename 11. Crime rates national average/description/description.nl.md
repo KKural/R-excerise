@@ -4,3 +4,5 @@ Je hebt criminaliteitscijfers per 1.000 inwoners voor vijf districten en een nat
 # Gebruik een vergelijkingsoperator om elk district te vergelijken met het nationaal gemiddelde
 # Ken het resultaat toe aan boven_gemiddelde
 ```
+**Hint:**  
+Gebruik `>` of `<` om te vergelijken. Bijvoorbeeld: `x > y` geeft WAAR als x groter is dan y.

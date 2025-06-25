@@ -8,3 +8,6 @@ leeftijden_daders <- c(19, 23, 45, 32, 28, 21, 24, 19, 37, 42, 18, 25, 22, 31, 1
 # Genereer een samenvatting van de leeftijden en sla deze op in een variabele genaamd 'leeftijd_samenvatting'
 leeftijd_samenvatting <- summary(leeftijden_daders)
 ```
+
+**Hint:**  
+Gebruik de functie `summary()` om snel een overzicht te krijgen van de belangrijkste statistieken van een vector.
