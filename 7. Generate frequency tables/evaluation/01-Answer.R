@@ -29,7 +29,7 @@ context({
       # 4. Type check
       if (!is.table(get('delict_tabel', envir=env()))) {
         get_reporter()$add_message(
-          '❌ `delict_tabel` is geen frequentietabel. Gebruik: `delict_tabel <- table(delictsoorten)`',
+          '❌ `delict_tabel` is niet van het type `table`. Gebruik: `delict_tabel <- table(delictsoorten)`',
           type='error'
         )
         return(FALSE)
@@ -37,14 +37,14 @@ context({
       # 5. Value check
       if (!identical(get('delict_tabel', envir=env()), expected)) {
         get_reporter()$add_message(
-          '❌ De frequentietabel is niet correct. Controleer je code.',
+          '❌ De inhoud van `delict_tabel` is niet correct. Controleer je code en zorg dat je `delict_tabel <- table(delictsoorten)` gebruikt.',
           type='error'
         )
         return(FALSE)
       }
       # 6. Success
       get_reporter()$add_message(
-        '✅ De frequentietabel van delictsoorten is correct aangemaakt.',
+        '✅ De frequentietabel van delictsoorten is correct aangemaakt!',
         type='success'
       )
       return(TRUE)
