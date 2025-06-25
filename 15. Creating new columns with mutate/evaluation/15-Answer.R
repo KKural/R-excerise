@@ -49,6 +49,3 @@ context({
     waarde = c(100, 200, 150, 300, 120, 80, 90, 60, 110, 50)
   )
 })
-
-# Modeloplossing:
-gewijzigde_data <- dplyr::mutate(misdaad_data, dubbele_waarde = waarde * 2)
