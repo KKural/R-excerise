@@ -14,21 +14,29 @@ context({
           )
           return(FALSE)
         }
-        if (!is.numeric(env$leeftijd_samenvatting)) {
+        got <- env$leeftijd_samenvatting
+        expected <- summary(env$leeftijden_daders)
+        if (!is.numeric(got) || is.null(names(got))) {
           get_reporter()$add_message(
-            "❌ 'leeftijd_samenvatting' moet een numerieke samenvatting zijn van 'leeftijden_daders'.",
+            "❌ 'leeftijd_samenvatting' moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        if (!identical(got, expected)) {
+          get_reporter()$add_message(
+            "❌ De inhoud van 'leeftijd_samenvatting' is niet correct. Gebruik summary(leeftijden_daders).",
             type = "error"
           )
           return(FALSE)
         }
         get_reporter()$add_message(
-          "Correct! De samenvatting is correct aangemaakt en opgeslagen in 'leeftijd_samenvatting'.",
+          "✅ Correct! De samenvatting is correct aangemaakt en opgeslagen in 'leeftijd_samenvatting'.",
           type = "success"
         )
         TRUE
       },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+      TRUE
     )
   })
 }, preExec = {
