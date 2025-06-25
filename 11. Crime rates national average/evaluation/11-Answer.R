@@ -7,88 +7,125 @@ context({
         tryCatch({
           env$boven_gemiddelde
         }, error = function(e) {
+          # Geef duidelijke foutmelding en hint
           get_reporter()$add_message(
-            "❌ Fout in je code: controleer of je vergelijking correct is en of je variabelen goed zijn aangemaakt.",
+            "❌ We kunnen de variabele 'boven_gemiddelde' niet vinden. Heb je deze wel aangemaakt?",
             type = "error"
+          )
+          get_reporter()$add_message(
+            "💡 Hint: Schrijf de code als volgt: boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde",
+            type = "info"
           )
           return(NULL)
         })
       },
       NULL,
       comparator = function(got, want) {
-        # Aanmaken van de check-resultaten lijst
-        check_results <- list(
-          gebruik_vergelijking = FALSE, 
-          gebruik_juiste_operator = FALSE,
-          juiste_volgorde = FALSE
-        )
+        # Verwachte resultaat
+        verwacht <- c(5.58, 6.42, 7.05, 7.18, 6.39) > 6.2
         
-        # Controleer of de variabele correct bestaat
+        # Controleer of de variabele bestaat
         if (is.null(got)) {
-          get_reporter()$add_message("❌ De variabele 'boven_gemiddelde' bestaat niet.", type = "error")
+          get_reporter()$add_message(
+            "❌ Correct resultaat:",
+            type = "error"
+          )
+          get_reporter()$add_message(
+            "We verwachten dat je 'boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde' gebruikt.",
+            type = "info"
+          )
           return(FALSE)
         }
         
         # Controleer of het een logische vector is
         if (!is.logical(got)) {
           get_reporter()$add_message(
-            "❌ 'boven_gemiddelde' moet een logische vector zijn die vergelijkt met het nationaal gemiddelde.",
+            "❌ Correct resultaat:",
             type = "error"
           )
-          
-          # Geef hints over de vergelijkingsoperatoren
-          get_reporter()$add_message("ℹ️ We verwachten dat je de '>' operator gebruikt om te vergelijken.", type = "info")
-          get_reporter()$add_message("ℹ️ Bijvoorbeeld: vector1 > vector2 geeft een logische vector terug.", type = "info")
-          
+          get_reporter()$add_message(
+            "We verwachten dat je 'district_misdaadcijfers > nationaal_gemiddelde' gebruikt, wat een logische vector oplevert.",
+            type = "info"
+          )
+          get_reporter()$add_message(
+            "💡 Hint: Gebruik de '>' operator om te vergelijken of de misdaadcijfers hoger zijn dan het gemiddelde.",
+            type = "info"
+          )
           return(FALSE)
         }
         
-        # Vergelijking die we verwachten
-        verwacht <- c(5.58, 6.42, 7.05, 7.18, 6.39) > 6.2
+        # Check voor omgekeerde vergelijking (< in plaats van >)
+        if (identical(got, c(5.58, 6.42, 7.05, 7.18, 6.39) < 6.2)) {
+          get_reporter()$add_message(
+            "❌ Correct resultaat:",
+            type = "error"
+          )
+          get_reporter()$add_message(
+            "Je hebt de vergelijking omgekeerd. Je controleert nu welke districten ONDER het gemiddelde liggen.",
+            type = "info"
+          )
+          get_reporter()$add_message(
+            "💡 Hint: Gebruik '>' in plaats van '<' om te controleren welke districten BOVEN het gemiddelde liggen.",
+            type = "info"
+          )
+          return(FALSE)
+        }
         
-        # Check voor vergelijking en show feedback
-        check_results$gebruik_vergelijking <- TRUE
+        # Check voor inclusieve vergelijking (>= in plaats van >)
+        if (identical(got, c(5.58, 6.42, 7.05, 7.18, 6.39) >= 6.2)) {
+          get_reporter()$add_message(
+            "❌ Correct resultaat:",
+            type = "error"
+          )
+          get_reporter()$add_message(
+            "Je gebruikt '>=' in plaats van '>'. De opdracht vraagt alleen om districten STRIKT boven het gemiddelde.",
+            type = "info"
+          )
+          get_reporter()$add_message(
+            "💡 Hint: Gebruik alleen '>' om te controleren welke districten strikt boven het gemiddelde liggen.",
+            type = "info"
+          )
+          return(FALSE)
+        }
         
-        # Check voor juiste vergelijkingsoperator
-        check_results$gebruik_juiste_operator <- identical(got, verwacht) || 
-                                              identical(got, !c(5.58, 6.42, 7.05, 7.18, 6.39) <= 6.2)
+        # Check voor verkeerde variabelenvolgorde
+        if (identical(got, 6.2 < c(5.58, 6.42, 7.05, 7.18, 6.39))) {
+          get_reporter()$add_message(
+            "❌ Correct resultaat:",
+            type = "error"
+          )
+          get_reporter()$add_message(
+            "Je hebt de volgorde van de variabelen omgewisseld. Het resultaat is correct, maar gebruik de standaard vorm.",
+            type = "info"
+          )
+          get_reporter()$add_message(
+            "💡 Hint: Schrijf 'district_misdaadcijfers > nationaal_gemiddelde' in plaats van 'nationaal_gemiddelde < district_misdaadcijfers'",
+            type = "info"
+          )
+          return(FALSE)
+        }
         
-        # Check voor juiste volgorde/gebruik variabelen
-        check_results$juiste_volgorde <- identical(got, verwacht)
-        
-        # Final check and full feedback
+        # Final check voor correct antwoord
         if (identical(got, verwacht)) {
           get_reporter()$add_message(
             "✅ Correct! De logische vector is correct aangemaakt en opgeslagen in 'boven_gemiddelde'.",
             type = "success"
           )
-          
           return(TRUE)
         } else {
-          # Toon de verwachte resultaten
-          get_reporter()$add_message("ℹ️ Correct resultaat:", type = "info")
-          
-          # Vergelijking gebruiken
-          if (check_results$gebruik_vergelijking) {
-            get_reporter()$add_message("✅ Je gebruikt een vergelijkingsoperator.", type = "success")
-          } else {
-            get_reporter()$add_message("❌ We verwachten dat je een vergelijkingsoperator gebruikt.", type = "error")
-          }
-          
-          # Juiste operator gebruiken
-          if (check_results$gebruik_juiste_operator) {
-            get_reporter()$add_message("✅ Je gebruikt de juiste vergelijkingsoperator '>'.", type = "success")
-          } else {
-            get_reporter()$add_message("❌ We verwachten dat je de '>' operator gebruikt om te vergelijken welke waarden boven het gemiddelde liggen.", type = "error")
-          }
-          
-          # Juiste volgorde/variabelen gebruiken
-          if (check_results$juiste_volgorde) {
-            get_reporter()$add_message("✅ Je vergelijkt de correcte variabelen in de juiste volgorde.", type = "success")
-          } else {
-            get_reporter()$add_message("❌ Je moet 'district_misdaadcijfers > nationaal_gemiddelde' gebruiken en dit opslaan in 'boven_gemiddelde'.", type = "error")
-          }
-          
+          # Algemene fout - onbekende oorzaak
+          get_reporter()$add_message(
+            "❌ Correct resultaat:",
+            type = "error"
+          )
+          get_reporter()$add_message(
+            "We verwachten dat je 'boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde' gebruikt.",
+            type = "info"
+          )
+          get_reporter()$add_message(
+            "💡 Hint: Controleer of je de juiste variabelen hebt gebruikt en de vergelijking correct hebt geschreven.",
+            type = "info"
+          )
           return(FALSE)
         }
       }
