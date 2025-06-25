@@ -3,12 +3,6 @@
 context({
   testcase("Feedback bij basisfuncties op df_crime_data", {
 
-    # Existence check for all tests
-    if (!exists("df_crime_data", envir=env())) {
-      get_reporter()$add_message("❌ Het object `df_crime_data` bestaat niet. Maak het data frame aan zoals gevraagd.", type="error")
-      return(FALSE)
-    }
-
     # 1) str()
     testEqual(
       "str(df_crime_data) toont de structuur van het data frame",
@@ -17,9 +11,15 @@ context({
       comparator = function(got, want, ...) {
         get_reporter()$add_message("```r\n> str(df_crime_data)\n```", type="markdown")
         if (grepl("type|ernst|leeftijd|district", got)) {
-          get_reporter()$add_message("✅ str(df_crime_data): toont kolomnamen, types en voorbeeldwaarden.", type = "success")
+          get_reporter()$add_message(
+            "✅ str(df_crime_data): toont kolomnamen, types en voorbeeldwaarden.",
+            type = "success"
+          )
         } else {
-          get_reporter()$add_message("❌ str(df_crime_data): structuur niet zoals verwacht.", type = "error")
+          get_reporter()$add_message(
+            "❌ str(df_crime_data): structuur niet zoals verwacht.",
+            type = "error"
+          )
         }
         TRUE
       }
@@ -240,4 +240,13 @@ context({
     )
 
   })
+}, preExec = {
+  # Setup: maak df_crime_data met 5 rijen x 4 kolommen
+  df_crime_data <- data.frame(
+    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"), levels = c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+    ernst = factor(c("Licht", "Matig", "Ernstig", "Matig", "Licht"), ordered = TRUE, levels = c("Licht", "Matig", "Ernstig")),
+    leeftijd  = c(19, 23, 45, 32, 28),
+    district = c("A1", "B2", "C3", "D4", "E5"),
+    stringsAsFactors = FALSE
+  )
 })
