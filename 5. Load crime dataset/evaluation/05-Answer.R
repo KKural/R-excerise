@@ -84,7 +84,7 @@ context({
   # Maak het CSV-bestand aan in tempdir()
   library(tibble); library(dplyr)
   set.seed(42)
-  misdaad_data <- tibble(
+  misdaad_data_origineel <- tibble(
     zaak_id    = sprintf("ZAAK%03d", 1:200),
     datum      = sample(seq.Date(as.Date("2023-01-01"),
                                  as.Date("2023-12-31"), "day"), 200, TRUE),
@@ -96,13 +96,24 @@ context({
     reactietijd         = round(pmax(rnorm(200, 12, 4), 0), 1)
   )
   bestandspad <- file.path(tempdir(), "misdaad_data.csv")
-  write.csv(misdaad_data, bestandspad, row.names = FALSE)
+  write.csv(misdaad_data_origineel, bestandspad, row.names = FALSE)
+  
+  # Maak bestandspad beschikbaar in de globale omgeving zodat studenten ernaar kunnen verwijzen
+  assign("bestandspad", bestandspad, envir = globalenv())
 })
 
-# Modeloplossing:
-# getwd()
-# data_dir <- dirname(bestandspad)
-# old_dir <- getwd()
-# setwd(data_dir)
+# Modeloplossing (een mogelijke aanpak):
+# # Bepaal huidige map
+# huidige_map <- getwd()
+# 
+# # Bepaal de map waarin het bestand staat
+# data_map <- dirname(bestandspad)
+# 
+# # Wissel naar de map met het CSV-bestand
+# setwd(data_map)
+# 
+# # Lees het bestand in
 # misdaad_data <- read.csv(basename(bestandspad))
-# setwd(old_dir)
+# 
+# # Ga terug naar de oorspronkelijke map
+# setwd(huidige_map)

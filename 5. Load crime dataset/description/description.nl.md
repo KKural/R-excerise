@@ -1,19 +1,33 @@
-# Leerdoel: Je leert een csv-bestand correct inladen in R en werken met werkmappen.
-
 In deze oefening ga je een csv-bestand met misdaadcijfers inladen. Het volledige pad naar het bestand staat in de variabele `bestandspad`.
 
+Je moet een dataframe genaamd `misdaad_data` aanmaken door het CSV-bestand in te lezen. Volg deze stappen:
+
 1. Controleer met `getwd()` in welke map R nu werkt.
-2. Zet de werkmap met `setwd()` naar de map van het csv-bestand (`dirname(bestandspad)`).
-3. Lees het bestand in met `read.csv()` en sla het op als `misdaad_df`.
-4. Zet de werkmap eventueel terug met `setwd()`.
+2. Bepaal de map waarin het CSV-bestand staat met `dirname(bestandspad)`.
+3. Bewaar je huidige werkmap zodat je er later naar kunt terugkeren.
+4. Zet de werkmap met `setwd()` naar de map van het CSV-bestand.
+5. Lees het bestand in met `read.csv()` en gebruik `basename(bestandspad)` om alleen de bestandsnaam op te geven.
+6. Sla het resultaat op als `misdaad_data` (niet misdaad_df).
+7. Zet de werkmap eventueel terug naar de oorspronkelijke map.
 
 ```r
-getwd()
-data_dir <- dirname(bestandspad)
-old_dir  <- getwd()
-setwd(data_dir)
-misdaad_df <- read.csv(basename(bestandspad))
-setwd(old_dir)
+# Voorbeeld van bestandspad structuur
+bestandspad  # Dit bevat het pad naar het CSV-bestand dat je moet inladen
+
+# Stap 1: Controleer huidige werkmap
+huidige_map <- getwd()
+
+# Stap 2: Bepaal de map waarin het bestand staat
+data_map <- dirname(bestandspad)  # Geeft alleen het pad naar de map
+
+# Stap 3-4: Wissel naar de map met het CSV-bestand
+setwd(data_map)
+
+# Stap 5-6: Lees het bestand in met de juiste naam
+misdaad_data <- read.csv(basename(bestandspad))  # basename geeft alleen de bestandsnaam
+
+# Stap 7: Ga terug naar de oorspronkelijke map
+setwd(huidige_map)
 ```
 
 **Hint:**  
