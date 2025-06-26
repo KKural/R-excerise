@@ -20,18 +20,21 @@ context({
       comparator = function(got, want, ...) {
         if (got) {
           # Student used str(df_crime_data), provide positive feedback
+          # English: "Well done! You used `str(df_crime_data)` to view the structure of the dataframe."
           get_reporter()$add_message(
             "✅ Goed gedaan! Je hebt `str(df_crime_data)` gebruikt om de structuur van het dataframe te bekijken.",
             type = "success"
           )
           
           # Provide additional educational message about the str() function
+          # English: "The `str()` function is very useful to quickly understand the structure of a dataframe. It shows variables, their types, and some example values."
           get_reporter()$add_message(
             "De `str()` functie is erg nuttig om snel inzicht te krijgen in de structuur van een dataframe. Het toont de variabelen, hun types en enkele voorbeeldwaarden.",
             type = "info"
           )
           
           # Capture and show the str() output for the data frame
+          # English: "## Structure of df_crime_data:"
           get_reporter()$add_message(
             "## Structuur van df_crime_data:",
             type = "markdown"
@@ -42,12 +45,17 @@ context({
           get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "code")
           
           # Add educational explanation about the measurement levels
+          # English: "## Measurement levels in the dataset:"
           get_reporter()$add_message(
             "## Meetniveaus in de dataset:",
             type = "markdown"
           )
           
           # Use paste for string concatenation, not the + operator
+          # English:
+          # - Nominal variables: `type`, `district` (categories without order)
+          # - Ordinal variables: `ernst` (categories with order: Low < Medium < Severe)
+          # - Interval/Ratio variables: `leeftijd` (numerical values)
           get_reporter()$add_message(paste(
             "- **Nominale variabelen**: `type`, `district` (categorieën zonder rangorde)",
             "- **Ordinale variabelen**: `ernst` (categorieën met rangorde: Licht < Matig < Ernstig)", 
@@ -55,11 +63,16 @@ context({
             sep = "\n"
           ), type = "markdown")
           
+          # English: "## Tips for identifying measurement levels:"
           get_reporter()$add_message(
             "## Tips voor het herkennen van meetniveaus:",
             type = "markdown"
           )
           
+          # English:
+          # - Nominal variables are often stored as `Factor` without ordered=TRUE
+          # - Ordinal variables are often stored as `Ord.factor`
+          # - Interval/Ratio variables are often stored as `num` or `int`
           get_reporter()$add_message(paste(
             "- Nominale variabelen zijn vaak opgeslagen als `Factor` zonder ordered=TRUE",
             "- Ordinale variabelen zijn vaak opgeslagen als `Ord.factor`",
@@ -70,6 +83,7 @@ context({
           return(TRUE)
         } else {
           # Student didn't use str(df_crime_data), provide corrective feedback
+          # English: "You must use exactly the command `str(df_crime_data)` to view the structure of the dataframe."
           get_reporter()$add_message(
             "❌ Je moet precies de opdracht `str(df_crime_data)` gebruiken om de structuur van het dataframe te bekijken.",
             type = "error"
