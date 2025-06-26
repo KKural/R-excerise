@@ -80,7 +80,32 @@ context({
     )
     testEqual(
       "",
-      function(env) env$niveau_geslacht == "nominaal",
+      function(env) {
+        tryCatch({
+          value <- env$niveau_geslacht
+          if (is.null(value)) {
+            get_reporter()$add_message(
+              "❌ De variabele `niveau_geslacht` is niet gedefinieerd.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          if (!is.character(value)) {
+            get_reporter()$add_message(
+              "❌ `niveau_geslacht` moet een tekst (string) zijn.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          return(tolower(value) == "nominaal")
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Er is een fout opgetreden bij het controleren van `niveau_geslacht`.",
+            type = "error"
+          )
+          return(FALSE)
+        })
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -99,7 +124,32 @@ context({
     )
     testEqual(
       "",
-      function(env) env$niveau_leeftijd == "ratio",
+      function(env) {
+        tryCatch({
+          value <- env$niveau_leeftijd
+          if (is.null(value)) {
+            get_reporter()$add_message(
+              "❌ De variabele `niveau_leeftijd` is niet gedefinieerd.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          if (!is.character(value)) {
+            get_reporter()$add_message(
+              "❌ `niveau_leeftijd` moet een tekst (string) zijn.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          return(tolower(value) == "ratio")
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Er is een fout opgetreden bij het controleren van `niveau_leeftijd`.",
+            type = "error"
+          )
+          return(FALSE)
+        })
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -118,7 +168,32 @@ context({
     )
     testEqual(
       "",
-      function(env) env$niveau_misdaad_type == "nominaal",
+      function(env) {
+        tryCatch({
+          value <- env$niveau_misdaad_type
+          if (is.null(value)) {
+            get_reporter()$add_message(
+              "❌ De variabele `niveau_misdaad_type` is niet gedefinieerd.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          if (!is.character(value)) {
+            get_reporter()$add_message(
+              "❌ `niveau_misdaad_type` moet een tekst (string) zijn.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          return(tolower(value) == "nominaal")
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Er is een fout opgetreden bij het controleren van `niveau_misdaad_type`.",
+            type = "error"
+          )
+          return(FALSE)
+        })
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -137,7 +212,32 @@ context({
     )
     testEqual(
       "",
-      function(env) env$niveau_strafduur == "ratio",
+      function(env) {
+        tryCatch({
+          value <- env$niveau_strafduur
+          if (is.null(value)) {
+            get_reporter()$add_message(
+              "❌ De variabele `niveau_strafduur` is niet gedefinieerd.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          if (!is.character(value)) {
+            get_reporter()$add_message(
+              "❌ `niveau_strafduur` moet een tekst (string) zijn.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          return(tolower(value) == "ratio")
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Er is een fout opgetreden bij het controleren van `niveau_strafduur`.",
+            type = "error"
+          )
+          return(FALSE)
+        })
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -156,7 +256,32 @@ context({
     )
     testEqual(
       "",
-      function(env) env$niveau_opleidingsniveau == "ordinaal",
+      function(env) {
+        tryCatch({
+          value <- env$niveau_opleidingsniveau
+          if (is.null(value)) {
+            get_reporter()$add_message(
+              "❌ De variabele `niveau_opleidingsniveau` is niet gedefinieerd.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          if (!is.character(value)) {
+            get_reporter()$add_message(
+              "❌ `niveau_opleidingsniveau` moet een tekst (string) zijn.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          return(tolower(value) == "ordinaal")
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Er is een fout opgetreden bij het controleren van `niveau_opleidingsniveau`.",
+            type = "error"
+          )
+          return(FALSE)
+        })
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
@@ -175,7 +300,32 @@ context({
     )
     testEqual(
       "",
-      function(env) env$niveau_risicocategorie == "ordinaal",
+      function(env) {
+        tryCatch({
+          value <- env$niveau_risicocategorie
+          if (is.null(value)) {
+            get_reporter()$add_message(
+              "❌ De variabele `niveau_risicocategorie` is niet gedefinieerd.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          if (!is.character(value)) {
+            get_reporter()$add_message(
+              "❌ `niveau_risicocategorie` moet een tekst (string) zijn.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          return(tolower(value) == "ordinaal")
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Er is een fout opgetreden bij het controleren van `niveau_risicocategorie`.",
+            type = "error"
+          )
+          return(FALSE)
+        })
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
