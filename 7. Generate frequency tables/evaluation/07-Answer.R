@@ -169,4 +169,8 @@ context({
   
   # Also make it available globally
   assign("delictsoorten", delictsoorten, envir = globalenv())
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862

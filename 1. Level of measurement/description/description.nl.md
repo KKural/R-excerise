@@ -24,4 +24,8 @@ De `str()` functie toont een beknopt overzicht van een object. Voor een datafram
 - Het type van elke variabele (factor, numeric, character, etc.)
 - Enkele voorbeeldwaarden voor elke variabele
 
+<<<<<<< HEAD
 Let op: Je moet **exact** de opdracht `str(df_crime_data)` gebruiken zoals hierboven aangegeven.
+=======
+Let op: Je moet **exact** de opdracht `str(df_crime_data)` gebruiken zoals hierboven aangegeven.
+>>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862

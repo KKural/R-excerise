@@ -168,4 +168,8 @@ context({
 # old_dir <- getwd()
 # setwd(data_dir)
 # misdaad_data <- read.csv(basename(bestandspad))
+<<<<<<< HEAD
 # setwd(old_dir)
+=======
+# setwd(old_dir)
+>>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862

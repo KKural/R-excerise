@@ -47,10 +47,13 @@ context({
             "✅ Correct! Je hebt de juiste logische vector aangemaakt.",
             type = "success"
           )
+<<<<<<< HEAD
           get_reporter()$add_message(
             "Dit geeft aan welke districten (TRUE) boven het nationale gemiddelde liggen en welke niet (FALSE).",
             type = "info"
           )
+=======
+>>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862
           return(TRUE)
         } else {
           get_reporter()$add_message(
@@ -60,6 +63,7 @@ context({
           get_reporter()$add_message(
             "💡 Gebruik 'district_misdaadcijfers > nationaal_gemiddelde' om te controleren welke districten boven het gemiddelde liggen.",
             type = "info"
+<<<<<<< HEAD
           )
           get_reporter()$add_message(
             paste("Verwachte logische vector:", paste(verwacht, collapse=", ")),
@@ -68,6 +72,8 @@ context({
           get_reporter()$add_message(
             paste("Jouw logische vector:", paste(got, collapse=", ")),
             type = "info"
+=======
+>>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862
           )
           return(FALSE)
         }
@@ -85,4 +91,8 @@ context({
 })
 
 # Verwachte antwoorden (studenten moeten dit schrijven):
+<<<<<<< HEAD
 # boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde
+=======
+# boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde
+>>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862
