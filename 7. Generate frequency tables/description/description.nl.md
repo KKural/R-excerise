@@ -1,5 +1,3 @@
-# Leerdoel: Je leert hoe je frequentietabellen maakt om categorische data samen te vatten.
-
 In deze oefening ga je een frequentietabel maken van delictsoorten uit politierapporten. Een frequentietabel telt hoe vaak elke unieke waarde voorkomt in een dataset.
 
 1. Bekijk de vector `delictsoorten` die al voor je is aangemaakt.

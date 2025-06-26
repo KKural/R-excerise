@@ -12,14 +12,6 @@ context({
         # Bereken de verwachte tabel
         expected <- table(delictsoorten)
         
-        # Altijd de verwachte commando en output tonen
-        get_reporter()$add_message('Verwachte resultaat:', type='markdown')
-        get_reporter()$add_message('```r\n> table(delictsoorten)\n```', type='markdown')
-        get_reporter()$add_message(
-          paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
-          type='markdown'
-        )
-        
         # Controleer of de variabele bestaat
         if (!exists('delict_tabel', envir=env)) {
           get_reporter()$add_message(
@@ -120,46 +112,11 @@ context({
           return(FALSE)
         }
         
-        # Correct antwoord met alle informatie in één blok
+        # Correct antwoord - zeer minimale feedback
         get_reporter()$add_message(
-          '✅ Juist! `delict_tabel` is correct aangemaakt.',
+          '✅ Juist! `delict_tabel` is correct aangemaakt met table().',
           type='success'
         )
-        
-        # Toon output en uitleg samen zoals in exercise 1
-        # Converteer tabel output naar een string en toon het als code
-        tabel_output <- capture.output(print(env$delict_tabel))
-        get_reporter()$add_message("Jouw frequentietabel:", type = "markdown")
-        get_reporter()$add_message(paste(tabel_output, collapse = "\n"), type = "code")
-        
-        # Educatieve uitleg in één bericht
-        get_reporter()$add_message(paste(
-          "Frequentietabellen zijn zeer nuttig om:",
-          "- Snel een overzicht te krijgen van de verdeling van categorische variabelen",
-          "- Het aantal voorkomens van elke waarde te tellen",
-          "- Patronen in je data te ontdekken",
-          "",
-          "Je kunt de `table()` functie ook gebruiken voor kruistabellen met meerdere variabelen: `table(var1, var2)`",
-          "",
-          "Visualisatie tips:",
-          "",
-          "Je kunt een staafdiagram maken van je frequentietabel met:",
-          "```r",
-          "barplot(delict_tabel, ",
-          "        main=\"Frequentie van delictsoorten\", ",
-          "        xlab=\"Type delict\", ",
-          "        ylab=\"Aantal\",",
-          "        col=rainbow(length(delict_tabel)))",
-          "```",
-          "",
-          "Of een taartdiagram:",
-          "```r",
-          "pie(delict_tabel, ",
-          "    main=\"Verdeling van delictsoorten\",",
-          "    col=rainbow(length(delict_tabel)))",
-          "```",
-          sep = "\n"
-        ), type = "markdown")
         
         return(TRUE)
       },
