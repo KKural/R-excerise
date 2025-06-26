@@ -3,51 +3,33 @@
 # primm_phase: Run
 
 context({
-  testcase("Toekennen van inbraakwaarde", {
+  testcase("", {
     testEqual(
-      "Controleer of 'inbraken' correct is aangemaakt",
+      "",
       function(env) {
-        # First check if submission is empty
-        if (length(env$`.__code__`) == 0) {
-          get_reporter()$add_message(
-            "❌ Je hebt geen code ingediend. Je moet de variabele 'inbraken' aanmaken met de waarde 146.",
-            type = "error"
-          )
-          return(NULL)
-        }
-        
-        # Check if the code contains 'inbraken' variable
-        code_str <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
-        if (!grepl("inbraken", code_str, fixed = TRUE)) {
-          get_reporter()$add_message(
-            "❌ Je code bevat geen variabele met de naam 'inbraken'. Maak deze variabele aan.",
-            type = "error"
-          )
-          return(NULL)
-        }
-        
-        # Return the variable for comparison
-        env$inbraken
-      },
-      146,
-      comparator = function(got, want, ...) {
-        # The variable 'inbraken' is not defined. Please create this variable.
-        if (is.null(got)) {
+        # Robustly check if 'inbraken' exists
+        if (!exists("inbraken", envir = env)) {
           get_reporter()$add_message(
             "❌ De variabele 'inbraken' is niet gedefinieerd. Maak deze variabele aan.",
             type = "error"
           )
-          return(FALSE)
+          return(NULL)
         }
-        # The variable 'inbraken' should be a numeric value, not a ...
-        if (!is.numeric(got)) {
+        val <- get("inbraken", envir = env)
+        if (!is.numeric(val)) {
           get_reporter()$add_message(
-            paste0("❌ De variabele 'inbraken' moet een numerieke waarde zijn, geen ", class(got), "."),
+            paste0("❌ De variabele 'inbraken' moet een numerieke waarde zijn, geen ", class(val), "."),
             type = "error"
           )
+          return(NULL)
+        }
+        val
+      },
+      146,
+      comparator = function(got, want, ...) {
+        if (is.null(got)) {
           return(FALSE)
         }
-        # Expected 'inbraken' to be 146, but got ...
         if (got != want) {
           get_reporter()$add_message(
             paste0("❌ Verwachtte waarde voor 'inbraken' is ", want, ", maar kreeg ", got, "."),
@@ -55,7 +37,6 @@ context({
           )
           return(FALSE)
         }
-        # Correct! You've successfully assigned the value 146 to the 'inbraken' variable.
         get_reporter()$add_message(
           "✅ Goed gedaan! Je hebt de waarde 146 correct toegekend aan de variabele 'inbraken'.",
           type = "success"
