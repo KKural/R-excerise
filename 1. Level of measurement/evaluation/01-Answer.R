@@ -4,67 +4,70 @@
 
 context({
   testcase("Basisfuncties op df_crime_data", {
-    # First we test if the evaluation result contains str() output
     testEqual(
-      "str(df_crime_data) gebruikt",
+      "Dataframe verkennen",
       function(env) {
-        # Always pass this test to avoid issues with .__code__ access
-        # Instead, we'll use the comparator to examine if str() was likely used
-        return(TRUE)
+        # The evaluationResult contains the result of the last expression in the student's code
+        # Since we just want them to run the commands, always return TRUE
+        TRUE
       },
       TRUE,
       comparator = function(got, want, ...) {
-        # Always show a success message
-        get_reporter()$add_message(
-          "✅ In deze oefening leer je hoe je basisfuncties gebruikt om dataframes te verkennen.",
-          type = "success"
-        )
+        # Check if student code uses str() function on df_crime_data
+        student_code <- get(".solution", envir = globalenv())
+        used_str <- grepl("str\\(df_crime_data\\)", student_code, perl = TRUE)
         
-        # Show the output of str(df_crime_data) for educational purposes
+        if (used_str) {
+          get_reporter()$add_message(
+            "✅ Goed gedaan! Je hebt de `str()` functie correct gebruikt om de structuur van `df_crime_data` te bekijken.",
+            type = "success"
+          )
+        } else {
+          get_reporter()$add_message(
+            "⚠️ Het lijkt erop dat je niet de `str(df_crime_data)` functie hebt gebruikt. Dit is de meest directe manier om de structuur van een dataframe te bekijken.",
+            type = "warning"
+          )
+        }
+        
+        # Show str() output for educational purposes
         get_reporter()$add_message(
           "Hier is de output van str(df_crime_data):",
           type = "info"
         )
+        get_reporter()$add_message(paste(capture.output(str(df_crime_data)), collapse = "\n"), type = "code")
         
-        # Capture and display the structure
-        str_output <- capture.output(str(df_crime_data))
-        get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "code")
-        
-        # Show examples of other useful functions
+        # Show some additional helpful functions
         get_reporter()$add_message(
-          "Dit laat je snel zien welke variabelen er zijn, welk type ze hebben, en een aantal voorbeeldwaarden.",
+          "Je kunt ook andere nuttige functies gebruiken om dataframes te verkennen:",
           type = "info"
         )
+        get_reporter()$add_message("De kolomnamen bekijken met names():", type = "info")
+        get_reporter()$add_message(paste(capture.output(names(df_crime_data)), collapse = "\n"), type = "code")
         
-        get_reporter()$add_message(
-          "Andere nuttige functies om dataframes te verkennen zijn:",
-          type = "info"
-        )
+        get_reporter()$add_message("De eerste rijen bekijken met head():", type = "info")
+        get_reporter()$add_message(paste(capture.output(head(df_crime_data)), collapse = "\n"), type = "code")
         
-        # Show names() output
-        get_reporter()$add_message("names(df_crime_data):", type = "info")
-        names_output <- capture.output(print(names(df_crime_data)))
-        get_reporter()$add_message(paste(names_output, collapse = "\n"), type = "code")
-        
-        # Show head() output
-        get_reporter()$add_message("head(df_crime_data):", type = "info")
-        head_output <- capture.output(print(head(df_crime_data, 3)))
-        get_reporter()$add_message(paste(head_output, collapse = "\n"), type = "code")
-        
+        # Always return TRUE so the exercise passes
         return(TRUE)
       }
     )
   })
 }, preExec = {
-  # Create the data frame exactly as described in the description
+  # Create the data frame that's mentioned in the description
   df_crime_data <- data.frame(
     type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
     ernst = factor(c("Licht", "Matig", "Ernstig", "Matig", "Licht"), 
-                  levels = c("Licht", "Matig", "Ernstig"), 
-                  ordered = TRUE),
+                   levels = c("Licht", "Matig", "Ernstig"), 
+                   ordered = TRUE),
     leeftijd = c(19, 23, 45, 32, 28),
     district = c("A1", "B2", "C3", "D4", "E5")
   )
+  
+  # Important: Make df_crime_data available globally
+  assign("df_crime_data", df_crime_data, envir = globalenv())
+  
+  # Store the student's code in the global environment so we can check it
+  assign(".solution", readLines("student.R", warn = FALSE), envir = globalenv())
 })
 
 # Verwachte antwoord:
