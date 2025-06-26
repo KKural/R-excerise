@@ -1,66 +1,222 @@
-# bloom_level: Remember & Understand
-# scaffolding_level: Full support
-# primm_phase: Run
+# bloom_level: Apply & Analyze
+# scaffolding_level: Moderate support
+# primm_phase: Modify
 
 context({
-  testcase("Basisfuncties op df_crime_data", {
+  testcase("Dataframe structuur en preprocessing", {
+    # Test of datum correct is geconverteerd
     testEqual(
-      "Dataframe verkennen",
+      "Datum conversie",
       function(env) {
-        # The evaluationResult contains the result of the last expression in the student's code
-        # Since we just want them to run the commands, always return TRUE
-        TRUE
+        class(env$clean_data$date)[1]
+      },
+      "Date",
+      comparator = function(generated, expected, ...) {
+        result <- generated == expected
+        if (!result) {
+          get_reporter()$add_message(
+            "❌ De kolom 'date' is niet correct omgezet naar het Date formaat. Gebruik `as.Date(raw_data$date, format = '%d/%m/%Y')`",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ De datumkolom is correct omgezet naar het Date formaat!",
+            type = "markdown"
+          )
+        }
+        return(result)
+      }
+    )
+    
+    # Test of categorische variabelen factor zijn
+    testEqual(
+      "Crime type als factor",
+      function(env) {
+        class(env$clean_data$crime_type)[1]
+      },
+      "factor",
+      comparator = function(generated, expected, ...) {
+        result <- generated == expected
+        if (!result) {
+          get_reporter()$add_message(
+            "❌ De kolom 'crime_type' is niet omgezet naar een factor. Gebruik `factor(raw_data$crime_type)`",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ De crime_type kolom is correct omgezet naar een factor!",
+            type = "markdown"
+          )
+        }
+        return(result)
+      }
+    )
+    
+    # Test of district een factor is
+    testEqual(
+      "District als factor",
+      function(env) {
+        class(env$clean_data$district)[1]
+      },
+      "factor",
+      comparator = function(generated, expected, ...) {
+        result <- generated == expected
+        if (!result) {
+          get_reporter()$add_message(
+            "❌ De kolom 'district' is niet omgezet naar een factor. Gebruik `factor(raw_data$district)`",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ De district kolom is correct omgezet naar een factor!",
+            type = "markdown"
+          )
+        }
+        return(result)
+      }
+    )
+    
+    # Test of er nog NA waarden in age_offender zijn
+    testEqual(
+      "NA waarden in age_offender",
+      function(env) {
+        sum(is.na(env$clean_data$age_offender))
+      },
+      0,
+      comparator = function(generated, expected, ...) {
+        result <- generated == expected
+        if (!result) {
+          get_reporter()$add_message(
+            "❌ Er zijn nog steeds NA waarden in de kolom 'age_offender'. Je moet deze vervangen door het gemiddelde van alle beschikbare leeftijden.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ Alle NA waarden in age_offender zijn correct vervangen!",
+            type = "markdown"
+          )
+        }
+        return(result)
+      }
+    )
+    
+    # Test of er nog NA waarden in severity zijn
+    testEqual(
+      "NA waarden in severity",
+      function(env) {
+        sum(is.na(env$clean_data$severity))
+      },
+      0,
+      comparator = function(generated, expected, ...) {
+        result <- generated == expected
+        if (!result) {
+          get_reporter()$add_message(
+            "❌ Er zijn nog steeds NA waarden in de kolom 'severity'. Je moet deze vervangen door de mediaan van alle beschikbare waarden.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ Alle NA waarden in severity zijn correct vervangen!",
+            type = "markdown"
+          )
+        }
+        return(result)
+      }
+    )
+    
+    # Test of de maand kolom is aangemaakt
+    testEqual(
+      "Maand kolom",
+      function(env) {
+        "month" %in% names(env$clean_data)
       },
       TRUE,
-      comparator = function(got, want, ...) {
-        # We don't have reliable access to the student code in this environment
-        # So instead of checking for the specific function usage,
-        # we'll provide educational feedback regardless
-        get_reporter()$add_message(
-          "✅ In deze oefening leer je hoe je basisfuncties gebruikt om dataframes te verkennen zoals `str(df_crime_data)`.",
-          type = "success"
-        )
+      comparator = function(generated, expected, ...) {
+        result <- generated == expected
+        if (!result) {
+          get_reporter()$add_message(
+            "❌ De kolom 'month' is niet aangemaakt. Gebruik de `month()` functie uit het lubridate package om de maand uit de datum te extraheren.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ De maand kolom is succesvol aangemaakt!",
+            type = "markdown"
+          )
         }
-        
-        # Show str() output for educational purposes
-        get_reporter()$add_message(
-          "Hier is de output van str(df_crime_data):",
-          type = "info"
-        )
-        get_reporter()$add_message(paste(capture.output(str(df_crime_data)), collapse = "\n"), type = "code")
-        
-        # Show some additional helpful functions
-        get_reporter()$add_message(
-          "Je kunt ook andere nuttige functies gebruiken om dataframes te verkennen:",
-          type = "info"
-        )
-        get_reporter()$add_message("De kolomnamen bekijken met names():", type = "info")
-        get_reporter()$add_message(paste(capture.output(names(df_crime_data)), collapse = "\n"), type = "code")
-        
-        get_reporter()$add_message("De eerste rijen bekijken met head():", type = "info")
-        get_reporter()$add_message(paste(capture.output(head(df_crime_data)), collapse = "\n"), type = "code")
-        
-        # Always return TRUE so the exercise passes
-        return(TRUE)
+        return(result)
+      }
+    )
+    
+    # Controleer of de maand kolom numerieke waarden bevat tussen 1 en 12
+    testEqual(
+      "Maand waarden",
+      function(env) {
+        all(env$clean_data$month >= 1 & env$clean_data$month <= 12)
+      },
+      TRUE,
+      comparator = function(generated, expected, ...) {
+        result <- generated == expected
+        if (!result) {
+          get_reporter()$add_message(
+            "❌ De waarden in de 'month' kolom zijn niet correct. Alle waarden moeten tussen 1 en 12 liggen.",
+            type = "markdown"
+          )
+        } else {
+          get_reporter()$add_message(
+            "✅ De maand kolom bevat correcte waarden!",
+            type = "markdown"
+          )
+        }
+        return(result)
       }
     )
   })
 }, preExec = {
-  # Create the data frame that's mentioned in the description
-  df_crime_data <- data.frame(
-    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
-    ernst = factor(c("Licht", "Matig", "Ernstig", "Matig", "Licht"), 
-                   levels = c("Licht", "Matig", "Ernstig"), 
-                   ordered = TRUE),
-    leeftijd = c(19, 23, 45, 32, 28),
-    district = c("A1", "B2", "C3", "D4", "E5")
-  )
+  library(lubridate)
   
-  # Important: Make df_crime_data available globally
-  # Assign to both global environment and the current environment 
-  # to ensure it's available in all contexts
-  assign("df_crime_data", df_crime_data, envir = globalenv())
+  # Creëer een synthetische dataset
+  set.seed(123)
+  n <- 100
+  
+  # Genereer willekeurige data
+  dates <- seq(as.Date("2022-01-01"), as.Date("2022-12-31"), by="day")[sample(1:365, n, replace = TRUE)]
+  dates_char <- format(dates, "%d/%m/%Y")
+  crime_types <- sample(c("Theft", "Assault", "Vandalism", "Fraud", "Burglary"), n, replace = TRUE)
+  districts <- sample(c("North", "South", "East", "West", "Central"), n, replace = TRUE)
+  
+  # Voeg wat NA's toe
+  age_offender <- sample(18:65, n, replace = TRUE)
+  age_offender[sample(1:n, 10)] <- NA
+  
+  severity <- sample(1:5, n, replace = TRUE)
+  severity[sample(1:n, 15)] <- NA
+  
+  # Maak de dataset
+  raw_data <- data.frame(
+    date = dates_char,
+    crime_type = crime_types,
+    district = districts,
+    age_offender = age_offender,
+    severity = severity,
+    stringsAsFactors = FALSE
+  )
 })
 
-# Verwachte antwoord:
-# str(df_crime_data)
+# Model solution:
+# library(lubridate)
+#
+# # Converteer de datum
+# clean_data <- raw_data
+# clean_data$date <- as.Date(raw_data$date, format = "%d/%m/%Y")
+#
+# # Zet categorische variabelen om naar factoren
+# clean_data$crime_type <- factor(raw_data$crime_type)
+# clean_data$district <- factor(raw_data$district)
+#
+# # Vervang missing values
+# clean_data$age_offender[is.na(clean_data$age_offender)] <- mean(clean_data$age_offender, na.rm = TRUE)
+# clean_data$severity[is.na(clean_data$severity)] <- median(clean_data$severity, na.rm = TRUE)
+#
+# # Maak een nieuwe kolom voor de maand
+# clean_data$month <- month(clean_data$date)
