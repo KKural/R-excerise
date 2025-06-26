@@ -18,8 +18,9 @@ context({
     
     testEqual(
       "Creëer een frequentietabel met table()",
-      # 1. Always emit the command
-      get_reporter()$add_message('```r\n> table(delictsoorten)\n```', type='markdown')
+      function(env) {
+        # 1. Always emit the command
+        get_reporter()$add_message('```r\n> table(delictsoorten)\n```', type='markdown')
       # 2. Compute expected output
       expected <- table(get("delictsoorten", envir = env()))
       get_reporter()$add_message(
