@@ -14,7 +14,7 @@ niveau_risicocategorie <- "ordinaal"
 context({
   testcase("", {
     testEqual(
-      "Controleer niveau_zaak_id",
+      "",
       function(env) {
         # Check if the variable exists
         tryCatch({
