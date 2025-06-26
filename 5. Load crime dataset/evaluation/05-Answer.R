@@ -81,19 +81,19 @@ context({
     )
   })
 }, preExec = {
-  # Maak het CSV-bestand aan in tempdir() met alleen base R functies
+  # Maak het CSV-bestand aan in tempdir()
+  library(tibble); library(dplyr)
   set.seed(42)
-  
-  # Creëer een eenvoudiger dataframe met base R (geen dplyr of tibble nodig)
-  misdaad_data_origineel <- data.frame(
-    zaak_id = paste0("ZAAK", sprintf("%03d", 1:200)),
-    datum = as.character(sample(seq(as.Date("2023-01-01"), as.Date("2023-12-31"), by="day"), 200, replace=TRUE)),
-    district = sample(c("A", "B", "C", "D"), 200, replace=TRUE, prob=c(.4,.3,.2,.1)),
-    misdaad_type = sample(c("Inbraak","Aanval","Diefstal","Vandalisme"), 200, replace=TRUE),
-    waardeverlies = round(exp(rnorm(200, 3, 1))),
-    agenten_uitgezonden = sample(1:5, 200, replace=TRUE),
-    reactietijd = round(pmax(rnorm(200, 12, 4), 0), 1),
-    stringsAsFactors = FALSE
+  misdaad_data_origineel <- tibble(
+    zaak_id    = sprintf("ZAAK%03d", 1:200),
+    datum      = sample(seq.Date(as.Date("2023-01-01"),
+                                 as.Date("2023-12-31"), "day"), 200, TRUE),
+    district   = sample(c("A", "B", "C", "D"), 200, TRUE, prob = c(.4,.3,.2,.1)),
+    misdaad_type = sample(c("Inbraak","Aanval","Diefstal","Vandalisme"),
+                          200, TRUE),
+    waardeverlies       = round(rlnorm(200, 3, 1)),
+    agenten_uitgezonden = sample(1:5, 200, TRUE),
+    reactietijd         = round(pmax(rnorm(200, 12, 4), 0), 1)
   )
   bestandspad <- file.path(tempdir(), "misdaad_data.csv")
   write.csv(misdaad_data_origineel, bestandspad, row.names = FALSE)

@@ -7,7 +7,7 @@ Je moet een dataframe genaamd `misdaad_data` aanmaken door het CSV-bestand in te
 3. Bewaar je huidige werkmap zodat je er later naar kunt terugkeren.
 4. Zet de werkmap met `setwd()` naar de map van het CSV-bestand.
 5. Lees het bestand in met `read.csv()` en gebruik `basename(bestandspad)` om alleen de bestandsnaam op te geven.
-6. Sla het resultaat op als `misdaad_data` (niet misdaad_df).
+6. Sla het resultaat op als `misdaad_data`.
 7. Zet de werkmap eventueel terug naar de oorspronkelijke map.
 
 ```r
