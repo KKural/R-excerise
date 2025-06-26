@@ -7,19 +7,25 @@ context({
     testEqual(
       "",
       function(env) {
-        # Get all objects in the environment
-        all_expressions <- ls(envir = env)
+        # We'll check for str directly in a more reliable way
+        has_used_str <- FALSE
         
-        # Check if the student code contains a call to str(df_crime_data)
-        student_code <- deparse(body(sys.function()))
-        code_analysis <- any(grepl("str\\(df_crime_data\\)", student_code))
-        
-        # Create a custom check result
-        if (code_analysis) {
-          return(TRUE)
+        # Try to look at the code directly
+        if (exists(".__code__", envir = env)) {
+          code_str <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
+          if (grepl("str\\s*\\(\\s*df_crime_data\\s*\\)", code_str)) {
+            has_used_str <- TRUE
+          }
         } else {
-          return(FALSE) 
+          # Check if the student used str on df_crime_data in any way
+          all_calls <- ls(envir = env)
+          if (any(grepl("^str$", all_calls))) {
+            has_used_str <- TRUE
+          }
         }
+        
+        # Return the result
+        return(has_used_str)
       },
       TRUE,
       comparator = function(got, want, ...) {
@@ -36,28 +42,16 @@ context({
           type = "success"
         )
         
-        # Show the output of str(df_crime_data)
-        get_reporter()$add_message("Output van str(df_crime_data):", type = "info")
+        # Show output info
         str_output <- capture.output(str(df_crime_data))
-        get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "code")
-        
-        # Show other useful functions
-        get_reporter()$add_message("Je kunt ook deze functies gebruiken:", type = "info")
-        
-        get_reporter()$add_message("names(df_crime_data):", type = "info")
-        names_output <- capture.output(print(names(df_crime_data)))
-        get_reporter()$add_message(paste(names_output, collapse = "\n"), type = "code")
-        
-        get_reporter()$add_message("head(df_crime_data):", type = "info")
-        head_output <- capture.output(print(head(df_crime_data, 3)))
-        get_reporter()$add_message(paste(head_output, collapse = "\n"), type = "code")
+        get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "info")
         
         return(TRUE)
       }
     )
   })
 }, preExec = {
-  # Create crime data in the preExec block as in the example
+  # Define the dataframe in preExec
   df_crime_data <- data.frame(
     zaak_id = c("Z001", "Z002", "Z003", "Z004", "Z005"),
     datum = as.Date(c("2023-01-15", "2023-01-20", "2023-02-05", "2023-02-10", "2023-03-01")),
