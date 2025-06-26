@@ -1,7 +1,7 @@
 context({
-  testcase("", {
+  testcase("Vergelijken van misdaadcijfers met het nationale gemiddelde", {
     testEqual(
-      "",
+      "Controleer de variabele 'boven_gemiddelde'",
       function(env) {
         # Get the student's answer
         tryCatch({
@@ -47,13 +47,10 @@ context({
             "✅ Correct! Je hebt de juiste logische vector aangemaakt.",
             type = "success"
           )
-<<<<<<< HEAD
           get_reporter()$add_message(
             "Dit geeft aan welke districten (TRUE) boven het nationale gemiddelde liggen en welke niet (FALSE).",
             type = "info"
           )
-=======
->>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862
           return(TRUE)
         } else {
           get_reporter()$add_message(
@@ -63,7 +60,6 @@ context({
           get_reporter()$add_message(
             "💡 Gebruik 'district_misdaadcijfers > nationaal_gemiddelde' om te controleren welke districten boven het gemiddelde liggen.",
             type = "info"
-<<<<<<< HEAD
           )
           get_reporter()$add_message(
             paste("Verwachte logische vector:", paste(verwacht, collapse=", ")),
@@ -72,8 +68,6 @@ context({
           get_reporter()$add_message(
             paste("Jouw logische vector:", paste(got, collapse=", ")),
             type = "info"
-=======
->>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862
           )
           return(FALSE)
         }
@@ -85,14 +79,26 @@ context({
   district_misdaadcijfers <- c(5.58, 6.42, 7.05, 7.18, 6.39)
   nationaal_gemiddelde <- 6.2
   
-  # Also make the data available globally
+  # Make the data available in all necessary environments
   assign("district_misdaadcijfers", district_misdaadcijfers, envir = globalenv())
   assign("nationaal_gemiddelde", nationaal_gemiddelde, envir = globalenv())
+  
+  # Also make it available in the local environment
+  assign("district_misdaadcijfers", district_misdaadcijfers, envir = environment())
+  assign("nationaal_gemiddelde", nationaal_gemiddelde, envir = environment())
+  
+  # Make sure it's available for the test environment
+  tryCatch({
+    if (exists("test_env")) {
+      if (exists("clean_env", envir = test_env)) {
+        assign("district_misdaadcijfers", district_misdaadcijfers, envir = test_env$clean_env)
+        assign("nationaal_gemiddelde", nationaal_gemiddelde, envir = test_env$clean_env)
+      }
+    }
+  }, error = function(e) {
+    # Just ignore any errors here
+  })
 })
 
-# Verwachte antwoorden (studenten moeten dit schrijven):
-<<<<<<< HEAD
+# Modeloplossing (commented out):
 # boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde
-=======
-# boven_gemiddelde <- district_misdaadcijfers > nationaal_gemiddelde
->>>>>>> 4c2f46bd424517ce3f0b8f49d238b32d50cc7862
