@@ -60,11 +60,20 @@ context({
           
           # More flexible comparison to handle case sensitivity and order
           if (!identical(df, expected)) {
-            # Check if just a sorting or minor difference
-            if (nrow(df) == nrow(expected) && 
-                all(sort(tolower(df$delict)) == sort(tolower(c("Aanval", "Overval", "Moord"))))) {
-              # This is close enough - they have the right rows
-              return("correct")
+            # Check if the dataframe has the correct number of rows and the right content
+            if (nrow(df) == nrow(expected)) {
+              # Check if it contains the correct crime types (case insensitive)
+              crimes_in_df <- tolower(as.character(df$delict))
+              expected_crimes <- tolower(c("Aanval", "Overval", "Moord"))
+              
+              # Sort both for comparison
+              crimes_in_df <- sort(crimes_in_df)
+              expected_crimes <- sort(expected_crimes)
+              
+              # Check if all expected crimes are in the dataframe
+              if (all(expected_crimes %in% crimes_in_df) && all(crimes_in_df %in% expected_crimes)) {
+                return("correct")
+              }
             }
             return("wrong_val")
           }
@@ -96,10 +105,13 @@ context({
         # Create the expected dataframe for showing - use the global dataset
         # Don't try to access the environment here as it's not accessible in the comparator
         expected_df <- subset(misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
-        expected_df <- subset(student_misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
         
         # Main feedback message
-        get_reporter()$add_message(feedbacks[[generated]], type = ifelse(generated == "correct", "success", "error"))
+        feedback_message <- feedbacks[[generated]]
+        if (is.null(feedback_message)) {
+          feedback_message <- paste("Unexpected error: generated =", generated)
+        }
+        get_reporter()$add_message(feedback_message, type = ifelse(generated == "correct", "success", "error"))
         
         # If wrong, show example of correct code
         if (generated != "correct") {
@@ -160,14 +172,23 @@ context({
   # Make the data available in all environments
   assign("misdaad_data", misdaad_data, envir = globalenv())
   
-  # Note: The following approach is more robust for ensuring the data is available in all environments
-  if (exists("test_env") && exists("clean_env", envir = test_env)) {
-    assign("misdaad_data", misdaad_data, envir = test_env$clean_env)
-  }
-
-  # Also make it available in the parent environment and local environment
-  assign("misdaad_data", misdaad_data, envir = parent.env(environment()))
+  # Also make it available in the local environment
   assign("misdaad_data", misdaad_data, envir = environment())
+  
+  # And in the parent environment
+  parent_env <- parent.env(environment())
+  assign("misdaad_data", misdaad_data, envir = parent_env)
+  
+  # Make sure it's available for the test environment
+  tryCatch({
+    if (exists("test_env")) {
+      if (exists("clean_env", envir = test_env)) {
+        assign("misdaad_data", misdaad_data, envir = test_env$clean_env)
+      }
+    }
+  }, error = function(e) {
+    # Just ignore any errors here
+  })
 })
 
 # Modeloplossing:
