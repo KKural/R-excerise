@@ -2,7 +2,7 @@
 # scaffolding_level: Full support
 # primm_phase: Run
 
-# Verwachte antwoorden voor meetniveaus:
+## Verwachte antwoorden voor meetniveaus
 niveau_zaak_id <- "nominaal"
 niveau_geslacht <- "nominaal"
 niveau_leeftijd <- "ratio"
