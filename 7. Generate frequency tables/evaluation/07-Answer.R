@@ -47,6 +47,27 @@ context({
             '❌ Je moet de `table()` functie gebruiken om een frequentietabel te maken.',
             type='error'
           )
+          
+          # Toon een voorbeeld van hoe het moet
+          get_reporter()$add_message(
+            "### Voorbeeld van correct gebruik van table():",
+            type = "markdown"
+          )
+          get_reporter()$add_message(
+            "```r\ndelict_tabel <- table(delictsoorten)\n```",
+            type = "markdown"
+          )
+          
+          # Toon ook de verwachte output
+          get_reporter()$add_message(
+            "### Dit zou je moeten krijgen:",
+            type = "markdown"
+          )
+          get_reporter()$add_message(
+            paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
+            type = "markdown"
+          )
+          
           return(FALSE)
         }
         
@@ -103,6 +124,16 @@ context({
         get_reporter()$add_message(
           '✅ Juist! `delict_tabel` is correct aangemaakt.',
           type='success'
+        )
+        
+        # Toon de tabel die de student heeft gemaakt
+        get_reporter()$add_message(
+          "## Jouw frequentietabel:",
+          type = "markdown"
+        )
+        get_reporter()$add_message(
+          paste0('```r\n> delict_tabel\n', paste(capture.output(print(env$delict_tabel)), collapse='\n'), '\n```'),
+          type='markdown'
         )
         
         # Voeg educatieve uitleg toe over frequentietabellen
