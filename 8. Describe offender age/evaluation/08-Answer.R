@@ -10,6 +10,9 @@ leeftijden_daders <- c(
 # Make sure the data is available in the global environment
 assign("leeftijden_daders", leeftijden_daders, envir = globalenv())
 
+# Add the solution: create a summary of the ages
+leeftijd_samenvatting <- summary(leeftijden_daders)
+
 #–– Evaluation ––
 context({
   testcase("Leeftijd daders beschrijven", {
