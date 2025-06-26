@@ -72,8 +72,10 @@ context({
           "## Eerste rijen van je dataframe:",
           type = "markdown"
         )
-        data_head <- capture.output(head(env$misdaad_data, 5))
-        get_reporter()$add_message(paste(data_head, collapse = "\n"), type = "code")
+        if (is.data.frame(env$misdaad_data)) {
+          data_head <- capture.output(head(env$misdaad_data, 5))
+          get_reporter()$add_message(paste(data_head, collapse = "\n"), type = "code")
+        }
         return(TRUE)
       }
     )
