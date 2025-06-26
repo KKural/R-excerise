@@ -8,9 +8,11 @@ context({
       "",
       function(env) {
         # Check if the student's code contains str(df_crime_data)
+        # Use a more flexible pattern that matches any whitespace between str and (
         code_str <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
         
-        if (!grepl("str\\(df_crime_data\\)", code_str)) {
+        # More flexible pattern to match different ways str might be called
+        if (!grepl("str\\s*\\(\\s*df_crime_data\\s*\\)", code_str)) {
           get_reporter()$add_message(
             "❌ Je moet de str() functie gebruiken om de structuur van df_crime_data te bekijken.",
             type = "error"
@@ -18,12 +20,13 @@ context({
           return(FALSE)
         }
         
-        # If str() was used, show its output and additional helpful info
+        # If str() was used, show its output
         get_reporter()$add_message(
           "✅ Correct! Je hebt str() gebruikt om de structuur van df_crime_data te bekijken.",
           type = "success"
         )
         
+        # Show the output of str(df_crime_data)
         get_reporter()$add_message(
           "Output van str(df_crime_data):",
           type = "info"
@@ -52,12 +55,12 @@ context({
         
         return(TRUE)
       },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+      TRUE
     )
   })
 }, preExec = {
   # Create the test data that will be available to student code
+  set.seed(123) # For reproducibility
   df_crime_data <- data.frame(
     zaak_id = sprintf("ZAAK%03d", 1:10),
     datum = as.Date("2023-01-01") + 0:9,
