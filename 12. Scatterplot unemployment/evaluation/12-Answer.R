@@ -19,8 +19,8 @@ context({
           return(FALSE)
         }
         
-        # Check for both variables in the code
-        if (!grepl("werkloosheid", code)) {
+        # Check for both variables in the code (making the check case-insensitive)
+        if (!grepl("werkloosheid", code, ignore.case = TRUE)) {
           get_reporter()$add_message(
             "❌ De variabele 'werkloosheid' wordt niet gebruikt in je plot.",
             type = "error"
@@ -28,7 +28,7 @@ context({
           return(FALSE)
         }
         
-        if (!grepl("criminaliteitscijfers", code)) {
+        if (!grepl("criminaliteitscijfers", code, ignore.case = TRUE)) {
           get_reporter()$add_message(
             "❌ De variabele 'criminaliteitscijfers' wordt niet gebruikt in je plot.",
             type = "error"
@@ -36,28 +36,51 @@ context({
           return(FALSE)
         }
         
-        # Check for the exact plot command pattern (this combines the two approaches)
-        correct_pattern = grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers\\s*\\)", code)
-        named_params_pattern = grepl("plot\\s*\\(\\s*x\\s*=\\s*werkloosheid\\s*,\\s*y\\s*=\\s*criminaliteitscijfers\\s*\\)", code)
+        # More generous pattern matching to handle various ways to create the plot
+        # This will match both simple plot() calls and those with extra parameters
+        basic_pattern = grepl("plot\\s*\\([^)]*werkloosheid[^)]*criminaliteitscijfers[^)]*\\)", code, ignore.case = TRUE) || 
+                       grepl("plot\\s*\\([^)]*criminaliteitscijfers[^)]*werkloosheid[^)]*\\)", code, ignore.case = TRUE)
         
-        if (correct_pattern || named_params_pattern) {
+        # More specific patterns if needed
+        correct_pattern = grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers\\s*\\)", code, ignore.case = TRUE)
+        named_params_pattern = grepl("plot\\s*\\(\\s*x\\s*=\\s*werkloosheid\\s*,\\s*y\\s*=\\s*criminaliteitscijfers\\s*\\)", code, ignore.case = TRUE)
+        
+        # Check if any of our plot patterns match
+        if (basic_pattern || correct_pattern || named_params_pattern) {
           get_reporter()$add_message(
-            "✅ Correct! Je hebt de juiste syntax gebruikt: plot(werkloosheid, criminaliteitscijfers).",
+            "✅ Correct! Je hebt een goede plot() functie gebruikt om werkloosheid en criminaliteitscijfers te visualiseren.",
             type = "success"
           )
-        } else {
+          
+          # Check if the student added more advanced features
+          has_title = grepl("title|main", code, ignore.case = TRUE)
+          has_labels = grepl("xlab|ylab", code, ignore.case = TRUE)
+          
+          if (has_title || has_labels) {
+            get_reporter()$add_message(
+              "👍 Goed werk! Je hebt extra elementen toegevoegd zoals titels of aslabels.",
+              type = "success"
+            )
+          }
+          
+          # Success message
           get_reporter()$add_message(
-            "⚠️ Je code werkt, maar de aanbevolen syntax is: plot(werkloosheid, criminaliteitscijfers)",
+            "✅ Je hebt succesvol een spreidingsdiagram gemaakt dat werkloosheid en criminaliteitscijfers visualiseert.",
+            type = "success"
+          )
+          return(TRUE)
+        } else {
+          # If we got here, there's a plot function but not with the right variables in the right way
+          get_reporter()$add_message(
+            "❌ Je gebruikt plot(), maar niet op de juiste manier om werkloosheid tegen criminaliteitscijfers te plotten.",
+            type = "error"
+          )
+          get_reporter()$add_message(
+            "💡 Gebruik: plot(werkloosheid, criminaliteitscijfers)",
             type = "info"
           )
+          return(FALSE)
         }
-        
-        # If both variables are present, consider it correct (most flexible approach)
-        get_reporter()$add_message(
-          "✅ Je hebt succesvol een spreidingsdiagram gemaakt met werkloosheid en criminaliteitscijfers.",
-          type = "success"
-        )
-        return(TRUE)
       },
       TRUE
     )
