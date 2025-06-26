@@ -32,11 +32,27 @@ context({
             "❌ 'criminaliteitscijfers' bevat niet de juiste waarden per 1.000 inwoners.",
             type = "error"
           )
+          get_reporter()$add_message(
+            paste("Verwachte waarden:", paste(round(verwacht, 2), collapse=", ")),
+            type = "info"
+          )
+          get_reporter()$add_message(
+            paste("Jouw waarden:", paste(round(got, 2), collapse=", ")),
+            type = "info"
+          )
+          get_reporter()$add_message(
+            "💡 Gebruik de formule: (misdrijf_aantallen / bevolking) * 1000",
+            type = "info"
+          )
           return(FALSE)
         }
         get_reporter()$add_message(
           "✅ Correct! De criminaliteitscijfers zijn correct berekend en opgeslagen in 'criminaliteitscijfers'.",
           type = "success"
+        )
+        get_reporter()$add_message(
+          "Je hebt de formule (misdrijf_aantallen / bevolking) * 1000 correct toegepast voor alle districten.",
+          type = "info"
         )
         return(TRUE)
       }
@@ -46,6 +62,10 @@ context({
   # Zet de data op
   misdrijf_aantallen <- c(143, 265, 97, 418, 204)
   bevolking <- c(25640, 41250, 13760, 58200, 31890)
+  
+  # Also make the data available globally
+  assign("misdrijf_aantallen", misdrijf_aantallen, envir = globalenv())
+  assign("bevolking", bevolking, envir = globalenv())
 })
 
 # Modeloplossing:

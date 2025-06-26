@@ -12,24 +12,70 @@ niveau_opleidingsniveau <- "ordinaal"
 niveau_risicocategorie <- "ordinaal"
 
 context({
-  testcase("", {
+  testcase("Controleer meetniveaus", {
+    # First check if code is submitted
     testEqual(
-      "",
-      function(env) env$niveau_zaak_id == "nominaal",
+      "Controleer of code is ingediend",
+      function(env) {
+        if (length(env$`.__code__`) == 0) {
+          get_reporter()$add_message(
+            "❌ Je hebt geen code ingediend. Je moet de meetniveaus voor alle variabelen definiëren.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        TRUE
+      },
+      TRUE,
+      comparator = function(got, want, ...) { got == want }
+    )
+    testEqual(
+      "Controleer niveau_zaak_id",
+      function(env) {
+        # Check if the variable exists
+        tryCatch({
+          value <- env$niveau_zaak_id
+          if (is.null(value)) {
+            get_reporter()$add_message(
+              "❌ De variabele `niveau_zaak_id` is niet gedefinieerd.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          
+          # Check if it's a string
+          if (!is.character(value)) {
+            get_reporter()$add_message(
+              "❌ `niveau_zaak_id` moet een tekst (string) zijn, geen " + class(value) + ".",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          
+          # Case-insensitive comparison
+          return(tolower(value) == "nominaal")
+        }, error = function(e) {
+          get_reporter()$add_message(
+            "❌ Er is een fout opgetreden bij het controleren van `niveau_zaak_id`.",
+            type = "error"
+          )
+          return(FALSE)
+        })
+      },
       TRUE,
       comparator = function(got, want, ...) {
         if (!got) {
           get_reporter()$add_message(
             "❌ `niveau_zaak_id` moet 'nominaal' zijn.",
-            type = "markdown"
+            type = "error"
           )
         } else {
           get_reporter()$add_message(
             "✅ `niveau_zaak_id` is correct als 'nominaal'.",
-            type = "markdown"
+            type = "success"
           )
         }
-        got == want
+        return(got == want)
       }
     )
     testEqual(

@@ -20,7 +20,7 @@ misdaad_data <- data.frame(
 
 # Gebruik subset() om rijen te selecteren waar delict "Aanval", "Overval" of "Moord" is
 # Ken het resultaat toe aan geweldsdelicten_df
+```
 
 **Hint:**  
 Gebruik `subset()` of `dplyr::filter()` om rijen te selecteren op basis van een voorwaarde, bijvoorbeeld: delict %in% c('Aanval', 'Overval', 'Moord').
-```

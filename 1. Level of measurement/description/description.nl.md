@@ -1,34 +1,27 @@
-Je hebt een csv-bestand `crime_data.csv` met de volgende kolommen:
-- `type`: factor met de categorieën "Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"
-- `ernst`: geordende factor met niveaus: "Licht" < "Matig" < "Ernstig"
-- `leeftijd`: numerieke vector met de waarden: 19, 23, 45, 32, 28
-- `district`: karaktervector met de waarden: "A1", "B2", "C3", "D4", "E5"
+In deze oefening leer je hoe je de `str()` functie gebruikt om de structuur van een dataframe te verkennen. Dit is een van de meest nuttige functies in R voor een snelle analyse van je gegevens.
 
-Het data frame `df_crime_data` is al voor je ingelezen en de kolommen zijn omgezet naar de juiste types.
+We werken met een dataframe `df_crime_data` dat al voor je is ingeladen. Deze dataset bevat criminaliteitsgegevens:
+- `type`: categorieën van misdrijven (factor)
+- `ernst`: ernst van het misdrijf (geordende factor)
+- `leeftijd`: leeftijd van de dader (numeriek)
+- `district`: district-code (character)
 
-Gebruik de volgende basisfuncties op het data frame en noteer het resultaat. Lees bij elke functie wat deze doet:
-- `str(df_crime_data)`: toont de structuur van het data frame, inclusief kolomnamen, type van elke kolom en de eerste waarden. Dit helpt je snel te zien welke variabelen er zijn en welk type ze hebben.
-- `names(df_crime_data)`: geeft een vector met de kolomnamen terug, zodat je weet hoe de variabelen heten.
-- `length(df_crime_data)`: geeft het aantal kolommen terug, dus hoeveel variabelen er in het data frame zitten.
-- `nrow(df_crime_data)`: geeft het aantal rijen terug, dus hoeveel observaties er zijn.
-- `ncol(df_crime_data)`: geeft het aantal kolommen terug, net als length().
-- `head(df_crime_data)`: toont de eerste rijen van het data frame, zodat je een indruk krijgt van de data.
-- `summary(df_crime_data)`: geeft een samenvatting van alle kolommen, zoals frequenties voor factoren en statistieken voor numerieke kolommen.
-- `class(df_crime_data)`: geeft het type object terug, meestal 'data.frame'.
-- `dim(df_crime_data)`: geeft een vector met het aantal rijen en kolommen, bijvoorbeeld c(5, 4).
+1. Gebruik de `str()` functie om de structuur van het dataframe `df_crime_data` te bekijken.
+2. Bestudeer welke variabelen factoren zijn en welke numeriek.
+3. Let op welke factoren geordend zijn.
+4. Noteer het aantal observaties (rijen) in het dataframe.
 
 ```r
-# Typ alleen de volgende functies uit en voer ze uit:
+# Bekijk de structuur van het dataframe
 str(df_crime_data)
-names(df_crime_data)
-length(df_crime_data)
-nrow(df_crime_data)
-ncol(df_crime_data)
-head(df_crime_data)
-summary(df_crime_data)
-class(df_crime_data)
-dim(df_crime_data)
 ```
 
 **Hint:**  
-Gebruik deze functies om snel inzicht te krijgen in de structuur en inhoud van een data frame in R
+De `str()` functie toont een beknopt overzicht van een object. Voor een dataframe geeft het:
+- Het type object (data.frame)
+- Het aantal rijen en kolommen
+- De naam van elke variabele
+- Het type van elke variabele (factor, numeric, character, etc.)
+- Enkele voorbeeldwaarden voor elke variabele
+
+Let op: Je moet **exact** de opdracht `str(df_crime_data)` gebruiken zoals hierboven aangegeven.

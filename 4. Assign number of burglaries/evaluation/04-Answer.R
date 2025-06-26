@@ -3,10 +3,32 @@
 # primm_phase: Run
 
 context({
-  testcase("", {
+  testcase("Toekennen van inbraakwaarde", {
     testEqual(
-      "",
-      function(env) env$inbraken,
+      "Controleer of 'inbraken' correct is aangemaakt",
+      function(env) {
+        # First check if submission is empty
+        if (length(env$`.__code__`) == 0) {
+          get_reporter()$add_message(
+            "❌ Je hebt geen code ingediend. Je moet de variabele 'inbraken' aanmaken met de waarde 146.",
+            type = "error"
+          )
+          return(NULL)
+        }
+        
+        # Check if the code contains 'inbraken' variable
+        code_str <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
+        if (!grepl("inbraken", code_str, fixed = TRUE)) {
+          get_reporter()$add_message(
+            "❌ Je code bevat geen variabele met de naam 'inbraken'. Maak deze variabele aan.",
+            type = "error"
+          )
+          return(NULL)
+        }
+        
+        # Return the variable for comparison
+        env$inbraken
+      },
       146,
       comparator = function(got, want, ...) {
         # The variable 'inbraken' is not defined. Please create this variable.

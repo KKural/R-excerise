@@ -60,6 +60,9 @@ context({
                  "Centrum", "Noord", "Oost", "West", "Zuid"),
     datum = as.Date("2023-01-01") + 0:19
   )
+  
+  # Also make it available globally
+  assign("misdaad_data", misdaad_data, envir = globalenv())
 })
 
 # Modeloplossing:

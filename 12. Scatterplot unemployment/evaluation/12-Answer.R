@@ -1,38 +1,49 @@
+# bloom_level: Apply
+# scaffolding_level: Full support
+# primm_phase: Run
+
 context({
-  testcase("Feedback bij spreidingsdiagram werkloosheid en criminaliteit", {
+  testcase("Spreidingsdiagram werkloosheid", {
     testEqual(
-      "plot() is correct aangeroepen",
+      "",
       function(env) {
-        tryCatch({
-          code <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
-          code
-        }, error = function(e) { NULL })
-      },
-      NULL,
-      comparator = function(got, want) {
-        if (is.null(got)) return(FALSE)
-        # Toestaan: plot(werkloosheid, criminaliteitscijfers)
-        if (grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers", got)) {
+        # Convert student's code to string for analysis
+        code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
+        
+        # Check if plot function is used at all
+        if (!grepl("plot\\s*\\(", code, perl = TRUE)) {
           get_reporter()$add_message(
-            "✅ Correct! Je hebt plot() correct gebruikt om de spreidingsdiagram te maken.",
-            type = "success"
+            "❌ Gebruik de plot() functie om een spreidingsdiagram te maken.",
+            type = "markdown"
           )
-          return(TRUE)
+          return(FALSE)
         }
-        # Toestaan: plot(x = werkloosheid, y = criminaliteitscijfers)
-        if (grepl("plot\\s*\\(\\s*x\\s*=\\s*werkloosheid\\s*,\\s*y\\s*=\\s*criminaliteitscijfers", got)) {
+        
+        # Check for both variables in the code
+        if (!grepl("werkloosheid", code)) {
           get_reporter()$add_message(
-            "✅ Correct! Je hebt plot() correct gebruikt om de spreidingsdiagram te maken.",
-            type = "success"
+            "❌ De variabele 'werkloosheid' wordt niet gebruikt in je plot.",
+            type = "markdown"
           )
-          return(TRUE)
+          return(FALSE)
         }
+        
+        if (!grepl("criminaliteitscijfers", code)) {
+          get_reporter()$add_message(
+            "❌ De variabele 'criminaliteitscijfers' wordt niet gebruikt in je plot.",
+            type = "markdown"
+          )
+          return(FALSE)
+        }
+        
+        # If both variables are present, we'll consider it correct since there are many valid ways to create a plot
         get_reporter()$add_message(
-          "❌ Gebruik plot() met 'werkloosheid' op de x-as en 'criminaliteitscijfers' op de y-as.",
-          type = "error"
+          "✅ Correct! Je hebt een spreidingsdiagram gemaakt met werkloosheid en criminaliteitscijfers.",
+          type = "markdown"
         )
-        FALSE
-      }
+        return(TRUE)
+      },
+      TRUE
     )
   })
 }, preExec = {
