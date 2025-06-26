@@ -1,4 +1,4 @@
-Je hebt een csv-bestand `crime_data.csv` met de volgende kolommen:
+Je hebt een CSV-bestand `crime_data.csv` met de volgende kolommen:
 - `type`: factor met de categorieën "Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme"
 - `ernst`: geordende factor met niveaus: "Licht" < "Matig" < "Ernstig"
 - `leeftijd`: numerieke vector met de waarden: 19, 23, 45, 32, 28
