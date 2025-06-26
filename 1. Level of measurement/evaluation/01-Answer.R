@@ -3,23 +3,48 @@
 # primm_phase: Run
 
 context({
-  testcase("", {
+  testcase("Basisfuncties op df_crime_data", {
     testEqual(
-      "",
+      "Gebruik van str(df_crime_data)",
       function(env) {
-        # Always return TRUE - we'll just show information about str() 
-        # and assume the student has used it
+        # Check if code contains str(df_crime_data)
+        if (length(env$`.__code__`) == 0) {
+          get_reporter()$add_message(
+            "❌ Je hebt geen code ingediend. Je moet str(df_crime_data) gebruiken.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        
+        # Get code as string
+        code_str <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
+        
+        # Check if str(df_crime_data) is used
+        if (!grepl("str\\(df_crime_data\\)", code_str)) {
+          get_reporter()$add_message(
+            "❌ Je hebt str(df_crime_data) niet gebruikt. Deze functie toont de structuur van het data frame.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        
+        # If str(df_crime_data) is used, return TRUE
         return(TRUE)
       },
       TRUE,
       comparator = function(got, want, ...) {
-        # Always show a success message
+        if (!got) {
+          # Already gave error message in the test function
+          return(FALSE)
+        }
+        
+        # Show success message
         get_reporter()$add_message(
-          "✅ In deze oefening gebruik je de str() functie om snel inzicht te krijgen in een dataframe.",
+          "✅ Goed gedaan! Je hebt str(df_crime_data) gebruikt om de structuur van het data frame te bekijken.",
           type = "success"
         )
         
-        # Show df_crime_data structure
+        # Show the output of str(df_crime_data) for educational purposes
         get_reporter()$add_message(
           "Hier zie je de output van str(df_crime_data):",
           type = "info"
@@ -28,36 +53,22 @@ context({
         str_output <- capture.output(str(df_crime_data))
         get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "code")
         
-        # Show alternative functions
-        get_reporter()$add_message(
-          "Andere nuttige functies om dataframes te verkennen zijn:",
-          type = "info"
-        )
-        
-        get_reporter()$add_message("names(df_crime_data):", type = "info")
-        names_output <- capture.output(print(names(df_crime_data)))
-        get_reporter()$add_message(paste(names_output, collapse = "\n"), type = "code")
-        
-        get_reporter()$add_message("head(df_crime_data):", type = "info")
-        head_output <- capture.output(print(head(df_crime_data, 3)))
-        get_reporter()$add_message(paste(head_output, collapse = "\n"), type = "code")
-        
-        get_reporter()$add_message("summary(df_crime_data):", type = "info")
-        summary_output <- capture.output(print(summary(df_crime_data)))
-        get_reporter()$add_message(paste(summary_output, collapse = "\n"), type = "code")
-        
         return(TRUE)
       }
     )
   })
 }, preExec = {
-  # Create a simple data frame that students will use
+  # Create a data frame matching the description in description.nl.md
   df_crime_data <- data.frame(
-    zaak_id = c("Z001", "Z002", "Z003", "Z004", "Z005"),
-    datum = as.Date(c("2023-01-15", "2023-01-20", "2023-02-05", "2023-02-10", "2023-03-01")),
-    district = c("Noord", "Centrum", "Zuid", "Oost", "West"),
-    delict = c("Diefstal", "Inbraak", "Vandalisme", "Fraude", "Aanranding"),
-    aantal_agenten = c(2, 3, 1, 2, 4),
-    reactietijd_min = c(15.2, 8.7, 12.3, 20.5, 10.8)
+    type = factor(c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme")),
+    ernst = factor(c("Licht", "Matig", "Ernstig", "Matig", "Licht"), 
+                  levels = c("Licht", "Matig", "Ernstig"), 
+                  ordered = TRUE),
+    leeftijd = c(19, 23, 45, 32, 28),
+    district = c("A1", "B2", "C3", "D4", "E5"),
+    stringsAsFactors = FALSE
   )
 })
+
+# Verwachte antwoord:
+# str(df_crime_data)
