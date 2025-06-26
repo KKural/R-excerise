@@ -23,6 +23,21 @@ context({
           return(FALSE)
         }
         
+        # Controleer of de student de correcte functies gebruikt
+        # Haal de code van de student op
+        code_text <- toString(deparse(test_env$parsed_code))
+        
+        # Controleer of de student de vereiste functies heeft gebruikt
+        required_functions <- c("getwd", "setwd", "dirname", "basename", "read.csv")
+        functions_used <- sapply(required_functions, function(func) {
+          grepl(func, code_text, fixed = TRUE)
+        })
+        
+        # Als niet alle functies zijn gebruikt, geef FALSE terug
+        if (!all(functions_used)) {
+          return(FALSE)
+        }
+        
         # Als alles goed is, geef TRUE terug
         return(TRUE)
       },
@@ -50,6 +65,22 @@ context({
           if (!all(vereiste_kolommen %in% names(test_env$clean_env$misdaad_data))) {
             get_reporter()$add_message(
               paste0("❌ 'misdaad_data' mist één of meer vereiste kolommen: ", paste(vereiste_kolommen, collapse=", "), "."),
+              type = "error"
+            )
+            return(FALSE)
+          }
+          
+          # Controleer of de student alle vereiste functies heeft gebruikt
+          code_text <- toString(deparse(test_env$parsed_code))
+          required_functions <- c("getwd", "setwd", "dirname", "basename", "read.csv")
+          functions_used <- sapply(required_functions, function(func) {
+            grepl(func, code_text, fixed = TRUE)
+          })
+          
+          missing_functions <- required_functions[!functions_used]
+          if (length(missing_functions) > 0) {
+            get_reporter()$add_message(
+              paste0("❌ Je moet de volgende functies gebruiken: ", paste(missing_functions, collapse=", "), "."),
               type = "error"
             )
             return(FALSE)
@@ -130,3 +161,11 @@ context({
   bestandspad <- file.path(tempdir(), "misdaad_data.csv")
   write.csv(misdaad_data, bestandspad, row.names = FALSE)
 })
+
+# Modeloplossing:
+# getwd()
+# data_dir <- dirname(bestandspad)
+# old_dir <- getwd()
+# setwd(data_dir)
+# misdaad_data <- read.csv(basename(bestandspad))
+# setwd(old_dir)
