@@ -4,15 +4,17 @@
 
 context({
   testcase("Dataframe structuur verkennen met str()", {
-    # Simpler approach: Use testEqual to check what they typed
+    # First check if the str function is used
+    testFunctionUsed("str")
+    
+    # Then ensure they used exactly str(df_crime_data)
     testEqual(
-      "Structuur verkennen met str(df_crime_data)",
+      "Structuur verkennen met exact str(df_crime_data)",
       function(env) {
         # Get the student's code as text from the parsed code
         code_text <- toString(deparse(test_env$parsed_code))
-        # Check if it contains str(df_crime_data)
-        # This is not perfect but will catch most cases
-        return(grepl("str\\(df_crime_data\\)", code_text, fixed = TRUE))
+        # Look for the exact pattern str(df_crime_data)
+        return(grepl("str\\(df_crime_data\\)", code_text))
       },
       TRUE,
       comparator = function(got, want, ...) {
@@ -28,19 +30,7 @@ context({
             "De `str()` functie is erg nuttig om snel inzicht te krijgen in de structuur van een dataframe. Het toont de variabelen, hun types en enkele voorbeeldwaarden.",
             type = "info"
           )
-        } else {
-          # Student didn't use str(df_crime_data), provide corrective feedback
-          get_reporter()$add_message(
-            "❌ Je moet precies de opdracht `str(df_crime_data)` gebruiken om de structuur van het dataframe te bekijken.",
-            type = "error"
-          )
           
-          # Return false so they get a wrong answer
-          return(FALSE)
-        }
-        
-        # Only show the structure and educational content if they got it right
-        if (got) {
           # Capture and show the str() output for the data frame
           get_reporter()$add_message(
             "## Structuur van df_crime_data:",
@@ -78,10 +68,16 @@ context({
           ), type = "markdown")
           
           return(TRUE)
+        } else {
+          # Student didn't use str(df_crime_data), provide corrective feedback
+          get_reporter()$add_message(
+            "❌ Je moet precies de opdracht `str(df_crime_data)` gebruiken om de structuur van het dataframe te bekijken.",
+            type = "error"
+          )
+          
+          # Return false so they get a wrong answer
+          return(FALSE)
         }
-        
-        # If we get here, the answer was wrong
-        return(FALSE)
       }
     )
   })
