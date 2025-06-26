@@ -1,22 +1,21 @@
 # Evaluation script for Basisfuncties op `df_crime_data`
 
 context({
-  testcase("Check if all required functions are used", {
-    testEqual(
-      "Controleer of alle functies zijn gebruikt",
-      function(env) {
-        # Convert all code to string for analysis
-        user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
+  # Check if all required functions are used
+  testcase("Controleer of alle functies zijn gebruikt", {
+    testEqual(NULL, function(env) {
+      # Convert all code to string for analysis
+      user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
         
-        # Required functions to check for (just check basic functions without strict argument patterns)
-        required_funcs <- c(
-          "str\\s*\\(", "names\\s*\\(", "length\\s*\\(", 
-          "nrow\\s*\\(", "ncol\\s*\\(", "head\\s*\\(", 
-          "summary\\s*\\(", "class\\s*\\(", "dim\\s*\\("
-        )
-        
-        # Check if all required functions are used
-        all_funcs_used <- all(sapply(required_funcs, function(func) grepl(func, user_code, perl = TRUE)))
+      # Required functions to check for
+      required_funcs <- c(
+        "str\\s*\\(", "names\\s*\\(", "length\\s*\\(", 
+        "nrow\\s*\\(", "ncol\\s*\\(", "head\\s*\\(", 
+        "summary\\s*\\(", "class\\s*\\(", "dim\\s*\\("
+      )
+      
+      # Check if all required functions are used
+      all_funcs_used <- all(sapply(required_funcs, function(func) grepl(func, user_code, perl = TRUE)))
         
         if (all_funcs_used) {
           get_reporter()$add_message(
@@ -25,7 +24,7 @@ context({
           )
           return(TRUE)
         } else {
-          missing_funcs <- required_funcs[!sapply(required_funcs, function(func) grepl(func, user_code, perl = TRUE))]
+          missing_funcs <- required_funcs[!sapply(required_funcs, function(func) grepl(func, user_code))]
           get_reporter()$add_message(
             paste0("❌ Niet alle vereiste functies zijn gebruikt. Controleer of je deze functies hebt gebruikt: ", 
                    paste(gsub("\\\\s\\*\\\\\\(", "()", missing_funcs), collapse=", ")),
@@ -38,19 +37,16 @@ context({
     )
   })
   
-  testcase("", {
-    
-    # 1) str()
-    testEqual(
-      "",
-      function(env) {
-        # Check if this function is called in user code
-        user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("str\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
-          get_reporter()$add_message(
-            "❌ Je hebt de str() functie niet gebruikt. Voeg str(df_crime_data) toe aan je code.",
-            type = "markdown"
-          )
+  # 1) str()
+  testcase("str(df_crime_data)", {
+    testEqual(NULL, function(env) {
+      # Check if this function is called in user code
+      user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
+      if (!grepl("str\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        get_reporter()$add_message(
+          "❌ Je hebt de str() functie niet gebruikt. Voeg str(df_crime_data) toe aan je code.",
+          type = "markdown"
+        )
           return(NULL)
         }
         paste(capture.output(str(env$df_crime_data)), collapse = "\n")
@@ -73,7 +69,7 @@ context({
         } else {
           get_reporter()$add_message(
             "❌ str(df_crime_data): structuur niet zoals verwacht.",
-            type = "markdown"
+            type = "error"
           )
           return(FALSE)
         }
@@ -86,10 +82,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("names\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("names\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de names() functie niet gebruikt. Voeg names(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -107,13 +103,13 @@ context({
         if (identical(got, want)) {
           get_reporter()$add_message(
             "✅ names(df_crime_data): kolomnamen zijn type, ernst, leeftijd, district.",
-            type = "markdown"
+            type = "success"
           )
           return(TRUE)
         } else {
           get_reporter()$add_message(
             "❌ names(df_crime_data): onjuiste kolomnamen.",
-            type = "markdown"
+            type = "error"
           )
           return(FALSE)
         }
@@ -126,10 +122,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("length\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("length\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de length() functie niet gebruikt. Voeg length(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -148,13 +144,13 @@ context({
         if (got == want) {
           get_reporter()$add_message(
             "✅ length(df_crime_data): aantal kolommen = 4.",
-            type="markdown"
+            type="success"
           )
           return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ length(df_crime_data): geeft ", got, " in plaats van 4."),
-            type="markdown"
+            type="error"
           )
           return(FALSE)
         }
@@ -167,10 +163,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("nrow\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("nrow\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de nrow() functie niet gebruikt. Voeg nrow(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -189,13 +185,13 @@ context({
         if (got == want) {
           get_reporter()$add_message(
             "✅ nrow(df_crime_data): aantal rijen = 5.",
-            type="markdown"
+            type="success"
           )
           return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ nrow(df_crime_data): geeft ", got, " in plaats van 5."),
-            type="markdown"
+            type="error"
           )
           return(FALSE)
         }
@@ -208,10 +204,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("ncol\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("ncol\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de ncol() functie niet gebruikt. Voeg ncol(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -230,13 +226,13 @@ context({
         if (got == want) {
           get_reporter()$add_message(
             "✅ ncol(df_crime_data): aantal kolommen = 4.",
-            type="markdown"
+            type="success"
           )
           return(TRUE)
         } else {
           get_reporter()$add_message(
             paste0("❌ ncol(df_crime_data): geeft ", got, " in plaats van 4."),
-            type="markdown"
+            type="error"
           )
           return(FALSE)
         }
@@ -249,10 +245,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("head\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("head\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de head() functie niet gebruikt. Voeg head(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -279,19 +275,18 @@ context({
         }
         
         get_reporter()$add_message("```r\n> head(df_crime_data)\n```", type="markdown")
-        get_reporter()$add_message(paste0("```\n", paste(capture.output(print(got)), collapse = "\n"), "\n```"), type="markdown")
+        get_reporter()$add_message(paste(capture.output(print(got)), collapse = "\n"), type="markdown")
         
-        # We're just checking if the function was called, not checking equality
-        if (is.data.frame(got) && nrow(got) > 0) {
+        if (identical(got, want)) {
           get_reporter()$add_message(
-            "✅ head(df_crime_data): eerste 5 rijen worden getoond.",
-            type="markdown"
+            "✅ head(df_crime_data): eerste 5 rijen komen overeen.",
+            type="success"
           )
           return(TRUE)
         } else {
           get_reporter()$add_message(
             "❌ head(df_crime_data): rijen kwamen niet uit zoals verwacht.",
-            type="markdown"
+            type="error"
           )
           return(FALSE)
         }
@@ -304,10 +299,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("summary\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("summary\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de summary() functie niet gebruikt. Voeg summary(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -323,12 +318,21 @@ context({
         get_reporter()$add_message("```r\n> summary(df_crime_data)\n```", type="markdown")
         get_reporter()$add_message(paste0("```\n", got, "\n```"), type="markdown")
         
-        # For this test, we're just checking if the function was called
-        get_reporter()$add_message(
-          "✅ summary(df_crime_data): toont frequenties en statistieken.",
-          type="markdown"
-        )
-        return(TRUE)
+        # Check for expected substrings in the summary output
+        expected <- c("Diefstal", "Aanval", "Inbraak", "Fraude", "Vandalisme", "Licht", "Matig", "Ernstig", "leeftijd", "district")
+        if (all(sapply(expected, function(x) grepl(x, got)))) {
+          get_reporter()$add_message(
+            "✅ summary(df_crime_data): toont frequenties en statistieken.",
+            type="success"
+          )
+          return(TRUE)
+        } else {
+          get_reporter()$add_message(
+            "❌ summary(df_crime_data): samenvatting niet zoals verwacht.",
+            type="error"
+          )
+          return(FALSE)
+        }
       }
     )
 
@@ -338,10 +342,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("class\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("class\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de class() functie niet gebruikt. Voeg class(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -357,17 +361,16 @@ context({
         get_reporter()$add_message("```r\n> class(df_crime_data)\n```", type="markdown")
         get_reporter()$add_message(paste0("```\n[1] \"", got, "\"\n```"), type="markdown")
         
-        # We're just checking if the function was called
-        if (is.character(got)) {
+        if (got == want) {
           get_reporter()$add_message(
             "✅ class(df_crime_data): objecttype = data.frame.",
-            type="markdown"
+            type="success"
           )
           return(TRUE)
         } else {
           get_reporter()$add_message(
-            paste0("❌ class(df_crime_data): geeft geen geldig resultaat."),
-            type="markdown"
+            paste0("❌ class(df_crime_data): geeft ", got, " in plaats van 'data.frame'."),
+            type="error"
           )
           return(FALSE)
         }
@@ -380,10 +383,10 @@ context({
       function(env) {
         # Check if this function is called in user code
         user_code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
-        if (!grepl("dim\\s*\\(.*df_crime_data", user_code, perl = TRUE)) {
+        if (!grepl("dim\\(df_crime_data\\)", user_code)) {
           get_reporter()$add_message(
             "❌ Je hebt de dim() functie niet gebruikt. Voeg dim(df_crime_data) toe aan je code.",
-            type = "markdown"
+            type = "error"
           )
           return(NULL)
         }
@@ -399,16 +402,20 @@ context({
         get_reporter()$add_message("```r\n> dim(df_crime_data)\n```", type="markdown")
         get_reporter()$add_message(paste0("```\n[1] ", paste(got, collapse=" "), "\n```"), type="markdown")
         
-        # We're just checking if the function was called and returns a numeric vector
-        if (is.numeric(got)) {
+        if (identical(got, want)) {
           get_reporter()$add_message(
-            "✅ dim(df_crime_data): dimensies worden getoond.",
-            type="markdown"
+            "✅ dim(df_crime_data): dimensies = (5, 4).",
+            type="success"
           )
           return(TRUE)
         } else {
           get_reporter()$add_message(
-            "❌ dim(df_crime_data): geeft geen geldige dimensies.",
+            paste0("❌ dim(df_crime_data): geeft ", paste(got, collapse=" "), " in plaats van ", paste(want, collapse=" "), "."),
+            type="error"
+          )
+          # Add structure output for debugging
+          get_reporter()$add_message(
+            paste0("Structuur van output:\n- gekregen: ", paste(capture.output(str(got)), collapse=" "), "\n- verwacht: ", paste(capture.output(str(want)), collapse=" ")), 
             type="markdown"
           )
           return(FALSE)
