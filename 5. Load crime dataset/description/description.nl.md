@@ -31,4 +31,4 @@ setwd(huidige_map)
 ```
 
 **Hint:**  
-Gebruik de functies `dirname()` en `basename()` om respectievelijk de map en de bestandsnaam uit het volledige pad te halen. Controleer altijd of je werkmap correct staat voordat je een bestand inleest.
+Gebruik de functies `dirname()` en `basename()` om respectievelijk de map en de bestandsnaam uit het volledige pad te halen. Controleer altijd of je werkmap correct staat voordat je een bestand inleest. Het is ook mogelijk om direct `read.csv(bestandspad)` te gebruiken zonder de werkmap te wijzigen, maar voor deze oefening is het belangrijk om te oefenen met het manipuleren van bestandspaden.
