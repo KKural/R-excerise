@@ -2,16 +2,16 @@
 # scaffolding_level: Full support
 # primm_phase: Run
 
-context({
+contextWithImage({
   testcase("Spreidingsdiagram werkloosheid", {
     testEqual(
       "Plot werkloosheid tegen criminaliteitscijfers",
       function(env) {
-        # Convert student's code to string for analysis
-        code <- paste(sapply(env$`.__code__`, deparse), collapse = "\n")
+        # Get the raw student code to analyze
+        student_code <- paste(deparse(test_env$parsed_code), collapse = "\n")
         
         # Check if plot function is used at all
-        if (!grepl("plot\\s*\\(", code, perl = TRUE)) {
+        if (!grepl("plot\\s*\\(", student_code, perl = TRUE)) {
           get_reporter()$add_message(
             "❌ Gebruik de plot() functie om een spreidingsdiagram te maken.",
             type = "error"
@@ -20,7 +20,7 @@ context({
         }
         
         # Check for both variables in the code (making the check case-insensitive)
-        if (!grepl("werkloosheid", code, ignore.case = TRUE)) {
+        if (!grepl("werkloosheid", student_code, ignore.case = TRUE)) {
           get_reporter()$add_message(
             "❌ De variabele 'werkloosheid' wordt niet gebruikt in je plot.",
             type = "error"
@@ -28,7 +28,7 @@ context({
           return(FALSE)
         }
         
-        if (!grepl("criminaliteitscijfers", code, ignore.case = TRUE)) {
+        if (!grepl("criminaliteitscijfers", student_code, ignore.case = TRUE)) {
           get_reporter()$add_message(
             "❌ De variabele 'criminaliteitscijfers' wordt niet gebruikt in je plot.",
             type = "error"
@@ -38,36 +38,31 @@ context({
         
         # More generous pattern matching to handle various ways to create the plot
         # This will match both simple plot() calls and those with extra parameters
-        basic_pattern = grepl("plot\\s*\\([^)]*werkloosheid[^)]*criminaliteitscijfers[^)]*\\)", code, ignore.case = TRUE) || 
-                       grepl("plot\\s*\\([^)]*criminaliteitscijfers[^)]*werkloosheid[^)]*\\)", code, ignore.case = TRUE)
-        
-        # More specific patterns if needed
-        correct_pattern = grepl("plot\\s*\\(\\s*werkloosheid\\s*,\\s*criminaliteitscijfers\\s*\\)", code, ignore.case = TRUE)
-        named_params_pattern = grepl("plot\\s*\\(\\s*x\\s*=\\s*werkloosheid\\s*,\\s*y\\s*=\\s*criminaliteitscijfers\\s*\\)", code, ignore.case = TRUE)
+        werkloosheid_first = grepl("plot\\s*\\([^,]*werkloosheid[^,]*,[^,]*criminaliteitscijfers", student_code, ignore.case = TRUE)
+        criminaliteit_first = grepl("plot\\s*\\([^,]*criminaliteitscijfers[^,]*,[^,]*werkloosheid", student_code, ignore.case = TRUE)
+        named_x_werkloosheid = grepl("plot\\s*\\(.*x\\s*=\\s*werkloosheid.*y\\s*=\\s*criminaliteitscijfers", student_code, ignore.case = TRUE)
+        named_y_werkloosheid = grepl("plot\\s*\\(.*y\\s*=\\s*criminaliteitscijfers.*x\\s*=\\s*werkloosheid", student_code, ignore.case = TRUE)
+        formula_usage = grepl("plot\\s*\\(.*criminaliteitscijfers\\s*~\\s*werkloosheid", student_code, ignore.case = TRUE)
         
         # Check if any of our plot patterns match
-        if (basic_pattern || correct_pattern || named_params_pattern) {
+        if (werkloosheid_first || criminaliteit_first || named_x_werkloosheid || named_y_werkloosheid || formula_usage) {
           get_reporter()$add_message(
             "✅ Correct! Je hebt een goede plot() functie gebruikt om werkloosheid en criminaliteitscijfers te visualiseren.",
             type = "success"
           )
           
           # Check if the student added more advanced features
-          has_title = grepl("title|main", code, ignore.case = TRUE)
-          has_labels = grepl("xlab|ylab", code, ignore.case = TRUE)
+          has_title = grepl("main\\s*=|title\\s*=", student_code, ignore.case = TRUE)
+          has_x_label = grepl("xlab\\s*=", student_code, ignore.case = TRUE)
+          has_y_label = grepl("ylab\\s*=", student_code, ignore.case = TRUE)
           
-          if (has_title || has_labels) {
+          if (has_title || has_x_label || has_y_label) {
             get_reporter()$add_message(
               "👍 Goed werk! Je hebt extra elementen toegevoegd zoals titels of aslabels.",
               type = "success"
             )
           }
           
-          # Success message
-          get_reporter()$add_message(
-            "✅ Je hebt succesvol een spreidingsdiagram gemaakt dat werkloosheid en criminaliteitscijfers visualiseert.",
-            type = "success"
-          )
           return(TRUE)
         } else {
           # If we got here, there's a plot function but not with the right variables in the right way
@@ -76,9 +71,22 @@ context({
             type = "error"
           )
           get_reporter()$add_message(
-            "💡 Gebruik: plot(werkloosheid, criminaliteitscijfers)",
+            "💡 Gebruik: plot(werkloosheid, criminaliteitscijfers) of plot(x=werkloosheid, y=criminaliteitscijfers)",
             type = "info"
           )
+          
+          # Show the expected result
+          get_reporter()$add_message(
+            "Verwacht resultaat:",
+            type = "info"
+          )
+          
+          # Create and display the expected plot
+          plot(werkloosheid, criminaliteitscijfers,
+               main = "Verband tussen werkloosheid en criminaliteit",
+               xlab = "Werkloosheidspercentage",
+               ylab = "Criminaliteitscijfers per 1.000 inwoners")
+          
           return(FALSE)
         }
       },
