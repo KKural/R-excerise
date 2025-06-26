@@ -7,18 +7,21 @@ context({
     testEqual(
       "",
       function(env) {
-        # Check if the student has used str(df_crime_data) in their code
-        has_used_str_function <- FALSE
+        # We'll simply check if there's use of str() function on df_crime_data in the code
         
-        # Get the student's code
-        code <- paste(sapply(get(".__code__", envir = env), deparse), collapse = "\n")
+        # Get the submitted code
+        student_code <- readLines("student.R")
         
-        # Check if str(df_crime_data) is in the code
-        if (grepl("str\\s*\\(\\s*df_crime_data\\s*\\)", code)) {
-          has_used_str_function <- TRUE
+        # Join all lines
+        student_code_text <- paste(student_code, collapse = "\n")
+        
+        # Check for str(df_crime_data) in the code
+        # Allow for whitespace around the parentheses and function name
+        if (grepl("str\\s*\\(\\s*df_crime_data\\s*\\)", student_code_text)) {
+          return(TRUE)
+        } else {
+          return(FALSE)
         }
-        
-        return(has_used_str_function)
       },
       TRUE,
       comparator = function(got, want, ...) {
