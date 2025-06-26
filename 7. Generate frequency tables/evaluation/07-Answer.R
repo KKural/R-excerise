@@ -5,10 +5,7 @@
 #–– Evaluation ––
 context({
   testcase("Frequentietabel genereren", {
-    # Controleer of de student table() heeft gebruikt
-    testFunctionUsed("table")
-    
-    # Controleer het resultaat
+    # Controleer het resultaat - we zullen functiegerbuik binnen de test controleren
     testEqual(
       "Creëer een frequentietabel met table()",
       function(env) {
@@ -40,6 +37,16 @@ context({
             type = "markdown"
           )
           
+          return(FALSE)
+        }
+        
+        # Controleer of table() functie is gebruikt
+        code_text <- toString(deparse(test_env$parsed_code))
+        if (!grepl("table\\s*\\(", code_text)) {
+          get_reporter()$add_message(
+            '❌ Je moet de `table()` functie gebruiken om een frequentietabel te maken.',
+            type='error'
+          )
           return(FALSE)
         }
         
