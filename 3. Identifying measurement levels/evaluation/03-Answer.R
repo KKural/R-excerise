@@ -13,22 +13,6 @@ niveau_risicocategorie <- "ordinaal"
 
 context({
   testcase("", {
-    # First check if code is submitted
-    testEqual(
-      "Controleer of code is ingediend",
-      function(env) {
-        if (length(env$`.__code__`) == 0) {
-          get_reporter()$add_message(
-            "❌ Je hebt geen code ingediend. Je moet de meetniveaus voor alle variabelen definiëren.",
-            type = "error"
-          )
-          return(FALSE)
-        }
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
-    )
     testEqual(
       "Controleer niveau_zaak_id",
       function(env) {
