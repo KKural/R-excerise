@@ -13,9 +13,6 @@ delictsoorten <- c(
 #–– Evaluation ––
 context({
   testcase("Frequentietabel genereren", {
-    # Controleer eerst of de table functie is gebruikt
-    testFunctionUsed("table")
-    
     testEqual(
       "Creëer een frequentietabel met table()",
       function(env) {
@@ -37,8 +34,18 @@ context({
       }
       
       # Controleer of table() direct is gebruikt in de toewijzing
+      # En of de functie table() gebruikt is
       code_text <- toString(deparse(test_env$parsed_code))
       if (!grepl("delict_tabel\\s*<-\\s*table\\s*\\(\\s*delictsoorten\\s*\\)", code_text)) {
+        # Controleer eerst of table functie überhaupt is gebruikt
+        if (!grepl("table\\s*\\(", code_text)) {
+          get_reporter()$add_message(
+            '❌ Je moet de `table()` functie gebruiken om een frequentietabel te maken.',
+            type='error'
+          )
+          return(FALSE)
+        }
+        
         get_reporter()$add_message(
           '❌ Gebruik direct `delict_tabel <- table(delictsoorten)` om de frequentietabel aan te maken.',
           type='error'
