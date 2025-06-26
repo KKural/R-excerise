@@ -10,10 +10,6 @@ leeftijden_daders <- c(
 # Make sure the data is available in the global environment
 assign("leeftijden_daders", leeftijden_daders, envir = globalenv())
 
-# These lines should be commented out in the evaluation file
-# The solution should be submitted in the interface:
-# leeftijd_samenvatting <- summary(leeftijden_daders)
-
 #–– Evaluation ––
 context({
   testcase("Leeftijd daders beschrijven", {
@@ -23,40 +19,8 @@ context({
         # Compute expected output
         expected <- summary(leeftijden_daders)
         
-        # Always show summary output regardless of whether the test passes
-        get_reporter()$add_message(
-          "## Verwachte output voor summary(leeftijden_daders):",
-          type = "markdown"
-        )
-        
-        # Display the expected summary table
-        summary_output <- capture.output(print(expected))
-        get_reporter()$add_message(
-          paste(summary_output, collapse = "\n"), 
-          type = "code"
-        )
-        
-        get_reporter()$add_message(
-          "## Uitleg over de summary componenten:",
-          type = "markdown"
-        )
-        
-        get_reporter()$add_message(paste(
-          "- **Min**: Minimumwaarde - de jongste dader is 18 jaar",
-          "- **1st Qu**: Eerste kwartiel - 25% van de daders is jonger dan 22 jaar",
-          "- **Median**: Mediaan - de middelste leeftijd is 27 jaar",
-          "- **Mean**: Gemiddelde - de gemiddelde leeftijd is ongeveer 28 jaar",
-          "- **3rd Qu**: Derde kwartiel - 75% van de daders is jonger dan 33.5 jaar",
-          "- **Max**: Maximumwaarde - de oudste dader is 45 jaar",
-          sep = "\n"
-        ), type = "markdown")
-        
-        # 1. Existence check - now after showing the expected output
-        exists_anywhere <- exists('leeftijd_samenvatting', envir=env) || 
-                          exists('leeftijd_samenvatting', envir=parent.env(env)) || 
-                          exists('leeftijd_samenvatting', envir=globalenv())
-        
-        if (!exists_anywhere) {
+        # 1. Existence check
+        if (!exists('leeftijd_samenvatting', envir=env)) {
           get_reporter()$add_message(
             '❌ Het object `leeftijd_samenvatting` bestaat niet. Maak het aan met `leeftijd_samenvatting <- summary(leeftijden_daders)`.',
             type='error'
@@ -95,7 +59,7 @@ context({
           return(FALSE)
         }
         # 2. Type check
-        val <- get('leeftijd_samenvatting', envir=env)
+        val <- get('leeftijd_samenvatting', envir=env())
         if (!is.numeric(val) || is.null(names(val))) {
           get_reporter()$add_message(
             '❌ `leeftijd_samenvatting` moet een samenvatting zijn zoals gegeven door summary(leeftijden_daders).',
@@ -228,20 +192,8 @@ context({
     27, 36, 29, 24, 33, 41, 26, 20, 38, 22, 19, 25, 29, 31, 34
   )
   
-  # Make it available globally and in all relevant environments
+  # Also make it available globally
   assign("leeftijden_daders", leeftijden_daders, envir = globalenv())
-  
-  # Make sure the student code has run in the correct environment
-  tryCatch({
-    if(exists("test_env") && is.environment(test_env)) {
-      if(!exists("leeftijd_samenvatting", envir=test_env)) {
-        # Try to execute the model solution if no student solution is found
-        eval(parse(text="leeftijd_samenvatting <- summary(leeftijden_daders)"), envir=test_env)
-      }
-    }
-  }, error = function(e) {
-    # Silently handle any errors
-  })
 })
 
 # Modeloplossing (dit is de correcte oplossing):
