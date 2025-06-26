@@ -4,10 +4,10 @@
 
 #–– Evaluation ––
 context({
-  testcase("Frequentietabel genereren", {
+  testcase(" ", {
     # Controleer het resultaat - we zullen functiegerbuik binnen de test controleren
     testEqual(
-      "Creëer een frequentietabel met table()",
+      " ",
       function(env) {
         # Bereken de verwachte tabel
         expected <- table(delictsoorten)

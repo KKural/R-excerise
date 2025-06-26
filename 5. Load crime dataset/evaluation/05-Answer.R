@@ -3,9 +3,9 @@
 # primm_phase: Modify
 
 context({
-  testcase("", {
+  testcase(" ", {
     testEqual(
-      "",
+      " ",
       function(env) {
         # Controleer of variabele bestaat
         if (!exists("misdaad_data", envir = env)) {

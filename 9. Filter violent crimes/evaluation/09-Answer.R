@@ -6,7 +6,7 @@
 
 #–– Evaluation ––
 context({
-  testcase("Filter geweldsdelicten uit de misdaad dataset", {
+  testcase(" ", {
     # First, calculate the expected output
     expected_df <- subset(misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
     

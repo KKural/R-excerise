@@ -1,7 +1,7 @@
 context({
-  testcase("Vergelijken van misdaadcijfers met het nationale gemiddelde", {
+  testcase(" ", {
     testEqual(
-      "Controleer de variabele 'boven_gemiddelde'",
+      " ",
       function(env) {
         # Get the student's answer
         tryCatch({

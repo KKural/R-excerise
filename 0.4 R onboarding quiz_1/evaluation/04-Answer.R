@@ -7,7 +7,7 @@ context({
     " ",
     {
       testEqual(
-        "",
+        " ",
         function(env) as.numeric(env$evaluationResult),
         1,  # de juiste keuze: crimes <- 25
         comparator = function(generated, expected, ...) {

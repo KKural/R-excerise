@@ -1,7 +1,7 @@
 context({
-  testcase("Berekenen van criminaliteitscijfers per 1.000 inwoners", {
+  testcase(" ", {
     testEqual(
-      "Controleer criminaliteitscijfers variabele",
+      " ",
       function(env) {
         # Safe wrapper to catch any student-side syntax error
         tryCatch({

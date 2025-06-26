@@ -12,7 +12,7 @@ assign("leeftijden_daders", leeftijden_daders, envir = globalenv())
 
 #–– Evaluation ––
 context({
-  testcase("Leeftijd daders beschrijven", {
+  testcase(" ", {
     # Calculate expected output
     expected <- summary(leeftijden_daders)
     

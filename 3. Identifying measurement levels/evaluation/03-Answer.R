@@ -12,9 +12,9 @@ niveau_opleidingsniveau <- "ordinaal"
 niveau_risicocategorie <- "ordinaal"
 
 context({
-  testcase("", {
+  testcase(" ", {
     testEqual(
-      "",
+      " ",
       function(env) {
         # Check if the variable exists
         tryCatch({

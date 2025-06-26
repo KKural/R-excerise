@@ -7,7 +7,7 @@ context({
     " ",
     {
       testEqual(
-        "",
+        " ",
         function(env) as.numeric(env$evaluationResult),
         2,  # de juiste keuze: mean() is de functie voor het gemiddelde
         comparator = function(generated, expected, ...) {

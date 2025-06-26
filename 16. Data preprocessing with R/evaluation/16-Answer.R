@@ -3,10 +3,10 @@
 # primm_phase: Modify
 
 context({
-  testcase("Dataframe structuur en preprocessing", {
+  testcase(" ", {
     # Test of datum correct is geconverteerd
     testEqual(
-      "Datum conversie",
+      " ",
       function(env) {
         class(env$clean_data$date)[1]
       },

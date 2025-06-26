@@ -3,9 +3,9 @@
 # primm_phase: Run
 
 contextWithImage({
-  testcase("Spreidingsdiagram werkloosheid", {
+  testcase(" ", {
     testEqual(
-      "Plot werkloosheid tegen criminaliteitscijfers",
+      " ",
       function(env) {
         # Get the raw student code to analyze
         student_code <- paste(deparse(test_env$parsed_code), collapse = "\n")

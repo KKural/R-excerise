@@ -16,7 +16,7 @@ leeftijden_daders <- c(19, 23, 45, 32, 28, 21)
 district_codes <- c("A1", "B2", "C3", "D4", "E5")
 
 context({
-  testcase("", {
+  testcase(" ", {
     testEqual(
       "",
       function(env) {

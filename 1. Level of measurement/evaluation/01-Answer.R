@@ -3,13 +3,13 @@
 # primm_phase: Run
 
 context({
-  testcase("Dataframe structuur verkennen met str()", {
+  testcase(" ", {
     # Controleer eerst of de str functie is gebruikt
     testFunctionUsed("str")
     
     # Controleer dan of ze precies str(df_crime_data) hebben gebruikt
     testEqual(
-      "Structuur verkennen met exact str(df_crime_data)",
+      " ",
       function(env) {
         # Haal de code van de student op als tekst van de geparseerde code
         code_text <- toString(deparse(test_env$parsed_code))

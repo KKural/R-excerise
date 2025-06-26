@@ -1,7 +1,7 @@
 context({
-  testcase("", {
+  testcase(" ", {
     testEqual(
-      "",
+      " ",
       function(env) {
         # Safe wrapper to catch any student-side syntax error
         tryCatch({

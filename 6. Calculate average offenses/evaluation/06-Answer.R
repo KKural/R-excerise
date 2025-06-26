@@ -1,7 +1,7 @@
 context({
-  testcase("", {
+  testcase(" ", {
     testEqual(
-      "",
+      " ",
       function(env) env$mean,
       mean(c(42, 47, 53, 58, 61, 65, 72, 68, 59, 54, 48, 45)),
       comparator = function(got, want, ...) {

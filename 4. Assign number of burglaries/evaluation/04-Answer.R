@@ -3,9 +3,9 @@
 # primm_phase: Run
 
 context({
-  testcase("", {
+  testcase(" ", {
     testEqual(
-      "",
+      " ",
       function(env) {
         # Robustly check if 'inbraken' exists
         if (!exists("inbraken", envir = env)) {
