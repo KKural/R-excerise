@@ -19,14 +19,3 @@ delictsoorten <- c("Diefstal", "Aanval", "Inbraak", "Vandalisme", "Diefstal", "D
 
 **Hint:**  
 Gebruik `table()` om een frequentietabel te maken van een vector. Ken het resultaat toe aan `delict_tabel` met de toewijzingsoperator `<-`.
-
-**Voorbeeld:**  
-```r
-fruit <- c("appel", "banaan", "appel", "peer", "banaan", "appel")
-fruit_tabel <- table(fruit)
-print(fruit_tabel)
-# Output:
-# fruit
-#  appel banaan   peer 
-#      3      2      1 
-```

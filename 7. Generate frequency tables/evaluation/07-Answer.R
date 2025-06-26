@@ -13,7 +13,7 @@ context({
         expected <- table(delictsoorten)
         
         # Altijd de verwachte commando en output tonen
-        get_reporter()$add_message('## Verwachte resultaat:', type='markdown')
+        get_reporter()$add_message('Verwachte resultaat:', type='markdown')
         get_reporter()$add_message('```r\n> table(delictsoorten)\n```', type='markdown')
         get_reporter()$add_message(
           paste0('```r\n', paste(capture.output(print(expected)), collapse='\n'), '\n```'),
@@ -29,7 +29,7 @@ context({
           
           # Geef hulp over variabele toewijzing
           get_reporter()$add_message(
-            "### Herinnering over variabele toewijzing in R:",
+            "Herinnering over variabele toewijzing in R:",
             type = "markdown"
           )
           get_reporter()$add_message(
@@ -50,7 +50,7 @@ context({
           
           # Toon een voorbeeld van hoe het moet
           get_reporter()$add_message(
-            "### Voorbeeld van correct gebruik van table():",
+            "Voorbeeld van correct gebruik van table():",
             type = "markdown"
           )
           get_reporter()$add_message(
@@ -60,7 +60,7 @@ context({
           
           # Toon ook de verwachte output
           get_reporter()$add_message(
-            "### Dit zou je moeten krijgen:",
+            "Dit zou je moeten krijgen:",
             type = "markdown"
           )
           get_reporter()$add_message(
@@ -100,7 +100,7 @@ context({
           expected_table <- capture.output(print(expected))
           
           get_reporter()$add_message(
-            "### Jouw tabel:",
+            "Jouw tabel:",
             type = "markdown"
           )
           get_reporter()$add_message(
@@ -109,7 +109,7 @@ context({
           )
           
           get_reporter()$add_message(
-            "### Verwachte tabel:",
+            "Verwachte tabel:",
             type = "markdown"
           )
           get_reporter()$add_message(
@@ -128,7 +128,7 @@ context({
         
         # Toon de tabel die de student heeft gemaakt
         get_reporter()$add_message(
-          "## Jouw frequentietabel:",
+          "Jouw frequentietabel:",
           type = "markdown"
         )
         get_reporter()$add_message(
@@ -138,7 +138,7 @@ context({
         
         # Voeg educatieve uitleg toe over frequentietabellen
         get_reporter()$add_message(
-          "## Uitleg over frequentietabellen:",
+          "Uitleg over frequentietabellen:",
           type = "markdown"
         )
         
@@ -154,7 +154,7 @@ context({
         
         # Toon visualisatie tips
         get_reporter()$add_message(
-          "## Van frequentietabel naar visualisatie:",
+          "Van frequentietabel naar visualisatie:",
           type = "markdown"
         )
         
