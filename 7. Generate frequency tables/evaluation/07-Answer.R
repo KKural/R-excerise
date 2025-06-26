@@ -120,28 +120,19 @@ context({
           return(FALSE)
         }
         
-        # Correct antwoord
+        # Correct antwoord met alle informatie in één blok
         get_reporter()$add_message(
           '✅ Juist! `delict_tabel` is correct aangemaakt.',
           type='success'
         )
         
-        # Toon de tabel die de student heeft gemaakt
-        get_reporter()$add_message(
-          "Jouw frequentietabel:",
-          type = "markdown"
-        )
-        get_reporter()$add_message(
-          paste0('```r\n> delict_tabel\n', paste(capture.output(print(env$delict_tabel)), collapse='\n'), '\n```'),
-          type='markdown'
-        )
+        # Toon output en uitleg samen zoals in exercise 1
+        # Converteer tabel output naar een string en toon het als code
+        tabel_output <- capture.output(print(env$delict_tabel))
+        get_reporter()$add_message("Jouw frequentietabel:", type = "markdown")
+        get_reporter()$add_message(paste(tabel_output, collapse = "\n"), type = "code")
         
-        # Voeg educatieve uitleg toe over frequentietabellen
-        get_reporter()$add_message(
-          "Uitleg over frequentietabellen:",
-          type = "markdown"
-        )
-        
+        # Educatieve uitleg in één bericht
         get_reporter()$add_message(paste(
           "Frequentietabellen zijn zeer nuttig om:",
           "- Snel een overzicht te krijgen van de verdeling van categorische variabelen",
@@ -149,40 +140,26 @@ context({
           "- Patronen in je data te ontdekken",
           "",
           "Je kunt de `table()` functie ook gebruiken voor kruistabellen met meerdere variabelen: `table(var1, var2)`",
+          "",
+          "Visualisatie tips:",
+          "",
+          "Je kunt een staafdiagram maken van je frequentietabel met:",
+          "```r",
+          "barplot(delict_tabel, ",
+          "        main=\"Frequentie van delictsoorten\", ",
+          "        xlab=\"Type delict\", ",
+          "        ylab=\"Aantal\",",
+          "        col=rainbow(length(delict_tabel)))",
+          "```",
+          "",
+          "Of een taartdiagram:",
+          "```r",
+          "pie(delict_tabel, ",
+          "    main=\"Verdeling van delictsoorten\",",
+          "    col=rainbow(length(delict_tabel)))",
+          "```",
           sep = "\n"
         ), type = "markdown")
-        
-        # Toon visualisatie tips
-        get_reporter()$add_message(
-          "Van frequentietabel naar visualisatie:",
-          type = "markdown"
-        )
-        
-        # Voorbeeld code voor een staafdiagram
-        barplot_code <- 'barplot(delict_tabel, 
-        main="Frequentie van delictsoorten", 
-        xlab="Type delict", 
-        ylab="Aantal",
-        col=rainbow(length(delict_tabel)))'
-        
-        get_reporter()$add_message(
-          "Tip: Je kunt een staafdiagram maken van je frequentietabel met:", 
-          type = "markdown"
-        )
-        
-        get_reporter()$add_message(paste0("```r\n", barplot_code, "\n```"), type = "markdown")
-        
-        # Voorbeeld code voor taartdiagram
-        pie_code <- 'pie(delict_tabel, 
-        main="Verdeling van delictsoorten",
-        col=rainbow(length(delict_tabel)))'
-        
-        get_reporter()$add_message(
-          "Of een taartdiagram:", 
-          type = "markdown"
-        )
-        
-        get_reporter()$add_message(paste0("```r\n", pie_code, "\n```"), type = "markdown")
         
         return(TRUE)
       },
