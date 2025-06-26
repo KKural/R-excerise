@@ -1,31 +1,69 @@
+# bloom_level: Apply & Analyze
+# scaffolding_level: Medium support
+# primm_phase: Modify
+
 context({
-  testcase("", {
+  testcase("CSV-bestand inladen", {
     testEqual(
-      "",
+      "Correct misdaad_data dataframe aanmaken",
       function(env) {
+        # Controleer of variabele bestaat
         if (!exists("misdaad_data", envir = env)) {
-          get_reporter()$add_message(
-            "❌ De variabele 'misdaad_data' bestaat niet. Heb je het CSV-bestand correct ingeladen?",
-            type = "error"
-          )
           return(FALSE)
         }
+        
+        # Controleer of het een dataframe is
         if (!is.data.frame(env$misdaad_data)) {
-          get_reporter()$add_message(
-            "❌ 'misdaad_data' moet een data frame zijn.",
-            type = "error"
-          )
           return(FALSE)
         }
+        
+        # Controleer of alle vereiste kolommen aanwezig zijn
         vereiste_kolommen <- c("zaak_id", "datum", "district", "misdaad_type", "waardeverlies", "agenten_uitgezonden", "reactietijd")
         if (!all(vereiste_kolommen %in% names(env$misdaad_data))) {
+          return(FALSE)
+        }
+        
+        # Als alles goed is, geef TRUE terug
+        return(TRUE)
+      },
+      TRUE,
+      comparator = function(got, want, ...) {
+        if (!got) {
+          # Controleer waarom het fout is
+          if (!exists("misdaad_data", envir = test_env$clean_env)) {
+            get_reporter()$add_message(
+              "❌ De variabele 'misdaad_data' bestaat niet. Heb je het CSV-bestand correct ingeladen?",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          
+          if (!is.data.frame(test_env$clean_env$misdaad_data)) {
+            get_reporter()$add_message(
+              "❌ 'misdaad_data' moet een data frame zijn.",
+              type = "error"
+            )
+            return(FALSE)
+          }
+          
+          vereiste_kolommen <- c("zaak_id", "datum", "district", "misdaad_type", "waardeverlies", "agenten_uitgezonden", "reactietijd")
+          if (!all(vereiste_kolommen %in% names(test_env$clean_env$misdaad_data))) {
+            get_reporter()$add_message(
+              paste0("❌ 'misdaad_data' mist één of meer vereiste kolommen: ", paste(vereiste_kolommen, collapse=", "), "."),
+              type = "error"
+            )
+            return(FALSE)
+          }
+          
+          # Als we hier komen, is er een andere fout
           get_reporter()$add_message(
-            paste0("❌ 'misdaad_data' mist één of meer vereiste kolommen: ", paste(vereiste_kolommen, collapse=", "), "."),
+            "❌ Er is een probleem met jouw code. Controleer of je het CSV-bestand correct hebt ingeladen.",
             type = "error"
           )
           return(FALSE)
         }
-        # Uitgebreidere feedback met uitleg over de gebruikte functies
+        
+        # Als alles goed is
         get_reporter()$add_message(
           "✅ Correct! Je hebt het CSV-bestand correct ingeladen in 'misdaad_data'.",
           type = "success"
@@ -67,13 +105,11 @@ context({
         )
         
         # Beperk tot 5 rijen en toon als tabelcode
-        data_head <- capture.output(head(env$misdaad_data, 5))
+        data_head <- capture.output(head(test_env$clean_env$misdaad_data, 5))
         get_reporter()$add_message(paste(data_head, collapse = "\n"), type = "code")
         
-        TRUE
-      },
-      TRUE,
-      comparator = function(got, want, ...) { got == want }
+        return(TRUE)
+      }
     )
   })
 }, preExec = {
