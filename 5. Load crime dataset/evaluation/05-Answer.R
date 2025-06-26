@@ -25,10 +25,51 @@ context({
           )
           return(FALSE)
         }
+        # Uitgebreidere feedback met uitleg over de gebruikte functies
         get_reporter()$add_message(
           "✅ Correct! Je hebt het CSV-bestand correct ingeladen in 'misdaad_data'.",
           type = "success"
         )
+        
+        # Toon voorbeeld van bestandspad en uitleg over functies
+        get_reporter()$add_message(
+          "## Uitleg over de gebruikte functies",
+          type = "markdown"
+        )
+        
+        # Voorbeeld van bestandspad
+        voorbeeldpad <- "C:/Users/student/Documents/misdaad_data.csv"
+        get_reporter()$add_message(paste(
+          "### Voorbeeld van bestandspad bewerking:",
+          "```r",
+          paste0("bestandspad <- \"", voorbeeldpad, "\""),
+          paste0("dirname(bestandspad)  # Geeft: \"C:/Users/student/Documents\""),
+          paste0("basename(bestandspad) # Geeft: \"misdaad_data.csv\""),
+          "```",
+          sep = "\n"
+        ), type = "markdown")
+        
+        # Uitleg over de functies
+        get_reporter()$add_message(paste(
+          "### Functies uitleg:",
+          "- `getwd()`: Geeft de huidige werkmap (working directory) terug",
+          "- `setwd()`: Verandert de huidige werkmap naar het opgegeven pad",
+          "- `dirname()`: Haalt de mapnaam uit een volledig bestandspad",
+          "- `basename()`: Haalt de bestandsnaam uit een volledig bestandspad", 
+          "- `read.csv()`: Leest een CSV-bestand in als een dataframe",
+          sep = "\n"
+        ), type = "markdown")
+        
+        # Toon enkele rijen van het dataframe
+        get_reporter()$add_message(
+          "## Eerste rijen van je dataframe:",
+          type = "markdown"
+        )
+        
+        # Beperk tot 5 rijen en toon als tabelcode
+        data_head <- capture.output(head(env$misdaad_data, 5))
+        get_reporter()$add_message(paste(data_head, collapse = "\n"), type = "code")
+        
         TRUE
       },
       TRUE,
