@@ -7,7 +7,7 @@ context({
     testEqual(
       "Structuur verkennen",
       function(env) {
-        # Since we just want them to run the str() command, always return TRUE
+        # We're just checking if the student ran the command, so always return TRUE
         TRUE
       },
       TRUE,
@@ -34,24 +34,25 @@ context({
           type = "markdown"
         )
         
-        get_reporter()$add_message(
-          "- **Nominale variabelen**: `type`, `district` (categorieën zonder rangorde)\n" +
-          "- **Ordinale variabelen**: `ernst` (categorieën met rangorde: Licht < Matig < Ernstig)\n" +
+        # Use paste for string concatenation, not the + operator
+        get_reporter()$add_message(paste(
+          "- **Nominale variabelen**: `type`, `district` (categorieën zonder rangorde)",
+          "- **Ordinale variabelen**: `ernst` (categorieën met rangorde: Licht < Matig < Ernstig)", 
           "- **Interval/Ratio variabelen**: `leeftijd` (numerieke waarden)",
-          type = "markdown"
-        )
+          sep = "\n"
+        ), type = "markdown")
         
         get_reporter()$add_message(
           "## Tips voor het herkennen van meetniveaus:",
           type = "markdown"
         )
         
-        get_reporter()$add_message(
-          "- Nominale variabelen zijn vaak opgeslagen als `Factor` zonder ordered=TRUE\n" +
-          "- Ordinale variabelen zijn vaak opgeslagen als `Ord.factor`\n" +
+        get_reporter()$add_message(paste(
+          "- Nominale variabelen zijn vaak opgeslagen als `Factor` zonder ordered=TRUE",
+          "- Ordinale variabelen zijn vaak opgeslagen als `Ord.factor`",
           "- Interval/Ratio variabelen zijn vaak opgeslagen als `num` of `int`",
-          type = "markdown"
-        )
+          sep = "\n"
+        ), type = "markdown")
         
         # Always return TRUE so the exercise passes
         return(TRUE)
