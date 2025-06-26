@@ -112,31 +112,15 @@ context({
           return(FALSE)
         }
         
-        # Correct antwoord met tabeloutput
-        get_reporter()$add_message(
-          '✅ Goed gedaan! Je hebt `delict_tabel` correct aangemaakt met table().',
-          type='success'
-        )
-
-        # Output de tabel structuur zoals in exercise 1
-        get_reporter()$add_message(
-          "## Frequentietabel van delictsoorten:",
-          type = "markdown"
-        )
-
-        # Converteer en toon de tabel
-        tabel_output <- capture.output(print(env$delict_tabel))
-        get_reporter()$add_message(paste(tabel_output, collapse = "\n"), type = "code")
-
-        # Uitleg over de frequentietabel
-        get_reporter()$add_message(paste(
-          "",
-          "De `table()` functie toont:",
-          "- Per delictsoort het aantal keer dat dit voorkomt in de dataset",
-          "- De categorieën worden alfabetisch gesorteerd",
-          "- De getallen onder elke categorie geven de frequentie weer",
-          sep = "\n"
-        ), type = "markdown")
+        # Super simplified success message
+        get_reporter()$add_message("✅ Juist! `delict_tabel` is correct aangemaakt.", type="success")
+        
+        # Single message with all content
+        get_reporter()$add_message("Frequentietabel van delictsoorten:", type="info")
+        
+        # Show table output directly
+        table_str <- paste(capture.output(print(env$delict_tabel)), collapse="\n")
+        get_reporter()$add_message(table_str, type="code")
 
         return(TRUE)
       },
