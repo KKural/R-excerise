@@ -1,5 +1,9 @@
 {
-    "judge": "R",
-    "image": "dodona-r",
-    "memory_limit": 200000000
+  "judge": "R",
+  "image": "dodona-r",
+  "memory_limit": 200000000,
+  "internals": {
+    "token": "Mh9HSMXs5QBnuVekn2MxKurkVf4N226NeVK6G9-dxr5WWhV8RP8FBcx2Qsq3SA5m",
+    "_info": "These fields are used for internal bookkeeping in Dodona, please do not change them."
+  }
 }
