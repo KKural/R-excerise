@@ -4,14 +4,39 @@
 
 context({
   testcase("Dataframe structuur verkennen met str()", {
+    # First check if str() was used at all
+    testFunctionUsed("str")
+    
+    # Then check if specifically str(df_crime_data) was used, with educational feedback
     testEqual(
-      "Structuur verkennen",
+      "Structuur verkennen met str(df_crime_data)",
       function(env) {
-        # We're just checking if the student ran the command, so always return TRUE
-        TRUE
+        # Check for evaluationResult (last executed expression)
+        # If the student used str(df_crime_data) as their last command,
+        # evaluationResult will be NULL (because str() doesn't return a value)
+        if (!is.null(env$evaluationResult)) {
+          return(FALSE)
+        }
+        
+        # Check if str was called with df_crime_data
+        # Since we can't directly check this, we'll use the testFunctionUsed above
+        # and provide educational feedback here regardless
+        return(TRUE)
       },
       TRUE,
       comparator = function(got, want, ...) {
+        # Student used str(), now give educational feedback
+        get_reporter()$add_message(
+          "✅ De `str()` functie is erg nuttig om snel inzicht te krijgen in de structuur van een dataframe. Het toont de variabelen, hun types en enkele voorbeeldwaarden.",
+          type = "success"
+        )
+        
+        # Add note to make sure they use exactly str(df_crime_data)
+        get_reporter()$add_message(
+          "ℹ️ Zorg dat je precies `str(df_crime_data)` gebruikt om de juiste structuur te bekijken.",
+          type = "info"
+        )
+        
         # Provide educational feedback with detailed explanation
         get_reporter()$add_message(
           "✅ De `str()` functie is erg nuttig om snel inzicht te krijgen in de structuur van een dataframe. Het toont de variabelen, hun types en enkele voorbeeldwaarden.",
