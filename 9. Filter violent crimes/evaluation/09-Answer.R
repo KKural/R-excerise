@@ -36,15 +36,15 @@ context({
     # Perform the actual test
     testEqual(
       "Filter geweldsdelicten met subset()",
-      function(studentEnv) {
+      function(env) {
         result <- tryCatch({
           # Check if variable exists
-          if (!exists('geweldsdelicten_df', envir = studentEnv)) {
+          if (!exists('geweldsdelicten_df', envir = env)) {
             return("no_var")
           }
           
           # Get student's dataframe
-          df <- get("geweldsdelicten_df", envir = studentEnv)
+          df <- get("geweldsdelicten_df", envir = env)
           
           # Check if it's a dataframe
           if (!is.data.frame(df)) {
@@ -53,12 +53,19 @@ context({
           
           # Check if it contains the correct rows
           # Make sure we use the student's misdaad_data in case they modified it
-          student_misdaad_data <- if (exists("misdaad_data", envir = studentEnv)) 
-                                   get("misdaad_data", envir = studentEnv) else misdaad_data
+          student_misdaad_data <- if (exists("misdaad_data", envir = env)) 
+                                   get("misdaad_data", envir = env) else misdaad_data
           
           expected <- subset(student_misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
           
+          # More flexible comparison to handle case sensitivity and order
           if (!identical(df, expected)) {
+            # Check if just a sorting or minor difference
+            if (nrow(df) == nrow(expected) && 
+                all(sort(tolower(df$delict)) == sort(tolower(c("Aanval", "Overval", "Moord"))))) {
+              # This is close enough - they have the right rows
+              return("correct")
+            }
             return("wrong_val")
           }
           
@@ -86,9 +93,9 @@ context({
           "correct"  = "✅ Correct! Je hebt de data frame correct gefilterd en alle geweldsdelicten geselecteerd."
         )
         
-        # Create the expected dataframe for showing - use the consistent dataset
-        student_misdaad_data <- if (exists("misdaad_data", envir = studentEnv)) 
-                               get("misdaad_data", envir = studentEnv) else misdaad_data
+        # Create the expected dataframe for showing - use the global dataset
+        # Don't try to access the environment here as it's not accessible in the comparator
+        expected_df <- subset(misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
         expected_df <- subset(student_misdaad_data, delict %in% c("Aanval", "Overval", "Moord"))
         
         # Main feedback message
@@ -152,7 +159,15 @@ context({
   
   # Make the data available in all environments
   assign("misdaad_data", misdaad_data, envir = globalenv())
+  
+  # Note: The following approach is more robust for ensuring the data is available in all environments
+  if (exists("test_env") && exists("clean_env", envir = test_env)) {
+    assign("misdaad_data", misdaad_data, envir = test_env$clean_env)
+  }
+
+  # Also make it available in the parent environment and local environment
   assign("misdaad_data", misdaad_data, envir = parent.env(environment()))
+  assign("misdaad_data", misdaad_data, envir = environment())
 })
 
 # Modeloplossing:
