@@ -10,11 +10,9 @@ leeftijden_daders <- c(
 # Make sure the data is available in the global environment
 assign("leeftijden_daders", leeftijden_daders, envir = globalenv())
 
-# Create a summary of the ages with the summary() function
-leeftijd_samenvatting <- summary(leeftijden_daders)
-
-# Display the summary to see the statistical information
-print(leeftijd_samenvatting)
+# These lines should be commented out in the evaluation file
+# The solution should be submitted in the interface:
+# leeftijd_samenvatting <- summary(leeftijden_daders)
 
 #–– Evaluation ––
 context({
