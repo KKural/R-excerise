@@ -81,11 +81,16 @@ contextWithImage({
             type = "info"
           )
           
-          # Create and display the expected plot
+          # Create and display the expected plot with improved margins to prevent overlapping labels
+          # Set better margins to avoid overlapping text
+          par(mar = c(5, 5, 4, 2) + 0.1)  # Bottom, left, top, right margins
+          
           plot(werkloosheid, criminaliteitscijfers,
                main = "Verband tussen werkloosheid en criminaliteit",
                xlab = "Werkloosheidspercentage",
-               ylab = "Criminaliteitscijfers per 1.000 inwoners")
+               ylab = "Criminaliteitscijfers per 1.000 inwoners",
+               cex.lab = 0.9,  # Slightly smaller axis labels
+               cex.axis = 0.9) # Slightly smaller axis text
           
           return(FALSE)
         }
@@ -120,7 +125,11 @@ contextWithImage({
 })
 
 # Modeloplossing (commented out):
-# plot(werkloosheid, criminaliteitscijfers)
-# title(main = "Verband tussen werkloosheid en criminaliteit", 
-#       xlab = "Werkloosheidspercentage", 
-#       ylab = "Criminaliteitscijfers per 1.000 inwoners")
+# # Set better margins to avoid overlapping text
+# par(mar = c(5, 5, 4, 2) + 0.1) 
+# plot(werkloosheid, criminaliteitscijfers,
+#      main = "Verband tussen werkloosheid en criminaliteit", 
+#      xlab = "Werkloosheidspercentage", 
+#      ylab = "Criminaliteitscijfers per 1.000 inwoners",
+#      cex.lab = 0.9,  # Slightly smaller axis labels
+#      cex.axis = 0.9) # Slightly smaller axis text
