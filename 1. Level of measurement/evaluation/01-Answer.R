@@ -4,50 +4,58 @@
 
 context({
   testcase("Dataframe structuur verkennen met str()", {
-    # Controleer eerst of de str functie is gebruikt
+    # First check if the str function is used
     testFunctionUsed("str")
     
-    # Controleer dan of ze precies str(df_crime_data) hebben gebruikt
+    # Then ensure they used exactly str(df_crime_data)
     testEqual(
       "Structuur verkennen met exact str(df_crime_data)",
       function(env) {
-        # Haal de code van de student op als tekst van de geparseerde code
+        # Get the student's code as text from the parsed code
         code_text <- toString(deparse(test_env$parsed_code))
-        # Zoek naar het exacte patroon str(df_crime_data)
+        # Look for the exact pattern str(df_crime_data)
         return(grepl("str\\(df_crime_data\\)", code_text))
       },
       TRUE,
       comparator = function(got, want, ...) {
         if (got) {
-          # Student heeft str(df_crime_data) gebruikt, geef positieve feedback
+          # Student used str(df_crime_data), provide positive feedback
+          # English: "Well done! You used `str(df_crime_data)` to view the structure of the dataframe."
           get_reporter()$add_message(
             "✅ Goed gedaan! Je hebt `str(df_crime_data)` gebruikt om de structuur van het dataframe te bekijken.",
             type = "success"
           )
           
-          # Geef aanvullende educatieve boodschap over de str() functie
+          # Provide additional educational message about the str() function
+          # English: "The `str()` function is very useful to quickly understand the structure of a dataframe. It shows variables, their types, and some example values."
           get_reporter()$add_message(
             "De `str()` functie is erg nuttig om snel inzicht te krijgen in de structuur van een dataframe. Het toont de variabelen, hun types en enkele voorbeeldwaarden.",
             type = "info"
           )
           
-          # Toon de str() output voor het dataframe
+          # Capture and show the str() output for the data frame
+          # English: "## Structure of df_crime_data:"
           get_reporter()$add_message(
             "## Structuur van df_crime_data:",
             type = "markdown"
           )
           
-          # Converteer str() output naar een string en toon het als code
+          # Convert str() output to a string and display it as code
           str_output <- capture.output(str(df_crime_data))
           get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "code")
           
-          # Voeg educatieve uitleg toe over de meetniveaus
+          # Add educational explanation about the measurement levels
+          # English: "## Measurement levels in the dataset:"
           get_reporter()$add_message(
             "## Meetniveaus in de dataset:",
             type = "markdown"
           )
           
-          # Gebruik paste voor string concatenatie
+          # Use paste for string concatenation, not the + operator
+          # English:
+          # - Nominal variables: `type`, `district` (categories without order)
+          # - Ordinal variables: `ernst` (categories with order: Low < Medium < Severe)
+          # - Interval/Ratio variables: `leeftijd` (numerical values)
           get_reporter()$add_message(paste(
             "- **Nominale variabelen**: `type`, `district` (categorieën zonder rangorde)",
             "- **Ordinale variabelen**: `ernst` (categorieën met rangorde: Licht < Matig < Ernstig)", 
@@ -55,11 +63,16 @@ context({
             sep = "\n"
           ), type = "markdown")
           
+          # English: "## Tips for identifying measurement levels:"
           get_reporter()$add_message(
             "## Tips voor het herkennen van meetniveaus:",
             type = "markdown"
           )
           
+          # English:
+          # - Nominal variables are often stored as `Factor` without ordered=TRUE
+          # - Ordinal variables are often stored as `Ord.factor`
+          # - Interval/Ratio variables are often stored as `num` or `int`
           get_reporter()$add_message(paste(
             "- Nominale variabelen zijn vaak opgeslagen als `Factor` zonder ordered=TRUE",
             "- Ordinale variabelen zijn vaak opgeslagen als `Ord.factor`",
@@ -69,12 +82,14 @@ context({
           
           return(TRUE)
         } else {
-          # Student heeft str() wel gebruikt, maar niet precies str(df_crime_data)
+          # Student didn't use str(df_crime_data), provide corrective feedback
+          # English: "You must use exactly the command `str(df_crime_data)` to view the structure of the dataframe."
           get_reporter()$add_message(
             "❌ Je moet precies de opdracht `str(df_crime_data)` gebruiken om de structuur van het dataframe te bekijken.",
             type = "error"
           )
           
+          # Return false so they get a wrong answer
           return(FALSE)
         }
       }
