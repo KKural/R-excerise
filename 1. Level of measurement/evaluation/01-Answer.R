@@ -3,40 +3,71 @@
 # primm_phase: Run
 
 context({
-  testcase("", {
+  testcase("Gebruik van str functie", {
     testEqual(
-      "",
+      "Controleer gebruik van str() functie",
       function(env) {
-        # Always return FALSE initially - we'll rely entirely on judging the solution manually
-        return(FALSE)
+        # First check if submission is empty
+        if (length(env$`.__code__`) == 0) {
+          get_reporter()$add_message(
+            "❌ Je hebt geen code ingediend. Je moet str() gebruiken op df_crime_data om de structuur te bekijken.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        
+        # Check if the code contains str(df_crime_data)
+        code_str <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
+        if (!grepl("str.*df_crime_data", code_str)) {
+          get_reporter()$add_message(
+            "❌ Je code bevat geen aanroep van str() op df_crime_data. Gebruik str(df_crime_data) om de structuur te bekijken.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        
+        # If we get here, the student used str(df_crime_data)
+        return(TRUE)
       },
       TRUE,
       comparator = function(got, want, ...) {
-        # Manually check if the student submission includes str(df_crime_data)
-        tryCatch({
-          student_code <- readLines(file.path(testimonium:::get_source_location(), "student.R"))
-          student_code_text <- paste(student_code, collapse = " ")
-          
-          if (grepl("str\\s*\\(\\s*df_crime_data\\s*\\)", student_code_text)) {
-            get_reporter()$add_message("✅ Correct! Je hebt str() gebruikt om de structuur van df_crime_data te bekijken.", type = "success")
-            return(TRUE)
-          } else {
-            get_reporter()$add_message("❌ Je moet de str() functie gebruiken om de structuur van df_crime_data te bekijken.", type = "error")
-            return(FALSE)
-          }
-        }, 
-        error = function(e) {
-          # If ANY error occurs in the code above, default to showing the full error message
-          get_reporter()$add_message("❌ Je moet de str() functie gebruiken om de structuur van df_crime_data te bekijken.", type = "error")
+        if (!got) {
+          # This message is already handled in the function above
           return(FALSE)
-        })
+        }
+        
+        # Success message
+        get_reporter()$add_message(
+          "✅ Correct! Je hebt str() gebruikt om de structuur van df_crime_data te bekijken.",
+          type = "success"
+        )
+        
+        # Show the output of str(df_crime_data)
+        get_reporter()$add_message(
+          "Output van str(df_crime_data):",
+          type = "info"
+        )
+        str_output <- capture.output(str(df_crime_data))
+        get_reporter()$add_message(
+          paste(str_output, collapse = "\n"), 
+          type = "code"
+        )
+        
+        return(TRUE)
       }
     )
   })
 }, preExec = {
-  # Create the simplest possible dataframe
+  # Create the crime data in preExec
   df_crime_data <- data.frame(
-    type = c("Theft", "Assault", "Burglary", "Fraud", "Vandalism"),
-    count = c(12, 5, 8, 3, 7)
+    zaak_id = c("Z001", "Z002", "Z003", "Z004", "Z005"),
+    datum = as.Date(c("2023-01-15", "2023-01-20", "2023-02-05", "2023-02-10", "2023-03-01")),
+    district = c("Noord", "Centrum", "Zuid", "Oost", "West"),
+    delict = c("Diefstal", "Inbraak", "Vandalisme", "Fraude", "Aanranding"),
+    aantal_agenten = c(2, 3, 1, 2, 4),
+    reactietijd_min = c(15.2, 8.7, 12.3, 20.5, 10.8)
   )
 })
+
+# Verwachte antwoorden:
+# str(df_crime_data)
