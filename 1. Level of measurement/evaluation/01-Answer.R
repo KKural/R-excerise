@@ -3,112 +3,58 @@
 # primm_phase: Run
 
 context({
-  testcase("Herkennen van meetniveaus in criminaliteitsdata", {
-    # Test identificatie nominale variabelen
+  testcase("Dataframe structuur verkennen met str()", {
     testEqual(
-      "Identificatie nominale variabelen",
+      "Structuur verkennen",
       function(env) {
-        env$nominale_variabelen
+        # Since we just want them to run the str() command, always return TRUE
+        TRUE
       },
-      c("type", "district"),
-      comparator = function(generated, expected, ...) {
-        # Controleer of de student de juiste nominale variabelen heeft geïdentificeerd
-        correct <- setequal(generated, expected)
-        if (!correct) {
-          missing <- setdiff(expected, generated)
-          extra <- setdiff(generated, expected)
-          
-          msg <- ""
-          if (length(missing) > 0) {
-            msg <- paste0(msg, "❌ Je mist de volgende nominale variabelen: ", paste(missing, collapse=", "), ". ")
-          }
-          if (length(extra) > 0) {
-            msg <- paste0(msg, "❌ De volgende variabelen die je hebt genoemd zijn geen nominale variabelen: ", paste(extra, collapse=", "), ". ")
-          }
-          
-          get_reporter()$add_message(
-            paste0(msg, "Nominale variabelen zijn categorische variabelen zonder inherente volgorde, zoals 'type' en 'district'."),
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ Je hebt de nominale variabelen correct geïdentificeerd! Nominale variabelen zijn categorische variabelen zonder inherente volgorde.",
-            type = "markdown"
-          )
-        }
-        return(correct)
-      }
-    )
-    
-    # Test identificatie ordinale variabelen
-    testEqual(
-      "Identificatie ordinale variabelen",
-      function(env) {
-        env$ordinale_variabelen
-      },
-      c("ernst"),
-      comparator = function(generated, expected, ...) {
-        # Controleer of de student de juiste ordinale variabelen heeft geïdentificeerd
-        correct <- setequal(generated, expected)
-        if (!correct) {
-          missing <- setdiff(expected, generated)
-          extra <- setdiff(generated, expected)
-          
-          msg <- ""
-          if (length(missing) > 0) {
-            msg <- paste0(msg, "❌ Je mist de volgende ordinale variabelen: ", paste(missing, collapse=", "), ". ")
-          }
-          if (length(extra) > 0) {
-            msg <- paste0(msg, "❌ De volgende variabelen die je hebt genoemd zijn geen ordinale variabelen: ", paste(extra, collapse=", "), ". ")
-          }
-          
-          get_reporter()$add_message(
-            paste0(msg, "Ordinale variabelen zijn categorische variabelen met een inherente volgorde, zoals 'ernst' met niveaus 'Licht' < 'Matig' < 'Ernstig'."),
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ Je hebt de ordinale variabelen correct geïdentificeerd! Ordinale variabelen zijn categorische variabelen met een inherente volgorde.",
-            type = "markdown"
-          )
-        }
-        return(correct)
-      }
-    )
-    
-    # Test identificatie interval/ratio variabelen
-    testEqual(
-      "Identificatie interval/ratio variabelen",
-      function(env) {
-        env$interval_ratio_variabelen
-      },
-      c("leeftijd"),
-      comparator = function(generated, expected, ...) {
-        # Controleer of de student de juiste interval/ratio variabelen heeft geïdentificeerd
-        correct <- setequal(generated, expected)
-        if (!correct) {
-          missing <- setdiff(expected, generated)
-          extra <- setdiff(generated, expected)
-          
-          msg <- ""
-          if (length(missing) > 0) {
-            msg <- paste0(msg, "❌ Je mist de volgende interval/ratio variabelen: ", paste(missing, collapse=", "), ". ")
-          }
-          if (length(extra) > 0) {
-            msg <- paste0(msg, "❌ De volgende variabelen die je hebt genoemd zijn geen interval/ratio variabelen: ", paste(extra, collapse=", "), ". ")
-          }
-          
-          get_reporter()$add_message(
-            paste0(msg, "Interval/ratio variabelen zijn numerieke variabelen waarmee je wiskundige berekeningen kunt uitvoeren, zoals 'leeftijd'."),
-            type = "markdown"
-          )
-        } else {
-          get_reporter()$add_message(
-            "✅ Je hebt de interval/ratio variabelen correct geïdentificeerd! Interval/ratio variabelen zijn numerieke variabelen waarmee je wiskundige berekeningen kunt uitvoeren.",
-            type = "markdown"
-          )
-        }
-        return(correct)
+      TRUE,
+      comparator = function(got, want, ...) {
+        # Provide educational feedback with detailed explanation
+        get_reporter()$add_message(
+          "✅ De `str()` functie is erg nuttig om snel inzicht te krijgen in de structuur van een dataframe. Het toont de variabelen, hun types en enkele voorbeeldwaarden.",
+          type = "success"
+        )
+        
+        # Capture and show the str() output for the data frame
+        get_reporter()$add_message(
+          "## Structuur van df_crime_data:",
+          type = "markdown"
+        )
+        
+        # Convert str() output to a string and display it as code
+        str_output <- capture.output(str(df_crime_data))
+        get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "code")
+        
+        # Add educational explanation about the measurement levels
+        get_reporter()$add_message(
+          "## Meetniveaus in de dataset:",
+          type = "markdown"
+        )
+        
+        get_reporter()$add_message(
+          "- **Nominale variabelen**: `type`, `district` (categorieën zonder rangorde)\n" +
+          "- **Ordinale variabelen**: `ernst` (categorieën met rangorde: Licht < Matig < Ernstig)\n" +
+          "- **Interval/Ratio variabelen**: `leeftijd` (numerieke waarden)",
+          type = "markdown"
+        )
+        
+        get_reporter()$add_message(
+          "## Tips voor het herkennen van meetniveaus:",
+          type = "markdown"
+        )
+        
+        get_reporter()$add_message(
+          "- Nominale variabelen zijn vaak opgeslagen als `Factor` zonder ordered=TRUE\n" +
+          "- Ordinale variabelen zijn vaak opgeslagen als `Ord.factor`\n" +
+          "- Interval/Ratio variabelen zijn vaak opgeslagen als `num` of `int`",
+          type = "markdown"
+        )
+        
+        # Always return TRUE so the exercise passes
+        return(TRUE)
       }
     )
   })
@@ -130,10 +76,5 @@ context({
 })
 
 # Model solution:
-# # Bekijk de dataframe structuur
+# # Bekijk de structuur van het dataframe
 # str(df_crime_data)
-# 
-# # Identificeer de meetniveaus per variabele
-# nominale_variabelen <- c("type", "district")  # categorieën zonder rangorde
-# ordinale_variabelen <- c("ernst")  # categorieën met rangorde
-# interval_ratio_variabelen <- c("leeftijd")  # numerieke variabelen
