@@ -12,7 +12,7 @@ niveau_opleidingsniveau <- "ordinaal"
 niveau_risicocategorie <- "ordinaal"
 
 context({
-  testcase("Controleer meetniveaus", {
+  testcase("", {
     # First check if code is submitted
     testEqual(
       "Controleer of code is ingediend",
@@ -86,12 +86,12 @@ context({
         if (!got) {
           get_reporter()$add_message(
             "❌ `niveau_geslacht` moet 'nominaal' zijn.",
-            type = "markdown"
+            type = "error"
           )
         } else {
           get_reporter()$add_message(
             "✅ `niveau_geslacht` is correct als 'nominaal'.",
-            type = "markdown"
+            type = "success"
           )
         }
         got == want
@@ -105,12 +105,12 @@ context({
         if (!got) {
           get_reporter()$add_message(
             "❌ `niveau_leeftijd` moet 'ratio' zijn.",
-            type = "markdown"
+            type = "error"
           )
         } else {
           get_reporter()$add_message(
             "✅ `niveau_leeftijd` is correct als 'ratio'.",
-            type = "markdown"
+            type = "success"
           )
         }
         got == want
@@ -124,12 +124,12 @@ context({
         if (!got) {
           get_reporter()$add_message(
             "❌ `niveau_misdaad_type` moet 'nominaal' zijn.",
-            type = "markdown"
+            type = "error"
           )
         } else {
           get_reporter()$add_message(
             "✅ `niveau_misdaad_type` is correct als 'nominaal'.",
-            type = "markdown"
+            type = "success"
           )
         }
         got == want
@@ -143,12 +143,12 @@ context({
         if (!got) {
           get_reporter()$add_message(
             "❌ `niveau_strafduur` moet 'ratio' zijn.",
-            type = "markdown"
+            type = "error"
           )
         } else {
           get_reporter()$add_message(
             "✅ `niveau_strafduur` is correct als 'ratio'.",
-            type = "markdown"
+            type = "success"
           )
         }
         got == want
@@ -162,12 +162,12 @@ context({
         if (!got) {
           get_reporter()$add_message(
             "❌ `niveau_opleidingsniveau` moet 'ordinaal' zijn.",
-            type = "markdown"
+            type = "error"
           )
         } else {
           get_reporter()$add_message(
             "✅ `niveau_opleidingsniveau` is correct als 'ordinaal'.",
-            type = "markdown"
+            type = "success"
           )
         }
         got == want
@@ -181,16 +181,30 @@ context({
         if (!got) {
           get_reporter()$add_message(
             "❌ `niveau_risicocategorie` moet 'ordinaal' zijn.",
-            type = "markdown"
+            type = "error"
           )
         } else {
           get_reporter()$add_message(
             "✅ `niveau_risicocategorie` is correct als 'ordinaal'.",
-            type = "markdown"
+            type = "success"
           )
         }
         got == want
       }
     )
   })
+}, preExec = {
+  # Een dataset met informatie over strafzaken
+  crime_data <- data.frame(
+    zaak_id = c(1001, 1002, 1003, 1004, 1005),
+    geslacht = c("Man", "Vrouw", "Man", "Man", "Vrouw"),
+    leeftijd = c(24, 37, 19, 42, 31),
+    misdaad_type = c("Diefstal", "Aanval", "Inbraak", "Diefstal", "Fraude"),
+    strafduur = c(12, 36, 6, 15, 24),
+    opleidingsniveau = c("Secundair", "Primair", "Hoger", "Secundair", "Hoger"),
+    risicocategorie = c("Midden", "Hoog", "Laag", "Midden", "Laag")
+  )
+  
+  # Also make it available globally
+  assign("crime_data", crime_data, envir = globalenv())
 })
