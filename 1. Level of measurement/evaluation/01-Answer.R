@@ -2,7 +2,7 @@
 # scaffolding_level: Full support
 # primm_phase: Run
 
-# Create test data at the top level (available to both student and check code)
+# Sample data for the exercise
 df_crime_data <- data.frame(
   zaak_id = sprintf("ZAAK%03d", 1:10),
   datum = as.Date("2023-01-01") + 0:9,
@@ -18,17 +18,17 @@ context({
     testEqual(
       "",
       function(env) {
-        # Get the student's code
+        # Get the submitted code
         code_str <- paste(sapply(env$`.__code__`, function(e) paste(deparse(e), collapse = " ")), collapse = "\n")
         
-        # Check if str(df_crime_data) is used in the code
-        if (!grepl("str\\s*\\(\\s*df_crime_data\\s*\\)", code_str)) {
+        # Simple check for "str" and "df_crime_data" in the same line
+        if (!grepl("str.*df_crime_data|df_crime_data.*str", code_str)) {
           get_reporter()$add_message("❌ Je moet de str() functie gebruiken om de structuur van df_crime_data te bekijken.", type = "error")
           return(FALSE)
         }
         
-        # Success case
-        TRUE
+        # If we get here, the check passed
+        return(TRUE)
       },
       TRUE,
       comparator = function(got, want, ...) {
@@ -40,12 +40,19 @@ context({
           str_output <- capture.output(str(df_crime_data))
           get_reporter()$add_message(paste(str_output, collapse = "\n"), type = "code")
           
-          # Additional tips
-          get_reporter()$add_message("Tip: Je kunt ook deze functies gebruiken om data te verkennen:", type = "info")
-          get_reporter()$add_message("- names(df_crime_data) voor kolomnamen", type = "info")
-          get_reporter()$add_message("- head(df_crime_data) voor de eerste paar rijen", type = "info")
+          # Show what other functions would give
+          get_reporter()$add_message("Je kunt ook deze functies gebruiken:", type = "info")
+          
+          get_reporter()$add_message("names(df_crime_data):", type = "info")
+          names_output <- capture.output(print(names(df_crime_data)))
+          get_reporter()$add_message(paste(names_output, collapse = "\n"), type = "code")
+          
+          get_reporter()$add_message("head(df_crime_data):", type = "info")
+          head_output <- capture.output(print(head(df_crime_data, 3)))
+          get_reporter()$add_message(paste(head_output, collapse = "\n"), type = "code")
         }
-        got == want
+        
+        return(got == want)
       }
     )
   })
