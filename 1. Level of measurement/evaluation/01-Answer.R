@@ -4,21 +4,36 @@
 
 context({
   testcase("Dataframe structuur verkennen met str()", {
-    # First check if the str function is used
-    testFunctionUsed("str")
-    
-    # Then ensure they used exactly str(df_crime_data)
+    # We'll only use a single test to avoid default English messages
+    # from testFunctionUsed
     testEqual(
       "Structuur verkennen met exact str(df_crime_data)",
       function(env) {
         # Get the student's code as text from the parsed code
         code_text <- toString(deparse(test_env$parsed_code))
-        # Look for the exact pattern str(df_crime_data)
-        return(grepl("str\\(df_crime_data\\)", code_text))
+        
+        # First check if str function is used at all
+        str_used <- is_function_used("str", find_assign(test_env$parsed_code), test_env$parsed_code, test_env$parsed_code)
+        
+        # Then look for the exact pattern str(df_crime_data)
+        exact_match <- grepl("str\\(df_crime_data\\)", code_text)
+        
+        # Return a list with both checks
+        return(list(str_used = str_used, exact_match = exact_match))
       },
-      TRUE,
+      list(str_used = TRUE, exact_match = TRUE),
       comparator = function(got, want, ...) {
-        if (got) {
+        # First check if they used str() function at all
+        if (!got$str_used) {
+          get_reporter()$add_message(
+            "❌ Je moet de `str()` functie gebruiken in je code.",
+            type = "error"
+          )
+          return(FALSE)
+        }
+        
+        # Then check if they used exactly str(df_crime_data)
+        if (got$exact_match) {
           # Student used str(df_crime_data), provide positive feedback
           # English: "Well done! You used `str(df_crime_data)` to view the structure of the dataframe."
           get_reporter()$add_message(
@@ -82,8 +97,7 @@ context({
           
           return(TRUE)
         } else {
-          # Student didn't use str(df_crime_data), provide corrective feedback
-          # English: "You must use exactly the command `str(df_crime_data)` to view the structure of the dataframe."
+          # Student used str() but not exactly str(df_crime_data)
           get_reporter()$add_message(
             "❌ Je moet precies de opdracht `str(df_crime_data)` gebruiken om de structuur van het dataframe te bekijken.",
             type = "error"
