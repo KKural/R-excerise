@@ -22,21 +22,22 @@ Automated feedback and metadata are included for instructional tracking and cont
 
 | #  | Exercise                                 | Bloom Level             | Scaffolding      | PRIMM Phase                |
 |:--:|:-----------------------------------------|:----------------------:|:----------------:|:--------------------------:|
-| 01 | Level of measurement                     | Remember & Understand  | Full support     | Predict, Run               |
-| 02 | Creating variables with appropriate types| Remember & Understand  | Full support     | Run                        |
-| 03 | Identifying measurement levels           | Remember & Understand  | Full support     | Predict, Run, Investigate  |
-| 04 | Assign number of burglaries              | Remember & Understand  | Full support     | Run                        |
-| 05 | Load crime dataset                       | Apply                  | Full support     | Run                        |
+| 01 | Level of measurement                     | Understand             | Full support     | Run                        |
+| 02 | Creating variables with appropriate types| Apply                  | Full support     | Modify                     |
+| 03 | Identifying measurement levels           | Understand & Apply     | Full support     | Investigate                |
+| 04 | Assign number of burglaries              | Remember               | Full support     | Run                        |
+| 05 | Load crime dataset                       | Apply                  | Full support     | Modify                     |
 | 06 | Calculate average offenses               | Apply                  | Full support     | Run                        |
-| 07 | Generate frequency tables                | Apply                  | Full support     | Run                        |
-| 08 | Filter violent crimes                    | Apply                  | Full support     | Run                        |
-| 09 | Crime rate calculation                   | Apply                  | Partial support  | Run, Modify                |
-| 10 | Filtering crime data with dplyr          | Apply                  | Partial support  | Run, Modify                |
-| 11 | Creating new columns with mutate         | Apply                  | Partial support  | Run, Modify                |
-| 12 | Creating and using factors               | Apply                  | Partial support  | Run, Modify                |
-| 13 | Creating histograms with ggplot2         | Apply                  | Partial support  | Run, Modify                |
-| 14 | Saving results with write.csv            | Apply                  | Partial support  | Run, Modify                |
-| 15 | Writing simple custom functions          | Create                 | Minimal support  | Make                       |
+| 07 | Generate frequency tables                | Apply                  | Full support     | Run, Modify                |
+| 08 | Describe offender age                    | Apply                  | Full support     | Run                        |
+| 09 | Filter violent crimes                    | Apply                  | Partial support  | Modify                     |
+| 10 | Crime rate calculation                   | Apply                  | Partial support  | Modify                     |
+| 11 | Crime rates national average             | Apply & Analyze        | Partial support  | Modify                     |
+| 12 | Scatterplot unemployment                 | Analyze                | Partial support  | Modify                     |
+| 13 | Filtering crime data with dplyr          | Apply                  | Partial support  | Modify                     |
+| 14 | Selecting columns with dplyr             | Apply                  | Partial support  | Modify                     |
+| 15 | Creating new columns with mutate         | Create                 | Minimal support  | Make                       |
+| 16 | Data preprocessing with R                | Create & Apply         | Minimal support  | Make                       |
 
 ## 4. Reproducibility and Synthetic Data
 
