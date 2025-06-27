@@ -1,11 +1,3 @@
-June 26, 2025
-
-Dear Professors Hardyns, Vandeviver, and Pauwels,
-
-I am writing to apply for the Teaching Assistant (ref. 202506/RE23/PA/003) position in our department. Please find enclosed a detailed document titled "Instructional Design of the R Exercise Series" that outlines my pedagogical approach and technical framework for teaching quantitative methods. As mentioned in my scientific staff application (ref. 202506/RE23/AAP/002), this teaching assistant role would complement my digital content development work, creating a synergistic combination of curriculum design and classroom implementation.
-
-As a postdoctoral researcher in **quantitative criminology** and an advanced **R user**, I am eager to strengthen students' **data-analysis skills**, guide them through **practical coding tasks**, and assist with the evaluation of their theses and oral defences.26, 2025
-
 Dear Professors Hardyns, Vandeviver, and Pauwels,
 
 I am writing to apply for the Teaching Assistant (ref. 202506/RE23/PA/003) position in our department. As a postdoctoral researcher in **quantitative criminology** and an advanced **R user**, I am eager to strengthen students’ **data-analysis skills**, guide them through **practical coding tasks**, and assist with the evaluation of their theses and oral defences.
@@ -20,16 +12,13 @@ Recognizing that **clear reporting** is as important as analysis, I plan to use 
 
 All my teaching materials are shared via **GitHub** and integrated into **Dodona** and **Ufora**, so students can work through **auto-graded, trackable exercises** with structured feedback. My familiarity with **high-performance computing environments** and large-scale or **big data applications** means I can also support departmental projects involving **big data analysis**, **spatial modelling**, or **crime-pattern detection**. My experience with **geospatial and network-based data workflows** positions me to contribute flexibly to both teaching and research activities.
 
-This position holds strategic importance for my own professional development as I transition from research into **applied data analysis** and, ultimately, **data science**. While I bring strong skills in R, this role offers the opportunity to expand my expertise with other tools—such as **Python, SQL, and Quarto**—and apply them in an educational context. The position aligns with my broader goal of working in **applied analytics** and **educational design**, while supporting the **digital transformation** of criminology education. Together with the Scientific Staff role I have also applied for, this position would serve as a practical and pedagogical bridge, enabling me to **co-develop digital content** and reinforce it in the classroom through guidance, assessment, and adaptation based on student learning.
+This position holds strategic importance for my own professional development as I transition from research into **applied data analysis** and, ultimately, **data science**. While I bring strong skills in R, this role offers the opportunity to expand my expertise with other tools—such as **Python, HTML, and Java**—that are required for developing Dodona exercises, and apply them in an educational context. The position aligns with my broader goal of working in **applied analytics** and **educational design**, while supporting the **digital transformation** of criminology education. 
+
+Together with the Scientific Staff position (ref. 202506/RE23/AAP/002), which I have also applied for, these roles would create a powerful synergy between **content development and classroom implementation**. While the Scientific Staff role would allow me to design and develop the digital learning materials in Dodona, this Teaching Assistant position would enable me to reinforce that content through direct student guidance, assessment, and adaptation based on observed learning needs. This combined approach would ensure a coherent educational experience where online exercises and classroom instruction are perfectly aligned.
 
 My understanding of **departmental workflows**—gained through teaching, internship supervision, and thesis evaluation—enables me to collaborate efficiently with course coordinators. With **NT2 A2 certification in Dutch** and ongoing **A3-level coursework**, I am also committed to creating accessible learning materials in Dutch for our students.
 
-Attachments include:
-- **Instructional Design of the R Exercise Series** - A comprehensive document detailing my pedagogical framework
-- **Sample Dodona exercise** - Demonstrating practical implementation of my teaching approach
-- **swirl course with installation instructions** and walkthrough video of the lesson prototype
-- **GitHub link with additional resources** - Providing access to all teaching materials referenced
-- **Scientific Staff application** (ref. 202506/RE23/AAP/002) - For context on how these roles would complement each other
+Attachments include a **Sample Dodona exercise**, a **swirl course with installation instructions and walkthrough video of a swirl lesson prototype**, and a **GitHub link with additional resources**.
 
 Thank you for considering my application. I look forward to supporting our students’ quantitative development and contributing to a dynamic, data-driven criminology curriculum.
 
