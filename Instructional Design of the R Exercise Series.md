@@ -36,8 +36,7 @@ Automated feedback and metadata are included for instructional tracking and cont
 | 12 | Scatterplot unemployment                 | Analyze                | Partial support  | Modify                     |
 | 13 | Filtering crime data with dplyr          | Apply                  | Partial support  | Modify                     |
 | 14 | Selecting columns with dplyr             | Apply                  | Partial support  | Modify                     |
-| 15 | Creating new columns with mutate         | Create                 | Minimal support  | Make                       |
-| 16 | Data preprocessing with R                | Create & Apply         | Minimal support  | Make                       |
+| 15 | Creating new columns with mutate         | Create                 | Minimal support  | Make    
 
 ## 4. Reproducibility and Synthetic Data
 
