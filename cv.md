@@ -1,118 +1,130 @@
-# DR. KURALARASAN KUMAR
-[Your Contact Information]
-[Your Email]
-[Your Phone Number]
-[LinkedIn Profile]
-[GitHub Repository Link]
+# Dr. Kuralarasan Kumar
 
-## PROFESSIONAL SUMMARY
-Quantitative criminologist with specialized expertise in spatial analysis, crime pattern detection, and data visualization. Advanced R programmer leveraging computational methods to analyze criminal behavior patterns and support evidence-based policy decisions. Educational innovator creating interactive learning tools and applying pedagogical frameworks to enhance quantitative literacy among criminology students.
+**Quantitative Criminologist | Spatial Statistics | Network Analysis | Data-Driven Policy Evaluation**  
+Ghent, Belgium  
+Email: kuralarsan.kumar@gmail.com | Mobile: +32 467 66 70 48
 
-## WORK EXPERIENCE
+---
 
-### Post-Doctoral Researcher
-**Ghent University, Belgium** | Sep 2022 – Present
-* Lead research initiatives on crime patterns and offender decision-making using advanced spatial modeling and network analysis methodologies
-* Develop and implement reproducible research workflows using R for analyzing spatio-temporal crime patterns
-* Create innovative synthetic datasets (crimsyndata) for educational purposes, enabling privacy-compliant crime data analysis
-* Design and build interactive educational tools including Dodona exercises and swirl lessons specifically for criminology students
-* Co-supervise doctoral researchers on the Belspo-BRAIN-BE 2.0 Project, applying network analysis to connect police and forensic data for detecting hidden patterns in criminal behavior
-* Supervise master's and bachelor's theses focusing on spatial analysis of crime and quantitative methods
-* Facilitate journal club meetings and research presentations to strengthen team quantitative research capabilities
-* Collaborate with local stakeholders to provide data-driven insights on crime patterns and prevention strategies
+## Profile
 
-### Assistant Professor and Department Head (in-charge)
-**DRBCCC Hindu College, Chennai, India** | Dec 2020 – May 2022
-* Directed the Department of Criminology, overseeing curriculum development, faculty mentoring, and student career placement
-* Designed and delivered courses on research methodology, quantitative analysis, and applied criminology (crime prevention, community policing, child rights, prison administration)
-* Implemented pedagogical strategies to address statistical anxiety among students with limited quantitative backgrounds
-* Mentored undergraduate students in data collection, analysis, and research project development
-* Integrated computational methods and R programming into criminology curriculum
+I am a quantitative criminologist with strong interest in data science and expertise in spatial analysis, crime data modeling, and advanced data visualization. My proficiency in **R programming** and **statistical computing** (including both R and SPSS) enables me to extract actionable insights from large datasets and deliver evidence-based recommendations for policy and practice.
 
-## EDUCATION
+I am passionate about combining my **pedagogical expertise** with **programming skills** in collaborative environments. Through designing interactive tutorials and auto-graded exercises, I create accessible learning experiences that address statistical anxiety while building data analysis competencies. My approach integrates technical rigor with clear communication, enabling me to translate complex insights into actionable knowledge and mentor others in quantitative methods across disciplines.
 
-### Ph.D. in Criminology and Criminal Justice Administration
-**University of Madras, India** | 2015 - 2020
-* Dissertation: "Target Selection Process in Burglary: A Study on Convicted Burglars of Tamil Nadu"
-* Conducted extensive field research with 300+ convicted burglars across four Indian states
-* Empirically tested target-selection behaviors, integrating rational choice theory and crime pattern theory within the Indian context
-* Applied advanced quantitative methods to analyze spatial decision-making patterns
+---
 
-### Master of Criminology and Criminal Justice Administration
-**University of Madras, India** | 2013 - 2015
-* Specialized in criminological theory, research methodology, statistical modeling, and crime prevention
-* Graduated as Gold Medalist and First Rank Holder
+## Education
 
-### Bachelor of Criminology and Police Administration
-**University of Madras, India** | 2010 - 2012
-* Foundational study of criminology theories, police administration, and crime prevention strategies
+**Ph.D. in Criminology & Criminal Justice Administration**  
+*University of Madras, Chennai, India* | 2015–2020  
+- Dissertation: “Target Selection Process in Burglary: A Study on Convicted Burglars of Tamil Nadu.”  
+- Conducted 300+ offender interviews, integrating rational choice and crime pattern theory in the Indian context.
 
-## ACADEMIC ACHIEVEMENTS
+**Master of Criminology & Criminal Justice Administration**  
+*University of Madras, Chennai, India* | 2013–2015  
+- Graduated as **Gold Medalist** & **First Rank Holder**  
+- Focus: criminological theories, police administration, research methods, statistics, forensic sciences, crime prevention.
 
-* **Gold Medalist and First Rank Holder** (2013-2015): Highest academic standing in master's program, University of Madras
-* **Junior Research Fellowship** (2015-2017): Highly competitive national fellowship (0.2% success rate) from University Grants Commission
-* **Senior Research Fellowship** (2017-2020): Advanced research funding for comparative analysis of offender decision-making
-* **National Eligibility Test (NET) Qualification** (2015): Demonstrated academic proficiency for faculty positions in criminology
-* **Best Research Paper Award** (2021): Indian Society of Victimology
-* **Best Research Paper Award** (2021): O.P. Jindal Global University
+**Bachelor of Criminology & Police Administration**  
+*University of Madras, Chennai, India* | 2010–2012  
+- Foundation in criminology, police administration, psychology, and crime prevention.
 
-## TECHNICAL SKILLS
+---
 
-### Programming & Data Science
-* **R Programming**: Advanced (data manipulation, visualization, package development, reproducible analysis)
-* **QGIS/ArcGIS**: Advanced/Intermediate (spatial analysis, crime mapping, geospatial modeling)
-* **SPSS**: Advanced (statistical analysis, data management)
-* **Python**: Beginner (expanding skillset)
-* **Version Control**: GitHub for collaborative development and educational material sharing
+## Professional Experience
 
-### Educational Technology
-* **Dodona**: Development of auto-graded exercises with structured feedback for criminology students
-* **Swirl**: Creation of interactive R tutorials with embedded guidance
-* **Synthetic Data Generation**: Development of privacy-compliant datasets for educational use
+**Postdoctoral Researcher**  
+*Ghent University, Belgium* | Sep 2022 – Present  
+- Lead research on **crime patterns** and **offender decision-making** employing spatial modelling and network analysis.  
+- Analyze large spatial datasets to inform law enforcement and public policy.  
+- Co-supervise a doctoral researcher (Belspo-BRAIN-BE 2.0 Project), integrating police and forensic data for serial and co-offending analysis.  
+- Supervise master’s and bachelor’s theses on spatial crime analysis.  
+- Organize monthly journal club meetings and research presentations to strengthen the team’s quantitative skills.
 
-## RESEARCH & TEACHING EXPERTISE
+**Assistant Professor & Head (in-charge)**  
+*DRBCCC Hindu College, Chennai, India* | Dec 2020 – May 2022  
+- Managed the Department of Criminology: curriculum design, faculty mentorship, and job placement.  
+- Taught research methodology, data analysis, and quantitative criminology; led courses in crime prevention, community policing, and prison administration.  
+- Mentored undergraduate students in data collection, analysis, and research projects.
 
-### Research Proficiency
-* Expert in offender decision-making and crime pattern analysis using geospatial and network methodologies
-* Application of criminological theories (rational choice, crime pattern, routine activity) to spatial behavior studies
-* Advanced skills in data visualization and statistical communication for diverse audiences
+---
 
-### Pedagogical Approaches
-* Integration of **scaffolding techniques**, **Bloom's Taxonomy**, and the **PRIMM cycle** in teaching quantitative methods
-* Development of context-specific learning materials addressing statistical anxiety in social science students
-* Creation of synthetic datasets enabling realistic yet privacy-compliant analyses for student exercises
+## Teaching & Supervision
 
-### Data Collection & Field Investigation
-* Design and implementation of large-scale field studies with offender populations
-* Mixed-methods expertise combining qualitative interviewing with quantitative spatial analysis
-* Experience conducting research on sensitive topics (trafficking, sex work, fear of crime)
+- Taught and developed courses for **master’s students at Ghent University** and **undergraduates in India** on criminology, research methods, data analysis, GIS, and statistics.
+- Supervised and co-supervised PhD, master’s, and bachelor’s theses focused on spatial analysis, GIS, and network analysis.
+- Organized skill-building activities: journal clubs, coding workshops, and research seminars.
 
-### Science Communication & Stakeholder Engagement
-* Media coverage of research in The Times of India, Sun News, and Chennai Citizen Matters
-* Presentations to law enforcement agencies and municipal authorities on applied research findings
-* Translation of complex statistical concepts for non-technical audiences
+---
 
-## LANGUAGE SKILLS
+## Research & Technical Skills
 
-| Language | Listening | Reading | Speaking | Writing |
-|----------|-----------|---------|----------|---------|
-| Tamil    | Native    | Native  | Native   | Native  |
-| English  | C1        | C1      | C1       | C1      |
-| Dutch    | A2        | A2      | A2       | A2      |
-| Russian  | B1        | B1      | A2       | A1      |
+- **Spatial & Network Analysis:** Advanced use of **R**, **QGIS**, **SPSS**, and network analytics for crime mapping and offender behavior studies.
+- **Data Science:** Daily use of **R** for reproducible analysis, instructional design, and scientific publication.
+- **Field Research:** Led interviews with 300+ convicted offenders across four Indian states; researched trafficking, sex work, and fear of crime.
+- **Report Writing & Policy Evaluation:** Authored policy briefs for the National Commission for Women (India); provided evidence-based recommendations for law enforcement.
+- **Science Communication:** Featured in media (The Times of India, Sun News); presented findings to city safety departments in Belgium and India.
 
-*Levels: A1/A2: Basic; B1/B2: Independent; C1/C2: Proficient*
+---
 
-## SELECTED PUBLICATIONS
+## ICT Skills
 
-* **Kuralarasan, K.**, Bernasco, W., & Vandeviver, C. (2024). Graffiti Writers Choose Locations That Optimize Exposure. *Crime & Delinquency*, 00111287241287133. https://doi.org/10.1177/00111287241287133
+- **R Programming:** Advanced (spatial analysis, reproducible research, instructional tools)
+- **SPSS:** Advanced (statistical modelling, data management)
+- **QGIS:** Advanced (crime mapping, spatial data visualization)
+- **ArcGIS:** Intermediate (spatial analysis, data layering)
+- **Python:** Beginner (data wrangling, exploratory analysis)
 
-* Vandeviver, C., **Kuralarasan, K.**, Brantingham, P. J., & Bernasco, W. (2025). Target Choices in a Population of Illegal Graffiti Writers: Evidence of Consistency and Specificity. *Crime Science* (under Review).
+---
 
-* **Kuralarasan, K.**, Bernasco, W., & Vandeviver, C. (2025). Choosing the right pond: Street graffiti clusters by aesthetic quality. *Urban Studies* (under Review).
+## Languages
 
-* **Kuralarasan, K.**, & Bernasco, W. (2022). Location Choice of Snatching Offenders in Chennai City. *Journal of Quantitative Criminology*, 38(3), 673–696. https://doi.org/10.1007/s10940-021-09514-9
+| Language | Listening | Reading | Speaking | Writing | CEFR Level    |
+|----------|-----------|---------|----------|---------|---------------|
+| Tamil    | Native    | Native  | Native   | Native  | Native        |
+| English  |   C1      |   C1    |   C1     |   C1    | Proficient    |
+| Russian  |   B1      |   B1    |   A2     |   A1    | Intermediate  |
+| Dutch    |   A2      |   A2    |   A2     |   A2    | Basic         |
 
-* **Kuralarasan, K.**, Krishnan, A., & Priyamvadha, M (2020). Spatial and Rational Choice in Drug Peddling at Kochi City: A Descriptive Analysis of News Reported in Print and Electronic Media during 2016-2017. *The Indian Police Journal*, 67(1).
+*CEFR: A1–A2 = Basic, B1–B2 = Independent, C1–C2 = Proficient*
 
-* **Kuralarasan, K.**, & Priyamvadha, M (2018). Rationality or opportunity: what matters in crime? A descriptive analysis of property crimes reported by electronic media in Chennai city and its outskirts. *Indian Journal of Criminology*, 1(1).
+---
+
+## Achievements & Awards
+
+- **Gold Medalist & First Rank Holder** – Master’s program, University of Madras (2015)
+- **UGC Junior Research Fellowship (JRF)** (2015–2017) – Top 0.2% nationwide, PhD research on burglary
+- **UGC Senior Research Fellowship (SRF)** (2017–2020) – Supported advanced comparative analysis of offender target selection
+- **National Eligibility Test (NET) Qualified** (2015) – For faculty positions in criminology
+- **Best Research Paper Award** – Indian Society of Victimology (2021)
+- **Best Research Paper Award** – O.P. Jindal Global University (2021)
+
+---
+
+## Selected Publications
+
+- Kuralarasan, K., Bernasco, W., & Vandeviver, C. (2024). Graffiti Writers Choose Locations That Optimize Exposure. *Crime & Delinquency*, 00111287241287133. [https://doi.org/10.1177/00111287241287133](https://doi.org/10.1177/00111287241287133)
+- Vandeviver, C., Kuralarasan, K., Brantingham, P. J., & Bernasco, W. (2025). Target Choices in a Population of Illegal Graffiti Writers: Evidence of Consistency and Specificity. *Crime Science* (under review).
+- Kuralarasan, K., Bernasco, W., & Vandeviver, C. (2025). Choosing the Right Pond: Street Graffiti Clusters by Aesthetic Quality. *Urban Studies* (under review).
+- Kuralarasan, K., & Bernasco, W. (2022). Location Choice of Snatching Offenders in Chennai City. *Journal of Quantitative Criminology*, 38(3), 673–696. [https://doi.org/10.1007/s10940-021-09514-9](https://doi.org/10.1007/s10940-021-09514-9)
+- Kuralarasan, K., Krishnan, A., & Priyamvadha, M. (2020). Spatial and Rational Choice in Drug Peddling at Kochi City: A Descriptive Analysis. *The Indian Police Journal*, 67(1).
+- Kuralarasan, K., & Priyamvadha, M. (2018). Rationality or Opportunity: What Matters in Crime? *Indian Journal of Criminology*, 1(1).
+
+*Full publication list available upon request.*
+
+---
+
+## Additional Skills & Interests
+
+- **Research Proficiency:** Offender decision-making, crime pattern analysis, integration of criminological theories.
+- **Data Collection & Fieldwork:** Extensive fieldwork across India; qualitative and quantitative methodologies.
+- **Policy & Stakeholder Engagement:** Briefed law enforcement and public safety departments in India and Belgium.
+- **Science Communication:** Presentations, workshops, and media engagement.
+- **International Experience:** Academic and research collaboration in Belgium and India.
+
+---
+
+## References
+
+Available upon request.

@@ -2,6 +2,8 @@
 
 ## 1. Purpose and Design Rationale
 
+This example exercise was developed to introduce criminology students—with no prior programming experience—to data analysis and statistical reasoning using R. The design process focused on selecting criminologically relevant scenarios, ensuring accessibility for beginners, and embedding best practices in instructional design. Each step, from data simulation to exercise scaffolding, was informed by evidence-based frameworks (e.g., Bloom's Taxonomy, PRIMM, and scaffolding theory) to promote both technical skill development and statistical thinking.
+
 This example exercise was developed to introduce criminology students—with no prior programming experience—to data analysis and statistical reasoning using R. The design process focused on selecting criminologically relevant scenarios, ensuring accessibility for beginners, and embedding best practices in instructional design. Each step, from data simulation to exercise scaffolding, was informed by evidence-based frameworks (e.g., Bloom’s Taxonomy, PRIMM, and scaffolding theory) to promote both technical skill development and statistical thinking.
 
 ## 2. Development Process and Instructional Design
@@ -12,7 +14,7 @@ This exercise was created by mapping key criminological concepts to R programmin
 - **PRIMM** (Sentance et al., 2019) is a phased approach to programming instruction: Predict, Run, Investigate, Modify, and Make. It guides students from understanding existing code to creating their own solutions.
 - **Scaffolding** (van de Pol et al., 2010) refers to the instructional supports provided to students as they learn new concepts. These supports are gradually removed as students gain confidence and competence, fostering independence.
 
-Because reporting is just as important as analysis, I plan to use R to help students structure their findings clearly and correctly. Tools such as apaTables and flextable allow us to format results in APA style directly from code, making the reporting process more transparent and reproducible. I intend to use these tools to teach students how to interpret test statistics and report their results according to academic standards—preparing them for thesis writing and publication.
+Because reporting is just as important as analysis, I plan to use R to help students structure their findings clearly and correctly. Tools such as `apaTables` and `flextable` allow us to format results in APA style directly from code, making the reporting process more transparent and reproducible. I intend to use these tools to teach students how to interpret test statistics and report their results according to academic standards—preparing them for thesis writing and publication.
 
 Automated feedback and metadata are included for instructional tracking and continuous improvement. This template can be adapted for new topics, datasets, or skill levels by modifying the context, adjusting scaffolding, or integrating advanced R techniques.
 
@@ -36,29 +38,32 @@ Automated feedback and metadata are included for instructional tracking and cont
 | 14 | Saving results with write.csv            | Apply                  | Partial support  | Run, Modify                |
 | 15 | Writing simple custom functions          | Create                 | Minimal support  | Make                       |
 
-## 4. Reproducibility, and Synthetic Data
+## 4. Reproducibility and Synthetic Data
 
-All exercises use synthetic datasets that simulate real criminological data (e.g., district-level crime rates, demographics, police response times). These datasets are generated using the `crimsyndata` package, which ensures privacy, reproducibility, and ethical compliance. The package allows instructors to tailor datasets to specific teaching goals and update them as needed. Students learn APA-style reporting using packages like `apaTables`, `sjPlot`, or `papaja`, focusing on interpretation rather than manual formatting. This approach enables safe sharing and publication of results, and supports differentiated instruction as the course evolves.
+All exercises use synthetic datasets that simulate real criminological data (e.g., district-level crime rates, demographics, police response times). These datasets are generated using the [`crimsyndata` package](https://github.com/KKural/crimsyndata), which ensures privacy, reproducibility, and ethical compliance. The package allows instructors to tailor datasets to specific teaching goals and update them as needed. Students learn APA-style reporting using packages like [`apaTables`](https://github.com/dstanley4/apaTables), [`sjPlot`](https://strengejacke.github.io/sjPlot/), or [`papaja`](https://github.com/crsh/papaja), focusing on interpretation rather than manual formatting. This approach enables safe sharing and publication of results and supports differentiated instruction as the course evolves.
 
 ### Using crimsyndata in R
-1. Install the package:
-   ```R
-   install.packages("remotes")
-   remotes::install_github("yourusername/crimsyndata")
-   ```
-2. Load the library:
-   ```R
-   library(crimsyndata)
-   ```
-3. Load a dataset:
-   ```R
-   crime_df <- crimsyndata::crime_stats
-   ```
-4. Explore the data:
-   ```R
-   summary(crime_df)
-   str(crime_df)
-   ```
+
+The [crimsyndata package](https://github.com/KKural/crimsyndata) is available on GitHub.
+
+This package provides carefully designed synthetic datasets that simulate real criminological data patterns while ensuring privacy and ethical compliance. Students can use these datasets for practice without concerns about confidentiality or data protection requirements.
+
+To use the [crimsyndata package](https://github.com/KKural/crimsyndata):
+
+1. First install the package from GitHub:
+   - Install the remotes package if not already available
+   - Use `remotes::install_github("KKural/crimsyndata")` to install from the repository
+
+2. Load the package with `library(crimsyndata)`
+
+3. Access a variety of criminologically relevant datasets such as:
+
+   - **crime_stats_ghent**: Multi-year crime data including demographic variables by district, crime types, and population statistics
+   - **fear_of_crime_survey**: Individual-level survey responses on perceived safety with demographic information
+   - **neighborhood_index**: Contextual variables for neighborhoods including socioeconomic indicators
+   - **police_effort_index**: Law enforcement resource allocation and effectiveness metrics by district
+
+Each dataset is designed to exhibit realistic criminological patterns while being completely synthetic, supporting teaching concepts such as crime rate calculation, demographic analysis, and spatial patterns. An important feature of the [crimsyndata package](https://github.com/KKural/crimsyndata) is its flexibility—new datasets can be generated to match specific learning objectives or course requirements. Additional datasets can be created based on the lesson goals, statistical concepts, or analytical techniques in the curriculum. This ensures that examples are always relevant to the specific criminological concepts being taught.
 
 ## 5. Platform Integration
 
@@ -72,9 +77,36 @@ A multi-platform approach ensures students have access to resources, feedback, a
 
 To ensure all students start with a solid foundation, the course begins with a short onboarding quiz. This quiz introduces basic R syntax, variable assignment, and the Dodona environment. It is designed as a low-stakes, formative assessment to help students identify gaps in their understanding and become comfortable with submitting code and interpreting feedback before tackling the main exercises.
 
-## 7. Swirl Lessons: Interactive R Learning
+## 7. Interactive Learning with swirl
 
-Swirl lessons are interactive R tutorials that run directly in the R console. These lessons use the same synthetic datasets as the main exercises and guide students step-by-step through data loading, exploration, and analysis. Swirl provides immediate, contextual feedback on code and answers, allowing students to learn by doing and correct mistakes in real time. This hands-on, self-paced approach reinforces classroom concepts, builds confidence, and prepares students for independent analysis tasks.
+swirl offers a complementary approach to Dodona, providing interactive R tutorials that run directly within the R console. I've developed a [prototype swirl course specifically for criminology students](https://github.com/KKural/Data_Analysis_Bachelor_Criminology).
+
+### The Bachelor Criminology swirl Course Prototype
+
+This initial prototype demonstrates how swirl can address common challenges criminology students face when learning statistics and coding by:
+
+1. Using the same synthetic crime datasets as the main exercises for consistency
+2. Providing immediate, contextual feedback on code and answers
+3. Offering step-by-step guidance through data exploration and analysis
+4. Creating a safe environment for experimentation without fear of mistakes
+
+**Current Prototype Lessons:**
+- **Lesson 1: Basics of R** - Introduces fundamental R functions like `str()`, `colnames()`, `head()`, and basic data exploration using criminological datasets
+- **Lesson 2: T Test and Chi Square** - Guides students through conducting and interpreting these essential statistical tests with crime data examples
+
+**Installation & Usage:**
+- Students install the [swirl package](https://swirlstats.com/) and download the course with `swirl::install_course_github("KKural", "Data_Analysis_Bachelor_Criminology")`
+- Starting with `swirl()` in the console, they select the criminology course
+- Each lesson provides context-specific hints and error correction
+
+**Expandable Framework:**
+This prototype demonstrates the concept and can be expanded into a comprehensive curriculum based on specific course requirements. Additional lessons can be developed to cover:
+- More advanced data manipulation techniques for crime data
+- Statistical models commonly used in criminology (regression, ANOVA)
+- Specialized visualization approaches for spatial crime patterns
+- Customized modules that align with specific course topics or departmental needs
+
+The interactive console-based format complements the Dodona platform, giving students multiple paths to mastery while addressing statistical anxiety. The prototype has already shown that students appreciate the immediate feedback and self-paced structure, which builds confidence before they tackle more complex, independent assignments.
 
 ## 8. Metadata for Instructional Tracking
 

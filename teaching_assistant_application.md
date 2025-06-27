@@ -2,6 +2,12 @@ June 26, 2025
 
 Dear Professors Hardyns, Vandeviver, and Pauwels,
 
+I am writing to apply for the Teaching Assistant (ref. 202506/RE23/PA/003) position in our department. Please find enclosed a detailed document titled "Instructional Design of the R Exercise Series" that outlines my pedagogical approach and technical framework for teaching quantitative methods. As mentioned in my scientific staff application (ref. 202506/RE23/AAP/002), this teaching assistant role would complement my digital content development work, creating a synergistic combination of curriculum design and classroom implementation.
+
+As a postdoctoral researcher in **quantitative criminology** and an advanced **R user**, I am eager to strengthen students' **data-analysis skills**, guide them through **practical coding tasks**, and assist with the evaluation of their theses and oral defences.26, 2025
+
+Dear Professors Hardyns, Vandeviver, and Pauwels,
+
 I am writing to apply for the Teaching Assistant (ref. 202506/RE23/PA/003) position in our department. As a postdoctoral researcher in **quantitative criminology** and an advanced **R user**, I am eager to strengthen students’ **data-analysis skills**, guide them through **practical coding tasks**, and assist with the evaluation of their theses and oral defences.
 
 Over the past three years in the Faculty of Law and Criminology, I have focused on **spatial statistics**, **data visualization**, and **crime-data modeling**. My daily use of **R** for **reproducible analysis** and publishing in **peer-reviewed publications**, including in *Quantitative Criminology*, has shaped my academic profile. Through teaching both **UGent master’s students** and **undergraduates in India**, I have developed effective methods to **scaffold statistical concepts** and help students build confidence in quantitative analysis.
