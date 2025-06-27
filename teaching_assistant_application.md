@@ -24,7 +24,12 @@ This position holds strategic importance for my own professional development as 
 
 My understanding of **departmental workflows**—gained through teaching, internship supervision, and thesis evaluation—enables me to collaborate efficiently with course coordinators. With **NT2 A2 certification in Dutch** and ongoing **A3-level coursework**, I am also committed to creating accessible learning materials in Dutch for our students.
 
-Attachments include a **Sample Dodona exercise**, a **swirl course with installation instructions and walkthrough video of a swirl lesson prototype**, and a **GitHub link with additional resources**.
+Attachments include:
+- **Instructional Design of the R Exercise Series** - A comprehensive document detailing my pedagogical framework
+- **Sample Dodona exercise** - Demonstrating practical implementation of my teaching approach
+- **swirl course with installation instructions** and walkthrough video of the lesson prototype
+- **GitHub link with additional resources** - Providing access to all teaching materials referenced
+- **Scientific Staff application** (ref. 202506/RE23/AAP/002) - For context on how these roles would complement each other
 
 Thank you for considering my application. I look forward to supporting our students’ quantitative development and contributing to a dynamic, data-driven criminology curriculum.
 
