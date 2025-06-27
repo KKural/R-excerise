@@ -84,6 +84,18 @@ Each exercise includes metadata in the form of comments (e.g., Bloom Level, Scaf
 
 Student questions and feedback are actively encouraged throughout the course. The teaching team monitors queries submitted via Dodona and Ufora, providing timely responses and clarifications. Frequently asked questions and common challenges are tracked and used to refine exercise instructions, update datasets, and improve the overall learning experience. This iterative process ensures the course remains clear, effective, and responsive to student needs.
 
+## 10. Supporting Software Transitions in Statistical Education
+
+With advanced proficiency in both SPSS and R, I am well-positioned to support the department's software transition initiatives. My dual expertise allows me to understand both the technical challenges students face when learning a new statistical environment and the conceptual connections between familiar operations and new syntax. 
+
+This background enables me to:
+- Recognize common pain points that students encounter when moving from menu-driven interfaces to scripting environments
+- Effectively translate statistical concepts between platforms without losing conceptual understanding
+- Design learning materials that build on existing statistical knowledge while introducing new programming paradigms
+- Help faculty adapt their teaching materials and research workflows to R's reproducible framework
+
+By leveraging my experience with both platforms, I can create a smoother learning path for students and help reduce technical barriers to statistical learning, allowing them to focus on criminological applications rather than software mechanics.
+
 ## References
 
 Anderson, L. W., & Krathwohl, D. R. (Eds.). (2001). *A taxonomy for learning, teaching, and assessing: A revision of Bloom's taxonomy of educational objectives*. New York, NY: Longman.
