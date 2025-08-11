@@ -1,0 +1,467 @@
+---
+title: "Criminology Data Analysis Course: Semester Plan"
+subtitle: "16-Week Learning Path"
+author: "Dr. Kuralarasan Kumar"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    theme: flatly
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(knitr)
+librar- **Student Feedback Loops**: 1-minute pulse polls at Weeks 1, 5, 8, 15(DT)
+```
+
+> **Note:** This is a rough plan and subject to change based on student needs, technical requirements, and institutional feedback throughout the semester.
+
+# Course Overview
+
+## Learning Objectives
+By the end of this course, students will be able to:
+- Navigate R/RStudio and manage reproducible projects
+- Import, clean, and manipulate criminological datasets  
+- Conduct descriptive and inferential statistical analyses
+- Create publication-quality visualizations and APA-formatted tables
+- Interpret results within criminological contexts
+- Transition from SPSS workflows to R-based analysis
+
+## Assessment Structure
+```{r assessment, echo=FALSE}
+assessment <- data.frame(
+  Component = c("Onboarding + Quizzes", "Assignment 1 (Crime Rates)", 
+                "Midterm Mini-Project", "Final Project", "Participation"),
+  Weight = c("10%", "15%", "25%", "40%", "10%"),
+  Description = c("Low-stakes skill checks", "APA table + report", 
+                  "District analysis + peer review", "Student-chosen question",
+                  "Clinics, feedback, reflection")
+)
+kable(assessment, caption = "Assessment Weights")
+```
+
+## Platform Integration
+- **Dodona**: Auto-graded exercises with instant feedback
+- **swirl**: Interactive R console tutorials  
+- **Ufora**: Quizzes, resources, discussions, announcements
+- **GitHub**: Code repositories and dataset access (read-only for students)
+
+---
+
+# Weekly Schedule
+
+## Week 1: Onboarding & Baseline
+**Topics:** R/RStudio setup, projects, Dodona submission, Ufora navigation, GitHub access
+
+**Learning Activities:**
+- Install R, RStudio, and create first project
+- Complete Dodona onboarding item (basic syntax, variables)
+- Short Ufora quiz on measurement levels in criminology
+- Install swirl package and explore interface
+
+**Deliverables:**
+- Onboarding quiz completion
+- Baseline self-efficacy poll (1-minute survey)
+
+**Tracking Metrics:**
+- % onboarding completed by Day 5
+- Common error patterns → targeted hints added
+- Initial confidence levels in statistics/programming
+
+---
+
+## Week 2: Data Structures & Measurement Levels
+**Topics:** `str()`, vectors, data frames, factors; measurement levels in criminology context
+
+**Learning Activities:**
+- Explore crimsyndata package structures
+- Practice Run/Modify tasks with guided examples
+- Identify measurement levels in crime datasets
+
+**Deliverables:**
+- Dodona Set A: Data Literacy (5 exercises)
+- Reflection: "What surprised you about crime data structure?"
+
+**Tracking Metrics:**
+- Item-level error rates by exercise
+- Median time-on-task
+- Factor vs. character confusion patterns
+
+---
+
+## Week 3: Descriptives & APA Basics
+**Topics:** `summary()`, `table()`, grouped summaries; APA tables via flextable/apaTables
+
+**Learning Activities:**
+- Generate frequency tables for offense types
+- Create grouped summaries by district/demographic variables
+- Introduction to APA formatting from code
+
+**Deliverables:**
+- Dodona Set B: Descriptive Statistics (4 exercises)
+- Mini-memo: 200-word interpretation of results
+
+**Tracking Metrics:**
+- % submissions passing APA checks without manual edits
+- Interpretation quality rubric scores
+- Time spent on formatting vs. analysis
+
+---
+
+## Week 4: dplyr I - Filter, Select, Pipe
+**Topics:** `filter()`, `select()`, pipe operator; tidy naming and code style
+
+**Learning Activities:**
+- Filter crime data by type, location, time period
+- Select relevant variables for analysis
+- Chain operations using pipes
+
+**Deliverables:**
+- Dodona Set C: Data Manipulation Basics (4 exercises)
+- Quiz 1 in Ufora (low-stakes, 10 questions)
+
+**Tracking Metrics:**
+- Logical operator misuse patterns
+- Pipe syntax adoption rate
+- Common variable selection errors
+
+---
+
+## Week 5: dplyr II - Grouping & Crime Rates
+**Topics:** `group_by()`, `summarise()`, rate calculations per 100k; NA handling
+
+**Learning Activities:**
+- Calculate crime rates by district, adjust for population
+- Handle missing data appropriately
+- Create summary tables with proper denominators
+
+**Deliverables:**
+- Assignment 1: Crime Rate Analysis
+  - APA-formatted table of rates by district/crime type
+  - 500-word interpretation following APA style
+  - Reproducible R script with comments
+
+**Tracking Metrics:**
+- APA compliance checklist completion
+- Denominator error frequency
+- NA handling approach accuracy
+
+---
+
+## Week 6: Tidy Data & Joins
+**Topics:** `pivot_longer()`, `pivot_wider()`, `left_join()`, data dictionaries
+
+**Learning Activities:**
+- Reshape crime data for different analysis needs
+- Join crime data with demographic/geographic information
+- Create and use data dictionaries
+
+**Deliverables:**
+- Dodona Set D: Data Reshaping & Joins (3 exercises)
+- swirl "Basics" module completion checkpoint
+
+**Tracking Metrics:**
+- Join key mismatch frequency
+- Pivot operation success rates
+- Data dictionary usage compliance
+
+---
+
+## Week 7: Visualization Fundamentals
+**Topics:** ggplot2 grammar of graphics; bar, line, histogram, scatterplot; academic styling
+
+**Learning Activities:**
+- Create publication-quality plots
+- Apply consistent labeling and styling
+- Choose appropriate plot types for data
+
+**Deliverables:**
+- Dodona Set E: Visualization (3 exercises)
+- Two plots with captions explaining criminological insights
+
+**Tracking Metrics:**
+- Plot readability checklist pass rate
+- Appropriate plot type selection
+- Caption quality and insight depth
+
+---
+
+## Week 8: Midterm Mini-Project
+**Task:** District Crime Profile Analysis using crimsyndata
+
+**Requirements:**
+- Choose 3-4 variables from district crime data
+- Produce 1 APA-formatted table + 1 publication-quality figure
+- Write 1-page interpretation with criminological context
+- Participate in structured peer review process
+
+**Deliverables:**
+- Complete mini-project submission
+- Peer review feedback using provided rubric
+- Reflection on peer feedback received
+
+**Tracking Metrics:**
+- Peer rubric agreement levels
+- Common feedback themes identification
+- Quality improvement from draft to final
+
+---
+
+## Week 9: Statistical Inference I
+**Topics:** t-tests, chi-square tests; assumptions, effect sizes, interpretation guidelines
+
+**Learning Activities:**
+- Test differences in crime rates between groups
+- Analyze categorical associations (offense type × demographic)
+- Calculate and interpret effect sizes
+
+**Deliverables:**
+- Dodona Inferential Statistics Set (4 exercises)
+- swirl "t-test & chi-square" module completion
+
+**Tracking Metrics:**
+- p-value vs. effect size interpretation accuracy
+- Assumption checking compliance
+- Statistical significance misinterpretation patterns
+
+---
+
+## Week 10: Regression I - Bivariate
+**Topics:** Simple linear regression; model specification, coefficients, fit assessment, diagnostics
+
+**Learning Activities:**
+- Model crime rates as function of single predictor
+- Interpret regression coefficients in context
+- Assess model assumptions and fit
+
+**Deliverables:**
+- Quiz 2: Interpretation Focus (Ufora, 15 questions)
+- Dodona Regression Set A (3 exercises)
+
+**Tracking Metrics:**
+- Confidence interval interpretation errors
+- Coefficient interpretation accuracy
+- Residual analysis completion rates
+
+---
+
+## Week 11: Regression II - Multiple
+**Topics:** Multiple regression; confounding, multicollinearity, standardized coefficients
+
+**Learning Activities:**
+- Build multivariable models with crime data
+- Check VIF values and assess multicollinearity
+- Compare standardized and unstandardized coefficients
+
+**Deliverables:**
+- Dodona Set F: Multiple Regression (3 exercises)
+- Regression table + narrative interpretation (APA format)
+
+**Tracking Metrics:**
+- VIF threshold understanding
+- Multicollinearity identification accuracy
+- Model interpretation completeness
+
+---
+
+## Week 12: Spatial Analysis & Reproducibility
+**Topics:** sf package basics, geographic joins, choropleth maps; R Projects, here(), script organization
+
+**Learning Activities:**
+- Create simple crime maps by district
+- Join crime data to geographic boundaries
+- Organize reproducible analysis workflows
+
+**Deliverables:**
+- Choropleth map with brief interpretation
+- Cautionary note on ecological fallacy
+- Organized R project with proper file structure
+
+**Tracking Metrics:**
+- CRS/projection error frequency
+- Geographic join success rates
+- Project organization compliance
+
+---
+
+## Week 13: Final Project Launch
+**Task:** Student-chosen criminology question using approved datasets
+
+**Activities:**
+- Individual consultations on project ideas
+- Proposal development with guidance
+- Research question refinement
+
+**Deliverables:**
+- Project proposal including:
+  - Research question and rationale
+  - Variables and analysis plan
+  - Expected outputs (table + figure types)
+  - Timeline for completion
+
+**Tracking Metrics:**
+- Proposal approval turnaround <72 hours
+- FAQ compilation for common issues
+- Research question feasibility assessment
+
+---
+
+## Week 14: Student Clinics & SPSS Bridges
+**Topics:** Side-by-side SPSS↔R translations; individualized support
+
+**Activities:**
+- Drop-in clinic sessions for project support
+- SPSS-to-R workflow demonstrations:
+  - Select Cases → `filter()`
+  - Compute Variable → `mutate()`
+  - Crosstabs → `table()` + `chisq.test()`
+  - Regression → `lm()` + `summary()`
+
+**Deliverables:**
+- Draft results for instructor feedback
+- SPSS-to-R translation exercise completion
+
+**Tracking Metrics:**
+- Clinic attendance vs. revision quality correlation
+- SPSS bridge exercise completion rates
+- Common translation error patterns
+
+---
+
+## Week 15: Finalization Week
+**Focus:** Final project completion and quality assurance
+
+**Activities:**
+- Final project submissions due Friday of Week 15
+- Drop-in office hours for last-minute support
+- APA formatting and reproducibility checks
+
+**Deliverables:**
+- Complete final project package:
+  - Written report (4-6 pages, APA format)
+  - Annotated R script with analysis code
+  - APA-formatted table and publication-quality figure
+  - Brief reflection on learning process
+
+**Tracking Metrics:**
+- On-time submission rate
+- Reproducibility spot-check pass rate (random sample)
+- APA compliance final assessment
+
+---
+
+## Week 16: Course Wrap-up
+**Activities:**
+- Optional student lightning presentations (5 min each)
+- Course reflection survey and feedback collection
+- Resource sharing for continued learning
+
+**Deliverables:**
+- Final course reflection survey
+- Peer feedback on presentations (if participating)
+
+**Tracking Metrics:**
+- Overall course satisfaction ratings
+- Self-efficacy change from baseline
+- Future learning interests and confidence
+
+---
+
+# Success Metrics & Continuous Improvement
+
+## Engagement Metrics
+```{r engagement_metrics, echo=FALSE}
+engagement <- data.frame(
+  Metric = c("Onboarding Completion", "Exercise Submission Rate", 
+             "Clinic Attendance", "Peer Review Participation"),
+  Target = c("≥85% by Week 1 Day 5", "≥90% within deadline", 
+             "≥60% when needed", "≥95% meaningful feedback"),
+  Tracking = c("Daily dashboard", "Weekly reports", 
+               "Session logs", "Rubric completion")
+)
+kable(engagement, caption = "Engagement Success Metrics")
+```
+
+## Mastery Metrics
+```{r mastery_metrics, echo=FALSE}
+mastery <- data.frame(
+  Skill_Area = c("Data Manipulation", "Rate Calculations", "APA Formatting", 
+                 "Statistical Interpretation", "Code Organization"),
+  Success_Indicator = c("Filter/select/mutate accuracy", "Proper denominators + NA handling",
+                        "First-pass compliance ≥70%", "Effect size vs p-value clarity",
+                        "Reproducible project structure"),
+  Assessment_Method = c("Dodona auto-grading", "Assignment rubrics",
+                        "Automated APA checks", "Quiz + project evaluation",
+                        "Code review checklist")
+)
+kable(mastery, caption = "Mastery Success Metrics")
+```
+
+## Quality Assurance Process
+1. **Weekly Error Analysis**: Identify common mistakes → update hints/examples
+2. **Student Feedback Loops**: 1-minute pulse polls at Weeks 1, 5, 8, 15
+3. **Peer Review Calibration**: Sample review agreement analysis
+4. **APA Compliance Tracking**: Automated checks + manual verification
+5. **Language Clarity Assessment**: B1 readability + native speaker review
+
+## Continuous Improvement Cycle
+- **Bi-weekly:** Review error patterns and adjust hints
+- **Mid-semester:** Comprehensive feedback analysis and content updates
+- **End-of-course:** Full curriculum review and next-iteration planning
+- **Post-course:** Alumni follow-up on skill retention and application
+
+---
+
+# Platform-Specific Implementation
+
+## Dodona Integration
+- **Auto-graded Exercises**: 15 core items + 5 bonus/extension
+- **Hint System**: Multi-level hints triggered by common errors
+- **Progress Tracking**: Individual and cohort-level dashboards
+- **Accessibility**: Screen reader compatible, multiple input methods
+
+## swirl Integration  
+- **Custom Course**: "Bachelor Criminology Data Analysis"
+- **Interactive Tutorials**: Console-based practice with immediate feedback
+- **Progress Syncing**: Links to Ufora gradebook for completion tracking
+- **Offline Capability**: Students can practice without internet access
+
+## Ufora Coordination
+- **Resource Hub**: Lecture slides, datasets, reference materials
+- **Discussion Forums**: Peer help, Q&A, announcement space
+- **Assessment Integration**: Quizzes sync with overall grade calculation
+- **Communication**: Weekly announcements, deadline reminders
+
+## GitHub Integration
+- **Read-Only Access**: Students can view but not edit main repositories
+- **Dataset Distribution**: Version-controlled crimsyndata releases
+- **Example Scripts**: Template code for common tasks
+- **Documentation**: Comprehensive guides and troubleshooting resources
+
+---
+
+# Risk Mitigation & Contingency Planning
+
+## Technical Risks
+- **R/RStudio Installation Issues**: Pre-recorded setup videos + virtual lab backup
+- **Dodona Platform Downtime**: Offline exercise alternatives prepared
+- **Package Compatibility**: Version-locked environment specifications
+
+## Pedagogical Risks  
+- **Varied Programming Background**: Multi-track approach with catch-up resources
+- **Statistical Anxiety**: Low-stakes assessments + peer support structures
+- **Time Management**: Clear deadlines + checkpoint system
+
+## Language Delivery Risks
+- **Dutch Comprehension**: English alternatives + translation glossary
+- **Technical Terminology**: Bilingual concept mapping + definition bank
+- **Cultural Context**: Local crime examples + international comparisons
+
+## Quality Assurance Backup Plans
+- **Instructor Illness**: Guest lecturer arrangements + recorded content
+- **Student Support Overload**: Teaching assistant training + FAQ automation
+- **Assessment Integrity**: Multiple versions + plagiarism detection protocols
