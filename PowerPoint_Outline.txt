@@ -1,0 +1,127 @@
+TITLE & ROADMAP
+Building Evidence-Based Dodona Learning Paths for Criminology (Sep–Dec)
+Scientific Staff Position | 20-minute Presentation
+Our plan today — 1-2-3:
+Challenge & approach
+Examples & tools (with screenshots)
+Plan & impact (incl. role fit & Dutch delivery)
+Presenter: Dr. Kuralarasan Kumar
+
+PROBLEM → VISION
+The Challenge
+Many students start with limited quantitative background and statistical anxiety
+Abstract, non-criminology examples make concepts feel distant
+Reporting is often inconsistent and hard to reproduce
+The Vision
+Domain-authentic tasks (crime rates, cross-tabs, basic regression)
+Gradual progression with support that fades
+Reproducible-by-design: outputs generated from code (tables/figures)
+
+TEACHING APPROACH
+Four Core Pillars
+Bloom: Understand → Apply → Analyze → Create
+PRIMM: Predict → Run → Investigate → Modify → Make
+Scaffolding: Strong support at the start → Independence later
+Context rules: Frequent reminders that correlation ≠ causation
+
+PLATFORM & TOOLS
+Integrated Ecosystem
+Dodona: Auto-graded coding with hints and clear progression
+Ufora: Quizzes, resources, announcements
+GitHub: Datasets & starter code; single source of truth with tagged releases
+swirl: Step-by-step console lessons
+Technology Stack:
+Now: R + HTML/JS
+Next (where helpful): Python/JS widgets
+
+PORTFOLIO EVIDENCE
+What's Already Built
+15 Dodona items already authored (from data basics to regression)
+crimsyndata: Synthetic, privacy-safe criminology datasets
+APA from code: flextable / apaTables pipeline
+Metadata on each item: Bloom, PRIMM, Scaffolding
+Visual Evidence:
+[INSERT: Dodona item screenshot - prompt + hint + feedback]
+[INSERT: APA table rendered from code screenshot]
+
+WALK-THROUGH A - CRIME RATES
+Task: Compute rate per 100,000 by district and flag above national average
+Skills: group_by() → summarise() → mutate() → arrange()
+Checks:
+Denominator validation
+Missing values handling
+Proper sorting
+Output: APA table + 3-sentence interpretation
+[INSERT: Code cell and APA table result screenshot]
+
+WALK-THROUGH B - CHI-SQUARE
+Task: Offense type × Gender (association)
+Steps: Contingency → Expected counts → χ² → Effect size
+Challenges:
+p-value vs. effect size interpretation
+Small cell count issues
+Smart Feedback: When needed, collapse categories or suggest Fisher's exact
+[INSERT: swirl step showing prompt + immediate feedback screenshot]
+
+VISUAL GALLERY & DEMO
+What Students Actually See
+Dodona: Prompt + hint + feedback system
+[INSERT: Dodona interface screenshot]
+swirl: Step-by-step lesson guidance
+[INSERT: swirl console screenshot]
+crimsyndata: Realistic data preview + documentation
+[INSERT: head() output + variable notes screenshot]
+APA output: Professional formatted results
+[INSERT: Final APA table screenshot]
+Live demo available if requested
+
+SEP–DEC 15 DELIVERY PLAN
+Structured Timeline
+Weeks 1–2: Audit learning outcomes; item map; data dictionaries
+Weeks 3–4: Sprint #1 — data literacy, descriptives, APA (6–8 items)
+Weeks 5–6: Sprint #2 — dplyr, rates, joins, tidy (6–8 items)
+Week 7: Visualization items (2–3) + caption standards
+Week 8: Midterm mini-project template + peer rubric
+Weeks 9–10: Inference (t, χ²) + regression I (4–5 items)
+Week 11: Content freeze #1; add progress data hooks
+Week 12: Small seminar pilot; bug-fix
+Weeks 13–14: Regression II / optional spatial basics
+Week 15: Content freeze #2; release candidate; Dec 15 wrap-up
+
+ROLE FIT & WHAT SETS ME APART
+Already Delivered
+Dodona items • Synthetic data • APA pipeline
+Domain-Authentic
+Criminology tasks • SPSS→R bridges • Thesis-ready outputs
+Structured, Evidence-Based Development
+Clear specs, tests, and progress data usage
+Operational Readiness
+Concrete plan to Dec 15 • GitHub releases • Content freezes
+Department Fit
+3 years in workflows • Course lead collaborations
+
+DUTCH DELIVERY & QUALITY
+Language Proficiency
+NT2 A2, currently A3 (CVO); prototype delivered in Dutch
+Review Process
+NL↔EN glossary
+DeepL/LanguageTool integration
+Native speaker review rounds
+Quality Targets
+B1 readability standard
+Student clarity polls (Dodona/Ufora)
+KPIs
+≥95% items pass B1 checks
+≥4/5 clarity rating
+
+QUESTIONS & DISCUSSION
+Thank You
+Key Targets by Dec 15:
+≥85% onboarding completion
+−30% denominator errors
+≥70% first-pass APA tables
+≥90% reproducibility spot-checks
+Ready to discuss:
+Semester-2 priorities
+Scaling across courses
+Technical implementation details
